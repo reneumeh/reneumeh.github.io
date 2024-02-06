@@ -26,7 +26,7 @@ function Profile() {
     const pages = [
         {
             name: "Home",
-            ref: Home,
+            link: "/",
         },
         {
             name: "Portfolio",
@@ -45,22 +45,18 @@ function Profile() {
     <Wrapper>
         <Header>
             <NavBar>
-                {pages.map((page) => (page.name == "Blog" ?
-                    <a className= "page-buttons"
-                        href= {page.link}
-                        target="_self"
-                        rel="noopener noreferrer"
-                        > 
-                        {page.name}
-                    </a>
-                :
-                    <div className= "page-buttons" onClick={() => scrollToElement(page.ref)}>
-                        {page.name}
-                    </div>
+                {pages.map((page) => (
+                    <div
+                    key={page.name}
+                    className="page-buttons"
+                    onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(page.link))}
+                >
+                    {page.name}
+                </div>
                 ))}
             </NavBar>
         </Header>
-        <Hero ref={Home}>
+        <Hero>
             <div>Hero</div>
         </Hero>
 
