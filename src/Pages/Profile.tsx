@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useState } from 'react';
 
 function Profile() {
@@ -11,13 +11,13 @@ function Profile() {
 
     const [isScrolling, setScrolling] = useState(false);
 
-    const handleScroll = () => {
-        if (window.scrollY > 20) {
-          setScrolling(true);
-        } else {
-          setScrolling(false);
-        }
-      };
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 140) {
+            setScrolling(true);
+          } else {
+            setScrolling(false);
+          }
+    })
 
     const scrollToElement = (ref: any) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -43,8 +43,15 @@ function Profile() {
     ] 
   return (
     <Wrapper>
-        <Header>
-            <NavBar>
+        <Header isScrolling= {isScrolling}>
+            <a 
+            href= "/"
+            target="_self"
+            rel="noopener noreferrer"
+            > 
+                Rene Umeh
+            </a>
+            <NavBar isScrolling= {isScrolling}>
                 {pages.map((page) => (
                     <div
                     key={page.name}
@@ -76,10 +83,38 @@ export default Profile
 const Wrapper = styled.div`
     `;
 
-const Header = styled.div`
+const Header = styled.div<{ isScrolling: boolean }>`
+    position: ${({ isScrolling }) =>
+    isScrolling === true ? 'fixed' : "absolute"};
+
+    a{
+        display: ${({ isScrolling }) =>
+        isScrolling === true ? 'block' : 'none'};
+    }
     `;
 
-const NavBar = styled.div`
+const NavBar = styled.div<{ isScrolling: boolean }>`
+    ${({ isScrolling }) => {
+        switch (isScrolling) {
+            case false:
+                return css`
+                    height: 12em;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1.2fr);
+                    .page-buttons {
+                        margin: 2rem 20rem;
+                    }
+                    :hover{
+                        color: red;
+                    }
+                `;
+            case true:
+                return css`
+                display: flex;
+                background-color: blue;
+                `;
+            }
+        }}
     `;
 
 const Hero = styled.div`
