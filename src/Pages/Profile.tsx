@@ -65,6 +65,42 @@ function Profile() {
         </Header>
         <Hero>
             <div>Hero</div>
+            <div className="marquee marquee--hover-pause" style={{top: "35em"}}>
+                <ul className="marquee__content">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+                <ul aria-hidden="true" className="marquee__content">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "28em"}}>
+                <ul className="marquee__content">
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                </ul>
+                <ul aria-hidden="true" className="marquee__content">
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+            <div className="marquee marquee--hover-pause" style={{top: "20em"}}>
+                <ul className="marquee__content">
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                </ul>
+                <ul aria-hidden="true" className="marquee__content">
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                </ul>
+            </div>
         </Hero>
 
         <PortfolioWrapper ref={Portfolio}>
@@ -98,11 +134,11 @@ const NavBar = styled.div<{ isScrolling: boolean }>`
         switch (isScrolling) {
             case false:
                 return css`
-                    height: 12em;
+                    height: 12vh;
                     display: grid;
                     grid-template-columns: repeat(2, 1.2fr);
                     .page-buttons {
-                        margin: 2rem 20rem;
+                        margin: 2vh 20vw;
                     }
                     :hover{
                         color: red;
@@ -119,6 +155,42 @@ const NavBar = styled.div<{ isScrolling: boolean }>`
 
 const Hero = styled.div`
     height: 100vh;
+    .marquee {
+    --gap: 1vw;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    }
+
+    .marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: var(--gap);
+    min-width: 100%;
+    animation: scroll 10s linear infinite;
+    }
+
+    @keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+    }
+
+    /* Reverse animation */
+    .marquee--reverse .marquee__content {
+    animation-direction: reverse;
+    }
+
+    /* Pause on hover */
+    .marquee--hover-pause:hover .marquee__content {
+    animation-play-state: paused;
+    }
     `;
 
 const PortfolioWrapper = styled.div`
