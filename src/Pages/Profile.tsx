@@ -5,11 +5,23 @@ import styled, { css } from 'styled-components';
 import { useState } from 'react';
 
 function Profile() {
-    const Home = useRef(null);
     const Portfolio = useRef(null);
-    const Contact = useRef(null)
+    const Contact = useRef(null);
+    const texasPin = useRef(null);
+    const lagosPin = useRef(null);
+    const seoulPin = useRef(null);
 
     const [isScrolling, setScrolling] = useState(false);
+
+    const [hoveredPin, sethoveredPin] = useState("");
+
+    const handleHover = ( pinName:string ) => {
+            sethoveredPin(pinName);
+    };
+            
+    const handleLeave = () => {
+            sethoveredPin("");
+    };
 
     window.addEventListener("scroll", () => {
         if (window.scrollY > 140) {
@@ -41,6 +53,31 @@ function Profile() {
             ref: Contact,
         }
     ] 
+
+    const MapElements = [
+        {
+            country: "South Korea",
+            city: "Seoul",
+            loc: {top: "40px", left: "200px"},
+            explanation: "I was in South Korea", 
+            ref: seoulPin
+        },
+        {
+            country: "USA",
+            city: "Austin",
+            loc: {top: "33px", left: "83px"},
+            explanation: "I was in Austin",
+            ref: texasPin
+        },
+        {
+            country: "Nigeria",
+            city: "Lagos",
+            loc: {top: "13px", left: "53px"},
+            explanation: "I was in Lagos",
+            ref: lagosPin
+        }
+    ]
+    console.log(hoveredPin)
   return (
     <Wrapper>
         <Header isScrolling= {isScrolling}>
@@ -67,42 +104,53 @@ function Profile() {
             <div>Hero</div>
             <div className="marquee marquee--hover-pause" style={{top: "35em"}}>
                 <ul className="marquee__content">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
+                    <li>1</li><li>2</li><li>3</li>
                 </ul>
                 <ul aria-hidden="true" className="marquee__content">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
+                    <li>1</li><li>2</li><li>3</li>
                 </ul>
             </div>
             <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "28em"}}>
                 <ul className="marquee__content">
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
+                <li>4</li><li>5</li><li>6</li>
                 </ul>
                 <ul aria-hidden="true" className="marquee__content">
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
+                    <li>4</li><li>5</li><li>6</li>
                 </ul>
             </div>
             <div className="marquee marquee--hover-pause" style={{top: "20em"}}>
                 <ul className="marquee__content">
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
+                    <li>7</li><li>8</li><li>9</li>
                 </ul>
                 <ul aria-hidden="true" className="marquee__content">
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
+                    <li>7</li><li>8</li><li>9</li>
                 </ul>
             </div>
         </Hero>
+        <Map hoveredPin= {hoveredPin}>
+            <div className="WorldMap" style={{ position: "absolute",width : "90vw", height: "8rem"}}>
+                Map
+                {MapElements.map((pin) => (<>
+                    <img
+                    ref ={pin.ref}
+                    src= "../public/pin.png"
+                    onMouseEnter={() => handleHover(pin.city)} 
+                    onMouseLeave={handleLeave}
+                    style={{position: "absolute", top: pin.loc.top, left: pin.loc.left}}
+                    />
+                    <div className= "Explanations">
+                        <div
+                        id= {pin.city}>
+                            {pin.city}
+                            {pin.country}
+                            {pin.explanation}
+                        </div>
+                    </div>
+                    </>
+                ))}
+                </div>
 
+        </Map>         
         <PortfolioWrapper ref={Portfolio}>
             <div>Portfolio</div>
         </PortfolioWrapper>
@@ -134,11 +182,11 @@ const NavBar = styled.div<{ isScrolling: boolean }>`
         switch (isScrolling) {
             case false:
                 return css`
-                    height: 12vh;
+                    height: 12em;
                     display: grid;
                     grid-template-columns: repeat(2, 1.2fr);
                     .page-buttons {
-                        margin: 2vh 20vw;
+                        margin: 2em 20vw;
                     }
                     :hover{
                         color: red;
@@ -191,6 +239,26 @@ const Hero = styled.div`
     .marquee--hover-pause:hover .marquee__content {
     animation-play-state: paused;
     }
+    `;
+
+const Map = styled.div<{ hoveredPin: string }>`
+    position: relative;
+    height: 100vh;
+    display: flex;
+    .Explanations {
+        visibility: hidden;
+        position: absolute;
+        left: 100vw;
+        color:blue
+        width: 10vw;
+    }
+
+    [id*=${({ hoveredPin}) => hoveredPin}] {
+            visibility: visible;
+            transform: translateX(-10vw);
+            color:red;
+            transition: 1s ease all;
+        }
     `;
 
 const PortfolioWrapper = styled.div`
