@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
-import Profile from "./pages/Profile";
+import Main from "./pages/Main";
 import Blog from "./pages/Blog";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Profile />} />
+          <Route path="/" element={<Main />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
