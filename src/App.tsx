@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import PageNotFound from "./Pages/PageNotFound";
-import Profile from "./Pages/Profile";
-import Blog from "./Pages/Blog";
+import PageNotFound from "./pages/PageNotFound";
+import Profile from "./pages/Profile";
+import Blog from "./pages/Blog";
 
 function App() {
   return (

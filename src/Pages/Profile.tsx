@@ -152,7 +152,17 @@ function Profile() {
 
         </Map>         
         <PortfolioWrapper ref={Portfolio}>
-            <div>Portfolio</div>
+            <div>Portfolio
+                <img src="/static/portfolio_image_1.png"/>
+                <div>I can design parts</div>
+                <span>PART DESIGN</span>
+                <img src="../public/portfolio_image_2.png"/>
+                <img src="../public/portfolio_image_3.png"/>
+                <img src="../public/portfolio_image_4.png"/>
+                <span>MECHANICAL ENGINEERING</span>
+                <span>PROGRAMMING</span>
+                <span>EXTRACURRICULAR</span>
+            </div>
         </PortfolioWrapper>
 
         <ContactWrapper ref={Contact}>
@@ -263,6 +273,9 @@ const Map = styled.div<{ hoveredPin: string }>`
 
 const PortfolioWrapper = styled.div`
     height: 100vh;
+    img:hover {
+        filter: blur(1.5rem);
+    }
     `;
 
 const ContactWrapper = styled.div`
