@@ -29,7 +29,7 @@ function Profile() {
           } else {
             setScrolling(false);
           }
-    })
+    });
 
     const scrollToElement = (ref: any) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -128,7 +128,7 @@ function Profile() {
             </div>
         </Hero>
         <Map hoveredPin= {hoveredPin}>
-            <div className="WorldMap" style={{ position: "absolute",width : "90vw", height: "8rem"}}>
+            <div className="WorldMap" style={{ position: "absolute" }}>
                 Map
                 {MapElements.map((pin) => (<>
                     <img
@@ -257,17 +257,18 @@ const Map = styled.div<{ hoveredPin: string }>`
     display: flex;
     .Explanations {
         visibility: hidden;
+    }
+    .Explanations > div {
         position: absolute;
-        left: 100vw;
-        color:blue
-        width: 10vw;
     }
 
     [id*=${({ hoveredPin}) => hoveredPin}] {
+            left: 100vw;
             visibility: visible;
-            transform: translateX(-10vw);
-            color:red;
-            transition: 1s ease all;
+            text-align: justify;
+            transform: translateX(-12rem);
+            transition: 0.7s ease all;
+            width: 10rem;
         }
     `;
 

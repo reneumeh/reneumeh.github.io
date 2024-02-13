@@ -5,7 +5,7 @@ export {}
 
 function Blog() {
   return (
-    <div>Blog</div>
+    <div>Blogginf</div>
   )
 }
 
