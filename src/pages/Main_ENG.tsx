@@ -77,7 +77,80 @@ function Main() {
             ref: lagosPin
         }
     ]
-    console.log(hoveredPin)
+    const portfolio_stuff = [
+        {
+            name: "PART DESIGN",
+            explanation: "Using machine element design principles, I work to find innovative designs and features with a plethora of CAD platforms including Catia, SOLIDWORKS & Ansys DesignModeller",
+            image: "/static/portfolio_partDesign.png",
+            section: "mechanicalEngineering"
+        },
+        {
+            name: "ANALYSIS",
+            explanation: "I perform solid (static & dynamic) and fluid simulations using CAE and compare the results to theoretical estimations",
+            image: "/static/portfolio_image_1.png",
+            section: "mechanicalEngineering"
+        },
+        {
+            name: "AUTOMOBILE",
+            explanation: "I am especially well-versed in automobile engineering literature and I have a background in suspension control for formula racing cars",
+            image: "/static/portfolio_automobile.png.jpg",
+            section: "mechanicalEngineering"
+        },
+        {
+            name: "CODING",
+            explanation: "I am proficient in Python, MATLAB, C++, and many other engineering programming languages",
+            image: "/static/portfolio_coding.png",
+            section: "mechanicalEngineering"
+        },
+        {
+            name: "AI & DL/ML",
+            explanation: "I am conversant with the latest literature concerning different architectures of Artificial Intelligence and Machine Learning. I have experience with building and finetuning AI models",
+            image: "/static/portfolio_ai.png",
+            section: "programmingAndDesign"
+        },
+        {
+            name: "3D MODELLING",
+            explanation: "I have special experience with 3D asset management and 3D reconstruction using Deep Learning.",
+            image: "/static/portfolio_3dModelling",
+            section: "programmingAndDesign"
+        },
+        {
+            name: "UI/UX DESIGN",
+            explanation: "I am a self-taught UI/UX designer and I have professional experience with designing and maintaining webpages",
+            image: "/static/portfolio_uiDesign.png",
+            section: "programmingAndDesign"
+        },
+        {
+            name: "WEB DEV",
+            explanation: "I am proficient with TypeScript and JavaScipt and I have professional experience building responsive webpages like this one",
+            image: "/static/portfolio_webDev.png",
+            section: "programmingAndDesign"
+        },
+        {
+            name: "STUDENTT COUNCIL",
+            explanation: "I served as President of the Samsung Global Dream Scholarship Foundation's Student Council for 2023",
+            image: "/static/portfolio_studentCouncil.png",
+            section: "extracurricular"
+        },
+        {
+            name: "SOCIAL MEDIA",
+            explanation: "I have managed the social media pages of the Samsung Global Dream Scholarship Foundation's Student Council and SpaceMap Inc",
+            image: "/static/portfolio_socialMedia.png",
+            section: "extracurricular"
+        },
+        {
+            name: "DEBATE",
+            explanation: "I enjoy debate and I participated as a member of the university debate society",
+            image: "/static/portfolio_debate.png",
+            section: "extracurricular"
+        },
+        {
+            name: "VOLUNTEERING",
+            explanation: "I enjoy volunteering and I have volunteered at the Seoul Welfare Center For the Elderly and the Austin Animal Center",
+            image: "/static/portfolio_volunteering.png",
+            section: "extracurricular"
+        },
+    ]
   return (
     <Wrapper>
         <Header isScrolling= {isScrolling}>
@@ -153,14 +226,16 @@ function Main() {
 
         </Map>         
         <PortfolioWrapper ref={Portfolio}>
-            <div>
-                Portfolio
-                <img src="/static/portfolio_image_1.png"/>
-                <div>I can design parts</div>
-                <span>PART DESIGN</span>
-                <img src="../public/portfolio_image_2.png"/>
-                <img src="../public/portfolio_image_3.png"/>
-                <img src="../public/portfolio_image_4.png"/>
+            Portfolio
+            <div className='main-port'>     
+                {portfolio_stuff.map((item) => (
+                    <div style={{ position: "relative" }}>
+                    <img className='portfolio-image' src={item.image}/>
+                    <div className='tester'></div> <div className='portfolio-expo'>{item.explanation}</div>
+                    <p className='portfolio-name'>{item.name}</p>
+                </div>
+                ))}
+                </div>
                 <span>MECHANICAL ENGINEERING</span>
                 <span>PROGRAMMING</span>
                 <span>EXTRACURRICULAR</span>
@@ -169,7 +244,6 @@ function Main() {
                 >
                     <div>download portfolio</div>
                 </a>
-            </div>
         </PortfolioWrapper>
 
         <ContactWrapper ref={Contact}>
@@ -319,6 +393,10 @@ const Hero = styled.div`
     .marquee--hover-pause:hover .marquee__content {
     animation-play-state: paused;
     }
+
+    .marquee_content > * {
+        list-style-type: none;
+    }
     `;
 
 const Map = styled.div<{ hoveredPin: string }>`
@@ -343,9 +421,45 @@ const Map = styled.div<{ hoveredPin: string }>`
     `;
 
 const PortfolioWrapper = styled.div`
-    height: 100vh;
-    img:hover {
-        filter: blur(1.5rem);
+    height: 300vh;
+    .main-port{
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1.2fr);
+        grid-auto-rows: 50vh;
+        .portfolio-image {
+            width: 20vw;
+            height: 20vw;
+            z-index: 999;
+        }
+        .portfolio-image:hover {
+            filter: blur(1.5rem);
+        }
+        .tester {
+            z-index: -1;
+            width: 20vw;
+            height: 20vw;
+            position: absolute;
+            top: 1rem;
+            left: 0.8rem;
+            border: 1px solid black;
+        }
+        .portfolio-expo {
+            width: 20vw;
+            height: 20vw;
+            overflow: hidden;
+            position: absolute;
+            top: -0px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            visibility: hidden;
+            font-size: 10px;
+            border: 1px solid black;
+        }
+    }
+    .main-port > div {
+        margin-left: 15vw;
     }
     `;
 
