@@ -13,14 +13,14 @@ function Main() {
 
     const [isScrolling, setScrolling] = useState(false);
 
-    const [hoveredPin, sethoveredPin] = useState("");
+    const [hoveredElement, sethoveredElement] = useState("");
 
     const handleHover = ( pinName:string ) => {
-            sethoveredPin(pinName);
+            sethoveredElement(pinName);
     };
             
     const handleLeave = () => {
-            sethoveredPin("");
+            sethoveredElement("");
     };
 
     window.addEventListener("scroll", () => {
@@ -151,6 +151,7 @@ function Main() {
             section: "extracurricular"
         },
     ]
+    console.log(hoveredElement);
   return (
     <Wrapper>
         <Header isScrolling= {isScrolling}>
@@ -201,7 +202,7 @@ function Main() {
                 </ul>
             </div>
         </Hero>
-        <Map hoveredPin= {hoveredPin} style={{ overflow: "clip" }}>
+        <Map hoveredElement= {hoveredElement} style={{ overflow: "clip" }}>
             <div className="WorldMap" style={{ position: "absolute" }}>
                 Map
                 {MapElements.map((pin) => (<>
@@ -225,20 +226,26 @@ function Main() {
                 </div>
 
         </Map>         
-        <PortfolioWrapper ref={Portfolio}>
+        <PortfolioWrapper ref={Portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
             Portfolio
             <div className='main-port'>     
                 {portfolio_stuff.map((item) => (
                     <div style={{ position: "relative" }}>
-                    <img className='portfolio-image' src={item.image}/>
-                    <div className='tester'></div> <div className='portfolio-expo'>{item.explanation}</div>
+                    <img className='portfolio-image' src={item.image} 
+                    id={item.name}
+                    onMouseEnter={() => handleHover(item.name)}
+                    onMouseLeave={handleLeave}/>
+                    <div className='tester'></div> 
+                    {hoveredElement == item.name &&
+                    <div className='portfolio-expo' >
+                    {item.explanation}</div>}
                     <p className='portfolio-name'>{item.name}</p>
                 </div>
                 ))}
                 </div>
-                <span>MECHANICAL ENGINEERING</span>
-                <span>PROGRAMMING</span>
-                <span>EXTRACURRICULAR</span>
+                <text style= {{position: "absolute", top: "45vh"}}>MECHANICAL ENGINEERING</text>
+                <text style= {{position: "absolute", top: "145vh"}}>PROGRAMMING AND DESIGN</text>
+                <text style= {{position: "absolute", top: "245vh"}}>EXTRACURRICULAR</text>
                 <a
                 href="my_portfoilio.pdf"
                 >
@@ -399,7 +406,7 @@ const Hero = styled.div`
     }
     `;
 
-const Map = styled.div<{ hoveredPin: string }>`
+const Map = styled.div<{ hoveredElement: string }>`
     position: relative;
     height: 100vh;
     display: flex;
@@ -410,7 +417,7 @@ const Map = styled.div<{ hoveredPin: string }>`
         position: absolute;
     }
 
-    [id*=${({ hoveredPin}) => hoveredPin}] {
+    [id*=${({ hoveredElement}) => hoveredElement}] {
             left: 100vw;
             visibility: visible;
             text-align: justify;
@@ -420,8 +427,9 @@ const Map = styled.div<{ hoveredPin: string }>`
         }
     `;
 
-const PortfolioWrapper = styled.div`
+const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
     height: 300vh;
+    
     .main-port{
         position: relative;
         display: grid;
@@ -433,7 +441,7 @@ const PortfolioWrapper = styled.div`
             z-index: 999;
         }
         .portfolio-image:hover {
-            filter: blur(1.5rem);
+            ;
         }
         .tester {
             z-index: -1;
@@ -453,13 +461,23 @@ const PortfolioWrapper = styled.div`
             display: flex;
             align-items: center;
             text-align: center;
-            visibility: hidden;
-            font-size: 10px;
-            border: 1px solid black;
+            font-size: 1.5vw;
+            font-weight: 400;
+            backdrop-filter: blur(1.5rem);
+            pointer-events: none;
         }
     }
     .main-port > div {
         margin-left: 15vw;
+    }
+
+    text {
+        -webkit-text-fill-color: white;
+        -webkit-text-stroke: 1px black;
+        height : 120px;
+        font: bold 60px Century Gothic, Arial;
+        width: 100%;
+        text-align: center;
     }
     `;
 
