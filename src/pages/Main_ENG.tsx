@@ -10,6 +10,9 @@ function Main() {
     const texasPin = useRef(null);
     const lagosPin = useRef(null);
     const seoulPin = useRef(null);
+    const mechSection= useRef(null);
+    const panddSection = useRef(null);
+    const extraSection = useRef(null);
 
     const [isScrolling, setScrolling] = useState(false);
 
@@ -31,8 +34,8 @@ function Main() {
           }
     });
 
-    const scrollToElement = (ref: any) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    const scrollToElement = (ref: any, position= "start") => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: position });
     };
 
     const pages = [
@@ -177,28 +180,29 @@ function Main() {
         </Header>
         <Hero>
             <div>Hero</div>
-            <div className="marquee marquee--hover-pause" style={{top: "35em"}}>
+            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "35em"}}>
                 <ul className="marquee__content">
-                    <li>1</li><li>2</li><li>3</li>
+                    <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
                 </ul>
                 <ul aria-hidden="true" className="marquee__content">
-                    <li>1</li><li>2</li><li>3</li>
+                <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
                 </ul>
             </div>
-            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "28em"}}>
+            <div className="marquee marquee--hover-pause" style={{top: "28em"}}>
                 <ul className="marquee__content">
-                <li>4</li><li>5</li><li>6</li>
+                <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
                 </ul>
                 <ul aria-hidden="true" className="marquee__content">
-                    <li>4</li><li>5</li><li>6</li>
+                <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
                 </ul>
             </div>
-            <div className="marquee marquee--hover-pause" style={{top: "20em"}}>
+            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "20em"}}>
                 <ul className="marquee__content">
-                    <li>7</li><li>8</li><li>9</li>
+                    <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>
+                    
                 </ul>
                 <ul aria-hidden="true" className="marquee__content">
-                    <li>7</li><li>8</li><li>9</li>
+                <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>
                 </ul>
             </div>
         </Hero>
@@ -243,16 +247,19 @@ function Main() {
                 </div>
                 ))}
                 </div>
-                <text style= {{position: "absolute", top: "45vh"}}>MECHANICAL ENGINEERING</text>
-                <text style= {{position: "absolute", top: "145vh"}}>PROGRAMMING AND DESIGN</text>
-                <text style= {{position: "absolute", top: "245vh"}}>EXTRACURRICULAR</text>
+                <text ref= {mechSection} style= {{position: "absolute", top: "45vh"}}>MECHANICAL ENGINEERING</text>
+                <text ref= {panddSection} style= {{position: "absolute", top: "145vh"}}>PROGRAMMING AND DESIGN</text>
+                <text ref= {extraSection} style= {{position: "absolute", top: "245vh"}}>EXTRACURRICULAR</text>
                 <a
                 href="my_portfoilio.pdf"
                 >
                     <div>download portfolio</div>
                 </a>
         </PortfolioWrapper>
-
+        <InterestsWrapper>
+            Interests
+            <div>Topic</div><div>Expo</div>
+        </InterestsWrapper>
         <ContactWrapper ref={Contact}>
             <div>Contact Me
                 <p>Location: Seoul, South Korea</p>
@@ -478,8 +485,19 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
         font: bold 60px Century Gothic, Arial;
         width: 100%;
         text-align: center;
+        z-index: -2;
     }
     `;
+
+const InterestsWrapper = styled.div`
+    height: 100vh;
+    display: flex;
+    margin-top: 4rem;
+    * {
+        width: 50%;
+    }
+
+`;
 
 const ContactWrapper = styled.div`
     height: 100vh;
