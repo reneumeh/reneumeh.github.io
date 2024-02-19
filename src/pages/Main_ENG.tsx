@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { LegacyRef } from 'react'
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser'
+import DownloadCV from '../components/DownloadCV';
 
 function Main() {
     const Portfolio = useRef(null);
@@ -13,17 +15,35 @@ function Main() {
     const mechSection= useRef(null);
     const panddSection = useRef(null);
     const extraSection = useRef(null);
+    const emailForm = useRef(null);
 
     const [isScrolling, setScrolling] = useState(false);
-
     const [hoveredElement, sethoveredElement] = useState("");
+    const [clickedElement, setclickedElement] = useState("");
+
+    const sendEmail =(e:any) => {
+        e.preventDefault();
+
+        if(emailForm.current) {
+            emailjs.sendForm('service_n4wn1nh', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
+            .then((result) => {
+                e.target.reset();
+                alert("Message sent successfully");
+            }, (error) => {
+                alert(error.text);
+            });
+        };
+
+        };
 
     const handleHover = ( pinName:string ) => {
             sethoveredElement(pinName);
     };
             
     const handleLeave = () => {
+        if (!clickedElement) {
             sethoveredElement("");
+        }
     };
 
     window.addEventListener("scroll", () => {
@@ -37,6 +57,25 @@ function Main() {
     const scrollToElement = (ref: any, position= "start") => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: position });
     };
+
+    useEffect(() => {
+        const handler = (e: any) => {
+            if(e.target.className == hoveredElement) {
+            setclickedElement(hoveredElement);
+            console.log(e.target);
+            }
+            else {
+                console.log(e.target.className);
+                sethoveredElement("");
+                setclickedElement("");
+            }
+        };
+        document.addEventListener("mousedown", handler);
+
+        return() => {
+            document.removeEventListener("mousedown", handler);
+        }
+    })
 
     const pages = [
         {
@@ -154,7 +193,18 @@ function Main() {
             section: "extracurricular"
         },
     ]
-    console.log(hoveredElement);
+
+    const interest_stuff = [
+        {
+            topic: "Advancing Robust Multimodal Sensor Fusion: A Hybrid Approach with Meta-Learning",
+            expo: "Multimodal sensor fusion has seen significant advancements, yet challenges in robustness persist. I plan to conduct research that builds upon prior works by integrating a hybrid framework that combines physics-based models and neural networks, aiming to enhance the interpretability and adaptability of the system. Previous studies, such as the seminal work by Hall and Llinas (2001) on multisensor data fusion, primarily focus on either physics-based or machine-learning approaches. A hybrid model would uniquely synergize these two paradigms, leveraging the interpretability of physics-based models, as demonstrated by Hall and Llinas (2001), and the adaptability of neural networks, as explored in the work of Chen and Gupta (2017).I propose a meta-learning component that represents a novel contribution to multimodal sensor fusion. Recent works, like that of Finn, Abbeel, and Levine (2017), have explored meta-learning in the context of neural network adaptation but did not integrate it into the multimodal sensor fusion domain. My research aims to bridge this gap, introducing meta-learning to enhance the system's adaptability to new environments and sensor configurations. This advancement builds upon the findings of Parisotto and Salakhutdinov (2016), who introduced structured memory for deep reinforcement learning. By combining these elements, the hybrid approach extends beyond the limitations of existing works, offering a more comprehensive and robust solution for multimodal sensor fusion applications."
+        },
+        {
+            topic: "Multiple Robot Simultaneous Localization and Mapping Using Deep Learning and Voronoi Diagrams",
+            expo: "In the dynamic convergence of Simultaneous Localization and Mapping (SLAM), Deep Learning, and Voronoi diagrams, this research seeks to propel the field forward by introducing an innovative algorithmic framework. Extensive literature reviews (e.g., Smith et al., 2020; Wang et al., 2019) have underscored persistent challenges in SLAM, such as localization accuracy, adaptability to dynamic environments, and semantic understanding. My interest lies in its multifaceted approach to address limitations identified in previous works while incorporating Voronoi diagrams for spatial contextualization. Drawing from recent studies on deep learning applications in robotics (Brown et al., 2021; Gupta et al., 2022), the proposed algorithm aims to enhance SLAM's accuracy by leveraging deep neural networks for advanced feature extraction and matching. The Voronoi diagrams play a pivotal role in spatial decomposition, providing geometric insights that aid in constructing a more accurate and adaptive map of the environment. Strategic integration of Voronoi diagrams also facilitates a dynamic understanding of the spatial distribution of features, enhancing the adaptability of the SLAM system to varying environmental conditions. The Voronoi-based spatial decomposition complements deep learning's capabilities, allowing the system to make informed decisions based on both geometric and topological information. The research also recognizes the need for semantic understanding in SLAM systems (Cadena et al., 2016). By incorporating techniques from computer vision and semantic segmentation (Long et al., 2015), alongside Voronoi-enhanced spatial awareness, the proposed algorithm aims to endow the SLAM system with a higher-level understanding of the environment."
+        },
+    ]
+
   return (
     <Wrapper>
         <Header isScrolling= {isScrolling}>
@@ -179,8 +229,8 @@ function Main() {
             <div className='language '><a className='top' href='/'>ENG</a><a className='bottom'href="/kor">KOR</a></div>
         </Header>
         <Hero>
-            <div>Hero</div>
-            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "35em"}}>
+            <div className='intro-1'>Hi, my name is</div> <div className='intro-2'>RENE </div> <div className='intro-3'>UMEH</div> 
+            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "37em"}}>
                 <ul className="marquee__content">
                     <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
                 </ul>
@@ -188,7 +238,7 @@ function Main() {
                 <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
                 </ul>
             </div>
-            <div className="marquee marquee--hover-pause" style={{top: "28em"}}>
+            <div className="marquee marquee--hover-pause" style={{top: "30em"}}>
                 <ul className="marquee__content">
                 <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
                 </ul>
@@ -196,7 +246,7 @@ function Main() {
                 <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
                 </ul>
             </div>
-            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "20em"}}>
+            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "23em"}}>
                 <ul className="marquee__content">
                     <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>
                     
@@ -211,13 +261,14 @@ function Main() {
                 Map
                 {MapElements.map((pin) => (<>
                     <img
+                    className={pin.city}
                     ref ={pin.ref}
                     src= "../public/pin.png"
                     onMouseEnter={() => handleHover(pin.city)} 
                     onMouseLeave={handleLeave}
                     style={{position: "absolute", top: pin.loc.top, left: pin.loc.left}}
                     />
-                    <div className= "Explanations">
+                    <div className= "explanations">
                         <div
                         id= {pin.city}>
                             {pin.city}
@@ -227,6 +278,9 @@ function Main() {
                     </div>
                     </>
                 ))}
+                <div className= "explanations-placeholder">
+                        Hover/Click on the pins
+                    </div>
                 </div>
 
         </Map>         
@@ -250,28 +304,29 @@ function Main() {
                 <text ref= {mechSection} style= {{position: "absolute", top: "45vh"}}>MECHANICAL ENGINEERING</text>
                 <text ref= {panddSection} style= {{position: "absolute", top: "145vh"}}>PROGRAMMING AND DESIGN</text>
                 <text ref= {extraSection} style= {{position: "absolute", top: "245vh"}}>EXTRACURRICULAR</text>
-                <a
-                href="my_portfoilio.pdf"
-                >
-                    <div>download portfolio</div>
-                </a>
         </PortfolioWrapper>
+        <DownloadCV />
         <InterestsWrapper>
-            Interests
-            <div>Topic</div><div>Expo</div>
+            Research Interests
+            {interest_stuff.map((interest_stuff) => (
+            <div className='interest'>
+                <div className='topic'>{interest_stuff.topic}</div><div className='expo'>{interest_stuff.expo}</div>
+                </div>
+            ))}
+            
         </InterestsWrapper>
         <ContactWrapper ref={Contact}>
-            <div>Contact Me
+            <div className='contact-left'>Contact Me
                 <p>Location: Seoul, South Korea</p>
-                <img
-                src='mail.png'/><p>myemail@gmail.com</p>
+                <p><img
+                src='mail.png'/> dubemrene@gmail.com</p>
             </div>
-            <div> 
-                <form>
-                    <input type="text" name="Name" placeholder='Name' required />
-                    <input type="email" name="Email" placeholder='Email' required />
-                    <textarea name="Message" rows={6} placeholder='Message'></textarea>
-                    <button className="button" type="submit">Submit</button>
+            <div className='contact-right'> 
+                <form ref={emailForm} onSubmit={sendEmail}>
+                    <input type="text" name="from_name" placeholder='Name' required />
+                    <input type="email" name="from_email" placeholder='Email' required />
+                    <textarea name="message" rows={6} placeholder='Message'></textarea>
+                    <button className="button" type="submit">SEND</button>
                 </form>
             </div>
         </ContactWrapper>
@@ -282,9 +337,13 @@ function Main() {
 export default Main
 
 const Wrapper = styled.div`
+width: 100%;
+position: absolute;
+z-index: -10;
+background: lilac;
     `;
 
-const Header = styled.div<{ isScrolling: boolean }>`
+const Header = styled.div<{ isScrolling: boolean }>` 
     position: ${({ isScrolling }) =>
     isScrolling === true ? 'fixed' : "absolute"};
     display: flex;
@@ -292,7 +351,6 @@ const Header = styled.div<{ isScrolling: boolean }>`
     isScrolling === true ? 'space-between' : ""};
     width: calc(100vw - 17px);
     z-index: 9999;
-
 
     .logo{
         display: ${({ isScrolling }) =>
@@ -371,6 +429,28 @@ const NavBar = styled.div<{ isScrolling: boolean }>`
 
 const Hero = styled.div`
     height: 100vh;
+
+    .intro-1 {
+        position: relative;
+        top: 45vh;
+        left: 15vw;
+        color: red;
+        width: fit-content;
+    }
+
+    .intro-2 {
+        position: absolute;
+        top: 45vh;
+        left: 57vw;
+        width: fit-content;
+    }
+    .intro-3 {
+        position: relative;
+        top: 45vh;
+        left: 57vw;
+        width: fit-content;
+    }
+
     .marquee {
     --gap: 1vw;
     position: relative;
@@ -387,6 +467,7 @@ const Hero = styled.div`
     gap: var(--gap);
     min-width: 100%;
     animation: scroll 10s linear infinite;
+    list-style-type: none;
     }
 
     @keyframes scroll {
@@ -417,20 +498,27 @@ const Map = styled.div<{ hoveredElement: string }>`
     position: relative;
     height: 100vh;
     display: flex;
-    .Explanations {
+    .explanations {
         visibility: hidden;
     }
-    .Explanations > div {
+    .explanations > div {
         position: absolute;
     }
 
+    .explanations-placeholder {
+        position: absolute;
+        left: calc(100vw - 12rem);
+        width: 10rem;
+        z-index: -1;
+    }
     [id*=${({ hoveredElement}) => hoveredElement}] {
             left: 100vw;
             visibility: visible;
             text-align: justify;
+            background: red;
             transform: translateX(-12rem);
             transition: 0.7s ease all;
-            width: 10rem;
+            width: 10.9rem;
         }
     `;
 
@@ -446,9 +534,6 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             width: 20vw;
             height: 20vw;
             z-index: 999;
-        }
-        .portfolio-image:hover {
-            ;
         }
         .tester {
             z-index: -1;
@@ -469,7 +554,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             align-items: center;
             text-align: center;
             font-size: 1.5vw;
-            font-weight: 400;
+            font-weight: 100;
             backdrop-filter: blur(1.5rem);
             pointer-events: none;
         }
@@ -489,24 +574,65 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
     }
     `;
 
-const InterestsWrapper = styled.div`
-    height: 100vh;
-    display: flex;
-    margin-top: 4rem;
-    * {
-        width: 50%;
-    }
 
+const InterestsWrapper = styled.div`
+    height: fit-content;
+    margin-top: 4rem;
+    
+    .interest {
+        display: flex;
+        margin-bottom: 5rem;
+        justify-content: space-evenly;
+    }
+    .topic {
+        flex-basis: 30%;
+        color: salmon;
+        font-size: 3.5vw;
+        font-weight: 700;
+        
+    }
+    .expo {
+        flex-basis: 30%;
+        text-align: justify;
+        font-size: 1vw;
+
+    }
 `;
 
 const ContactWrapper = styled.div`
-    height: 100vh;
+    height: 60vh;
+    display: flex;
+    font-size: 2.5rem;
+    font-weight: 600;
+    p{
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
     form input, form textarea {
-        width: auto;
+        width: 100%;
         border: 0px;
         background-color: beige;
         outline: none;
         padding: 10px;
         font-size: 15px;
+        margin: 5px 0px;
+        color: #fff;
+        font-size: 18px;
+        font-family: Helvetica;
+    }
+    .contact-left {
+        flex-basis: 35%;
+        margin-left: 13%;
+        margin-right: 20%;
+    }
+    .contact-right {
+        flex-basis: 60%;
+        margin-right: 15%;
+    }
+    .button{
+        padding: 1rem 2rem;
+        border: 1px solid black;
+        text-decoration: none;
+        background: beige;
     }
     `; 
