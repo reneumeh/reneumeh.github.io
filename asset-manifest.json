@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.4bf5122c.css",
-    "main.js": "/static/js/main.e274fd33.js",
+    "main.js": "/static/js/main.89e0cff5.js",
     "static/js/592.7881a785.chunk.js": "/static/js/592.7881a785.chunk.js",
     "static/media/LeagueSpartan-SemiBold.ttf": "/static/media/LeagueSpartan-SemiBold.eb71c3a8fa3a8659a3f7.ttf",
     "static/media/LeagueSpartan-ExtraLight.ttf": "/static/media/LeagueSpartan-ExtraLight.e5765d9f727ac0dd0bab.ttf",
     "static/media/LeagueSpartan-Regular.ttf": "/static/media/LeagueSpartan-Regular.09958bb07a94a6a4f1bb.ttf",
     "index.html": "/index.html",
     "main.4bf5122c.css.map": "/static/css/main.4bf5122c.css.map",
-    "main.e274fd33.js.map": "/static/js/main.e274fd33.js.map",
+    "main.89e0cff5.js.map": "/static/js/main.89e0cff5.js.map",
     "592.7881a785.chunk.js.map": "/static/js/592.7881a785.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4bf5122c.css",
-    "static/js/main.e274fd33.js"
+    "static/js/main.89e0cff5.js"
   ]
 }
