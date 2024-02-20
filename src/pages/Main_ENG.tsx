@@ -62,10 +62,8 @@ function Main() {
         const handler = (e: any) => {
             if(e.target.className == hoveredElement) {
             setclickedElement(hoveredElement);
-            console.log(e.target);
             }
             else {
-                console.log(e.target.className);
                 sethoveredElement("");
                 setclickedElement("");
             }
@@ -100,22 +98,22 @@ function Main() {
         {
             country: "South Korea",
             city: "Seoul",
-            loc: {top: "40px", left: "200px"},
-            explanation: "I was in South Korea", 
+            loc: {top: "17.5vw", left: "calc(5em + 62.5vw)"},
+            explanation: "I traveled to Seoul for my undergraduate degree. I learnt Korean at the Hanyang International Language Institute. Following that, I completed a BSc in Mechanical Engineering with the help of the Samsung Global Dream Scholarship", 
             ref: seoulPin
         },
         {
             country: "USA",
             city: "Austin",
-            loc: {top: "33px", left: "83px"},
-            explanation: "I was in Austin",
+            loc: {top: "18vw", left: "calc(5em + 16.5vw)"},
+            explanation: "This ain't Texas (woo), ain't no hold 'em (hey) So lay your cards down, down, down, down So park your Lexus (woo) and throw your keys up (hey) Stick around, 'round, 'round, 'round, 'round (stick around)",
             ref: texasPin
         },
         {
             country: "Nigeria",
             city: "Lagos",
-            loc: {top: "13px", left: "53px"},
-            explanation: "I was in Lagos",
+            loc: {top: "22vw", left: "calc(5em + 37vw)"},
+            explanation: "Ni ojuelegba They know my story, from Mo'Dogg's studio I be hustle to work, ehh Ni ojuelegba, oh Me and Silly, for Mo'Dogg's studio We been hustle to work, ehh",
             ref: lagosPin
         }
     ]
@@ -129,13 +127,13 @@ function Main() {
         {
             name: "ANALYSIS",
             explanation: "I perform solid (static & dynamic) and fluid simulations using CAE and compare the results to theoretical estimations",
-            image: "/static/portfolio_image_1.png",
+            image: "/static/portfolio_analysis.png",
             section: "mechanicalEngineering"
         },
         {
             name: "AUTOMOBILE",
             explanation: "I am especially well-versed in automobile engineering literature and I have a background in suspension control for formula racing cars",
-            image: "/static/portfolio_automobile.png.jpg",
+            image: "/static/portfolio_automobile.png",
             section: "mechanicalEngineering"
         },
         {
@@ -153,7 +151,7 @@ function Main() {
         {
             name: "3D MODELLING",
             explanation: "I have special experience with 3D asset management and 3D reconstruction using Deep Learning.",
-            image: "/static/portfolio_3dModelling",
+            image: "/static/portfolio_3dModelling.png",
             section: "programmingAndDesign"
         },
         {
@@ -169,7 +167,7 @@ function Main() {
             section: "programmingAndDesign"
         },
         {
-            name: "STUDENTT COUNCIL",
+            name: "STUDENT COUNCIL",
             explanation: "I served as President of the Samsung Global Dream Scholarship Foundation's Student Council for 2023",
             image: "/static/portfolio_studentCouncil.png",
             section: "extracurricular"
@@ -213,7 +211,7 @@ function Main() {
             target="_self"
             rel="noopener noreferrer"
             > 
-                Rene Umeh
+                <span>RENE </span>UMEH
             </a>
             <NavBar isScrolling= {isScrolling}>
                 {pages.map((page) => (
@@ -229,8 +227,13 @@ function Main() {
             <div className='language '><a className='top' href='/'>ENG</a><a className='bottom'href="/kor">KOR</a></div>
         </Header>
         <Hero>
+            <div className='hero-div'><img 
+                src='static/hero1.png' 
+                alt='my_image'/>
+                </div>
             <div className='intro-1'>Hi, my name is</div> <div className='intro-2'>RENE </div> <div className='intro-3'>UMEH</div> 
-            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "37em"}}>
+            <div className='marquees'>
+            <div className="marquee marquee--reverse marquee--hover-pause">
                 <ul className="marquee__content">
                     <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
                 </ul>
@@ -238,7 +241,7 @@ function Main() {
                 <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
                 </ul>
             </div>
-            <div className="marquee marquee--hover-pause" style={{top: "30em"}}>
+            <div className="marquee marquee--hover-pause">
                 <ul className="marquee__content">
                 <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
                 </ul>
@@ -246,7 +249,7 @@ function Main() {
                 <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
                 </ul>
             </div>
-            <div className="marquee marquee--reverse marquee--hover-pause" style={{top: "23em"}}>
+            <div className="marquee marquee--reverse marquee--hover-pause">
                 <ul className="marquee__content">
                     <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>
                     
@@ -255,15 +258,20 @@ function Main() {
                 <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>
                 </ul>
             </div>
+        </div>
         </Hero>
-        <Map hoveredElement= {hoveredElement} style={{ overflow: "clip" }}>
-            <div className="WorldMap" style={{ position: "absolute" }}>
-                Map
-                {MapElements.map((pin) => (<>
+        <Map hoveredElement= {hoveredElement} style={{ overflow: "clip", position: "relative" }}>
+            <div className="WorldMap" >
+                <img id='big-map'
+                src='static/map.png'
+                style={{position: 'absolute', margin: '2vh  0vw 2vh 5em', width:'80vw'}}/>
+                {MapElements.map((pin) => (<div className='pins'>
                     <img
                     className={pin.city}
                     ref ={pin.ref}
-                    src= "../public/pin.png"
+                    src= "static/pin.png"
+                    width= {20}
+                    height= {30}
                     onMouseEnter={() => handleHover(pin.city)} 
                     onMouseLeave={handleLeave}
                     style={{position: "absolute", top: pin.loc.top, left: pin.loc.left}}
@@ -271,12 +279,12 @@ function Main() {
                     <div className= "explanations">
                         <div
                         id= {pin.city}>
-                            {pin.city}
-                            {pin.country}
-                            {pin.explanation}
+                            <p className='city'>{pin.city}</p>
+                            <p className= 'country'>{pin.country}</p>
+                            <p>{pin.explanation}</p>
                         </div>
                     </div>
-                    </>
+                    </div>
                 ))}
                 <div className= "explanations-placeholder">
                         Hover/Click on the pins
@@ -285,7 +293,6 @@ function Main() {
 
         </Map>         
         <PortfolioWrapper ref={Portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
-            Portfolio
             <div className='main-port'>     
                 {portfolio_stuff.map((item) => (
                     <div style={{ position: "relative" }}>
@@ -293,21 +300,20 @@ function Main() {
                     id={item.name}
                     onMouseEnter={() => handleHover(item.name)}
                     onMouseLeave={handleLeave}/>
-                    <div className='tester'></div> 
+                    <div className='tester'></div> <p className='portfolio-name'>{item.name}</p>
                     {hoveredElement == item.name &&
                     <div className='portfolio-expo' >
                     {item.explanation}</div>}
-                    <p className='portfolio-name'>{item.name}</p>
                 </div>
                 ))}
                 </div>
-                <text ref= {mechSection} style= {{position: "absolute", top: "45vh"}}>MECHANICAL ENGINEERING</text>
-                <text ref= {panddSection} style= {{position: "absolute", top: "145vh"}}>PROGRAMMING AND DESIGN</text>
-                <text ref= {extraSection} style= {{position: "absolute", top: "245vh"}}>EXTRACURRICULAR</text>
+                <text ref= {mechSection} style= {{position: "absolute", top: "20vw", overflowX: "clip"}}>MECHANICAL ENGINEERING</text>
+                <text ref= {panddSection} style= {{position: "absolute", top: "calc(52vw + 240px)", overflowX: "clip"}}>PROGRAMMING AND DESIGN</text>
+                <text ref= {extraSection} style= {{position: "absolute", top: "calc(85.2vw + 460px", overflowX: "clip"}}>EXTRACURRICULAR</text>
         </PortfolioWrapper>
         <DownloadCV />
         <InterestsWrapper>
-            Research Interests
+            <p>Research Interests</p>
             {interest_stuff.map((interest_stuff) => (
             <div className='interest'>
                 <div className='topic'>{interest_stuff.topic}</div><div className='expo'>{interest_stuff.expo}</div>
@@ -319,7 +325,8 @@ function Main() {
             <div className='contact-left'>Contact Me
                 <p>Location: Seoul, South Korea</p>
                 <p><img
-                src='mail.png'/> dubemrene@gmail.com</p>
+                src='static/send.png'
+                width= {20}/> dubemrene@gmail.com</p>
             </div>
             <div className='contact-right'> 
                 <form ref={emailForm} onSubmit={sendEmail}>
@@ -340,49 +347,68 @@ const Wrapper = styled.div`
 width: 100%;
 position: absolute;
 z-index: -10;
-background: lilac;
+background-color: #E7E5E0;
+font-family: Leaugue-Spartan-minor;
     `;
 
 const Header = styled.div<{ isScrolling: boolean }>` 
     position: ${({ isScrolling }) =>
     isScrolling === true ? 'fixed' : "absolute"};
+    border-bottom: ${({ isScrolling }) =>
+    isScrolling === true ? 'solid rgba(0, 0, 0, 0.2) 1px' : ""};
     display: flex;
+    background-color: #E7E5E0;
     justify-content: ${({ isScrolling }) =>
     isScrolling === true ? 'space-between' : ""};
     width: calc(100vw - 17px);
     z-index: 9999;
+    font-size: 1.1rem;
 
-    .logo{
+    .logo, logo:visited, logo:active{
         display: ${({ isScrolling }) =>
-        isScrolling === true ? 'block' : 'none'};
-        width: 10rem;
+        isScrolling === true ? 'flex' : 'none'};
+        width: max-content;
+        align-items: center;
+        color: #AB957C;
         text-decoration: none;
-        margin: 0px 20vw 0px 0px;
+        margin: 0px 0vw 0px 1vw;
+        font-weight: bold;
+        font-family: Leaugue-Spartan;
+        font-stretch: expanded;
+        font-size: 2rem;
+        white-space: nowrap;
+        span {
+            color: black;
+        }
     }
 
-    .language{
+    .language {
         position: absolute;
-        left: 94.2vw;
-        top: 3.5em;
+        right: calc(100vw - 97.2vw);
+        top: 4.5em;
         display: ${({ isScrolling }) =>
         isScrolling === true ? 'none' : 'flex'};
         flex-direction: column;
         border: 1px solid black;
         border-radius: 20px;
+        background-color: #D1D3D4;
         font-size: 0.9rem;
         :hover {
-            background-color: red;
+            background-color: white;
             color: white;
         }
-        .top {
-                padding: 1rem 0.2rem;
+        .top, top:visited, top:active {
+                padding: 0.7rem 0.2rem;
                 text-decoration: none;
                 border-radius: 20px 20px 0px 0px;
+                color: black; 
+                border-bottom: 1px solid black;
             }
-        .bottom {
-            padding: 1rem 0.2rem;
+        .bottom, .bottom:visited, bottom:active {
+            padding: 0.7rem 0.2rem;
             text-decoration: none;
             border-radius: 0px 0px 20px 20px;
+            color: black;
         }
         }
         
@@ -394,33 +420,44 @@ const NavBar = styled.div<{ isScrolling: boolean }>`
         switch (isScrolling) {
             case false:
                 return css`
-                    height: 12em;
+                    height: 5.9em;
                     display: grid;
                     grid-template-columns: repeat(2, 1.2fr);
                     justify-content: center;
                     width: 98vw;
+                    font-weight: bold;
+                    font-family: Leaugue-Spartan;
+                    font-stretch: expanded;
+                    font-size: 2rem;
                     .page-buttons {
-                        margin: 1.2em auto;
+                        margin: 0.5em auto;
                         
                     }
                     .page-buttons:nth-child(-n + 2) {
                         border-bottom: 1px solid black;
-
-                        margin: 4em auto 0em auto;
+                        color: #AB957C;
+                        margin: 2em auto 0em auto;
                     }
-                    :hover{
-                        color: red;
+                    .page-buttons:hover{
+                        font-size: 1.9rem;
+                        cursor: pointer;
+                        transition: ease all 0.5s;
                     }
                 `;
             case true:
                 return css`
                 display: flex;
+                font-weight: bold;
+                font-family: Leaugue-Spartan;
+                font-stretch: expanded;
+                font-size: 1.5rem;
                 .page-buttons{
                     padding: 2rem;
                 }
                 :hover {
-                    color: red;
-                    background-color: beige;
+                    color: white;
+                    background-color: #AB957C;
+                    cursor: pointer;
                 }
                 `;
             }
@@ -428,32 +465,59 @@ const NavBar = styled.div<{ isScrolling: boolean }>`
     `;
 
 const Hero = styled.div`
-    height: 100vh;
+    height: 45em;
+    .hero-div {
+        display: flex;
+        width: 100%;
+        z-index: -100;
+        justify-content: center;
+    }
+    
+    img {
+        position: absolute;
+        height: 100vh;
+        object-fit: contain;
+        z-index: 999;
+    }
 
     .intro-1 {
         position: relative;
-        top: 45vh;
+        top: 20.5rem;
         left: 15vw;
-        color: red;
         width: fit-content;
+        font-family: Leaugue-Spartan;
+        font-size: 2.7vw;
     }
 
     .intro-2 {
         position: absolute;
-        top: 45vh;
-        left: 57vw;
+        top: 19rem;
+        left: 70.4vw;
         width: fit-content;
+        font-family: Leaugue-Spartan;
+        font-size: 3.7rem;
     }
     .intro-3 {
         position: relative;
-        top: 45vh;
-        left: 57vw;
+        top: 20.5rem;
+        left: 70vw;
         width: fit-content;
+        font-family: Leaugue-Spartan;
+        font-size: 3.7rem;
+        color: #AB957C;
     }
 
     .marquee {
+        ul {
+            margin: 5px auto;
+        }
+    font-family: Leaugue-Spartan;
+    font-size: 2.5rem;
+    color: #9F9E9E; 
+    height: fit-content;
     --gap: 1vw;
     position: relative;
+    top: 30rem;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -466,7 +530,7 @@ const Hero = styled.div`
     justify-content: space-around;
     gap: var(--gap);
     min-width: 100%;
-    animation: scroll 10s linear infinite;
+    animation: scroll 20s linear infinite;
     list-style-type: none;
     }
 
@@ -488,16 +552,16 @@ const Hero = styled.div`
     .marquee--hover-pause:hover .marquee__content {
     animation-play-state: paused;
     }
-
-    .marquee_content > * {
-        list-style-type: none;
-    }
     `;
 
 const Map = styled.div<{ hoveredElement: string }>`
     position: relative;
-    height: 100vh;
     display: flex;
+    height: calc(50vw);
+    .pins > img:hover {
+        transform: translateY(-5px);
+        transition: 0.5s ease all;
+    }
     .explanations {
         visibility: hidden;
     }
@@ -507,33 +571,91 @@ const Map = styled.div<{ hoveredElement: string }>`
 
     .explanations-placeholder {
         position: absolute;
-        left: calc(100vw - 12rem);
-        width: 10rem;
+        font-family: Leaugue-Spartan;
+        color: #9F9E9E;
+        height: 100vh;
+        top: 22vw;
+        left: calc(100vw - 20vw);
+        width: 15.9vw;
+        font-size: 1.5rem;
         z-index: -1;
+        animation: float 2s ease-in-out infinite;
+        height: fit-content;
+        background-color: white;
+        padding: 3px;
+        box-shadow: 5px 5px #805422;
     }
+
+    @keyframes float {
+        0% {
+          transform: translatey(0px);
+        }
+        50% {
+          transform: translatey(-10px);
+        }
+        100% {
+          transform: translatey(0px);
+        }
+      }
+      
+      @keyframes float2 {
+        0% {
+          line-height: 30px;
+          transform: translatey(0px);
+        }
+        55% {
+          transform: translatey(-7px);
+        }
+        60% {
+          line-height: 30px;
+        }
+        100% {
+          line-height: 30px;
+          transform: translatey(0px);
+        }
+      }
     [id*=${({ hoveredElement}) => hoveredElement}] {
             left: 100vw;
+            top: 12vw;
             visibility: visible;
-            text-align: justify;
-            background: red;
-            transform: translateX(-12rem);
-            transition: 0.7s ease all;
-            width: 10.9rem;
+            text-align: start;
+            padding-left: 10px;
+            background-color: #E7E5E0;
+            transform: translateX(-21vw);
+            transition: 0.7s ease transform;
+            font-size: 1.5vw;
+            width: 17vw;
+            background-color: white;
+            padding: 3px;
+            box-shadow: 5px 5px #805422;
         }
+    .city {
+        color: #9F9E9E;
+        font-size: 1.5rem;
+        margin: 2px;
+        font-family: Leaugue-Spartan;
+    }
+    .country {
+        color: #AB957C;
+        font-size: 1.5rem;
+        margin: 0;
+        font-family: Leaugue-Spartan;
+    }
     `;
 
 const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
-    height: 300vh;
+    height: fit-content;
     
     .main-port{
         position: relative;
+        top: -2vw;
         display: grid;
         grid-template-columns: repeat(2, 1.2fr);
-        grid-auto-rows: 50vh;
         .portfolio-image {
             width: 20vw;
             height: 20vw;
             z-index: 999;
+            background-color: white;
         }
         .tester {
             z-index: -1;
@@ -543,6 +665,16 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             top: 1rem;
             left: 0.8rem;
             border: 1px solid black;
+        }
+        .portfolio-name {
+            position: relative;
+            left: 21.5vw;
+            top: -3vw;
+            width: 11vw;
+            white-space: normal;
+            word-wrap: break-word;
+            font-family: Leaugue-Spartan;
+            font-size: 1.5vw;
         }
         .portfolio-expo {
             width: 20vw;
@@ -554,7 +686,8 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             align-items: center;
             text-align: center;
             font-size: 1.5vw;
-            font-weight: 100;
+            font-weight: lighter;
+            font-family: Leaugue-Spartan-light;
             backdrop-filter: blur(1.5rem);
             pointer-events: none;
         }
@@ -564,8 +697,8 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
     }
 
     text {
-        -webkit-text-fill-color: white;
-        -webkit-text-stroke: 1px black;
+        -webkit-text-fill-color: #E7E5E0;
+        -webkit-text-stroke: 1px white;
         height : 120px;
         font: bold 60px Century Gothic, Arial;
         width: 100%;
@@ -577,8 +710,16 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
 
 const InterestsWrapper = styled.div`
     height: fit-content;
-    margin-top: 4rem;
+    margin-top: 6rem;
     
+    p {
+        font-size: 2rem;
+        width: 100%;
+        text-align: center;
+        text-decoration: underline 1px double;
+        font-family: Leaugue-Spartan;
+    }
+
     .interest {
         display: flex;
         margin-bottom: 5rem;
@@ -586,21 +727,22 @@ const InterestsWrapper = styled.div`
     }
     .topic {
         flex-basis: 30%;
-        color: salmon;
-        font-size: 3.5vw;
+        color: #805422;
+        font-size: 3.5rem;
         font-weight: 700;
         
     }
     .expo {
         flex-basis: 30%;
         text-align: justify;
-        font-size: 1vw;
+        font-size: 1rem;
 
     }
 `;
 
 const ContactWrapper = styled.div`
-    height: 60vh;
+    height: fit-content;
+    margin-bottom: 50px;
     display: flex;
     font-size: 2.5rem;
     font-weight: 600;
@@ -611,13 +753,12 @@ const ContactWrapper = styled.div`
     form input, form textarea {
         width: 100%;
         border: 0px;
-        background-color: beige;
+        background-color: #D4D4D4;
+        color: black;
         outline: none;
         padding: 10px;
         font-size: 15px;
         margin: 5px 0px;
-        color: #fff;
-        font-size: 18px;
         font-family: Helvetica;
     }
     .contact-left {
@@ -627,12 +768,22 @@ const ContactWrapper = styled.div`
     }
     .contact-right {
         flex-basis: 60%;
-        margin-right: 15%;
+        margin-right: 14.4%;
     }
     .button{
         padding: 1rem 2rem;
-        border: 1px solid black;
+        border: 1px solid white;
         text-decoration: none;
-        background: beige;
+        color: white;
+        background: #AB957C;
+    }
+    .contact-left::before {
+        content: "";
+        border: 1px solid black;
+        position: absolute;
+        bottom: 25px;
+        left: 10vw;
+        width: 80vw;
+        height: 22rem;
     }
     `; 

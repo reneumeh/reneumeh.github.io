@@ -24,9 +24,15 @@ const DownloadCVWrapper = styled.div`
         display: flex;
         justify-content: center;
     }
-    .portfolio-button-inside {
+    .portfolio-button-inside, .portfolio-button-inside:visited, .portfolio-button-inside:active {
         padding: 1rem 2rem;
-        border: 1px solid black;
+        border: 1px solid white;
         text-decoration: none;
+        background-color: #AB957C; 
+        color: white;
+    }
+    .portfolio-button-inside:hover {
+        transform: scale(0.9);
+        transition: ease all 0.2s;
     }
 `;

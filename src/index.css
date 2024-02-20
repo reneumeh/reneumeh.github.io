@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Leaugue-Spartan";
+  src:
+    url("../public/LeagueSpartan-SemiBold.ttf");}
+
+@font-face {
+  font-family: "Leaugue-Spartan-minor";
+  src:
+    url("../public/LeagueSpartan-Regular.ttf");}
+
+@font-face {
+  font-family: "Leaugue-Spartan-light";
+  src:
+    url("../public/LeagueSpartan-ExtraLight.ttf");}
