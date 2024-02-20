@@ -785,5 +785,6 @@ const ContactWrapper = styled.div`
         left: 10vw;
         width: 80vw;
         height: 22rem;
+        z-index: -1;
     }
     `; 
