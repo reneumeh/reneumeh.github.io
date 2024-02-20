@@ -770,7 +770,7 @@ const ContactWrapper = styled.div`
         flex-basis: 60%;
         margin-right: 14.4%;
     }
-    .button{
+    .button {
         padding: 1rem 2rem;
         border: 1px solid white;
         text-decoration: none;
@@ -785,5 +785,6 @@ const ContactWrapper = styled.div`
         left: 10vw;
         width: 80vw;
         height: 22rem;
+        z-index: -1;
     }
     `; 
