@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import MainENG from "./pages/MainENG";
@@ -22,4 +20,3 @@ function App() {
 }
 
 export default App;
->>>>>>> 27e6b8c1792850040ec0b7fc49db4ee43e581071
