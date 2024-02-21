@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7c488723.css",
-    "main.js": "/static/js/main.f518080a.js",
+    "main.js": "/static/js/main.6467d298.js",
     "static/js/592.7881a785.chunk.js": "/static/js/592.7881a785.chunk.js",
     "static/media/2615-UnBatang_0613.ttf": "/static/media/2615-UnBatang_0613.0d7246658b87b3446815.ttf",
     "static/media/BlackHanSans-Regular.ttf": "/static/media/BlackHanSans-Regular.f4f89062321390018f92.ttf",
@@ -11,11 +11,11 @@
     "static/media/LeagueSpartan-Regular.ttf": "/static/media/LeagueSpartan-Regular.09958bb07a94a6a4f1bb.ttf",
     "index.html": "/index.html",
     "main.7c488723.css.map": "/static/css/main.7c488723.css.map",
-    "main.f518080a.js.map": "/static/js/main.f518080a.js.map",
+    "main.6467d298.js.map": "/static/js/main.6467d298.js.map",
     "592.7881a785.chunk.js.map": "/static/js/592.7881a785.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7c488723.css",
-    "static/js/main.f518080a.js"
+    "static/js/main.6467d298.js"
   ]
 }
