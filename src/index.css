@@ -26,3 +26,18 @@ code {
   font-family: "Leaugue-Spartan-light";
   src:
     url("../public/LeagueSpartan-ExtraLight.ttf");}
+
+@font-face {
+  font-family: "korean-font";
+  src:
+    url("../public/DoHyeon-Regular.ttf");}
+
+@font-face {
+  font-family: "korean-font-bold";
+  src:
+    url("../public/BlackHanSans-Regular.ttf");}
+
+@font-face {
+  font-family: "korean-font-light";
+  src:
+    url("../public/2615-UnBatang_0613.ttf");}
