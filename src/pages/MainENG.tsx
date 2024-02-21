@@ -415,7 +415,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
         border-radius: 20px;
         background-color: #D1D3D4;
         font-size: 0.9rem;
-        :hover {
+        :hover, :active {
             background-color: white;
             color: white;
         }
@@ -476,7 +476,7 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                         color: #AB957C;
                         margin: 2em auto 0em auto;
                     }
-                    .page-buttons:hover{
+                    .page-buttons:hover, page-buttons:active{
                         font-size: 1.9rem;
                         cursor: pointer;
                         transition: ease all 0.5s;
@@ -492,7 +492,7 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                 .page-buttons{
                     padding: 2rem;
                 }
-                :hover {
+                :hover, :active {
                     color: white;
                     background-color: #AB957C;
                     cursor: pointer;
@@ -675,7 +675,7 @@ const Map = styled.div<{ hoveredElement: string }>`
     position: relative;
     display: flex;
     height: calc(50vw);
-    .pins > img:hover {
+    .pins > img:hover, img:active {
         transform: translateY(-5px);
         transition: 0.5s ease all;
     }
@@ -771,8 +771,7 @@ const Map = styled.div<{ hoveredElement: string }>`
                 left: 90vw;
             }
             [id*=${({ hoveredElement}) => hoveredElement}] {
-                width: 34vw;
-                transform: translateX(-38vw);
+
 
             }
     }
@@ -875,7 +874,7 @@ const DownloadCVWrapper = styled.div`
         background-color: #AB957C; 
         color: white;
     }
-    .portfolio-button-inside:hover {
+    .portfolio-button-inside:hover, portfolio-button-inside:active {
         transform: scale(0.9);
         transition: ease all 0.2s;
     }
