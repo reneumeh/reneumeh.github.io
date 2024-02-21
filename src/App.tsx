@@ -1,15 +1,15 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
-import Main from "./pages/Main_ENG";
+import MainENG from "./pages/MainENG";
 import Blog from "./pages/Blog";
-import MainKOR from "./pages/Main_KOR";
+import MainKOR from "./pages/MainKOR";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={"/"}>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<MainENG />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/kor" element={<MainKOR />} />
           <Route path="*" element={<PageNotFound />} />
