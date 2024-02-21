@@ -852,7 +852,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
                 margin: auto;
             }
             .portfolio-name {
-                font-size: 30px;
+                font-size: 26px;
                 width: 180px;
                 left: 42vw;
             }
