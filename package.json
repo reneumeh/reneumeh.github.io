@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "homepage": "https://reneumeh.github.io/",
-=======
-  "homepage": "http://reneumeh.github.io/personal_portfolio",
->>>>>>> 27e6b8c1792850040ec0b7fc49db4ee43e581071
   "name": "personal_portfolio",
   "version": "0.1.0",
   "private": true,
