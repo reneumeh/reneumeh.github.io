@@ -810,6 +810,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             font-size: 1.5vw;
             font-weight: lighter;
             font-family: Leaugue-Spartan-light;
+            -webkit-backdrop-filter: blur(1.5rem);
             backdrop-filter: blur(1.5rem);
             pointer-events: none;
         }
