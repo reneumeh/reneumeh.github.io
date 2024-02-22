@@ -310,7 +310,8 @@ function MainENG() {
                     <img className='portfolio-image' src={item.image} 
                     id={item.name}
                     onMouseEnter={() => handleHover(item.name)}
-                    onMouseLeave={handleLeave}/>
+                    onMouseLeave={handleLeave}
+                    onClick={() => handleHover(item.name)}/>
                     <div className='tester'></div> <p className='portfolio-name'>{item.name}</p>
                     {hoveredElement == item.name &&
                     <div className='portfolio-expo' >
@@ -760,20 +761,7 @@ const Map = styled.div<{ hoveredElement: string }>`
     }
 
     @media screen and (max-width: 700px) { 
-            position: absolute;
-            left: -3rem;
-            margin-bottom: 2rem;
-            padding-right: 0rem;
-            width: 110%;
-            .explanations-placeholder {
-                position: absolute;
-                font-size: 13px;
-                left: 90vw;
-            }
-            [id*=${({ hoveredElement}) => hoveredElement}] {
-
-
-            }
+            display: none;
     }
     `;
 
@@ -845,10 +833,11 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
         }
         .main-port{
             grid-template-columns: repeat(1, 1.2fr);
-            .portfolio-image, .tester {
+            .portfolio-image, .tester, .portfolio-expo {
                 width: 60vw;
                 height: 60vw;
                 margin: auto;
+                font-size: 17px;
             }
             .portfolio-name {
                 font-size: 22px;
