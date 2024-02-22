@@ -541,6 +541,8 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             isScrolling === true ? '0.5rem' :'5rem' };
             left: ${({ isScrolling }) =>
             isScrolling === true ? '0.3rem' :'108vw' };
+            visibility: ${({ isMenuOpen }) =>
+            isMenuOpen === true ? "hidden" : "visible" };
         }
         .close {
             position: absolute;
