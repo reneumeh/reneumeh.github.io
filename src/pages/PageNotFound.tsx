@@ -26,7 +26,7 @@ export default PageNotFound
 
 const PNFWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   z-index: -10;
   background-color: #E7E5E0;
