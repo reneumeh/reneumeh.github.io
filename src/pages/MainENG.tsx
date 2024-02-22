@@ -83,7 +83,7 @@ function MainENG() {
     const pages = [
         {
             name: "Home",
-            link: "/",
+            link: "#/",
             img: "static/home.png"
         },
         {
@@ -93,7 +93,7 @@ function MainENG() {
         },
         {
             name: "Blog",
-            link:  "/blog",
+            link:  "#/blog",
             img: "static/blog.png"
         },
         {
@@ -235,7 +235,7 @@ function MainENG() {
                 <img className='phone-icons hamburger' width= {20} src= 'static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
                 <img className='phone-icons close'  width= {20} src= 'static/close.png' onClick={() => {setMenuOpen(false)}}/>
             </NavBar>
-            <div className='language '><a className='top' href='/'>ENG</a><a className='bottom'href="/kor">KOR</a></div>
+            <div className='language '><a className='top' href='#/'>ENG</a><a className='bottom'href="#/kor">KOR</a></div>
         </Header>
         <Hero>
             <div className='hero-div'><img 
