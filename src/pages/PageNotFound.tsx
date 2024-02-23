@@ -1,8 +1,5 @@
 
-import React from 'react'
-import styled from 'styled-components'
-
-export {}
+import styled from 'styled-components';
 
 function PageNotFound() {
   return (
@@ -10,13 +7,13 @@ function PageNotFound() {
     <h1>404</h1>
     <h2>Page Not Found</h2>
     <div className='home-button'>
-                <a className='home-button-inside'
-                href="#/"
-                target='_self'
-                >
-                    GO BACK TO HOME
-                </a>
-            </div>
+      <a className='home-button-inside'
+      href="#/"
+      target='_self'
+      >
+          GO BACK TO HOME
+      </a>
+    </div>
   </PNFWrapper>
     
   )
