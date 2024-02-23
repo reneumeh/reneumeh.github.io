@@ -40,7 +40,8 @@ const MapComp = () => {
             alt= 'map'
             src='static/map.png'
             style={{position: 'absolute', margin: '2vh  0vw 2vh 5em', width:'80vw'}}/>
-            {MapElements.map((pin) => (<div className='pins'>
+            {MapElements.map((pin) => (
+              <div className='pins'>
                 <img
                 className={pin.city}
                 alt= {pin.city}
@@ -53,14 +54,13 @@ const MapComp = () => {
                 style={{position: "absolute", top: pin.loc.top, left: pin.loc.left}}
                 />
                 <div className= "explanations">
-                    <div
-                    id= {pin.city}>
+                    <div id= {pin.city}>
                         <p className='city'>{pin.city}</p>
                         <p className= 'country'>{pin.country}</p>
                         <p>{pin.explanation}</p>
                     </div>
                 </div>
-                </div>
+              </div>
             ))}
             <div className= "explanations-placeholder">
                 Hover/Click on the pins
