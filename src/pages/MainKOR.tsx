@@ -7,6 +7,7 @@ import MapComp from '../components_kor/MapComp_kor';
 import PortfolioComp from '../components_kor/PortfolioComp_kor';
 import InterestsComp from '../components_kor/InterestsComp_kor';
 import ContactComp from '../components_kor/ContactComp_kor';
+import DownloadCVComp from '../components_kor/DownloadCVComp_kor';
 
 
 function MainENG() {
@@ -23,6 +24,7 @@ function MainENG() {
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>
+        <DownloadCVComp />
         <InterestsComp />
         <ContactComp Contact={Contact} emailForm={emailForm}/>
     </Wrapper>

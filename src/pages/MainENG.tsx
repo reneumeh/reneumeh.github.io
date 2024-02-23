@@ -6,6 +6,7 @@ import MapComp from '../components/MapComp';
 import PortfolioComp from '../components/PortfolioComp';
 import InterestsComp from '../components/InterestsComp';
 import ContactComp from '../components/ContactComp';
+import DownloadCVComp from '../components/DownloadCVComp';
 
 function MainENG() {
     const Portfolio = useRef(null);
@@ -21,6 +22,7 @@ function MainENG() {
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>
+        <DownloadCVComp />
         <InterestsComp />
         <ContactComp Contact={Contact} emailForm={emailForm}/>
     </Wrapper>
