@@ -10,7 +10,7 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
             emailjs.sendForm('service_n4wn1nh', 'template_r981zdv', props.emailForm.current, 'SlV3483aRFBrHHQYI')
             .then((result) => {
                 e.target.reset();
-                alert("Message sent successfully");
+                alert("메시지가 발송되었습니다");
             }, (error) => {
                 alert(error.text);
             });
@@ -30,7 +30,7 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
         </div>
         <div className='contact-right'> 
             <form ref={props.emailForm} onSubmit={sendEmail}>
-                <input type="text" name="from_name" placeholder='이름' required />
+                <input type="text" name="from_name" placeholder='성함' required />
                 <input type="email" name="from_email" placeholder='이메일' required />
                 <textarea name="message" rows={6} placeholder='메시지'></textarea>
                 <button className="button" type="submit">보내기</button>

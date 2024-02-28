@@ -25,7 +25,7 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
         },
         {
             name: "코딩",
-            explanation: "나는 Python, MATLAB, C++ 및 기타 많은 엔지니어링 프로그래밍 언어에 능숙합니다",
+            explanation: "저는 Python, MATLAB, C++ 및 기타 많은 엔지니어링 프로그래밍 언어에 능숙합니다",
             image: "/static/portfolio_coding.png",
             section: "mechanicalEngineering"
         },

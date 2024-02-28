@@ -14,7 +14,6 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
                 alert(error.text);
             });
         };
-
         };
   return (
     <ContactWrapper ref={props.Contact}>
