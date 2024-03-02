@@ -20,14 +20,14 @@ const MapComp = () => {
             country: "USA",
             city: "Austin",
             loc: {top: "18vw", left: "calc(5em + 16.5vw)"},
-            explanation: "This ain't Texas (woo), ain't no hold 'em (hey) So lay your cards down, down, down, down So park your Lexus (woo) and throw your keys up (hey) Stick around, 'round, 'round, 'round, 'round (stick around)",
+            explanation: "In 2021, I travelled to Texas for an exchange semester at the University of Texas at Austin. It was the first time I was travelling and living completely independently. I got an internship at Lavner Education following the end of the semester.",
             ref: texasPin
         },
         {
             country: "Nigeria",
             city: "Lagos",
             loc: {top: "22vw", left: "calc(5em + 37vw)"},
-            explanation: "Ni ojuelegba They know my story, from Mo'Dogg's studio I be hustle to work, ehh Ni ojuelegba, oh Me and Silly, for Mo'Dogg's studio We been hustle to work, ehh",
+            explanation: "I was born and raised as the second of five children in Lagos, Nigeria. The appetite to stand out comes naturally when you are from a big family. I studied and graduated as the valedictorian from St. Gregory's College.",
             ref: lagosPin
         }
     ]
@@ -79,6 +79,7 @@ const Map = styled.div<{ hoveredElement: string }>`
     .pins > img:hover, img:active {
         transform: translateY(-5px);
         transition: 0.5s ease all;
+        cursor: pointer;
     }
     .explanations {
         visibility: hidden;

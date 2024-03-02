@@ -78,6 +78,11 @@ const ContactWrapper = styled.div`
         color: white;
         background: #AB957C;
     }
+    .button::hover{
+        transform: scale(0.9);
+        transition: ease all 0.2s;
+        cursor: pointer;
+    }
     .contact-left::before {
         content: "";
         border: 1px solid black;

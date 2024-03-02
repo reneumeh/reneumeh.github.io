@@ -134,6 +134,7 @@ const Hero = styled.div`
     /* Pause on hover */
     .marquee--hover-pause:hover .marquee__content {
     animation-play-state: paused;
+    cursor: pointer;
     }
 
     @media screen and (max-width: 900px) {

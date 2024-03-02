@@ -20,14 +20,14 @@ const MapComp = () => {
             country: "미국",
             city: "오스틴",
             loc: {top: "18vw", left: "calc(5em + 16.5vw)"},
-            explanation: "여기는 텍사스가 아닙니다. 그들을 붙잡을 수 없습니다. 그러니 카드를 아래위로, 아래위로, 아래위로, 렉서스를 주차하고 열쇠를 위로 던집니다. 주위에, '둥근', '둥근', '둥근', '둥근', '둥근', '둥근', '둥근', '둥근'(둥근)",
+            explanation: "2021년 텍사스 대학교 오스틴 캠퍼스에서 교환 학기를 보내기 위해 텍사스로 여행을 갔다. 여행을 하면서 완전히 독립해서 사는 것은 처음이었다. 학기가 끝나고 라브너 교육에서 인턴십을 했습니다.",
             ref: texasPin
         },
         {
             country: "나이지리아",
             city: "라고스",
             loc: {top: "22vw", left: "calc(5em + 37vw)"},
-            explanation: "니오줄레그바 그들은 내 이야기를 알고 있어요 모독의 작업실에서 난 바쁘게 일하고 있어요 어 니오줄레그바, 오 나 그리고 실리 모독의 작업실에서 우린 바쁘게 일하고 있어요 어",
+            explanation: "저는 나이지리아 라고스에서 다섯 자녀 중 둘째로 태어나고 자랐습니다. 돋보이려는 욕구는 대가족일 때 자연스럽게 나타납니다. 저는 세인트 그레고리 졸업장으로 공부하고 졸업했습니다.",
             ref: lagosPin
         }
     ]
@@ -79,6 +79,7 @@ const Map = styled.div<{ hoveredElement: string }>`
     .pins > img:hover {
         transform: translateY(-5px);
         transition: 0.5s ease all;
+        cursor: pointer;
     }
     .explanations {
         visibility: hidden;
