@@ -100,9 +100,9 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
                 </div>
             ))}
         </div>
-        <text ref= {props.mechSection} style= {{position: "absolute", top: "18vw", overflowX: "clip"}}>MECHANICAL ENGINEERING</text>
-        <text ref= {props.panddSection} style= {{position: "absolute", top: "66.5vw", overflowX: "clip"}}>PROGRAMMING AND DESIGN</text>
-        <text ref= {props.extraSection} style= {{position: "absolute", top: "117vw", overflowX: "clip"}}>EXTRACURRICULAR</text>
+        <text ref= {props.mechSection} style= {{position: "absolute", top: "15.5vw", overflowX: "clip"}}>MECHANICAL ENGINEERING</text>
+        <text ref= {props.panddSection} style= {{position: "absolute", top: "64.5vw", overflowX: "clip"}}>PROGRAMMING AND DESIGN</text>
+        <text ref= {props.extraSection} style= {{position: "absolute", top: "115vw", overflowX: "clip"}}>EXTRACURRICULAR</text>
     </PortfolioWrapper>
 ) 
 }
