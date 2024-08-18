@@ -8,6 +8,8 @@ import InterestsComp from '../components/InterestsComp';
 import ContactComp from '../components/ContactComp';
 import DownloadCVComp from '../components/DownloadCVComp';
 import { Page } from '../utils/types';
+import { Route, Routes } from 'react-router-dom';
+import PortfolioModal from '../components/PortfolioModal';
 
 function MainENG() {
     const Portfolio = useRef(null);
@@ -48,6 +50,9 @@ function MainENG() {
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>
+        <Routes>
+          <Route path='/portfolio' element={<PortfolioModal />} />
+        </Routes>
         <DownloadCVComp />
         <InterestsComp />
         <ContactComp Contact={Contact} emailForm={emailForm}/>

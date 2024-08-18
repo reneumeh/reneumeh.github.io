@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
+import { camelize } from "../utils/utils";
 
 const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>, Portfolio: React.MutableRefObject<null>}) => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
     const navigate = useNavigate();
     const handleClick = (item_name: string) => {
-        navigate(`/portfolio/${item_name}`)
+        navigate(`/portfolio?section=${camelize(item_name)}`)
     }
 
     const portfolio_stuff = [
