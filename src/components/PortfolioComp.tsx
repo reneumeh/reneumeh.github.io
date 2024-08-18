@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
 
 const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>, Portfolio: React.MutableRefObject<null>}) => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
+    const navigate = useNavigate();
+    const handleClick = (item_name: string) => {
+        navigate(`/portfolio/${item_name}`)
+    }
 
     const portfolio_stuff = [
         {
@@ -32,7 +37,7 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
         {
             name: "AI & DL/ML",
             explanation: "I am conversant with the latest literature concerning different architectures of Artificial Intelligence and Machine Learning. I have experience with building and finetuning AI models",
-            image: "/static/portfolio_ai.png",
+            image: "/static/portfolio_aiDlMl.png",
             section: "programmingAndDesign"
         },
         {
@@ -44,7 +49,7 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
         {
             name: "UI/UX DESIGN",
             explanation: "I am a self-taught UI/UX designer and I have professional experience with designing and maintaining webpages",
-            image: "/static/portfolio_uiDesign.png",
+            image: "/static/portfolio_uiUxDesign.png",
             section: "programmingAndDesign"
         },
         {
@@ -74,7 +79,7 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
         {
             name: "VOLUNTEER",
             explanation: "I enjoy volunteering and I have volunteered at the Seoul Welfare Center For the Elderly and the Austin Animal Center",
-            image: "/static/portfolio_volunteering.png",
+            image: "/static/portfolio_volunteer.png",
             section: "extracurricular"
         },
     ]
@@ -88,7 +93,7 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
                         alt={item.name}
                         onMouseEnter={() => handleHover(item.name)}
                         onMouseLeave={handleLeave}
-                        onClick={() => handleHover(item.name)}/>
+                        onClick={() => handleClick(item.name)}/>
                     <div className='tester'></div> 
                     <p className='portfolio-name'>
                         {item.name}

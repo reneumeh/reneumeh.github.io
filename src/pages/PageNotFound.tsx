@@ -36,7 +36,6 @@ const PNFWrapper = styled.div`
     text-align: center;
     margin-top: 10rem;
     margin-bottom: 0;
-    text-shadow: 5px 5px 4px rgba(0,0,0,0.29);
   }
   
   h2 {
@@ -67,7 +66,6 @@ const PNFWrapper = styled.div`
 @media screen and (max-width: 700px) { 
   h1 {
     font-size: 150px;
-    text-shadow: unset;
   }
 }
 

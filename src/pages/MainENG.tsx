@@ -7,6 +7,7 @@ import PortfolioComp from '../components/PortfolioComp';
 import InterestsComp from '../components/InterestsComp';
 import ContactComp from '../components/ContactComp';
 import DownloadCVComp from '../components/DownloadCVComp';
+import { Page } from '../utils/types';
 
 function MainENG() {
     const Portfolio = useRef(null);
@@ -16,9 +17,34 @@ function MainENG() {
     const extraSection = useRef(null);
     const emailForm = useRef(null);
 
+    const pages : Page[] = [
+      {
+          name: "Home",
+          link: "/",
+          img: "static/home.png"
+      },
+      {
+          name: "Portfolio",
+          ref: Portfolio,
+          img: "static/portfolio.png",
+          link: ""
+      },
+      {
+          name: "Blog",
+          link:  "/blog",
+          img: "static/blog.png"
+      },
+      {
+          name: "Contact",
+          ref: Contact,
+          img: "static/contact.png",
+          link: ""
+      }
+  ] 
+
   return (
     <Wrapper>
-        <HeaderComp Portfolio={Portfolio} Contact={Contact}/>
+        <HeaderComp pages={pages} useScroll={true}/>
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>

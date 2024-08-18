@@ -1,35 +1,15 @@
 import useIsScrolling from "../hooks/useIsScrolling";
 import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import { Page } from "../utils/types";
 
-const HeaderComp = (props: { Portfolio: any; Contact: any; }) => {
+const HeaderComp = (props: { pages: Page[]; useScroll: boolean}) => {
     const {isScrolling, scrollToElement} = useIsScrolling();
     const {isMenuOpen, setMenuOpen} = useIsMenuOpen();
+    const pages = props.pages;
+    const navigate = useNavigate();
 
-    const pages = [
-        {
-            name: "Home",
-            link: "#/",
-            img: "static/home.png"
-        },
-        {
-            name: "Portfolio",
-            ref: props.Portfolio,
-            img: "static/portfolio.png",
-            link: ""
-        },
-        {
-            name: "Blog",
-            link:  "#/blog",
-            img: "static/blog.png"
-        },
-        {
-            name: "Contact",
-            ref: props.Contact,
-            img: "static/contact.png",
-            link: ""
-        }
-    ] 
   return (
     <Header isScrolling= {isScrolling}>
         <a className="logo"
@@ -44,7 +24,7 @@ const HeaderComp = (props: { Portfolio: any; Contact: any; }) => {
                 <div
                 key={page.name}
                 className="page-buttons"
-                onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(page.link))}>
+                onClick={() => (page.ref ? scrollToElement(page.ref) : navigate(`${page.link}`))}>
                     <img className='phone-icons' alt={page.name} width= {20} src= {page.img} />
                     {page.name}
                 </div>
@@ -139,7 +119,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     }  
     `;
 
-const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
+export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
     @media screen and (min-width: 700px) {
     .phone-icons {
         visibility: hidden;

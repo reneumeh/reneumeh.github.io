@@ -14,7 +14,9 @@ const InterestsComp = () => {
 
   return (
     <InterestsWrapper>
+        <Box>
         <p>Research Interests</p>
+        </Box>
         {interest_stuff.map((interest_stuff) => (
             <div className='interest'>
                 <div className='topic'>
@@ -39,7 +41,7 @@ const InterestsWrapper = styled.div`
         font-size: 2rem;
         width: 100%;
         text-align: center;
-        text-decoration: underline 1px double;
+        margin: 0;
         font-family: Leaugue-Spartan;
     }
 
@@ -71,3 +73,10 @@ const InterestsWrapper = styled.div`
         }
     }
 `;
+
+const Box = styled.div`
+margin: auto;
+border-bottom: 1px solid rgba(0,0,0,0.5);
+width: 17rem;
+margin-bottom: 2rem;
+`
