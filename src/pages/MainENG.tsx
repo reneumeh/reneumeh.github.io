@@ -8,8 +8,6 @@ import InterestsComp from '../components/InterestsComp';
 import ContactComp from '../components/ContactComp';
 import DownloadCVComp from '../components/DownloadCVComp';
 import { Page } from '../utils/types';
-import { Route, Routes } from 'react-router-dom';
-import PortfolioModal from '../components/PortfolioModal';
 
 function MainENG() {
     const Portfolio = useRef(null);
@@ -22,7 +20,7 @@ function MainENG() {
     const pages : Page[] = [
       {
           name: "Home",
-          link: "/",
+          link: "#/",
           img: "static/home.png"
       },
       {
@@ -33,7 +31,7 @@ function MainENG() {
       },
       {
           name: "Blog",
-          link:  "/blog",
+          link:  "#/blog",
           img: "static/blog.png"
       },
       {
@@ -46,13 +44,10 @@ function MainENG() {
 
   return (
     <Wrapper>
-        <HeaderComp pages={pages} useScroll={true}/>
+        <HeaderComp pages={pages} useScrollEffect={true} useLanguage={{ ENG: '#/', KOR: '#/kor'}} />
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>
-        <Routes>
-          <Route path='/portfolio' element={<PortfolioModal />} />
-        </Routes>
         <DownloadCVComp />
         <InterestsComp />
         <ContactComp Contact={Contact} emailForm={emailForm}/>
@@ -62,7 +57,7 @@ function MainENG() {
 
 export default MainENG
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
 width: 100%;
 position: absolute;
 z-index: -10;

@@ -9,10 +9,10 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          <Route path="/*" element={<MainENG />} />
+          <Route path="/" element={<MainENG />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/kor" element={<MainKOR />} />
-          {/* <Route path="*" element={<PageNotFound />} /> */}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </HashRouter>
     </>

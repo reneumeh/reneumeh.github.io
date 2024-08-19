@@ -1,17 +1,23 @@
 import useIsScrolling from "../hooks/useIsScrolling";
 import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
-import { useNavigate } from "react-router-dom";
 import { Page } from "../utils/types";
 
-const HeaderComp = (props: { pages: Page[]; useScroll: boolean}) => {
+type headerProps = { 
+    pages?: Page[],
+    useScrollEffect?: boolean,
+    useLanguage ?: {
+        ENG : string,
+        KOR: string,
+    },
+    }
+
+const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
     const {isScrolling, scrollToElement} = useIsScrolling();
     const {isMenuOpen, setMenuOpen} = useIsMenuOpen();
-    const pages = props.pages;
-    const navigate = useNavigate();
 
   return (
-    <Header isScrolling= {isScrolling}>
+    <Header isScrolling= {useScrollEffect ? isScrolling : true}>
         <a className="logo"
         href= "#/"
         target="_self"
@@ -20,11 +26,11 @@ const HeaderComp = (props: { pages: Page[]; useScroll: boolean}) => {
             <span>RENE </span>UMEH
         </a>
         <NavBar isScrolling= {isScrolling} isMenuOpen= {isMenuOpen}>
-            {pages.map((page) => (
+            {pages?.map((page) => (
                 <div
                 key={page.name}
                 className="page-buttons"
-                onClick={() => (page.ref ? scrollToElement(page.ref) : navigate(`${page.link}`))}>
+                onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(`${page.link}`))}>
                     <img className='phone-icons' alt={page.name} width= {20} src= {page.img} />
                     {page.name}
                 </div>
@@ -32,10 +38,13 @@ const HeaderComp = (props: { pages: Page[]; useScroll: boolean}) => {
             <img className='phone-icons hamburger' alt= 'hamburger_icon' width= {20} src= 'static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
             <img className='phone-icons close' alt='close_icon' width= {20} src= 'static/close.png' onClick={() => {setMenuOpen(false)}}/>
         </NavBar>
-        <div className='language '>
-            <a className='top' href='#/'>ENG</a>
-            <a className='bottom'href="#/kor">KOR</a>
+        {
+            !!useLanguage &&
+            <div className='language '>
+            <a className='top' href={useLanguage.ENG}>ENG</a>
+            <a className='bottom'href={useLanguage.KOR}>KOR</a>
         </div>
+        }       
     </Header>
   )
 }

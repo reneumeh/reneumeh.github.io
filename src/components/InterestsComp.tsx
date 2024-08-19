@@ -75,8 +75,10 @@ const InterestsWrapper = styled.div`
 `;
 
 const Box = styled.div`
-margin: auto;
-border-bottom: 1px solid rgba(0,0,0,0.5);
-width: 17rem;
-margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.4); 
+    width: 18rem;
+    height: 2rem;
+    margin: auto;
+    padding: 0.5rem 0;
+    margin-bottom: 32px;
 `

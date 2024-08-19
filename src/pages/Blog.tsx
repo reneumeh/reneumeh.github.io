@@ -1,18 +1,19 @@
 import HeaderComp from "../components/HeaderComp"
+import styled from "styled-components"
 import { Page } from "../utils/types"
+import { Wrapper } from "./MainENG" 
 
 function Blog() {
   const blogPages : Page[] = [
     {
         name: "Home",
-        link: "/",
+        link: "#/",
         img: "static/home.png"
     },
     {
       name: "Resume",
-      // ref: Contact,
       img: "static/contact.png",
-      link: ""
+      link: "/static/rene-umeh-portfolio.pdf"
     },
     {
         name: "Main Quests",
@@ -22,13 +23,25 @@ function Blog() {
     },
     {
         name: "Side Quests",
-        link:  "/blog",
+        // link:  "/blog",
         img: "static/blog.png"
     },
 ] 
   return (
-    <HeaderComp useScroll={true} pages= {blogPages} />
+    <Wrapper>
+      <HeaderComp useScrollEffect={true} pages= {blogPages} />
+      <BlogHero />
+      <MainQuests />
+      <SideQuests />
+    </Wrapper>
   )
 }
 
 export default Blog
+
+const BlogHero = styled.div``;
+
+const MainQuests = styled.div``;
+
+const SideQuests = styled.div``;
+

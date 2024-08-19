@@ -1,13 +1,24 @@
-import { useNavigate } from "react-router-dom";
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
 import { camelize } from "../utils/utils";
+import { useState } from "react";
+import PortfolioModal from "./PortfolioModal";
 
-const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>, Portfolio: React.MutableRefObject<null>}) => {
+type portfolioProps = {
+    mechSection: React.MutableRefObject<null>, 
+    extraSection: React.MutableRefObject<null>, 
+    panddSection: React.MutableRefObject<null>, 
+    Portfolio: React.MutableRefObject<null>
+}
+
+const PortfolioComp = ({ mechSection, extraSection, panddSection, Portfolio } : portfolioProps) => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
-    const navigate = useNavigate();
+    const [useModal, setUseModal] = useState("")
     const handleClick = (item_name: string) => {
-        navigate(`/portfolio?section=${camelize(item_name)}`)
+        setUseModal(camelize(item_name))
+    }
+    const handleCloseModal = () => {
+        setUseModal("")
     }
 
     const portfolio_stuff = [
@@ -85,7 +96,10 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
         },
     ]
   return (
-    <PortfolioWrapper ref={props.Portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
+    <PortfolioWrapper ref={Portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
+        {
+            !!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />
+        }
         <div className='main-port'>     
             {portfolio_stuff.map((item) => (
                 <div style={{ position: "relative" }}>
@@ -106,9 +120,9 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
                 </div>
             ))}
         </div>
-        <text ref= {props.mechSection} style= {{position: "absolute", top: "15.5vw", overflowX: "clip"}}>MECHANICAL ENGINEERING</text>
-        <text ref= {props.panddSection} style= {{position: "absolute", top: "64.5vw", overflowX: "clip"}}>PROGRAMMING AND DESIGN</text>
-        <text ref= {props.extraSection} style= {{position: "absolute", top: "115vw", overflowX: "clip"}}>EXTRACURRICULAR</text>
+        <text ref= {mechSection} style= {{position: "absolute", top: "15.5vw", overflowX: "clip"}}>MECHANICAL ENGINEERING</text>
+        <text ref= {panddSection} style= {{position: "absolute", top: "64.5vw", overflowX: "clip"}}>PROGRAMMING AND DESIGN</text>
+        <text ref= {extraSection} style= {{position: "absolute", top: "115vw", overflowX: "clip"}}>EXTRACURRICULAR</text>
     </PortfolioWrapper>
 ) 
 }
