@@ -11,8 +11,8 @@ import DownloadCVComp from '../components_kor/DownloadCVComp_kor';
 
 
 function MainENG() {
-    const Portfolio = useRef(null);
-    const Contact = useRef(null);
+    const portfolio = useRef(null);
+    const contact = useRef(null);
     const mechSection= useRef(null);
     const panddSection = useRef(null);
     const extraSection = useRef(null);
@@ -20,13 +20,13 @@ function MainENG() {
 
   return (
     <Wrapper>
-        <HeaderComp Portfolio={Portfolio} Contact={Contact}/>
+        <HeaderComp Portfolio={portfolio} Contact={contact}/>
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
-        <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>
+        <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={portfolio}/>
         <DownloadCVComp />
         <InterestsComp />
-        <ContactComp Contact={Contact} emailForm={emailForm}/>
+        <ContactComp Contact={contact} emailForm={emailForm}/>
     </Wrapper>
   )
 }

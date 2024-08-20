@@ -1,6 +1,5 @@
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
-import { camelize } from "../utils/utils";
 import { useState } from "react";
 import PortfolioModal from "./PortfolioModal";
 
@@ -8,14 +7,14 @@ type portfolioProps = {
     mechSection: React.MutableRefObject<null>, 
     extraSection: React.MutableRefObject<null>, 
     panddSection: React.MutableRefObject<null>, 
-    Portfolio: React.MutableRefObject<null>
+    portfolio: React.MutableRefObject<null>
 }
 
-const PortfolioComp = ({ mechSection, extraSection, panddSection, Portfolio } : portfolioProps) => {
+const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : portfolioProps) => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
     const [useModal, setUseModal] = useState("")
     const handleClick = (item_name: string) => {
-        setUseModal(camelize(item_name))
+        setUseModal(item_name)
     }
     const handleCloseModal = () => {
         setUseModal("")
@@ -96,7 +95,7 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, Portfolio } : 
         },
     ]
   return (
-    <PortfolioWrapper ref={Portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
+    <PortfolioWrapper ref={portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
         {
             !!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />
         }
@@ -142,6 +141,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             height: 20vw;
             z-index: 999;
             background-color: white;
+            cursor: pointer;
         }
         .tester {
             z-index: -1;

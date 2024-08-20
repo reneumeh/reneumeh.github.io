@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import styled from 'styled-components';
+import { camelize } from '../utils/utils';
 
 type TProps = {
   children?: JSX.Element;
@@ -44,10 +45,10 @@ const PortfolioModal = ({ item_name, handleCloseModal} : portfolioModalProps) =>
             <>
             <Card>
                 <img 
-                    src= {`/static/portfolio_${item_name}.png`}
+                    src= {`/static/portfolio_${camelize(item_name)}.png`}
                     alt= {item_name} 
                     />
-                {item_name}
+                <h1>{item_name}</h1>
             </Card>
             <ExitButton onClick={handleCloseModal}>
                 x
@@ -68,7 +69,7 @@ const Card = styled.div`
     box-shadow: 8px 8px #805422;
 
     img {
-    padding: 0 1rem 1rem 0;
+    margin: 0 1rem 1rem 0;
     border: 1px solid black;
     height: 20rem;
     width: 20rem;
@@ -87,7 +88,7 @@ const ExitButton = styled.div`
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    background-color: gray;
+    background-color: #D1D3D4;
     color: rgba(0,0,0,0.6);
     font-size: 2rem;
     font-family:Leaugue-Spartan-light;

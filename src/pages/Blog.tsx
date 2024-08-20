@@ -2,8 +2,13 @@ import HeaderComp from "../components/HeaderComp"
 import styled from "styled-components"
 import { Page } from "../utils/types"
 import { Wrapper } from "./MainENG" 
+import { useRef } from "react"
+import BlogHero from "../components/BlogHero"
+import MainQuests from "../components/MainQuests"
 
 function Blog() {
+  const mainQuests = useRef(null);
+  const sideQuests = useRef(null);
   const blogPages : Page[] = [
     {
         name: "Home",
@@ -17,31 +22,28 @@ function Blog() {
     },
     {
         name: "Main Quests",
-        // ref: 
+        ref: mainQuests,
         img: "static/portfolio.png",
         link: ""
     },
     {
         name: "Side Quests",
-        // link:  "/blog",
-        img: "static/blog.png"
+        ref: sideQuests,
+        img: "static/blog.png",
+        link: "",
     },
 ] 
   return (
     <Wrapper>
       <HeaderComp useScrollEffect={true} pages= {blogPages} />
       <BlogHero />
-      <MainQuests />
+      <MainQuests mainQuests={mainQuests}/>
       <SideQuests />
     </Wrapper>
   )
 }
 
 export default Blog
-
-const BlogHero = styled.div``;
-
-const MainQuests = styled.div``;
 
 const SideQuests = styled.div``;
 

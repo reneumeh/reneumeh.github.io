@@ -4,3 +4,7 @@ export function camelize(str : string) {
     return index === 0 ? word.toLowerCase() : word.toUpperCase();
   }).replace(/\s+/g, '').replace(/[|&;$/%@"<>()+,]/g, "");
 }
+
+export const wait = (delay: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+};

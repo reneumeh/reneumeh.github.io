@@ -2,11 +2,16 @@ import React from 'react';
 import emailjs from '@emailjs/browser';
 import styled from 'styled-components';
 
-const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: React.MutableRefObject<null>}) => {
+type contactProps = {
+    contact: React.MutableRefObject<null>, 
+    emailForm: React.MutableRefObject<null>,
+    }
+
+const ContactComp = ({ contact, emailForm } : contactProps) => {
     const sendEmail =(e:any) => {
         e.preventDefault();
-        if(props.emailForm.current) {
-            emailjs.sendForm('service_n4wn1nh', 'template_r981zdv', props.emailForm.current, 'SlV3483aRFBrHHQYI')
+        if(emailForm.current) {
+            emailjs.sendForm('service_n4wn1nh', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
             .then((result) => {
                 e.target.reset();
                 alert("Message sent successfully");
@@ -16,7 +21,7 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
         };
         };
   return (
-    <ContactWrapper ref={props.Contact}>
+    <ContactWrapper ref={contact}>
         <div className='contact-left'>Contact Me
             <p>Location: Seoul, South Korea</p>
             <p>
@@ -28,7 +33,7 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
             </p>
         </div>
         <div className='contact-right'> 
-            <form ref={props.emailForm} onSubmit={sendEmail}>
+            <form ref={emailForm} onSubmit={sendEmail}>
                 <input type="text" name="from_name" placeholder='Name' required />
                 <input type="email" name="from_email" placeholder='Email' required />
                 <textarea name="message" rows={6} placeholder='Message'></textarea>

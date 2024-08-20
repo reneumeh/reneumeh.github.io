@@ -10,8 +10,8 @@ import DownloadCVComp from '../components/DownloadCVComp';
 import { Page } from '../utils/types';
 
 function MainENG() {
-    const Portfolio = useRef(null);
-    const Contact = useRef(null);
+    const portfolio = useRef(null);
+    const contact = useRef(null);
     const mechSection= useRef(null);
     const panddSection = useRef(null);
     const extraSection = useRef(null);
@@ -25,7 +25,7 @@ function MainENG() {
       },
       {
           name: "Portfolio",
-          ref: Portfolio,
+          ref: portfolio,
           img: "static/portfolio.png",
           link: ""
       },
@@ -36,7 +36,7 @@ function MainENG() {
       },
       {
           name: "Contact",
-          ref: Contact,
+          ref: contact,
           img: "static/contact.png",
           link: ""
       }
@@ -47,10 +47,10 @@ function MainENG() {
         <HeaderComp pages={pages} useScrollEffect={true} useLanguage={{ ENG: '#/', KOR: '#/kor'}} />
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
-        <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={Portfolio}/>
+        <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
         <DownloadCVComp />
         <InterestsComp />
-        <ContactComp Contact={Contact} emailForm={emailForm}/>
+        <ContactComp contact={contact} emailForm={emailForm}/>
     </Wrapper>
   )
 }

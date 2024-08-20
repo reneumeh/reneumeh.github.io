@@ -74,7 +74,7 @@ const InterestsWrapper = styled.div`
     }
 `;
 
-const Box = styled.div`
+export const Box = styled.div`
     border-bottom: 1px solid rgba(0,0,0,0.4); 
     width: 18rem;
     height: 2rem;
