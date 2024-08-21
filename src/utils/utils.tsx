@@ -8,3 +8,7 @@ export function camelize(str : string) {
 export const wait = (delay: number): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, delay));
 };
+
+export const useTotalPageHandler = (totalCount: number, pageSize: number) => {
+  return Math.ceil(totalCount / pageSize)
+}

@@ -1,10 +1,10 @@
 import HeaderComp from "../components/HeaderComp"
-import styled from "styled-components"
 import { Page } from "../utils/types"
 import { Wrapper } from "./MainENG" 
 import { useRef } from "react"
 import BlogHero from "../components/BlogHero"
 import MainQuests from "../components/MainQuests"
+import SideQuests from "../components/SideQuests"
 
 function Blog() {
   const mainQuests = useRef(null);
@@ -38,12 +38,13 @@ function Blog() {
       <HeaderComp useScrollEffect={true} pages= {blogPages} />
       <BlogHero />
       <MainQuests mainQuests={mainQuests}/>
-      <SideQuests />
+      <SideQuests sideQuests={sideQuests}/>
     </Wrapper>
   )
 }
 
 export default Blog
 
-const SideQuests = styled.div``;
+
+
 

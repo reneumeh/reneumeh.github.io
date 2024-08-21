@@ -49,17 +49,18 @@ const BlogHero = () => {
 export default BlogHero;
 
 const BlogHeroWrapper = styled.div`
-    height: 45.5em;
+    height: 47em;
     position: relative;
 
     img {
         position: absolute;
-        height: ;
+        height: 25vw;
         object-fit: contain;
         opacity: 0;
         transition: opacity 2s ease-in-out;
-        top: 15rem;
-        left: 20vw;
+        top: calc(25rem - 10vw);
+        margin-right: 15vw;
+        right: 40vw;
         &.active {
             opacity: 1;
         }
@@ -90,6 +91,7 @@ const BlogHeroWrapper = styled.div`
         width: 38vw;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
+        line-height: 4.2rem;
         color: #AB957C;
     }
 `;
