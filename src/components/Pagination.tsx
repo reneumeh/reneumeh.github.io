@@ -14,7 +14,7 @@ const Pagination = ({
   currentPage,
   totalCount,
   setCurrentPage,
-  pageSize = 3,
+  pageSize = 1,
 } : paginationProps) => {
   const totalPage = useTotalPageHandler(totalCount, pageSize);
   const handleNextPage = () => {
