@@ -5,8 +5,10 @@ import { useRef } from "react"
 import BlogHero from "../components/BlogHero"
 import MainQuests from "../components/MainQuests"
 import SideQuests from "../components/SideQuests"
+import { Route, Routes } from "react-router-dom"
+import Article from "../components/Article"
 
-function Blog() {
+export const Blog = () => {
   const mainQuests = useRef(null);
   const sideQuests = useRef(null);
   const blogPages : Page[] = [
@@ -34,16 +36,31 @@ function Blog() {
     },
 ] 
   return (
-    <Wrapper>
-      <HeaderComp useScrollEffect={true} pages= {blogPages} />
-      <BlogHero />
-      <MainQuests mainQuests={mainQuests}/>
-      <SideQuests sideQuests={sideQuests}/>
-    </Wrapper>
+    <Routes>
+      <Route 
+      index
+      element={
+        <Wrapper>
+          <HeaderComp useScrollEffect={true} pages= {blogPages} />
+          <BlogHero />
+          <MainQuests mainQuests={mainQuests}/>
+          <SideQuests sideQuests={sideQuests}/>
+        </Wrapper>
+      }/>
+      <Route 
+      path="article"
+      element={
+      <Wrapper>
+        <HeaderComp useScrollEffect={false} pages= {blogPages} />
+        <Article />
+      </Wrapper>
+      } />
+    </Routes>
+    
   )
 }
 
-export default Blog
+
 
 
 

@@ -13,14 +13,14 @@ const MapComp = () => {
             country: "South Korea",
             city: "Seoul",
             loc: {top: "15.5vw", left: "calc(5em + 62.5vw)"},
-            explanation: "I traveled to Seoul for my undergraduate degree. I learnt Korean at the Hanyang International Language Institute. Following that, I completed a BSc in Mechanical Engineering with the help of the Samsung Global Dream Scholarship", 
+            explanation: "I traveled to Seoul for my undergraduate degree. I learnt Korean at the Hanyang International Language Institute. Following that, I graduated summa cum laude and received a degree in Mechanical Engineering with the help of the Samsung Global Dream Scholarship", 
             ref: seoulPin
         },
         {
             country: "USA",
             city: "Austin",
             loc: {top: "16.5vw", left: "calc(5em + 16.5vw)"},
-            explanation: "In 2021, I travelled to Texas for an exchange semester at the University of Texas at Austin. It was the first time I was travelling and living completely independently. I got an internship at Lavner Education following the end of the semester.",
+            explanation: "In 2021, I travelled to Texas for an exchange semester at the University of Texas at Austin. It was the first time I was travelling and living completely independently. I earned an internship at Lavner Education following the end of the semester.",
             ref: texasPin
         },
         {

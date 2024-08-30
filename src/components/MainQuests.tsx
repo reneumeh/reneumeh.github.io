@@ -4,6 +4,8 @@ import { Box } from './InterestsComp'
 import Pagination from './Pagination'
 import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
+import { mainQuestArticles } from '../utils/mainQuests/mainQuests'
+
 
 type mainQuestsProps = {
     mainQuests: React.MutableRefObject<null>,
@@ -13,137 +15,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
     const isMobile = useIsMobile();
     const [ currentPage, setCurrentPage ] = useState(0)
     const navigate = useNavigate()
-    const mainQuestArticles = [
-        {   
-            id: "id",
-            title: "title",
-            summary : "summary",
-            primaryImage : "",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-        {   
-            id: "id",
-            title: "title",
-            summary : "summary",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-        {
-            id: "id",
-            title: "title",
-            summary : "summary",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-        {
-            id: "id",
-            title: "title",
-            summary : "summary",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-    ]
+    
   return (
     <MainQuestsWrapper ref={mainQuests}>
         <Box>
@@ -154,7 +26,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
             {
                 mainQuestArticles.map((article, index) => {
                     return (
-                        <Card currentPage={currentPage} pageIndex={index} onClick={() => {navigate(article.id)}}>
+                        <Card currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
                             <div>
                                 {article.title}
                             </div>

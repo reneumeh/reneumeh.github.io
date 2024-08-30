@@ -25,7 +25,7 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
         > 
             <span>RENE </span>UMEH
         </a>
-        <NavBar isScrolling= {isScrolling} isMenuOpen= {isMenuOpen}>
+        <NavBar isScrolling= {useScrollEffect ? isScrolling : true} isMenuOpen= {isMenuOpen}>
             {pages?.map((page) => (
                 <div
                 key={page.name}
