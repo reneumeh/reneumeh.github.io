@@ -12,7 +12,7 @@ const MapComp = () => {
         {
             country: "South Korea",
             city: "Seoul",
-            loc: {top: "15.5vw", left: "calc(5em + 62.5vw)"},
+            loc: {top: "15vw", left: "calc(5em + 62.5vw)"},
             explanation: "I traveled to Seoul for my undergraduate degree. I learnt Korean at the Hanyang International Language Institute. Following that, I graduated summa cum laude and received a degree in Mechanical Engineering with the help of the Samsung Global Dream Scholarship", 
             ref: seoulPin
         },

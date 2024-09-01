@@ -4,6 +4,8 @@ import { Box } from './InterestsComp'
 import Pagination from './Pagination'
 import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
+import { sideQuestArticles } from '../utils/sideQuests/sideQuests'
+
 
 type sideQuestsProps = {
     sideQuests: React.MutableRefObject<null>,
@@ -13,157 +15,28 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
     const isMobile = useIsMobile();
     const [ currentPage, setCurrentPage ] = useState(0)
     const navigate = useNavigate()
-    const sideQuestArticles = [
-        {
-            id: "id",
-            title: "title",
-            summary : "summary",
-            primaryImage: "",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-        {
-            id: "id",
-            title: "title",
-            summary : "summary",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-        {
-            id: "id",
-            title: "title",
-            summary : "summary",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-        {
-            id: "id",
-            title: "title",
-            summary : "summary",
-            content: [
-                {
-                    type: "text",
-                    font: "font",
-                    value: "value"
-                },
-                {
-                    type: "image",
-                    position: "position",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "video",
-                    position: "center",
-                    size: "size",
-                    description: "description",
-                    src: "src",
-                },
-                {
-                    type: "link",
-                    text: "text",
-                    image: "image",
-                    to: "to",
-                }
-            ]
-        },
-    ]
+    
   return (
     <SideQuestsWrapper ref={sideQuests}>
         <Box>
-            <p className='title'>Side Quests</p>
+            <p className='header'>Side Quests</p>
         </Box>
-        This are the main projects and undertakings that are largely connected to my professional and academic life and give significant insight into my work and the career I have strived to build so far.
+        <p>Though these may not be directly related to my professional career, these are other accomplishments that are no less important and have shaped who I am</p>
         <Carousel>
             {
                 sideQuestArticles.map((article, index) => {
                     return (
-                        <Card currentPage={currentPage} pageIndex={index} onClick={() => {navigate(article.id)}}>
-                            <div>
-                                {article.title}
-                            </div>
-                            <div>
+                        <Card currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
+                            <div className='article-space'>
+                                <div>
+                                <p className='title'>{article.title}</p>
                                 {article.summary}
+                                </div>
+                            <img className='primary-image' src={article.primaryImage} 
+                            alt='primary_image'/>
                             </div>
-                            <img src={article.primaryImage} alt='primary_image'/>
                             <div className='box'>
-                                <img src='static/arrow.png' alt='arrow'/>
+                                <img src='static/arrow.png' sizes={'60'} alt='arrow'/>
                             </div>
                     </Card>
                     )
@@ -179,27 +52,39 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
 export default SideQuests 
 
 const SideQuestsWrapper = styled.div`
-    margin: auto;
+      margin: auto;
     margin-bottom: 7rem;
     width: 75vw;
+    font-size: 1.1rem;
     overflow: hidden;
-    p {
+    .header {
         font-size: 2rem;
         width: 100%;
         text-align: center;
         margin: 0;
         font-family: Leaugue-Spartan;
     }
-    .title::before {
+    .header::before {
         content: "";
         border: 1px solid black;
         position: absolute;
-        bottom: 6rem;
+        bottom: calc(6rem);
         left: 10vw;
         width: 80vw;
-        height: 18.5rem;
+        height: calc(18rem + 18vw);
         z-index: -1;
-        }`;
+        }
+    
+    @media screen and (max-width: 860px) {
+        .header {
+        font-size: 1.5rem;
+        }
+
+        .header::before {
+        height: calc(29rem - 18vw);
+        }
+    }
+        `;
 
 const Carousel = styled.div`
     display: inline-flex;
@@ -215,4 +100,46 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     margin: 1rem;
     box-shadow: 8px 8px #805422;
     cursor: pointer;
+
+    &:hover {
+        transform: translateY(-5px); 
+
+        .box {
+            transform: translateX(10px); 
+            transition: ease all 1s;
+        }
+    }
+
+    .box {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    }
+
+    .article-space {
+    display: flex;
+    justify-content: space-between;
+    }
+
+    .primary-image {
+    width: 30vw;
+    border: 1px solid black;
+    }
+
+    .title {
+        color: #805422;
+        font-size: calc(3vw + 0.5rem);
+        font-weight: 700;
+        margin: 10px 0 20px 0;
+    }
+
+    @media screen and (max-width: 860px) {
+        .primary-image {
+        display: none;
+        }
+
+        .box {
+        display: none;
+        }
+    }
 `;

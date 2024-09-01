@@ -35,6 +35,23 @@ export const Blog = () => {
         link: "",
     },
 ] 
+const articlePages : Page[] = [
+  {
+    name: "Home",
+    link: "#/",
+    img: "static/home.png"
+  },    
+  {
+    name: "Blog",
+    link:  "#/blog",
+    img: "static/blog.png"
+  },
+  {
+    name: "Resume",
+    img: "static/contact.png",
+    link: "/static/rene-umeh-portfolio.pdf"
+  },  
+]
   return (
     <Routes>
       <Route 
@@ -51,7 +68,7 @@ export const Blog = () => {
       path="article"
       element={
       <Wrapper>
-        <HeaderComp useScrollEffect={false} pages= {blogPages} />
+        <HeaderComp useScrollEffect={false} pages= {articlePages} />
         <Article />
       </Wrapper>
       } />

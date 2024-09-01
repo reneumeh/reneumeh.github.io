@@ -46,7 +46,8 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
   const modalEl = useRef(null)
   console.log(item_name)
   const modalStories: { [key: string]: string } = {
-    DEBATE: 'I started debating in high school',
+    'DEBATE': 'I started debating in high school.',
+    'PART DESIGN': 'This kind of comes with the territory of being a Mechanical Engineer.',
   };
 
   const story = modalStories[item_name] || 'Story not available';
@@ -59,10 +60,8 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
           src={`/static/portfolio_${camelize(item_name)}.png`} 
           alt={item_name} 
         />
-        <div className='up-down'>
-          <h1>{item_name}</h1>
+          <h1>{item_name}</h1> 
           <p>{story}</p>
-        </div>
       </Card>
       <ExitButton onClick={handleCloseModal}>x</ExitButton>
       </>
@@ -73,7 +72,6 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
 export default PortfolioModal;
 
 const Card = styled.div`
-  display: flex;
   width: calc(50% + 10rem);
   height: calc(95% - 21vw);
   background-color: white;
@@ -85,19 +83,11 @@ const Card = styled.div`
     border: 1px solid black;
     height: 20rem;
     width: 20rem;
-  }
-
-  h1 {
-  margin-bottom: 1rem;
+    float: left;
   }
 
   p {
   font-size: 1.2rem;
-  }
-
-  .up-down {
-  display: flex;
-  flex-direction: column;
   }
 
   @media screen and (max-width: 700px) {

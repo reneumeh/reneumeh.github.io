@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { mainQuestArticles } from '../utils/mainQuests/mainQuests';
 import { ArticleType } from '../utils/types';
-import { sideQuests } from '../utils/sideQuests/sideQuests';
+import { sideQuestArticles } from '../utils/sideQuests/sideQuests';
 import styled from 'styled-components';
 
 const Article = () => {
@@ -19,7 +19,7 @@ const Article = () => {
                     foundArticle = mainQuestArticles.find((article) => String(article?.id) === articleId);
                     break;
                 case '9945':
-                    foundArticle = sideQuests.find((article) => String(article?.id) === articleId);
+                    foundArticle = sideQuestArticles.find((article) => String(article?.id) === articleId);
                     break;
                 default:
                     throw new Error('Article not found');
@@ -29,15 +29,15 @@ const Article = () => {
             } else {
                 throw new Error('Article not found');
             }
-        } catch {
-            navigate('/../../PageNotFound');
+        } catch (error) {
+           console.log(error);
         }
     }, [articleId, navigate]);
 
     return (
         <ArticleContainer>
-            <img className='center' src={article?.primaryImage} alt='primary_image' />
-            {article?.title}
+            <div className='center title'><img src={article?.primaryImage} alt='primary_image' /></div>
+            <h1>{article?.title}</h1>
             {article?.content.map((item, index) => {
               return (
                 item
@@ -54,29 +54,35 @@ const ArticleContainer = styled.article`
     margin: 0 auto;
     padding: 20px;
     
+    div {
+    width: 100%;
+    }
+
     h1 {
       font-size: 2.5em;
       margin-bottom: 20px;
+      margin-top: 20px;
     }
 
     h2 {
-      font-size: 1.75em;
+      font-size: 2em;
       margin-bottom: 10px;
+      margin-top: 10px;
     }
 
     h3 {
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
 
     p {
-      font-size: 1em;
+      font-size: 1.1em;
     }
 
     a {
       color: #007bff;
       text-decoration: none;
       &:hover {
-          text-decoration: underline;
+        text-decoration: underline;
     }
     }
 
@@ -86,11 +92,17 @@ const ArticleContainer = styled.article`
     video {
     }
 
-    .side-by-side {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    .top-left {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
     }
+
+    .top-right {
+      float: right;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      }
 
     .up-and-down {
     display: flex;
@@ -98,7 +110,13 @@ const ArticleContainer = styled.article`
     }
 
     .center {
-    margin: inherit auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .title {
+    margin-top: 6rem;
     }
 
 `;
