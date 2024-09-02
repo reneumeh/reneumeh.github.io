@@ -36,7 +36,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
                             alt='primary_image'/>
                             </div>
                             <div className='box'>
-                                <img src='static/arrow.png' sizes={'60'} alt='arrow'/>
+                                <img src='static/arrow.png' width={20} alt='arrow'/>
                             </div>
                     </Card>
                     )
@@ -52,7 +52,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
 export default MainQuests 
 
 const MainQuestsWrapper = styled.div`
-    margin: auto;
+      margin: auto;
     margin-bottom: 7rem;
     width: 75vw;
     font-size: 1.1rem;
@@ -68,13 +68,23 @@ const MainQuestsWrapper = styled.div`
         content: "";
         border: 1px solid black;
         position: absolute;
-        bottom: calc(49rem - 2vw);
+        bottom: calc(18rem + 18vw + 10rem);
         left: 10vw;
         width: 80vw;
-        height: calc(18rem + 20vw);
+        height: calc(18rem + 18vw);
         z-index: -1;
         }
- 
+    
+    @media screen and (max-width: 860px) {
+        .header {
+        font-size: 1.5rem;
+        }
+
+        .header::before {
+        height: calc(31rem - 18vw);
+        bottom: calc(29rem - 10vw + 7rem);
+        }
+    }
         `;
 
 const Carousel = styled.div`
@@ -93,7 +103,7 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     cursor: pointer;
 
     &:hover {
-        transform: translateY(-5px); 
+        transform: translateX(${({ currentPage }) => `${currentPage * -60}vw`}) translateY(-5px); 
 
         .box {
             transform: translateX(10px); 
@@ -105,6 +115,12 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     position: absolute;
     right: 2rem;
     bottom: 2rem;
+    border: solid 1px black;
+    background-color: white;
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    jsutify-content: center;
     }
 
     .article-space {
@@ -119,8 +135,18 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
     .title {
         color: #805422;
-        font-size: 3.5vw;
+        font-size: calc(3vw + 0.5rem);
         font-weight: 700;
         margin: 10px 0 20px 0;
+    }
+
+    @media screen and (max-width: 860px) {
+        .primary-image {
+        display: none;
+        }
+
+        .box {
+        display: none;
+        }
     }
 `;

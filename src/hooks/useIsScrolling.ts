@@ -16,8 +16,12 @@ const useIsScrolling = () => {
     const scrollToElement = (ref: any, position= "start") => {
         ref.current?.scrollIntoView({ behavior: isMobile ? 'auto' :'smooth' , block: position });
         };
+
+    const resetScroll = () => {
+      window.scrollTo(0,0)
+    }
     
-        return {isScrolling, scrollToElement}
+        return {isScrolling, scrollToElement, resetScroll}
 }
 
 export default useIsScrolling

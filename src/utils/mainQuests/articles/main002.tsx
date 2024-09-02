@@ -1,8 +1,8 @@
 import { ArticleType } from "../../types"
 
 
-export const main001: ArticleType = {
-    id: 3194001,
+export const main002: ArticleType = {
+    id: 3194002,
     title: 'Sample Article',
     summary: 'This is a summary of the article.',
     primaryImage: 'https://via.placeholder.com/600x400',

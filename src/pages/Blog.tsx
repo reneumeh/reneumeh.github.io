@@ -25,13 +25,13 @@ export const Blog = () => {
     {
         name: "Main Quests",
         ref: mainQuests,
-        img: "static/portfolio.png",
+        img: "static/main_icon.png",
         link: ""
     },
     {
         name: "Side Quests",
         ref: sideQuests,
-        img: "static/blog.png",
+        img: "static/side_icon.png",
         link: "",
     },
 ] 

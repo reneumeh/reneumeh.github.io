@@ -36,7 +36,7 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
                             alt='primary_image'/>
                             </div>
                             <div className='box'>
-                                <img src='static/arrow.png' sizes={'60'} alt='arrow'/>
+                                <img src='static/arrow.png' width={20} alt='arrow'/>
                             </div>
                     </Card>
                     )
@@ -114,6 +114,12 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     position: absolute;
     right: 2rem;
     bottom: 2rem;
+    border: solid 1px black;
+    background-color: white;
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    jsutify-content: center;
     }
 
     .article-space {
