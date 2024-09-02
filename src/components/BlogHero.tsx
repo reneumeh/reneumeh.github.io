@@ -124,6 +124,7 @@ const BlogHeroWrapper = styled.div`
     margin: 0 auto;
     width: fit-content;
     font-size: calc(3vw + 1em);
+    text-transform: capitalize;
     }
 
     .slideshow {

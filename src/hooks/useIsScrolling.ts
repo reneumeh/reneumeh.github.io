@@ -1,27 +1,38 @@
+import { useState, useEffect, useCallback } from 'react';
 import useIsMobile from './useIsMobile';
-import { useState } from 'react';
 
 const useIsScrolling = () => {
     const [isScrolling, setScrolling] = useState(false);
     const isMobile = useIsMobile();
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 140) {
-            setScrolling(true);
-          } else {
-            setScrolling(false);
-          }
-    });
-
-    const scrollToElement = (ref: any, position= "start") => {
-        ref.current?.scrollIntoView({ behavior: isMobile ? 'auto' :'smooth' , block: position });
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 140) {
+                setScrolling(true);
+            } else {
+                setScrolling(false);
+            }
         };
 
-    const resetScroll = () => {
-      window.scrollTo(0,0)
-    }
-    
-        return {isScrolling, scrollToElement, resetScroll}
-}
+        window.addEventListener('scroll', handleScroll);
 
-export default useIsScrolling
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []); 
+
+    const scrollToElement = (ref: any, position = 'start') => {
+        ref.current?.scrollIntoView({
+            behavior: isMobile ? 'auto' : 'smooth',
+            block: position,
+        });
+    };
+
+    const resetScroll = useCallback(() => {
+      window.scrollTo(0, 0);
+    }, []); 
+
+    return { isScrolling, scrollToElement, resetScroll };
+};
+
+export default useIsScrolling;

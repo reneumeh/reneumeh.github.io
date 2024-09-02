@@ -10,7 +10,7 @@ export const main002: ArticleType = {
     content: [<h2>Lorem Ipsum</h2>, 
     <p> This is the introduction</p>, 
     <div className="up-and-down center">
-      <img src='https://via.placeholder.com/300x200' /> 
+      <img alt='example' src='https://via.placeholder.com/300x200' /> 
       <i>An example image in the article</i> 
     </div>,
     <div>
@@ -21,5 +21,5 @@ export const main002: ArticleType = {
     <p>orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>,
     <a href="https://www.example.com"> To the example</a>,
-    <a href="reneumeh.github.io"><img className='icon ' width={20} src="https://via.placeholder.com/300x200"/></a>]
+    <a href="reneumeh.github.io"><img alt='example' className='icon ' width={20} src="https://via.placeholder.com/300x200"/></a>]
 }
