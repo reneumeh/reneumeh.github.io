@@ -3,7 +3,7 @@ import { ArticleType } from "../../types"
 
 export const main001: ArticleType = {
     id: 3194001,
-    title: 'Sample Article',
+    title: 'How To Become A Mechanical Engineer',
     summary: 'This is a summary of the article.',
     primaryImage: 'https://via.placeholder.com/600x400',
 
