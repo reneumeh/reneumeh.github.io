@@ -5,6 +5,7 @@ import Pagination from './Pagination'
 import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { sideQuestArticles } from '../utils/sideQuests/sideQuests'
+import { PALETTE } from '../utils/theme'
 
 
 type sideQuestsProps = {
@@ -66,7 +67,7 @@ const SideQuestsWrapper = styled.div`
     }
     .header::before {
         content: "";
-        border: 1px solid black;
+        border: 1px solid ${PALETTE.BLACK};
         position: absolute;
         bottom: calc(6rem);
         left: 10vw;
@@ -95,10 +96,10 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     width: 60vw;
     transform: translateX(${({ currentPage }) => `${currentPage * -60}vw`});
     transition: all ease 0.5s;
-    background-color: white;
+    background-color: ${PALETTE.WHITE};
     padding: 1rem;
     margin: 1rem;
-    box-shadow: 8px 8px #805422;
+    box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
     cursor: pointer;
 
     &:hover {
@@ -114,8 +115,8 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     position: absolute;
     right: 2rem;
     bottom: 2rem;
-    border: solid 1px black;
-    background-color: white;
+    border: solid 1px ${PALETTE.BLACK};
+    background-color: ${PALETTE.WHITE};
     height: 1.5rem;
     width: 1.5rem;
     display: flex;
@@ -129,11 +130,11 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
     .primary-image {
     width: 30vw;
-    border: 1px solid black;
+    border: 1px solid ${PALETTE.BLACK};
     }
 
     .title {
-        color: #805422;
+        color: ${PALETTE.PRIMARY.DARK};
         font-size: calc(3vw + 0.5rem);
         font-weight: 700;
         margin: 10px 0 20px 0;

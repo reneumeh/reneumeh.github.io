@@ -1,6 +1,7 @@
 import React, { MouseEvent, useRef } from 'react';
 import styled from 'styled-components';
 import { camelize } from '../utils/utils';
+import { PALETTE } from '../utils/theme';
 
 type TProps = {
   children?: JSX.Element;
@@ -74,13 +75,13 @@ export default PortfolioModal;
 const Card = styled.div`
   width: calc(50% + 10rem);
   height: calc(95% - 21vw);
-  background-color: white;
+  background-color: ${PALETTE.WHITE};
   padding: 1rem;
-  box-shadow: 8px 8px #805422;
+  box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
 
   img {
     margin: 0 1rem 1rem 0;
-    border: 1px solid black;
+    border: 1px solid ${PALETTE.BLACK};
     height: 20rem;
     width: 20rem;
     float: left;
@@ -102,7 +103,7 @@ const ExitButton = styled.div`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: #D1D3D4;
+  background-color: ${PALETTE.SECONDARY.LIGHT};
   color: rgba(0, 0, 0, 0.6);
   font-size: 2rem;
   font-family: Leaugue-Spartan-light;
@@ -111,7 +112,7 @@ const ExitButton = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: white;
-    color: black;
+    background-color: ${PALETTE.WHITE};
+    color: ${PALETTE.BLACK};
   }
 `;

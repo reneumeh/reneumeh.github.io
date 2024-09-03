@@ -2,6 +2,7 @@ import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
 import { useState } from "react";
 import PortfolioModal from "./PortfolioModal";
+import { PALETTE } from "../utils/theme";
 
 type portfolioProps = {
     mechSection: React.MutableRefObject<null>, 
@@ -140,7 +141,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             width: 20vw;
             height: 20vw;
             z-index: 999;
-            background-color: white;
+            background-color: ${PALETTE.WHITE};
             cursor: pointer;
         }
         .tester {
@@ -150,7 +151,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             position: absolute;
             top: 1rem;
             left: 0.8rem;
-            border: 1px solid black;
+            border: 1px solid ${PALETTE.BLACK};
         }
         .portfolio-name {
             position: relative;
@@ -184,8 +185,8 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
     }
 
     text {
-        -webkit-text-fill-color: #E7E5E0;
-        -webkit-text-stroke: 1px white;
+        -webkit-text-fill-color: ${PALETTE.BACKGROUND};
+        -webkit-text-stroke: 1px ${PALETTE.WHITE};
         height : 120px;
         font: bold 60px Century Gothic, Arial;
         width: 100%;

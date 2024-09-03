@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { PALETTE } from '../utils/theme';
 
 const BlogHero = () => {
     const blogHeroImages = [
@@ -104,7 +105,7 @@ const BlogHeroWrapper = styled.div`
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
         line-height: 4.2rem;
-        color: #AB957C;
+        color: ${PALETTE.PRIMARY.DEFAULT};
     }
 
     @media screen and (max-width: 860px) {

@@ -1,6 +1,7 @@
 import useIsScrolling from "../hooks/useIsScrolling";
 import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
+import { PALETTE } from "../utils/theme";
 
 const HeaderComp = (props: { Portfolio: any; Contact: any; }) => {
     const {isScrolling, scrollToElement} = useIsScrolling();
@@ -70,7 +71,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     isScrolling === true ? 'solid rgba(0, 0, 0, 0.2) 1px' : ""};
     display: flex;
     background-color: ${({ isScrolling }) =>
-    isScrolling === true ?  '#E7E5E0' : ""};
+    isScrolling === true ?  `${PALETTE.BACKGROUND}` : ""};
     justify-content: ${({ isScrolling }) =>
     isScrolling === true ? 'space-between' : ""};
     width: calc(100vw - 17px);
@@ -83,7 +84,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
         isScrolling === true ? 'flex' : 'none'};
         width: max-content;
         align-items: center;
-        color: #AB957C;
+        color: ${PALETTE.PRIMARY.DEFAULT};
         text-decoration: none;
         margin: 0px 0vw 0px 1vw;
         font-weight: bold;
@@ -92,7 +93,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
         font-size: 2rem;
         white-space: nowrap;
         span {
-            color: black;
+            color: ${PALETTE.BLACK};
         }
     }
 
@@ -103,26 +104,26 @@ const Header = styled.div<{ isScrolling: boolean }>`
         display: ${({ isScrolling }) =>
         isScrolling === true ? 'none' : 'flex'};
         flex-direction: column;
-        border: 1px solid black;
+        border: 1px solid ${PALETTE.BLACK};
         border-radius: 20px;
-        background-color: #D1D3D4;
+        background-color: ${PALETTE.SECONDARY.LIGHT};
         font-size: 0.9rem;
         :hover {
-            background-color: white;
-            color: white;
+            background-color: ${PALETTE.WHITE};
+            color: ${PALETTE.WHITE};
         }
         .top, top:visited, top:active {
                 padding: 0.7rem 0.5rem;
                 text-decoration: none;
                 border-radius: 20px 20px 0px 0px;
-                color: black; 
-                border-bottom: 1px solid black;
+                color: ${PALETTE.BLACK}; 
+                border-bottom: 1px solid ${PALETTE.BLACK};
             }
         .bottom, .bottom:visited, bottom:active {
             padding: 0.7rem 0.5rem;
             text-decoration: none;
             border-radius: 0px 0px 20px 20px;
-            color: black;
+            color: ${PALETTE.BLACK};
         }
     }
 
@@ -164,8 +165,8 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                         
                     }
                     .page-buttons:nth-child(-n + 2) {
-                        border-bottom: 1px solid black;
-                        color: #AB957C;
+                        border-bottom: 1px solid ${PALETTE.BLACK};
+                        color: ${PALETTE.PRIMARY.DEFAULT};
                         margin: 2em auto 0em auto;
                     }
                     .page-buttons:hover{
@@ -185,8 +186,8 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     padding: 2rem;
                 }
                 :hover {
-                    color: white;
-                    background-color: #AB957C;
+                    color: ${PALETTE.WHITE};
+                    background-color: ${PALETTE.PRIMARY.DEFAULT};
                     cursor: pointer;
                 }
                 `;
@@ -198,7 +199,7 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         position: absolute;
         width: 100vw;
         height: 100vh;
-        background-color: #E7E5E0;
+        background-color: ${PALETTE.BACKGROUND};
         left: ${({ isMenuOpen }) =>
         isMenuOpen === true ? '0vw' : '-100vw'};
         transition: 0.5s ease all;

@@ -5,6 +5,7 @@ import { ArticleType } from '../utils/types';
 import { sideQuestArticles } from '../utils/sideQuests/sideQuests';
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
+import { PALETTE } from '../utils/theme';
 
 const Article = () => {
     const [article, setArticle] = useState<ArticleType>(mainQuestArticles[0]);
@@ -100,20 +101,20 @@ const ArticleContainer = styled.article`
         font-size: 2.5em;
         margin-bottom: 20px;
         margin-top: 20px;
-        color: #805422;
+        color: ${PALETTE.PRIMARY.DARK};
     }
 
     h2 {
         font-size: 2em;
         margin-bottom: 10px;
         margin-top: 10px;
-        color: #ab957c;
+        color: ${PALETTE.PRIMARY.DEFAULT};
     }
 
     h3 {
         font-size: 1.3em;
         width: fit-content;
-        color: #ab957c;
+        color: ${PALETTE.PRIMARY.DEFAULT};
     }
 
     p {
@@ -121,7 +122,7 @@ const ArticleContainer = styled.article`
     }
 
     a {
-        color: #805422;
+        color: ${PALETTE.PRIMARY.DARK};
         text-decoration: none;
         &:hover {
             text-decoration: underline;
@@ -193,7 +194,7 @@ const ArticleContainer = styled.article`
     button {
         width: fit-content;
         height: 2.5rem;
-        background-color: #ab957c;
+        background-color: ${PALETTE.PRIMARY.DEFAULT};
         border: none;
         cursor: pointer;
         &:hover {

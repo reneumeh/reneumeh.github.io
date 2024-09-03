@@ -1,5 +1,6 @@
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
+import { PALETTE } from "../utils/theme";
 
 const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>, Portfolio: React.MutableRefObject<null>}) => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
@@ -121,7 +122,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             width: 20vw;
             height: 20vw;
             z-index: 999;
-            background-color: white;
+            background-color: ${PALETTE.WHITE};
         }
         .tester {
             z-index: -1;
@@ -130,7 +131,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             position: absolute;
             top: 1rem;
             left: 0.8rem;
-            border: 1px solid black;
+            border: 1px solid ${PALETTE.BLACK};
         }
         .portfolio-name {
             position: relative;
@@ -164,8 +165,8 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
     }
 
     text {
-        -webkit-text-fill-color: #E7E5E0;
-        -webkit-text-stroke: 1px white;
+        -webkit-text-fill-color: ${PALETTE.BACKGROUND};
+        -webkit-text-stroke: 1px ${PALETTE.WHITE};
         height : 120px;
         font: bold 60px Century Gothic, Arial;
         width: 100%;

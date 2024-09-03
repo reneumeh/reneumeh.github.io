@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PALETTE } from "../utils/theme";
 
 const InterestsComp = () => {
     const interest_stuff = [
@@ -52,7 +53,7 @@ const InterestsWrapper = styled.div`
     }
     .topic {
         flex-basis: 30%;
-        color: #805422;
+        color: ${PALETTE.PRIMARY.DARK};
         font-size: 3.5rem;
         font-weight: 700;
         

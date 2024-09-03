@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
+import { PALETTE } from '../utils/theme';
 
 const HeroComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>}) => {
     const {scrollToElement} = useIsScrolling();
@@ -87,7 +88,7 @@ const Hero = styled.div`
         width: fit-content;
         font-family: korean-font;
         font-size: 3.7rem;
-        color: #AB957C;
+        color: ${PALETTE.PRIMARY.DEFAULT};
     }
 
     .marquee {
@@ -96,7 +97,7 @@ const Hero = styled.div`
         }
     font-family: korean-font;
     font-size: 2.5rem;
-    color: #9F9E9E; 
+    color: ${PALETTE.SECONDARY.DARK}; 
     height: fit-content;
     --gap: 1vw;
     position: relative;

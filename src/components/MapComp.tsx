@@ -1,6 +1,7 @@
 import useHoveredElement from "../hooks/useHoveredElement";
 import { useRef } from "react";
 import styled from "styled-components";
+import { PALETTE } from "../utils/theme";
 
 const MapComp = () => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
@@ -92,7 +93,7 @@ const Map = styled.div<{ hoveredElement: string }>`
     .explanations-placeholder {
         position: absolute;
         font-family: Leaugue-Spartan;
-        color: #9F9E9E;
+        color: ${PALETTE.SECONDARY.DARK};
         height: 100vh;
         top: 22vw;
         left: calc(100vw - 20vw);
@@ -101,9 +102,9 @@ const Map = styled.div<{ hoveredElement: string }>`
         z-index: -1;
         animation: float 2s ease-in-out infinite;
         height: fit-content;
-        background-color: white;
+        background-color: ${PALETTE.WHITE};
         padding: 3px;
-        box-shadow: 5px 5px #805422;
+        box-shadow: 5px 5px ${PALETTE.PRIMARY.DARK};
     }
 
     @keyframes float {
@@ -140,23 +141,23 @@ const Map = styled.div<{ hoveredElement: string }>`
             visibility: visible;
             text-align: start;
             padding-left: 10px;
-            background-color: #E7E5E0;
+            background-color: ${PALETTE.BACKGROUND};
             transform: translateX(-21vw);
             transition: 0.7s ease transform;
             font-size: 1.5vw;
             width: 17vw;
-            background-color: white;
+            background-color: ${PALETTE.WHITE};
             padding: 3px;
-            box-shadow: 5px 5px #805422;
+            box-shadow: 5px 5px ${PALETTE.PRIMARY.DARK};
         }
     .city {
-        color: #9F9E9E;
+        color: ${PALETTE.SECONDARY.DARK} ;
         font-size: 1.5rem;
         margin: 2px;
         font-family: Leaugue-Spartan;
     }
     .country {
-        color: #AB957C;
+        color: ${PALETTE.PRIMARY.DEFAULT};
         font-size: 1.5rem;
         margin: 0;
         font-family: Leaugue-Spartan;

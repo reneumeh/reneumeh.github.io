@@ -1,3 +1,4 @@
+import { PALETTE } from '../utils/theme';
 import { useTotalPageHandler } from '../utils/utils';
 import styled from 'styled-components';
 
@@ -59,12 +60,12 @@ const PaginationWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #B5B5B5;
+    background-color: ${PALETTE.SECONDARY.DEFAULT};
     border: none;
     height: 1rem;
     width: 1rem;
     border-radius: 50%;
-    color: white;
+    color: ${PALETTE.WHITE};
     &:hover {
       cursor: pointer;
     }
@@ -75,7 +76,7 @@ const PaginationWrapper = styled.div`
     height: 0.7rem;
     width: 0.7rem;
     border-radius: 50%;
-    background-color: #D1D3D4;
+    background-color: ${PALETTE.SECONDARY.LIGHT};
     transition: 0.7s ease all;
     &:hover {
       cursor: pointer;
@@ -83,11 +84,11 @@ const PaginationWrapper = styled.div`
   }
 
     .active {
-    background-color: white;
+    background-color: ${PALETTE.WHITE};
     }
 
   .page-text {
-    color: white;
+    color: ${PALETTE.WHITE};
     align-self: center;
     .page-count {
       color: red;
@@ -96,14 +97,14 @@ const PaginationWrapper = styled.div`
   .page-size-select {
     position: absolute;
     font-size: 0.7rem;
-    color: white;
+    color: ${PALETTE.WHITE};
     right: 0;
     width: 5.3rem;
     padding: 2px 7px;
     background-color: grey;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: ${PALETTE.WHITE};
     option {
       background-color: black;
     }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { PALETTE } from '../utils/theme';
 
 const DownloadCVComp = () => {
   return (
@@ -25,10 +26,10 @@ const DownloadCVWrapper = styled.div`
     }
     .portfolio-button-inside, .portfolio-button-inside:visited, .portfolio-button-inside:active {
         padding: 1rem 2rem;
-        border: 1px solid white;
+        border: 1px solid ${PALETTE.WHITE};
         text-decoration: none;
-        background-color: #AB957C; 
-        color: white;
+        background-color: ${PALETTE.PRIMARY.DEFAULT}; 
+        color: ${PALETTE.WHITE};
     }
     .portfolio-button-inside:hover, portfolio-button-inside:active {
         transform: scale(0.9);

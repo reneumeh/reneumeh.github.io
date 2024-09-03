@@ -1,5 +1,6 @@
 
 import styled from 'styled-components';
+import { PALETTE } from '../utils/theme';
 
 function PageNotFound() {
   return (
@@ -26,7 +27,7 @@ const PNFWrapper = styled.div`
   height: 100%;
   position: absolute;
   z-index: -10;
-  background-color: #E7E5E0;
+  background-color: ${PALETTE.BACKGROUND};
   font-family: Leaugue-Spartan-minor;
 
   h1 {
@@ -53,10 +54,10 @@ const PNFWrapper = styled.div`
 }
   .home-button-inside, .home-button-inside:visited, .home-button-inside:active {
     padding: 1rem 2rem;
-    border: 1px solid white;
+    border: 1px solid ${PALETTE.WHITE};
     text-decoration: none;
-    background-color: #AB957C; 
-    color: white;
+    background-color: ${PALETTE.PRIMARY.DEFAULT}; 
+    color: ${PALETTE.WHITE};
 }
 .home-button-inside:hover, home-button-inside:active {
     transform: scale(0.9);

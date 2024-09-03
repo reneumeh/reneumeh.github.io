@@ -1,6 +1,7 @@
 import React from 'react';
 import emailjs from '@emailjs/browser';
 import styled from 'styled-components';
+import { PALETTE } from '../utils/theme';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
@@ -59,8 +60,8 @@ const ContactWrapper = styled.div`
     form input, form textarea {
         width: 100%;
         border: 0px;
-        background-color: #D4D4D4;
-        color: black;
+        background-color: ${PALETTE.SECONDARY.LIGHT};
+        color: ${PALETTE.BLACK};
         outline: none;
         padding: 10px;
         font-size: 15px;
@@ -78,10 +79,10 @@ const ContactWrapper = styled.div`
     }
     .button{
         padding: 1rem 2rem;
-        border: 1px solid white;
+        border: 1px solid ${PALETTE.WHITE};
         text-decoration: none;
-        color: white;
-        background: #AB957C;
+        color: ${PALETTE.WHITE};
+        background: ${PALETTE.PRIMARY.DEFAULT};
     }
     .button:hover{
         transform: scale(0.9);
@@ -90,7 +91,7 @@ const ContactWrapper = styled.div`
     }
     .contact-left::before {
         content: "";
-        border: 1px solid black;
+        border: 1px solid ${PALETTE.BLACK};
         position: absolute;
         bottom: 25px;
         left: 10vw;

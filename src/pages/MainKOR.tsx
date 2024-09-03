@@ -8,6 +8,7 @@ import PortfolioComp from '../components_kor/PortfolioComp_kor';
 import InterestsComp from '../components_kor/InterestsComp_kor';
 import ContactComp from '../components_kor/ContactComp_kor';
 import DownloadCVComp from '../components_kor/DownloadCVComp_kor';
+import { PALETTE } from '../utils/theme';
 
 
 function MainENG() {
@@ -37,7 +38,7 @@ const Wrapper = styled.div`
 width: 100%;
 position: absolute;
 z-index: -10;
-background-color: #E7E5E0;
+background-color: ${PALETTE.BACKGROUND};
 font-family: Leaugue-Spartan;
     `;
 

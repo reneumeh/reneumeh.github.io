@@ -8,6 +8,7 @@ import InterestsComp from '../components/InterestsComp';
 import ContactComp from '../components/ContactComp';
 import DownloadCVComp from '../components/DownloadCVComp';
 import { Page } from '../utils/types';
+import { PALETTE } from '../utils/theme';
 
 function MainENG() {
     const portfolio = useRef(null);
@@ -61,6 +62,6 @@ export const Wrapper = styled.div`
 width: 100%;
 position: absolute;
 z-index: -10;
-background-color: #E7E5E0;
+background-color: ${PALETTE.BACKGROUND};
 font-family: Leaugue-Spartan-minor;
     `;
