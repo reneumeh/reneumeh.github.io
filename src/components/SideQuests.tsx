@@ -53,7 +53,7 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
 export default SideQuests 
 
 const SideQuestsWrapper = styled.div`
-      margin: auto;
+    margin: auto;
     margin-bottom: 7rem;
     width: 75vw;
     font-size: 1.1rem;
@@ -94,7 +94,7 @@ const Carousel = styled.div`
 
 const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     width: 60vw;
-    transform: translateX(${({ currentPage }) => `${currentPage * -60}vw`});
+    transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem)`});
     transition: all ease 0.5s;
     background-color: ${PALETTE.WHITE};
     padding: 1rem;
@@ -103,7 +103,7 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     cursor: pointer;
 
     &:hover {
-        transform: translateY(-5px); 
+        transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem)`}) translateY(-5px); 
 
         .box {
             transform: translateX(10px); 
