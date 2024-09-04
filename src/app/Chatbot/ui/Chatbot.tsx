@@ -7,6 +7,7 @@ import useIsExpanded from '../hook/use-is-expanded';
 import { Box, IconButton } from '@chakra-ui/react';
 import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull } from 'react-icons/md';
 import useIsMobile from '@/app/hooks/useIsMobile';
+import { PALETTE } from '@/app/utils/theme';
 
 const Chatbot = () => {
   const isMobile = useIsMobile();
@@ -44,11 +45,10 @@ const Chatbot = () => {
 
   return (
     <Box pointerEvents={'auto'} zIndex={100}>
-      {isOpen ? (
-          <ChatbotWrapper isMobile={isMobile}>
-            <Header isExpanded={isExpanded} className="handle grabbable">
+          <ChatbotWrapper isMobile={isMobile} isExpanded={isExpanded} isOpen={isOpen}>
+            <Header isExpanded={isExpanded} isOpen={isOpen} className="handle grabbable">
               <p>
-                SPACE<span>B</span>OT{' '}
+                GPT ME{' '}
               </p>
               <div className="buttons">
                  {isExpanded ? (
@@ -57,8 +57,11 @@ const Chatbot = () => {
                     onClick={onShrink}
                     aria-label="Close Fullscreen Chatbot"
                     icon={<MdCloseFullscreen size={18} />}
-                    color={'#EDC844'}
+                    color={ PALETTE.WHITE }
+                    padding={'1px'}
+                    _hover= {{ bg: PALETTE.SECONDARY.DEFAULT }}
                     bg="transparent"
+
                   />
                 ) : (
                   <IconButton
@@ -66,7 +69,10 @@ const Chatbot = () => {
                     onClick={onExpand}
                     aria-label="Open Fullscreen Chatbot"
                     icon={<MdOpenInFull size={18} />}
-                    color={'#EDC844'}
+                    color={ PALETTE.WHITE }
+                    padding={'1px'}
+                    _hover= {{ bg: PALETTE.SECONDARY.DEFAULT }}
+                    
                     bg="transparent"
                   />
                 )} 
@@ -75,29 +81,29 @@ const Chatbot = () => {
                   onClick={onClose}
                   aria-label="Close Chatbot"
                   icon={<MdHorizontalRule size={18} />}
-                  color={'#EDC844'}
+                  color={ PALETTE.WHITE }
                   bg="transparent"
-                  size={"1rem"}
                   marginRight={"0.3rem"}
-                  _hover= {{ bg: 'grey' }}
-                  isRound= {true}
+                  _hover= {{ bg: PALETTE.SECONDARY.DEFAULT }}
+                  padding={'1px'}
+                  isRound
                 />
               </div>
             </Header>
             <Dialogue 
             isOpen={ isOpen } 
-            isExpanded={ isExpanded } />
+            isExpanded={ isExpanded }
+            isMobile={ isMobile } />
           </ChatbotWrapper>
-      ) : (
         <ClosedMode
           isMobile={isMobile}
+          isOpen={isOpen}
           onClick={() => {
             setIsOpen(true);
             setIsExpanded(true);
           }}
         >
           <img
-            className="handle"
             src="/chatbot.png"
             style={{ width: isMobile ? '20px' : '30px' }}
             onClick={() => {
@@ -106,75 +112,51 @@ const Chatbot = () => {
             }}
           />
         </ClosedMode>
-      )}
     </Box>
   );
 };
 
 export default Chatbot;
 
-const ChatbotWrapper = styled.div<{ isMobile: boolean }>`
+const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOpen: boolean }>`
   transition: ease all 1s;
-  width: 20rem;
+  width: ${(props) => (props.isExpanded ? '20rem' : '15rem') };
   overflow: hidden;
   position: fixed;
   right: 1rem;
-  bottom: ${({ isMobile }) => (isMobile ? '130px' : '100px')};
-  z-index: 999999999;
-
-  .grabbable {
-    cursor: move;
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-}
-
-.grabbable:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-
+  bottom: ${({ isMobile }) => (isMobile ? '130px' : '1rem')};
+  display : ${(props) => (props.isOpen ? 'initial' : 'none')};
 `;
 
-const Header = styled.div<{ isExpanded: boolean }>`
+const Header = styled.div<{ isExpanded: boolean, isOpen: boolean }>`
   display: flex;
   justify-content: space-between;
-  width: 20rem;
+  width: ${(props) => (props.isOpen ? ( props.isExpanded ? '20rem' : '15rem') : '0rem')};
   position: relative;
-  /* transform: ${(props) => (props.isExpanded ? '' : 'translateY(23.2em)')}; */
-  z-index: 99999;
-  background-color: black;
-  border: 1px solid white;
+  background-color: ${PALETTE.PRIMARY.DEFAULT};
   color: white;
+  transition: ease all 0.7s;
   font-family: Helvetica;
-  border-radius: 15px 15px 0px 0px;
   .buttons {
     display: flex;
     flex-direction: row;
     gap: 1rem;
     padding: 0.5rem 1rem;
   }
-  span {
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #edc844;
-  }
   p {
-    margin: 5px 0 0 10px;
+    margin: 10px 0 0 10px;
     font-weight: 600;
     font-size: 1.2rem;
   }
 `;
 
-const ClosedMode = styled.div<{ isMobile: boolean }>`
+const ClosedMode = styled.div<{ isMobile: boolean, isOpen: boolean }>`
   position: fixed;
   right: ${({ isMobile }) => (isMobile ? '1rem' : '3rem')};
-  bottom: ${({ isMobile }) => (isMobile ? '130px' : '100px')};
+  bottom: ${({ isMobile }) => (isMobile ? '1rem' : '3rem')};
   cursor: pointer;
   padding: 10px;
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background-color: #222;
-  border: 1px solid white;
+  background-color: ${PALETTE.PRIMARY.DEFAULT};
+  box-shadow: 5px 5px ${PALETTE.BLACK};
+  display: ${({ isOpen }) => (isOpen ? 'none' : 'initial')};
 `;

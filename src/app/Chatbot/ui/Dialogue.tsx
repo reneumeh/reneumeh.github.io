@@ -16,7 +16,6 @@ import {
 import Markdown from 'react-markdown';
 
 import SinusodialLoader from './SinusodialLoader';
-import CompanyIcon from './CompanyIcon';
 
 import { getUniqueId, truncate } from '../util/utils';
 
@@ -30,13 +29,16 @@ import useAppStore from '../util/appstore';
 import { FeedbackScreen } from './FeedbackScreen';
 
 import { Message as MessageType } from '../util/appstore';
+import MyIcon from './MyIcon';
+import { PALETTE } from '@/app/utils/theme';
 
 type dialogueProps = {
   isOpen: boolean;
   isExpanded: boolean;
+  isMobile: boolean;
 }
 
-const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
+const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
   const [inputText, setInputText] = useState('');
   const [isMounted, setMounted] = useState(false);
 
@@ -98,7 +100,7 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
   };
 
   return (
-    <DialogueWrapper isExpanded={isExpanded}>
+    <DialogueWrapper isExpanded={isExpanded} isMobile={isMobile}>
       {isFeedbackScreenOpen && (
         <FeedbackScreenWrapper className="animated animatedFadeInUp fadeInLeft">
           <FeedbackScreen 
@@ -113,7 +115,7 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
         {messageItems?.map((item) => (
           <div key={item.id} className="logo-message">
             {item.role === 'assistant' && (
-              <CompanyIcon
+              <MyIcon
                 fontSize={'2rem'}
                 sx={{
                   marginRight: '0.5rem',
@@ -148,7 +150,7 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
                   {('0' + new Date(item.created_at * 1000).getMinutes()).slice(-2)}
                 </span>
               </Role>
-              {item.content && <Markdown>{item.content}</Markdown>}
+              {item.content && <p className= 'content'>{item.content}</p>}
               {item.followup_question && item.id === lastMessageId && (
                 <SuggestedQuestion
                   key={getUniqueId()}
@@ -214,12 +216,14 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
           </SuggestedQuestion>
         </SuggestedQuestionsArea>
       )}
-      <Center as="form" w="100%" p={'0.3rem'}>
+      <Center as="form" w="97%" p={'0.3rem'}>
         <InputGroup alignItems={'center'}>
           <Input
             ref={inputRef}
             placeholder="Type in message"
             disabled={loading}
+            fontFamily={ 'Leaugue-Spartan-minor'}
+            fontSize={'1rem'}
             value={inputText}
             onChange={(e) => {
               setInputText(e.target.value);
@@ -230,16 +234,15 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
                 submitAssistant(inputText);
               }
             }}
-            borderRadius="25px"
-            _active={{ borderColor: "#F8C81D", boxShadow: 'none' }}
-            _focus={{ borderColor: "#F8C81D", boxShadow: 'none' }}
-            bg="#D9D9D9"
+            _hover={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
+            _active={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
+            _focus={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
+            bg={PALETTE.SECONDARY.LIGHT}
             // isFullWidth
             width={'100%'}
-            height={'2.5rem'}
+            height={'1.5rem'}
             padding={'0.5rem'}
             pr="2.5rem"
-            pb="9px"
             overflow="hidden"
             sx={{
               '&::-webkit-scrollbar': {
@@ -254,16 +257,15 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
               icon={<MdSend />}
               isDisabled={loading || inputText.length === 0}
               onClick={() => submitAssistant(inputText)}
-              backgroundColor="#F8C81D"
-              _hover={{ bg: '#F8C81D' }}
-              _active={{ bg: '#F8C81D' }}
+              backgroundColor= {PALETTE.PRIMARY.LIGHT}
+              _hover={{ bg: `${PALETTE.PRIMARY.DEFAULT}` }}
+              _active={{ bg: `${PALETTE.PRIMARY.DEFAULT}` }}
               _focus={{ boxShadow: 'none' }}
-              color="#000"
-              sx={{ transform: 'rotate(-45deg)' }}
+              color= {PALETTE.BLACK}
               cursor={'pointer'}
-              borderRadius={'50%'}
               padding={'0.5rem'}
               size={'0.5rem'}
+              margin={'0.3rem 0.3rem 0 0'}
             />
           </InputRightElement>
         </InputGroup>
@@ -274,16 +276,15 @@ const Dialogue = ({ isOpen, isExpanded }: dialogueProps) => {
 
 export default Dialogue;
 
-const DialogueWrapper = styled.div<{ isExpanded: boolean }>`
-  transition: ease all 1s;
-  background-color: #fff;
+const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
+  transition: ease all 0.7s;
+  background-color: ${PALETTE.WHITE};
   color: black;
-  height: 25.5rem;
-  border-radius: 0px 0px 20px 20px;
+  height: ${(props) => (props.isExpanded ? '25.5rem' : '0rem')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: ${(props) => (props.isExpanded ? 'grid' : 'none')};
+  display: grid;
   @keyframes fadeInLeft {
     from {
       transform: translate3d(140px, 0, 0);
@@ -321,11 +322,11 @@ const MessagesArea = styled.div<{ suggestedQuestions: boolean }>`
     width: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #f8c81d;
+    background-color: ${PALETTE.PRIMARY.DEFAULT};
     border-radius: 5px;
   }
   &::-webkit-scrollbar-track {
-    background-color: #ddd;
+    background-color: ${PALETTE.SECONDARY.LIGHT};
     border-radius: 5px;
   }
   .logo-message {
@@ -340,12 +341,16 @@ const Message = styled.div`
 
   a {
     margin: 2px;
-    color: #edc844;
+    color: ${PALETTE.PRIMARY.DEFAULT};
     cursor: pointer;
   }
 
   .rating {
     background-color: #ffffff;
+  }
+
+  p {
+    margin: auto;
   }
 `;
 
@@ -360,7 +365,7 @@ const StyledInput = styled.div`
   }
 
   & .chakra-input__group:focus-within {
-    border-color: #edc844;
+    border-color: ${PALETTE.PRIMARY.DEFAULT};
   }
 `;
 
@@ -376,22 +381,21 @@ const Role = styled.div`
 
 const Clickable = styled.div`
   margin: 2px;
-  color: #edc844;
+  color: ${PALETTE.PRIMARY.DEFAULT};
   cursor: pointer;
 `;
 
 export const SuggestedQuestion = styled.div`
   position: relative;
-  background-color: #ddd;
+  background-color: ${PALETTE.SECONDARY.LIGHT};
   width: fit-content;
   margin: 4px;
-  font-family: helvetica;
   padding: 5px 7px;
-  border-radius: 8px;
+  box-shadow: -5px 5px ${PALETTE.PRIMARY.DARK};
   cursor: pointer;
   font-size: 0.9rem;
   &:hover {
-    background-color: #ccc;
+    background-color: ${PALETTE.SECONDARY.DEFAULT};
   }
 `;
 

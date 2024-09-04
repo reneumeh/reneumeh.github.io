@@ -47,7 +47,7 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : d
       created_at: Math.floor(new Date().getTime() / 1000),
       role: 'assistant',
       content:
-        'Hello, my name is SPACEBOT. I am here to answer your questions about SPACEMAP and satellite collisions. How can I help you today?',
+        'Hello, Rene cannot come to the phone right now. But you can ask me anything you need to know about him.',
     };
     setMessageItems((prev) => [...prev, startingMessage]);
     addMessage(startingMessage);
@@ -145,7 +145,7 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : d
         created_at: Math.floor(new Date().getTime() / 1000),
         role: 'assistant',
         content:
-          'Hello, my name is SPACEBOT. I am here to answer your questions about SPACEMAP and satellite collisions. How can I help you today?',
+          'Hello, Rene cannot come to the phone right now. But you can ask me anything you need to know about him.',
       };
       setMessageItems((prev) => [...prev, startingMessage]);
       addMessage(startingMessage);
