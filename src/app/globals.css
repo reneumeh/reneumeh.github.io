@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: "Leaugue-Spartan";
+  src:
+    url("../../public/LeagueSpartan-SemiBold.ttf");}
+
+@font-face {
+  font-family: "Leaugue-Spartan-minor";
+  src:
+    url("../../public/LeagueSpartan-Regular.ttf");}
+
+@font-face {
+  font-family: "Leaugue-Spartan-light";
+  src:
+    url("../../public/LeagueSpartan-ExtraLight.ttf");}
+
+@font-face {
+  font-family: "korean-font";
+  src:
+    url("../../public/DoHyeon-Regular.ttf");}
+
+@font-face {
+  font-family: "korean-font-bold";
+  src:
+    url("../../public/BlackHanSans-Regular.ttf");}
+
+@font-face {
+  font-family: "korean-font-light";
+  src:
+    url("../../public/Hans-Sans-Korean-ExtraLight.otf");}
