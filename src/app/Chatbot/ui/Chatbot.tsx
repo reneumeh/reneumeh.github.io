@@ -120,7 +120,7 @@ export default Chatbot;
 
 const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOpen: boolean }>`
   transition: ease all 1s;
-  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '15rem') : '0rem'))};
+  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '12rem') : '0rem'))};
   border: 1px solid ${PALETTE.BLACK};
   overflow: hidden;
   position: fixed;
@@ -133,7 +133,7 @@ const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOp
 const Header = styled.div<{ isExpanded: boolean, isOpen: boolean, isMobile: boolean }>`
   display: flex;
   justify-content: space-between;
-  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '15rem') : '0rem'))};
+  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '12rem') : '0rem'))};
   position: relative;
   background-color: ${PALETTE.PRIMARY.DEFAULT};
   color: white;
