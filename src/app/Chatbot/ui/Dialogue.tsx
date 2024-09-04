@@ -111,7 +111,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
            />
           </FeedbackScreenWrapper>
       )}
-      <MessagesArea ref={messageRef} suggestedQuestions={suggestedQuestions}>
+      <MessagesArea ref={messageRef} suggestedQuestions={suggestedQuestions} isMobile={isMobile}>
         {messageItems?.map((item) => (
           <div key={item.id} className="logo-message">
             {item.role === 'assistant' && (
@@ -280,7 +280,7 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
   transition: ease all 0.7s;
   background-color: ${PALETTE.WHITE};
   color: black;
-  height: ${(props) => (props.isExpanded ? '25.5rem' : '0rem')};
+  height: ${(props) => (props.isMobile ? (props.isExpanded ? '94vh' : '0rem') : props.isExpanded ? '25.5rem' : '0rem')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -311,8 +311,8 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
   }
 `;
 
-const MessagesArea = styled.div<{ suggestedQuestions: boolean }>`
-  height: ${(props) => (props.suggestedQuestions ? '15rem' : '20rem')};
+const MessagesArea = styled.div<{ suggestedQuestions: boolean, isMobile: boolean }>`
+  height: ${(props) => (props.isMobile ? (props.suggestedQuestions ? '77vh' : '85vh') : props.suggestedQuestions ? '18rem' : '22rem')};
   overflow-y: scroll;
   overflow-wrap: break-word;
   line-height: 1rem;
@@ -346,7 +346,7 @@ const Message = styled.div`
   }
 
   .rating {
-    background-color: #ffffff;
+    background-color: ${PALETTE.WHITE};
   }
 
   p {
@@ -437,7 +437,7 @@ const Rating = styled.div<{ goodClicked: boolean; badClicked: boolean }>`
 `;
 
 const FeedbackScreenWrapper = styled.div`
-  background-color: #fff;
+  background-color: ${PALETTE.WHITE};
   position: absolute;
   height: 25.5rem;
   border-radius: 0px 0px 20px 20px;

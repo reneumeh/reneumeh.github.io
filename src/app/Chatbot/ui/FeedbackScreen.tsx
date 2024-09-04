@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { SuggestedQuestion } from "./Dialogue";
 import { MdSentimentDissatisfied } from "react-icons/md";
 import { Icon as ChakraIcon, Input } from '@chakra-ui/react';
+import { PALETTE } from "@/app/utils/theme";
 
 type FeedbackScreenProps = {
     feedbackInput: string,
@@ -41,8 +42,8 @@ export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedback
             pl={'5px'}
             mb={'0.7rem'}
             fontSize={'0.9rem'}
-            _active={{ borderColor: "#F8C81D", boxShadow: 'none' }}
-            _focus={{ borderColor: "#F8C81D", boxShadow: 'none' }}
+            _active={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
+            _focus={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
           ></Input>
           <div>
             {suggestedFeedback.map((suggestion) => 

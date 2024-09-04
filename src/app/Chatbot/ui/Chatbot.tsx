@@ -46,7 +46,7 @@ const Chatbot = () => {
   return (
     <Box pointerEvents={'auto'} zIndex={100}>
           <ChatbotWrapper isMobile={isMobile} isExpanded={isExpanded} isOpen={isOpen}>
-            <Header isExpanded={isExpanded} isOpen={isOpen} className="handle grabbable">
+            <Header isExpanded={isExpanded} isOpen={isOpen} isMobile={isMobile} className="handle grabbable">
               <p>
                 GPT ME{' '}
               </p>
@@ -120,18 +120,20 @@ export default Chatbot;
 
 const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOpen: boolean }>`
   transition: ease all 1s;
-  width: ${(props) => (props.isExpanded ? '20rem' : '15rem') };
+  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '15rem') : '0rem'))};
+  border: 1px solid ${PALETTE.BLACK};
   overflow: hidden;
   position: fixed;
-  right: 1rem;
-  bottom: ${({ isMobile }) => (isMobile ? '130px' : '1rem')};
+  right: ${({ isMobile }) => (isMobile ? '0rem' : '1rem')};
+  bottom: ${({ isMobile }) => (isMobile ? '0px' : '1rem')};
   display : ${(props) => (props.isOpen ? 'initial' : 'none')};
+  z-index: 999999;
 `;
 
-const Header = styled.div<{ isExpanded: boolean, isOpen: boolean }>`
+const Header = styled.div<{ isExpanded: boolean, isOpen: boolean, isMobile: boolean }>`
   display: flex;
   justify-content: space-between;
-  width: ${(props) => (props.isOpen ? ( props.isExpanded ? '20rem' : '15rem') : '0rem')};
+  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '15rem') : '0rem'))};
   position: relative;
   background-color: ${PALETTE.PRIMARY.DEFAULT};
   color: white;

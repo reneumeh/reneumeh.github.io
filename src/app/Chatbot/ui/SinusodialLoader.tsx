@@ -1,5 +1,6 @@
 'use client'
 
+import { PALETTE } from '@/app/utils/theme';
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
@@ -61,7 +62,7 @@ const Inner = styled.div`
     justify-content: center;
     align-items: center;
     .item {
-        background-color: #999;
+        background-color: ${PALETTE.SECONDARY.LIGHT};
         position: relative;
         width: 8px;
         height: 8px;

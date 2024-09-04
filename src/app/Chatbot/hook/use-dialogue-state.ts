@@ -47,7 +47,7 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : d
       created_at: Math.floor(new Date().getTime() / 1000),
       role: 'assistant',
       content:
-        'Hello, Rene cannot come to the phone right now. But you can ask me anything you need to know about him.',
+        'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.',
     };
     setMessageItems((prev) => [...prev, startingMessage]);
     addMessage(startingMessage);
@@ -145,7 +145,7 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : d
         created_at: Math.floor(new Date().getTime() / 1000),
         role: 'assistant',
         content:
-          'Hello, Rene cannot come to the phone right now. But you can ask me anything you need to know about him.',
+          'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.',
       };
       setMessageItems((prev) => [...prev, startingMessage]);
       addMessage(startingMessage);
