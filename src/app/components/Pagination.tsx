@@ -69,6 +69,7 @@ const PaginationWrapper = styled.div`
     color: ${PALETTE.WHITE};
     &:hover {
       cursor: pointer;
+      background-color: ${PALETTE.SECONDARY.DARK};
     }
   }
 

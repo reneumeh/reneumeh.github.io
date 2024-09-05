@@ -102,14 +102,14 @@ const ArticleContainer = styled.article`
         font-size: 2.5em;
         margin-bottom: 20px;
         margin-top: 20px;
-        color: ${PALETTE.PRIMARY.DARK};
+        color: ${PALETTE.BLACK};
     }
 
     h2 {
         font-size: 2em;
         margin-bottom: 10px;
         margin-top: 10px;
-        color: ${PALETTE.PRIMARY.DEFAULT};
+        color: ${PALETTE.PRIMARY.DARK};
     }
 
     h3 {
