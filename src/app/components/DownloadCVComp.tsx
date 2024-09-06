@@ -44,6 +44,7 @@ export const PrimaryButton = styled.div`
     text-decoration: none;
     background-color: ${PALETTE.PRIMARY.DEFAULT}; 
     color: ${PALETTE.WHITE};
+    cursor: pointer;
 
     &:hover {
         transform: scale(0.9);

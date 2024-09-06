@@ -24,7 +24,7 @@ import useDialogueState from '../hook/use-dialogue-state';
 import { useSuggestions } from '../hook/use-suggestions';
 import { suggestedQuestionsList1, suggestedQuestionsList2 } from '../config/suggestion-questions';
 import { useFeedback } from '../hook/use-feedback';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useAppStore from '../util/appstore';
 import { FeedbackScreen } from './FeedbackScreen';
 
@@ -98,6 +98,12 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
       setSuggestedQuestions(false);
     }
   };
+
+  useEffect(() => {
+    if (!isOpen || !isExpanded) {
+      setIsFeedbackScreenOpen(false);
+    }
+  }, [isOpen, isExpanded, setIsFeedbackScreenOpen])
 
   return (
     <DialogueWrapper isExpanded={isExpanded} isMobile={isMobile}>
@@ -415,6 +421,7 @@ const Rating = styled.div<{ goodClicked: boolean; badClicked: boolean }>`
     display: ${(props) => (!props.badClicked ? 'intial' : 'none')};
     color: ${(props) => (props.goodClicked ? '#00ff00' : '')};
     padding-right: ${(props) => (!props.goodClicked ? '0.3rem' : 'initial')};
+    border: none;
     margin-top: 0.3rem;
 
     &:hover {
@@ -428,6 +435,7 @@ const Rating = styled.div<{ goodClicked: boolean; badClicked: boolean }>`
     color: ${(props) => (props.badClicked ? '#ff0000' : '')};
     padding-left: ${(props) => (!props.badClicked ? '0.3rem' : 'initial')};
     margin-top: 0.3rem;
+    border: none;
 
     &:hover {
       color: #ff0000;

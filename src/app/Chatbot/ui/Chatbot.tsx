@@ -104,7 +104,7 @@ const Chatbot = () => {
           }}
         >
           <img
-            src="/chatbot.png"
+            src="static/chatbot.png"
             style={{ width: isMobile ? '20px' : '30px' }}
             onClick={() => {
               setIsOpen(true);
@@ -119,7 +119,7 @@ const Chatbot = () => {
 export default Chatbot;
 
 const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOpen: boolean }>`
-  transition: ease all 1s;
+  transition: ease all 0.7s;
   width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '12rem') : '0rem'))};
   border: 1px solid ${PALETTE.BLACK};
   overflow: hidden;

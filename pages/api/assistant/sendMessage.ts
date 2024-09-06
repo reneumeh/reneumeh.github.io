@@ -28,8 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     let thread_id = threadId || '';
-    let assistant_instructions =
-      'IMPORTANT: Do not mistake the number attached to the constellation name for the norad id. If there is {-} next to a number then it is not the satellite id. Make sure you phrase the follow up question exactly how the user would phrase them.';
+    let assistant_instructions = '';
     let messages_items = [];
     let output_items = [];
 
@@ -70,24 +69,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const run_step = await getRunStep({ threadId: thread_id, runId: run_id });
       const step = run_step.data[0];
       const status = run_data.status;
-
-      if (step && last_called_function) {
-        console.log(step.type, last_called_function);
-      }
-
-      if (step) {
-        if (
-          step.type == 'message_creation' &&
-          [
-            'get_satellite_conjunction_data',
-            'get_recent_satellite_conjunction_data',
-            'get_constellation_conjunction_data',
-          ].includes(last_called_function)
-        ) {
-          flagFinish = true;
-          cancelRun({ threadId: thread_id, runId: run_id });
-        }
-      }
 
       if (status === 'completed') {
         const messages = await getMessages({ threadId: thread_id });

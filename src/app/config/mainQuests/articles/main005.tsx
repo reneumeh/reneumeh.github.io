@@ -2,7 +2,7 @@ import { ArticleType } from "@/app/utils/types"
 
 
 export const main005: ArticleType = {
-    id: 3194002,
+    id: 3194005,
     title: 'How To Become A Car Guy',
     summary: 'This is a summary of the article.',
     primaryImage: 'https://via.placeholder.com/600x400',

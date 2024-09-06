@@ -35,7 +35,7 @@ export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedback
             onChange={(e) => {
               setFeedbackInput(e.target.value);
             }}
-            fontFamily={'Helvetica'}
+            fontFamily={'Leaugue-Spartan-minor'}
             width={'90%'}
             borderRadius="7px"
             placeholder="What went wrong?"
