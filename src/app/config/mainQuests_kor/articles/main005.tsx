@@ -61,7 +61,7 @@ export const main005: ArticleType = {
           <i>Donut Media</i>
         </a>
         <p>
-          복잡한 자동차 기계 구조를 재미있고 이해하기 쉽게 설명합니다. "Up to Speed"와 "Bumper 2 Bumper" 시리즈는 다양한 자동차 모델의 역사와 복잡성을 배우는 데 특히 좋습니다.
+          복잡한 자동차 기계 구조를 재미있고 이해하기 쉽게 설명합니다. &quot;Up to Speed&quot;와 &quot;Bumper 2 Bumper&quot; 시리즈는 다양한 자동차 모델의 역사와 복잡성을 배우는 데 특히 좋습니다.
         </p>
       </div>,
     
