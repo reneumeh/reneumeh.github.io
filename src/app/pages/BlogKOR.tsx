@@ -7,7 +7,7 @@ import BlogHero from "../components_kor/BlogHero_kor"
 import MainQuests from "../components_kor/MainQuests_kor"
 import SideQuests from "../components_kor/SideQuests_kor"
 import { Route, Routes } from "react-router-dom"
-import Article from "../components/Article"
+import Article from "../components_kor/Article_kor"
 import useIsScrolling from "../hooks/useIsScrolling"
 
 export const BlogKOR = () => {
@@ -41,12 +41,12 @@ export const BlogKOR = () => {
 const articlePages : Page[] = [
   {
     name: "홈",
-    link: "#/kor",
+    link: "/#/kor",
     img: "/static/home.png"
   },    
   {
     name: "브로그",
-    link:  "#/blog_kor",
+    link:  "/#/blog_kor",
     img: "/static/blog.png"
   },
   {
@@ -72,7 +72,7 @@ useEffect(() => {
         </Wrapper>
       }/>
       <Route 
-      path="article"
+      path="article_kor/*"
       element={
       <Wrapper>
         <HeaderComp useScrollEffect={false} pages= {articlePages} />

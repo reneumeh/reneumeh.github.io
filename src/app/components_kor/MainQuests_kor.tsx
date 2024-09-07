@@ -29,7 +29,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
             {
                 mainQuestArticles.map((article, index) => {
                     return (
-                        <Card key={index} currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
+                        <Card key={index} currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article_kor?id=${article.id}`)}}>
                             <div className='article-space'>
                                 <div>
                                 <p className='title'>{article.title}</p>

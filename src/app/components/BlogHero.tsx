@@ -164,13 +164,18 @@ const BlogHeroWrapper = styled.div`
     }
 
     .slideshow {
-    height: 45vw;
+    max-height: 45vw;
     top: calc(4.5em + 15.5vw);
     margin: auto;
-    width: 60vw;
+    max-width: 60vw;
+    left: 20vw;
     }
 
     .blob {
     display: none;
+    }
+
+    p {
+        display: none;
     }
 `;

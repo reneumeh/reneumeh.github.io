@@ -41,6 +41,7 @@ const Article = () => {
                 throw new Error('Article not found');
             }
         } catch (error) {
+            console.log(articleId)
             navigate('/404', { replace: true });
         }
     }, [articleId, navigate]);
