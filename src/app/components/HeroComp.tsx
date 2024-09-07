@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
+import Image from 'next/image';
 
 type heroProps = {
     mechSection: React.MutableRefObject<null>, 
@@ -16,7 +17,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
     <Hero>
         <div className='hero-div'>
             <img 
-            src='static/hero1.png' 
+            src='/static/hero1.png' 
             alt='my_image'/>
         </div>
         <div className='intro-1'>Hi, my name is</div> 

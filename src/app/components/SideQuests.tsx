@@ -7,6 +7,7 @@ import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { sideQuestArticles } from '../config/sideQuests/sideQuests'
 import { PALETTE } from '../utils/theme'
+import Image from 'next/image';
 
 
 type sideQuestsProps = {
@@ -28,7 +29,7 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
             {
                 sideQuestArticles.map((article, index) => {
                     return (
-                        <Card currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
+                        <Card key={index} currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
                             <div className='article-space'>
                                 <div>
                                 <p className='title'>{article.title}</p>
@@ -38,7 +39,7 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
                             alt='primary_image'/>
                             </div>
                             <div className='box'>
-                                <img src='static/arrow.png' width={20} alt='arrow'/>
+                                <img src='/static/arrow.png' width={20} alt='arrow'/>
                             </div>
                     </Card>
                     )
@@ -54,8 +55,9 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
 export default SideQuests 
 
 const SideQuestsWrapper = styled.div`
+    padding: 2rem 2rem 2rem 2rem;
     margin: auto;
-    margin-bottom: 7rem;
+    margin-bottom: 5rem; 
     width: 75vw;
     font-size: 1.1rem;
     overflow: hidden;
@@ -66,16 +68,8 @@ const SideQuestsWrapper = styled.div`
         margin: 0;
         font-family: Leaugue-Spartan;
     }
-    .header::before {
-        content: "";
-        border: 1px solid ${PALETTE.BLACK};
-        position: absolute;
-        bottom: calc(6rem);
-        left: 10vw;
-        width: 80vw;
-        height: calc(18rem + 18vw);
-        z-index: -1;
-        }
+
+    border: 1px solid ${PALETTE.BLACK};
     
     @media screen and (max-width: 860px) {
         .header {
@@ -131,7 +125,10 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
     .primary-image {
     width: 30vw;
+    height: 20vw;
     border: 1px solid ${PALETTE.BLACK};
+    margin-left: 1rem;
+    object-fit: cover;
     }
 
     .title {

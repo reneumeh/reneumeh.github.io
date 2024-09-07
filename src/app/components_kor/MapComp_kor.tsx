@@ -3,6 +3,7 @@ import useHoveredElement from "../hooks/useHoveredElement";
 import { useRef } from "react";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
+import Image from 'next/image';
 
 const MapComp = () => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
@@ -39,16 +40,16 @@ const MapComp = () => {
         <div className="WorldMap" >
             <img 
             id='big-map'
-            src='static/map.png'
+            src='/static/map.png'
             alt= 'map'
             style={{position: 'absolute', margin: '2vh  0vw 2vh 5em', width:'80vw'}}/>
-            {MapElements.map((pin) => (
-                <div className='pins'>
+            {MapElements.map((pin, index) => (
+                <div className='pins' key={index}>
                     <img
                     className={pin.city}
                     ref ={pin.ref}
                     alt= {pin.city}
-                    src= "static/pin.png"
+                    src= "/static/pin.png"
                     width= {20}
                     height= {30}
                     onMouseEnter={() => handleHover(pin.city)} 

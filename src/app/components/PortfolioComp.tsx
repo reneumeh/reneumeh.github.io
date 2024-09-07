@@ -5,6 +5,7 @@ import { useState } from "react";
 import PortfolioModal from "./PortfolioModal";
 import { PALETTE } from "../utils/theme";
 import { portfolio_stuff } from "../config/portfolio-stuff";
+import Image from 'next/image';
 
 type portfolioProps = {
     mechSection: React.MutableRefObject<null>, 
@@ -29,8 +30,8 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
             !!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />
         }
         <div className='main-port'>     
-            {portfolio_stuff.map((item) => (
-                <div style={{ position: "relative" }}>
+            {portfolio_stuff.map((item, index) => (
+                <div key={index} style={{ position: "relative" }}>
                     <img className='portfolio-image' src={item.image} 
                         id={item.name}
                         alt={item.name}

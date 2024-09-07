@@ -19,8 +19,8 @@ const InterestsComp = () => {
         <Box>
         <p>Research Interests</p>
         </Box>
-        {interest_stuff.map((interest_stuff) => (
-            <div className='interest'>
+        {interest_stuff.map((interest_stuff, index) => (
+            <div className='interest' key={index}>
                 <div className='topic'>
                     {interest_stuff.topic}
                 </div>

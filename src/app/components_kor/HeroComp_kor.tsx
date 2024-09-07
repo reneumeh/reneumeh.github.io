@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
+import Image from 'next/image';
 
 const HeroComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>}) => {
     const {scrollToElement} = useIsScrolling();
@@ -9,7 +10,7 @@ const HeroComp = (props: {mechSection: React.MutableRefObject<null>, extraSectio
     <Hero>
         <div className='hero-div'>
             <img 
-            src='static/hero1.png' 
+            src='/static/hero1.png' 
             alt='my_image'/>
         </div>
         <div className='intro-1'>제 이름은</div> 

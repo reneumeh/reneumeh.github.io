@@ -8,6 +8,7 @@ import { Box, IconButton } from '@chakra-ui/react';
 import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull } from 'react-icons/md';
 import useIsMobile from '@/app/hooks/useIsMobile';
 import { PALETTE } from '@/app/utils/theme';
+import Image from 'next/image';
 
 const Chatbot = () => {
   const isMobile = useIsMobile();
@@ -104,12 +105,13 @@ const Chatbot = () => {
           }}
         >
           <img
-            src="static/chatbot.png"
+            src="/static/chatbot.png"
             style={{ width: isMobile ? '20px' : '30px' }}
             onClick={() => {
               setIsOpen(true);
               setIsExpanded(true);
             }}
+            alt='chatbot'
           />
         </ClosedMode>
     </Box>
@@ -161,4 +163,33 @@ const ClosedMode = styled.div<{ isMobile: boolean, isOpen: boolean }>`
   background-color: ${PALETTE.PRIMARY.DEFAULT};
   box-shadow: 5px 5px ${PALETTE.BLACK};
   display: ${({ isOpen }) => (isOpen ? 'none' : 'initial')};
+  animation: float 2s ease-in-out infinite;
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-10px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
+  
+  @keyframes float2 {
+    0% {
+      line-height: 30px;
+      transform: translatey(0px);
+    }
+    55% {
+      transform: translatey(-7px);
+    }
+    60% {
+      line-height: 30px;
+    }
+    100% {
+      line-height: 30px;
+      transform: translatey(0px);
+    }
+  }
 `;

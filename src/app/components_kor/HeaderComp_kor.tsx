@@ -3,37 +3,25 @@ import useIsScrolling from "../hooks/useIsScrolling";
 import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
 import { PALETTE } from "../utils/theme";
+import Image from 'next/image';
+import { Page } from "../utils/types";
 
-const HeaderComp = (props: { Portfolio: any; Contact: any; }) => {
+type headerProps = { 
+    pages?: Page[],
+    useScrollEffect?: boolean,
+    useLanguage ?: {
+        ENG : string,
+        KOR: string,
+    },
+    }
+
+
+const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
     const {isScrolling, scrollToElement} = useIsScrolling();
     const {isMenuOpen, setMenuOpen} = useIsMenuOpen();
 
-    const pages = [
-        {
-            name: "홈",
-            link: "#/kor",
-            img: "static/home.png"
-        },
-        {
-            name: "포트포리오",
-            ref: props.Portfolio,
-            img: "static/portfolio.png",
-            link: "",
-        },
-        {
-            name: "브로그",
-            link:  "#/blog",
-            img: "static/blog.png"
-        },
-        {
-            name: "연락처",
-            ref: props.Contact,
-            img: "static/contact.png",
-            link: "",
-        }
-    ] 
   return (
-    <Header isScrolling= {isScrolling}>
+    <Header isScrolling= {useScrollEffect ? isScrolling : true}>
         <a className="logo"
         href= "#/kor"
         target="_self"
@@ -41,12 +29,12 @@ const HeaderComp = (props: { Portfolio: any; Contact: any; }) => {
         > 
             <span>레네이 </span>우메이
         </a>
-        <NavBar isScrolling= {isScrolling} isMenuOpen= {isMenuOpen}>
-            {pages.map((page) => (
+        <NavBar isScrolling= {useScrollEffect ? isScrolling : true} isMenuOpen= {isMenuOpen}>
+            {pages?.map((page) => (
                 <div
                 key={page.name}
                 className="page-buttons"
-                onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(page.link))}>
+                onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(`${page.link}`))}>
                     <img 
                     className='phone-icons' 
                     width= {20} 
@@ -55,8 +43,8 @@ const HeaderComp = (props: { Portfolio: any; Contact: any; }) => {
                         {page.name}
                 </div>
             ))}
-            <img className='phone-icons hamburger' alt='함버거' width= {20} src= 'static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
-            <img className='phone-icons close'  alt= '닫침' width= {20} src= 'static/close.png' onClick={() => {setMenuOpen(false)}}/>
+            <img className='phone-icons hamburger' alt='함버거' width= {20} src= '/static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
+            <img className='phone-icons close'  alt= '닫침' width= {20} src= '/static/close.png' onClick={() => {setMenuOpen(false)}}/>
         </NavBar>
         <div className='language'><a className='top' href='#/'>영</a><a className='bottom'href="#/kor">한</a></div>
     </Header>

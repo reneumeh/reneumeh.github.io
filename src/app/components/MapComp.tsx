@@ -3,6 +3,7 @@ import useHoveredElement from "../hooks/useHoveredElement";
 import { useRef } from "react";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
+import Image from 'next/image';
 
 const MapComp = () => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
@@ -20,9 +21,9 @@ const MapComp = () => {
         },
         {
             country: "USA",
-            city: "Austin",
+            city: "Texas",
             loc: {top: "16.5vw", left: "calc(5em + 16.5vw)"},
-            explanation: "In 2021, I travelled to Texas for an exchange semester at the University of Texas at Austin. It was the first time I was travelling and living completely independently. I earned an internship at Lavner Education following the end of the semester.",
+            explanation: "In 2021, I travelled to Texas for an exchange semester at the University of Texas at Austin. It was the first time I was travelling and living completely independently. I earned an internship at Rice University following the end of the semester.",
             ref: texasPin
         },
         {
@@ -40,16 +41,16 @@ const MapComp = () => {
             <img 
             id='big-map'
             alt= 'map'
-            src='static/map.png'
+            src='/static/map.png'
             
             style={{position: 'absolute', margin: '2vh  0vw 2vh 5em', width:'80vw'}}/>
-            {MapElements.map((pin) => (
-              <div className='pins'>
+            {MapElements.map((pin, index) => (
+              <div className='pins' key={index}>
                 <img
                 className={pin.city}
                 alt= {pin.city}
                 ref ={pin.ref}
-                src= "static/pin.png"
+                src= "/static/pin.png"
                 width= {20}
                 height= {30}
                 onMouseEnter={() => handleHover(pin.city)} 

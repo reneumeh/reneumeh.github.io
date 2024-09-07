@@ -46,8 +46,9 @@ export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedback
             _focus={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
           ></Input>
           <div>
-            {suggestedFeedback.map((suggestion) => 
+            {suggestedFeedback.map((suggestion, index) => 
             <SuggestedQuestion
+              key={index}
               style={{ fontSize: '0.9rem' }}
               onClick={() => {
                 setFeedbackInput(suggestion);

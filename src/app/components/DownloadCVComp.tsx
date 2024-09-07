@@ -7,7 +7,7 @@ const DownloadCVComp = () => {
     <DownloadCVWrapper>
         <div className='portfolio-button'>
             <a className='portfolio-button-inside'
-            href="static/rene-umeh-portfolio.pdf"
+            href="/static/rene-umeh-portfolio.pdf"
             target='_blank'
             >
                 DOWNLOAD RESUME

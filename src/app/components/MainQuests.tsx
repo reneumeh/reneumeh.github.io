@@ -7,6 +7,7 @@ import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { mainQuestArticles } from '../config/mainQuests/mainQuests'
 import { PALETTE } from '../utils/theme'
+import Image from 'next/image';
 
 
 type mainQuestsProps = {
@@ -23,12 +24,12 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
         <Box>
             <p className='header'>Main Quests</p>
         </Box>
-        <p>This are the main projects and undertakings that are largely connected to my professional and academic life and give significant insight into my work and the career I have strived to build so far.</p>
+        <p>This are the main projects that are largely connected to my professional and academic work and give significant insight into the career I have strived to build so far.</p>
         <Carousel>
             {
                 mainQuestArticles.map((article, index) => {
                     return (
-                        <Card currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
+                        <Card key={index} currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
                             <div className='article-space'>
                                 <div>
                                 <p className='title'>{article.title}</p>
@@ -38,7 +39,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
                             alt='primary_image'/>
                             </div>
                             <div className='box'>
-                                <img src='static/arrow.png' width={20} alt='arrow'/>
+                                <img src='/static/arrow.png' width={20} alt='arrow'/>
                             </div>
                     </Card>
                     )
@@ -54,8 +55,9 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
 export default MainQuests 
 
 const MainQuestsWrapper = styled.div`
+    padding: 2rem 2rem 2rem 2rem;
     margin: auto;
-    margin-bottom: 7rem;
+    margin-bottom: 5rem; 
     width: 75vw;
     font-size: 1.1rem;
     overflow: hidden;
@@ -66,16 +68,8 @@ const MainQuestsWrapper = styled.div`
         margin: 0;
         font-family: Leaugue-Spartan;
     }
-    .header::before {
-        content: "";
-        border: 1px solid ${PALETTE.BLACK};
-        position: absolute;
-        bottom: calc(18rem + 18vw + 10rem);
-        left: 10vw;
-        width: 80vw;
-        height: calc(18rem + 18vw);
-        z-index: -1;
-        }
+    
+    border: 1px solid ${PALETTE.BLACK};
     
     @media screen and (max-width: 860px) {
         .header {
@@ -86,6 +80,8 @@ const MainQuestsWrapper = styled.div`
         height: calc(31rem - 18vw);
         bottom: calc(29rem - 10vw + 7rem);
         }
+
+        
     }
         `;
 
@@ -103,6 +99,7 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     margin: 1rem;
     box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
     cursor: pointer;
+
 
     &:hover {
         transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem)`}) translateY(-5px); 
@@ -132,8 +129,10 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
     .primary-image {
     width: 30vw;
+    height: 20vw;
     border: 1px solid ${PALETTE.BLACK};
     margin-left: 1rem;
+    object-fit: cover;
     }
 
     .title {
@@ -150,6 +149,13 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
         .box {
         display: none;
+        }
+
+        .title {
+            text-wrap: nowrap;
+            max-height: 3.6em;
+            max-width: 57vw;
+            overflow: hidden;
         }
     }
 `;

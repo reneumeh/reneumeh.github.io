@@ -16,8 +16,8 @@ const InterestsComp = () => {
   return (
     <InterestsWrapper>
         <p>연구 관심사</p>
-        {interest_stuff.map((interest_stuff) => (
-        <div className='interest'>
+        {interest_stuff.map((interest_stuff, index) => (
+        <div className='interest' key={index}>
             <div className='topic'>{interest_stuff.topic}</div>
             <div className='expo'>{interest_stuff.expo}</div>
         </div>

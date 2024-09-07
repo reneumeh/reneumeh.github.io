@@ -7,6 +7,7 @@ import { sideQuestArticles } from '../config/sideQuests/sideQuests';
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
+import Image from 'next/image';
 
 const Article = () => {
     const [article, setArticle] = useState<ArticleType>(mainQuestArticles[0]);
@@ -66,20 +67,20 @@ const Article = () => {
             <h1>{article?.title}</h1>
             {article?.content.map((item, index) => {
               return (
-                item
+                <div key={index}>{item}</div>
               )
             })}
             <div className="footer">
                 {!previousDisabled && (
                     <button onClick={() => navigateToArticle(-1)}>
-                        <img className="previous arrow" src="static/arrow.png" alt="previous article" />
+                        <img className="previous arrow" src="/static/arrow.png" alt="previous article" />
                         Previous Article
                     </button>
                 )}
                 {!nextDisabled && (
                     <button onClick={() => navigateToArticle(1)}>
                         Next Article
-                        <img className="next arrow" src="static/arrow.png" alt="next article" />
+                        <img className="next arrow" src="/static/arrow.png" alt="next article" />
                     </button>
                 )}
             </div>
@@ -93,9 +94,33 @@ const ArticleContainer = styled.article`
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: ${PALETTE.BACKGROUND};
+    font-family: Leaugue-Spartan-minor;
+    @keyframes fadeInLeft {
+    from {
+        opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    opacity: 0;
+    animation-name: fadeInLeft;
 
     div {
         width: 100%;
+    }
+
+    .flex {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .margin-bottom {
+        margin-bottom: 1rem;
     }
 
     h1 {
@@ -150,6 +175,10 @@ const ArticleContainer = styled.article`
     .up-and-down {
         display: flex;
         flex-direction: column;
+    }
+
+    .round {
+        border-radius: 50%;
     }
 
     .center {

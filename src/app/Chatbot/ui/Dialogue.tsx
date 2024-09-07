@@ -75,10 +75,8 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
   } = useDialogueState({ isMounted, setMounted, inputText, setInputText });
 
   const handleGoodResponse = (item: MessageType) => {
-    item.bad_clicked = true;
-    setIsFeedbackScreenOpen(true);
+    item.good_clicked = true;
     resetScroll();
-    setFeedback({ feedbackThread: threadId, feedbackId: item.id, feedbackMessage: '' });
     setLastMessageId('');
   };
 

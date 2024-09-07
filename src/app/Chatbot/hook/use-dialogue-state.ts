@@ -95,7 +95,7 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : d
             id: msg.id,
             created_at: msg.created_at,
             role: msg.role,
-            content: msg.content[0].text.value.split("¶")[0],
+            content: msg.content[0].text.value.replace(/【\d+:\d+†source】/g, '').trim().split("¶")[0],
             tool_output: result.outputs,
             followup_question: msg.content[0].text.value.split("¶")[1],
             good_clicked: false,

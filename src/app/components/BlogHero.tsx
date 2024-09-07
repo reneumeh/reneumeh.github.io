@@ -2,17 +2,35 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PALETTE } from '../utils/theme';
+import Image from 'next/image';
 
 const BlogHero = () => {
     const blogHeroImages = [
         {
             id: "1",
-            src: "/static/portfolio_analysis.png",
+            src: "/static/racecar.jpg",
+            description: 'Race Car Engineering'
         },
         {
             id: "2",
-            src: "/static/portfolio_partDesign.png",
+            src: "/static/spacemap.png",
+            description: "Satellite Collision Prevention System"
         },
+        {
+            id: "3",
+            src: "/static/lego.png",
+            description: "Lego Brick Color Sorter"
+        },
+        {
+            id: "4",
+            src: '/static/kist.png',
+            description: '2D to 3D Conversion AI Model'
+        },
+        {
+            id: '5',
+            src: '/static/rccar.png',
+            description: 'RC Car Engineering'
+        }
     ];
 
     const [shownImageId, setShownImageId] = useState(blogHeroImages[0].id);
@@ -33,16 +51,18 @@ const BlogHero = () => {
         <BlogHeroWrapper>
             <div className='intro-1'>This is where </div>
             <div className='intro-2'>I write about </div>
-            <div className='intro-3'>stuff I've worked on</div>
-            {/* <img className='blob' src='static/blob.png' alt='blob' /> */}
+            <div className='intro-3'>stuff I&apos;ve worked on</div>
             {
-                blogHeroImages.map((image) => (
+                blogHeroImages.map((image, index) => (
+                    <div key={index}>
                     <img 
                         key={image.id} 
                         src={image.src} 
                         alt={`Slide ${image.id}`}
                         className={image.id === shownImageId ? 'active slideshow' : 'slideshow'} 
                     />
+                    <p className={image.id === shownImageId ? 'active' : ''}>{image.description}</p>
+                    </div>
                 ))
             }
         </BlogHeroWrapper>
@@ -55,6 +75,17 @@ const BlogHeroWrapper = styled.div`
     height: 47em;
     position: relative;
 
+    p {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+        left: 20vw;
+        color: ${PALETTE.SECONDARY.DARK};
+        top: calc(17em + 25vw);
+        &.active {
+            opacity: 1;
+        }
+    }
     .blob {
         -webkit-transform: scaleY(-1);
         transform: scaleY(-1);
@@ -67,14 +98,17 @@ const BlogHeroWrapper = styled.div`
     }
 
     .slideshow {
+        background-color: white;
         position: absolute;
-        height: 25vw;
+        max-height: 25vw;
+        max-width: 35vw;
         object-fit: contain;
         opacity: 0;
         transition: opacity 2s ease-in-out;
         top: calc(25rem - 10vw);
         margin-right: 15vw;
         right: 40vw;
+        box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
         &.active {
             opacity: 1;
         }
@@ -132,8 +166,7 @@ const BlogHeroWrapper = styled.div`
     .slideshow {
     height: 45vw;
     top: calc(4.5em + 15.5vw);
-    margin: unset;
-    left: 20vw;
+    margin: auto;
     width: 60vw;
     }
 

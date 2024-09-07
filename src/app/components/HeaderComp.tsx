@@ -4,6 +4,7 @@ import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
 import { Page } from "../utils/types";
 import { PALETTE } from "../utils/theme";
+import Image from 'next/image';
 
 type headerProps = { 
     pages?: Page[],
@@ -37,8 +38,8 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
                     {page.name}
                 </div>
             ))}
-            <img className='phone-icons hamburger' alt= 'hamburger_icon' width= {20} src= 'static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
-            <img className='phone-icons close' alt='close_icon' width= {20} src= 'static/close.png' onClick={() => {setMenuOpen(false)}}/>
+            <img className='phone-icons hamburger' alt= 'hamburger_icon' width= {20} src= '/static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
+            <img className='phone-icons close' alt='close_icon' width= {20} src= '/static/close.png' onClick={() => {setMenuOpen(false)}}/>
         </NavBar>
         {
             !!useLanguage &&

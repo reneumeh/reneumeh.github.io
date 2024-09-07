@@ -7,7 +7,7 @@ const DownloadCVComp = () => {
     <DownloadCVWrapper>
         <div className='portfolio-button'>
             <a className='portfolio-button-inside'
-            href="static/이력서_레네이.pdf"
+            href="/static/이력서_레네이.pdf"
             target='_blank'
             >
                 이력서 다운로드

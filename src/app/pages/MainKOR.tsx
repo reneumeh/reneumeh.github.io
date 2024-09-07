@@ -9,6 +9,7 @@ import InterestsComp from '../components_kor/InterestsComp_kor';
 import ContactComp from '../components_kor/ContactComp_kor';
 import DownloadCVComp from '../components_kor/DownloadCVComp_kor';
 import { PALETTE } from '../utils/theme';
+import Chatbot from '../Chatbot/ui/Chatbot';
 
 
 function MainENG() {
@@ -19,14 +20,39 @@ function MainENG() {
     const extraSection = useRef(null);
     const emailForm = useRef(null);
 
+    const pages = [
+      {
+          name: "홈",
+          link: "#/kor",
+          img: "/static/home.png"
+      },
+      {
+          name: "포트포리오",
+          ref: portfolio,
+          img: "/static/portfolio.png",
+          link: "",
+      },
+      {
+          name: "브로그",
+          link:  "#/blog_kor",
+          img: "/static/blog.png"
+      },
+      {
+          name: "연락처",
+          ref: contact,
+          img: "/static/contact.png",
+          link: "",
+      }
+  ] 
   return (
     <Wrapper>
-        <HeaderComp Portfolio={portfolio} Contact={contact}/>
+        <HeaderComp useLanguage={{ ENG: '#/', KOR: '#/kor'}} pages={pages} useScrollEffect={true}/>
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={portfolio}/>
         <DownloadCVComp />
         <InterestsComp />
+        <Chatbot />
         <ContactComp Contact={contact} emailForm={emailForm}/>
     </Wrapper>
   )

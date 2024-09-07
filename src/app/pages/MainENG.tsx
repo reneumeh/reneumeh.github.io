@@ -26,23 +26,23 @@ function MainENG() {
       {
           name: "Home",
           link: "#/",
-          img: "static/home.png"
+          img: "/static/home.png"
       },
       {
           name: "Portfolio",
           ref: portfolio,
-          img: "static/portfolio.png",
+          img: "/static/portfolio.png",
           link: ""
       },
       {
           name: "Blog",
           link:  "#/blog",
-          img: "static/blog.png"
+          img: "/static/blog.png"
       },
       {
           name: "Contact",
           ref: contact,
-          img: "static/contact.png",
+          img: "/static/contact.png",
           link: ""
       }
   ] 
@@ -73,4 +73,17 @@ position: absolute;
 z-index: -10;
 background-color: ${PALETTE.BACKGROUND};
 font-family: Leaugue-Spartan-minor;
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    opacity: 0;
+    animation-name: fadeInLeft;
     `;

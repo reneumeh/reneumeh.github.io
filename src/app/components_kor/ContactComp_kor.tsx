@@ -3,6 +3,7 @@ import React from 'react';
 import emailjs from '@emailjs/browser'
 import styled from 'styled-components';
 import { PALETTE } from '../utils/theme';
+import Image from 'next/image';
 
 const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: React.MutableRefObject<null>}) => {
     const sendEmail =(e:any) => {
@@ -25,7 +26,7 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
             <p>위치: 서울, 대한민국</p>
             <p>
                 <img
-                src='static/send.png'
+                src='/static/send.png'
                 alt= '보내기'
                 width= {20}/> dubemrene@gmail.com
             </p>
