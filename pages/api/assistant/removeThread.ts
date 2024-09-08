@@ -2,8 +2,16 @@ import { deleteThread } from './openai';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  res.setHeader('Access-Control-Allow-Origin', 'https://reneumeh.github.io'); 
-  res.setHeader('Access-Control-Allow-Origin', 'https://reneumeh.vercel.app'); // Allow only specific origins
+  const allowedOrigins = ['https://reneumeh.github.io', 'https://reneumeh.vercel.app']; // Add all allowed origins here
+  const origin = req.headers.origin;
+
+  // Check if the origin is in the allowed origins list
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
