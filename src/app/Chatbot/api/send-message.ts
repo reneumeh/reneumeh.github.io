@@ -3,7 +3,7 @@ export const sendMessage = async (text: string, threadId: string | undefined, me
     try {
         const thread_id = threadId || '';
   
-        const response = await fetch('/api/assistant/sendMessage', {
+        const response = await fetch('https://reneumeh.vercel.app/api/assistant/sendMessage', {
           method: 'POST',
           headers: {
             Accept: 'application/json',

@@ -1,7 +1,7 @@
 
 export const deleteThread = async (threadId: string) => {
     try {
-        const response = await fetch('/api/assistant/removeThread', {
+        const response = await fetch('https://reneumeh.vercel.app/api/assistant/removeThread', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
