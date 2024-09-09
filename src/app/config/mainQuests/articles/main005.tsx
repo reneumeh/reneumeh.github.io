@@ -3,23 +3,23 @@ import Image from 'next/image';
 
 export const main005: ArticleType = {
     id: 3194005,
-    title: 'How To Become A Car Guy',
+    title: 'Becoming A Car Guy',
     summary: 'Every one know car go vroom vroom but how car go vroom vroom? ',
     primaryImage: '/static/car_cad.jpg',
 
     content: [
       <p key="1">
-        My journey into the world of automobiles didn&apos;t begin with a wrench in my hand, but it sure ended up that way. It all started with a summer stint at a mechanic workshop. Imagine this: bright orange overalls, grease-stained hands, and a young mechanical engineering student staring wide-eyed at a pile of engine parts, wondering how they all fit together. I didn&apos;t have all the answers back then (still don&apos;t, to be honest), but that summer sparked a curiosity that led me to pursue a deeper understanding of how these machines work.
+        My journey into the world of automobiles didn&apos;t begin with a wrench in my hand, but it sure ended up that way. It all started on the summer after my high school graduation when I signed up for an apprenticeship at a mechanic workshop. Imagine this: bright orange overalls, grease-stained hands, and a young mechanical engineering student staring wide-eyed at a pile of engine parts, wondering how they all fit together. I didn&apos;t have all the answers back then (still don&apos;t, to be honest), but that summer sparked a curiosity that led me to pursue a deeper understanding of how these machines work.
       </p>,
       
       <h2 key="2">The Workshop Experience</h2>,
       <p key="3">
-        Working in a mechanic workshop was my first real hands-on experience with cars. It&apos;s one thing to read about engines and differentials in textbooks; it&apos;s another to physically swap out a blown head gasket or align a camshaft. Understanding the internal combustion engine, transmission systems, and how power is transferred through a driveshaft to the wheels gave me the foundation I needed. But honestly, it wasn&apos;t until I joined the Hanyang RACE club that everything started to click.
+        Working in a mechanic workshop was my first real hands-on experience with cars. It&apos;s one thing to read about engines and differentials in textbooks; it&apos;s another to physically swap out a spark plug or align a timing chain. However, I didn't fully understand the internal combustion engine, transmission systems, and how power is transferred through a driveshaft to the wheels. It wasn&apos;t until I joined the Hanyang RACE club that everything started to click.
       </p>,
     
       <h2 key="4">The RACE Club: Building and Breaking Cars</h2>,
       <p key="5">
-        The <a href='https://racehanyang.com'>RACE club</a> was like stepping into a real-life Formula 1 pit crew. We weren&apos;t just tinkering with existing cars—we were designing and building life-size race cars from scratch for an intercollegiate competition. And let me tell you, nothing makes you appreciate the beauty of automotive engineering more than fabricating a car piece by piece. I started on the dynamics team, where we optimized handling and performance metrics such as cornering force, drag coefficient, and yaw stability. Every tiny tweak—whether to the camber angle or the caster—had a noticeable impact on the car&apos;s behavior on the track. It&apos;s all about balancing precision with performance. I would later go on to design an RC car for one of my classes at UT Austin. <a href='/static/design notebook-converted.pdf'>This is what design Notebook looked like.</a>
+        The <a href='https://racehanyang.com'>RACE club</a> was like stepping into a real-life Formula 1 pit crew. We weren&apos;t just tinkering with existing cars—we were designing and building life-size race cars from scratch for an intercollegiate competition. And let me tell you, nothing makes you appreciate the beauty of automotive engineering more than fabricating a car piece by piece. After getting in, we would have 3D modeling assignments for car parts everyday to hone CADing skills. After the preliminary stage, I started on the dynamics team, where we optimized handling and performance metrics such as steering, cornering force, drag coefficient, and yaw stability. Every tiny tweak—whether to the camber angle or the caster—had a noticeable impact on the car&apos;s behavior on the track. I would later go on to design an RC car for one of my classes at UT Austin too. <a href='/static/design notebook-converted.pdf'>This is what design Notebook looked like.</a>
       </p>,
       
       <div className="center" key="6">
@@ -30,11 +30,6 @@ export const main005: ArticleType = {
       <p key="8">
         Whether you prefer flipping through a comprehensive engineering book or kicking back with some in-depth YouTube videos, these resources will fuel your automotive obsession. Below are some must-read books and must-watch channels to help you dive deeper into the world of car engineering and performance.
       </p>,
-      
-      <p key="9">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>,
-      
       <div key="10">
         <a href='https://www.amazon.com/Vehicle-Dynamics-Douglas-Milliken-William/dp/1560915269'>
           <img alt='book cover' src='https://m.media-amazon.com/images/I/61m3gzulDoL._SY466_.jpg' height={150} />

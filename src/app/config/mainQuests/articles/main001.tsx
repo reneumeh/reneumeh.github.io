@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const main001: ArticleType = {
     id: 3194001,
-    title: 'How To Be A Mechanical Engineer',
+    title: 'Becoming A Mechanical Engineer',
     summary: 'This is my take on how getting a Mechanical Engineering degree looks like. ',
     primaryImage: '/static/mechanical_components.png',
 
@@ -58,7 +58,7 @@ export const main001: ArticleType = {
       <ul key="30">
         <li><h3>Group Similar Courses Together:</h3> If possible, schedule related courses like thermodynamics and fluid mechanics in the same semester. This allows you to see connections between subjects and apply knowledge across disciplines.</li>
         <li><h3>Document Your Projects:</h3> Take lots of photos, keep notes, and save everything to the cloud. You&apos;ll thank yourself later when you need to put together reports or presentations.</li>
-        <li><h3>Make Summaries Before Tests:</h3> I used to make a one-page summary for each course before exams. It forces you to boil down the key points, which helps a lot with retention.</li>
+        <li><h3>Make Summaries Before Tests:</h3> I used to make a one-page summary for each course before exams. It forces you to boil down the key points, which helps a lot with retention.<a href='/static/summary.pdf'>This is what my summaries used looked like.</a></li>
       </ul>,
       <p key="31">Becoming a mechanical engineer isn&apos;t easy, but it&apos;s incredibly rewarding. The ability to understand how the world works and apply that knowledge to create something new is a power that not many people have. Stick with it, stay curious, and you&apos;ll find your own path in this fascinating field.</p>
   ]

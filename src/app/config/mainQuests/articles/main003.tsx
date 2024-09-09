@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const main003: ArticleType = {
     id: 3194003,
-    title: 'How To Write A Patent (Undergrad)',
+    title: 'Writing A Patent (Undergrad)',
     summary: 'In this article, I will try to breakdown the receipe for a making a decent patent.',
     primaryImage: '/static/screw.png',
     content: [
@@ -14,14 +14,14 @@ export const main003: ArticleType = {
       <h2 key="5">Research Existing Solutions</h2>,
       <p key="6">Just in general, if you are trying to solve a problem, someone has probably already written a book or paper about it. You wouldn&apos;t believe that there are whole books dedicated to screw conveyors. The main objective is to find the right material. If you are still in school, check if your school allows access to academic journals. Also, try to get your hands on books dedicated to the subject. It helps you really understand what to consider and usually has most of the factors or equations you need in one place.</p>,
       <h2 key="7">Design and Iteration</h2>,
-      <p key="8">For the dumpling screw, I had to balance high shear rates (to knead the dough properly) with minimizing wear and tear on the screw itself. This meant I spent a lot of time tweaking the flight angle and geometry to optimize dough flow.</p>,
+      <p key="8">For the dumpling screw, I had to balance high shear rates (to knead the dough properly) with minimizing wear and tear on the screw itself. This meant I spent a lot of time tweaking the flight angle and geometry to optimize dough flow. Before we got the official design for the screw, we came up with 5 different designs that excelled at different criteria and we also had an ideal screw that was our best composite of all those designs.</p>,
       <p key="9">At this stage, your ideas don&apos;t have to be perfect. Sketch out rough concepts, test them mentally (or through simulation software like I did with ANSYS Fluent), and refine them as you go. The goal is to iterate your design until it addresses the problem in the best possible way.</p>,
       <h2 key="10">Simulations and/or Prototyping</h2>,
       <p key="11">For any project you do, you are probably going to have to back up your claims with a test model or a simulation. This is where you break out the big guns. We started with simulations on Ansys Fluent after creating CAD models of the various adjustments that we intended to make concerning the screw.</p>,
       <div className="center" key="12">
         <video height={250} src='/static/screw.mp4' controls/>
       </div>,
-      <p key="13">When we determined which modifications produced the best results for kneading the dough and transporting the dough with fewer dead zones in the chamber (food remnants), we proceeded to 3D print miniature prototypes for testing. You want to record this entire process and your results at each step in your design book or somewhere else digitally. If you can, test your design through simulations or prototypes. This will help you refine your idea before putting it into words for the patent. It also gives you hard data to back up your claims, which is essential for a solid patent.</p>,
+      <p key="13">When we determined which modifications produced the best results for kneading the dough and transporting the dough with fewer dead zones in the chamber (food remnants), we proceeded to 3D print miniature prototypes for testing. You want to record this entire process and your results at each step in your design book or somewhere else digitally. I am not going to post long videos of dough just moving through a tube on here, but I have them. If you can, test your design through simulations or prototypes. This will help you refine your idea before putting it into words for the patent. It also gives you hard data to back up your claims, which is essential for a solid patent.</p>,
       <div className="up-and-down center" key="14">
         <img alt='example' src='/static/screw.png' /> 
         <i>Our miniature setup</i>
@@ -37,6 +37,6 @@ export const main003: ArticleType = {
         <li>Detailed Description: This is the meat of your patent. Go into detail about every part of your invention and how it works.</li>
         <li>Drawings: Include diagrams or drawings to help visualize your design.</li>
       </ul>,
-      <p key="20">Looking back at my experience with the dumpling screw redesign, the process of writing a mock patent taught me one thing: engineering is iterative. Whether you’re crafting a patent or tweaking a design, it’s all about learning from each iteration. Each step brings you closer to the final product, just like each round of revisions brings your patent closer to being airtight.</p>
+      <p key="20">Looking back at my experience with the dumpling screw redesign, the process of writing a mock patent taught me one thing: engineering is iterative. Whether you&apos;re crafting a patent or tweaking a design, it&apos;s all about learning from each iteration. Each step brings you closer to the final product, just like each round of revisions brings your patent closer to being airtight.</p>
     ] 
 }

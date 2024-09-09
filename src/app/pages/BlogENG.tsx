@@ -9,6 +9,7 @@ import SideQuests from "../components/SideQuests"
 import { Route, Routes } from "react-router-dom"
 import Article from "../components/Article"
 import useIsScrolling from "../hooks/useIsScrolling"
+import Awards from "../components/Awards"
 
 export const BlogENG = () => {
   const { resetScroll } = useIsScrolling();
@@ -26,16 +27,15 @@ export const BlogENG = () => {
       link: "/static/rene-umeh-portfolio.pdf"
     },
     {
-        name: "Main Quests",
+        name: "Quests",
         ref: mainQuests,
         img: "/static/main_icon.png",
         link: ""
     },
     {
-        name: "Side Quests",
-        ref: sideQuests,
+        name: "Awards",
         img: "/static/side_icon.png",
-        link: "",
+        link: "#/blog/awards",
     },
 ] 
 const articlePages : Page[] = [
@@ -54,6 +54,11 @@ const articlePages : Page[] = [
     img: "/static/contact.png",
     link: "/static/rene-umeh-portfolio.pdf"
   },  
+  {
+    name: "Awards",
+    img: "/static/side_icon.png",
+    link: "#/blog/awards",
+  },
 ]
 
 useEffect(() => {
@@ -77,6 +82,14 @@ useEffect(() => {
       <Wrapper>
         <HeaderComp useScrollEffect={false} pages= {articlePages} />
         <Article />
+      </Wrapper>
+      } />
+      <Route 
+      path="awards"
+      element={
+      <Wrapper>
+        <HeaderComp useScrollEffect={false} pages= {articlePages} />
+        <Awards />
       </Wrapper>
       } />
     </Routes>

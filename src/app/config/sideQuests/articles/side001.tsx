@@ -3,13 +3,13 @@ import { ArticleType } from "../../../utils/types"
 
 export const side001: ArticleType = {
     id: 9945001,
-    title: 'How to Study In Korea',
+    title: 'Studying In Korea',
     summary: 'Just nother article in the sea of articles to tell you how to study in Korea.',
     primaryImage: '/static/korea.png',
 
     content: [
       <p key="1">
-        Thinking of studying in Korea? Whether you&apos;re drawn to the vibrant culture, advanced education system, or the lively K-pop scene (no shame in that), studying abroad in Korea can be an incredible experience. But before you hop on a plane, there are a few things you need to know to make the most of your academic adventure.
+        If you have reached this section of my webpage, you probably already know that I am nigerian but ended up completing my undergraduate degree in South Korea. The educational landscape of Korea is very appealing. Not only are the universities internationally renowned for their research, there are also schorlships available for every level of education. Whether you&apos;re drawn to the vibrant culture, advanced education system, or the lively K-pop scene (no shame in that), studying abroad in Korea can be an incredible experience. But before you hop on a plane, there are a few things you need to know to make the most of your academic adventure.
       </p>,
       
       <h2 key="2">Learning Korean</h2>,
@@ -17,7 +17,7 @@ export const side001: ArticleType = {
         Let&apos;s be honest—Korea is amazing, but it&apos;s even better when you understand the language. While many universities offer courses in English, knowing Korean can significantly improve your experience, from ordering food to making friends and navigating daily life.
       </p>,
       <p key="4">
-        Learning the Korean alphabet, Hangul, is surprisingly easy and will give you a solid foundation. If you&apos;re serious about mastering the language, consider enrolling in a Korean language course, either online or in person at a university. Many Korean universities offer intensive programs that will fast-track your progress.
+        Learning the Korean alphabet, Hangul, is surprisingly easy and will give you a solid foundation. I learnt it during my holiday before traveling and it helped me get started when I get here. If you&apos;re serious about mastering the language, consider enrolling in a Korean language course, either online or in person at a university. Many Korean universities offer 18-month intensive programs that will fast-track your progress before you start your degree. 
       </p>,
       
       <h2 key="5">Visas</h2>,
@@ -32,12 +32,12 @@ export const side001: ArticleType = {
       
       <h3 key="9">D-4 Visa (Language Training Visa)</h3>,
       <p key="10">
-        If you&apos;re only attending a Korean language program, you&apos;ll apply for the D-4 visa.
+        If you&apos;re only attending a Korean language program, you&apos;ll apply for the D-4 visa. If you are on an intensive program before you begin your degree, you will also be on this visa during that period.
       </p>,
       
       <h3 key="11">Application Process</h3>,
       <p key="12">
-        Visa applications can be submitted to the nearest Korean embassy or consulate. Make sure to start the process early, as it can take a few weeks to finalize.
+        Visa applications can be submitted to the District Immigration Office or as a group through your school. Make sure to start the process early, as it can take a few weeks to finalize.
       </p>,
       
       <h2 key="13">Scholarships</h2>,
@@ -47,12 +47,12 @@ export const side001: ArticleType = {
       
       <h3 key="15">KGSP (Korean Government Scholarship Program)</h3>,
       <p key="16">
-        This is one of the most well-known scholarships for international students. It covers tuition, a monthly stipend, and even airfare, making it an incredible option for those looking to study in Korea.
+        This is one of the most well-known scholarships for international students. It covers tuition, a monthly stipend, and even airfare, making it an incredible option for those looking to study in Korea. However, once on the scholarship, you will not be allowed to attend any exchange semesters outside your school, so keep that in consideration while you applying.
       </p>,
       
       <h3 key="17">Samsung Global Dream Scholarship</h3>,
       <p key="18">
-        Another great option, this scholarship focuses on promoting international exchange and provides financial support for students from around the world.
+        Another great option, this scholarship focuses on promoting international exchange and provides financial support for students from around the world. There is a whole community surounding the Samsung Global Hope Foundation, so you will be able to find many other bright minds if you are accepted into the foundation.
       </p>,
       
       <h3 key="19">Individual School Scholarships</h3>,
@@ -62,7 +62,7 @@ export const side001: ArticleType = {
       
       <h2 key="21">Making Friends</h2>,
       <p key="22">
-        One of the best ways to fully immerse yourself in Korean culture is by making local friends. Fortunately, universities in Korea have a vibrant social scene that makes it easy to connect with both international and Korean students. Korean universities are known for their epic school festivals, which feature everything from live performances to food stalls and games. These events are a perfect opportunity to meet people in a relaxed, fun environment.
+        One of the best ways to fully immerse yourself in Korean culture is by making local friends. Korean universities are known for their epic school festivals, which feature everything from live performances to food stalls and games. Every school usually has a festival every semester and you can attend ones outside of your school. These events are a perfect opportunity to meet people in a relaxed, fun environment.
       </p>,
       
       <p key="23">

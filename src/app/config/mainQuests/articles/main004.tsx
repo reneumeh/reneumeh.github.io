@@ -3,15 +3,15 @@ import Image from 'next/image';
 
 export const main004: ArticleType = {
     id: 3194004,
-    title: 'How To Get Into AI',
+    title: 'Getting Into AI',
     summary: 'Just the basics in the every changing world of Artificial Intelligence.',
     primaryImage: '/static/transformer.png',
     content: [
       <p key="1">
-        My formal introduction to machine learning (ML) came during my 2nd-year AI class with Professor Kim Douglas Deok Su. The course took us through the basics—starting with the history of AI, the evolution of neural networks, and how machine learning became the juggernaut that it is today. By the end of the class, we had moved from theory to application, building our own CNNs from scratch.
+        The first time I did anything with AI was in my first year, when I built a lego brick sorter. We used Google's Teachable Machine for the sorting, but I was more using it as a tool to complete a task. My formal introduction to machine learning algoritms came during my 2nd-year AI class with Professor Kim Douglas Deok Su. The course took us through the basics—starting with the history of AI, the evolution of neural networks, and how machine learning became the juggernaut that it is today. By the end of the class, we had moved from theory to application, building our own CNNs from scratch.
       </p>,
       <p key="2">
-        After getting my feet wet in AI, I wanted more than just academic knowledge. So, I secured an internship at the Korean Institute of Science and Technology (KIST), where I joined Professor Lim Hwa Sup&apos;s AI lab. This was where I really got to see AI in action. Twice a week, we&apos;d present on cutting-edge research papers, discussing everything from DreamFusion to Plenoxels. It was also where I attended my first academic conference, the Korean Conference on Computer Vision (KCCV), which opened my eyes to the sheer breadth of AI applications.
+        After getting my feet wet in AI, I wanted more than just academic knowledge. So, I secured an internship at the Korean Institute of Science and Technology (KIST), where I joined Professor Lim Hwa Sup&apos;s AI lab. The everyone in the entire lab was working on projects concerned with Computer Vision. I was onboarded on a project with the aim of creating 3D representations from 2D images. This was where I really got to see AI in action. Twice a week, we&apos;d present on cutting-edge research papers, discussing everything from DreamFusion to Plenoxels. It was also where I attended my first academic conference, the Korean Conference on Computer Vision (KCCV), which opened my eyes to the sheer breadth of AI applications.
       </p>,
       <p key="3">
         If you&apos;re reading this, you might be wondering how to start your own AI journey. The first step is often the hardest—finding a project. I&apos;ve been there, staring at a blank page thinking, “Everything has already been done!” But here&apos;s the trick: you don&apos;t need to invent something entirely new. Instead, take a system that already exists and experiment with how mechanical or physical properties affect its performance. It&apos;s a great way to learn about AI in a way that&apos;s practical and engaging.
@@ -35,7 +35,7 @@ export const main004: ArticleType = {
           <i>Professor Justin Johnson</i>
         </a>
         <p>
-          Another fantastic YouTuber who breaks down complex topics into digestible, beginner-friendly lessons. His tutorials are perfect for those who want a deeper dive into neural networks, machine learning algorithms, and AI fundamentals.
+          Another fantastic YouTuber who breaks down complex topics into digestible, beginner-friendly lessons. I took a crash course of this entire playlist before I started my work at KIST. His tutorials are perfect for those who want a deeper dive into neural networks, machine learning algorithms, and AI fundamentals.
         </p>
       </div>,
       <div className="flex margin-bottom" key="8">
@@ -44,7 +44,7 @@ export const main004: ArticleType = {
           <i>3 Blue 1 Brown</i>
         </a>
         <p>
-          The animations on this one really help bring all the interesting concepts to life in a way I cannot explain.
+          The animations on this one really help bring all the interesting concepts to life in a way I cannot explain. Visual explanations like those are really intuitive and even if you believe that you know a topic, you will understand it a different way when you see it illustrted on this channel.
         </p>
       </div>,
       <h2 key="9">Competitions</h2>, 

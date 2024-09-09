@@ -3,8 +3,15 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PALETTE } from '../utils/theme';
 import Image from 'next/image';
+import useIsScrolling from '../hooks/useIsScrolling';
 
 const BlogHero = () => {
+    const { resetScroll } = useIsScrolling();
+
+    useEffect(() => {
+        resetScroll(); 
+    }, [resetScroll]);
+    
     const blogHeroImages = [
         {
             id: "1",
@@ -51,7 +58,7 @@ const BlogHero = () => {
         <BlogHeroWrapper>
             <div className='intro-1'>여기는  </div>
             <div className='intro-2'>제가 한</div>
-            <div className='intro-3'>작업 기록</div>
+            <div className='intro-3'> 프로젝트 기록</div>
             {
                 blogHeroImages.map((image, index) => (
                     <div key={index}>
@@ -120,8 +127,8 @@ const BlogHeroWrapper = styled.div`
         top: 19rem;
         left: 60vw;
         width: 38vw;
-        font-family: Leaugue-Spartan;
-        font-size: 3.7rem;
+        font-family: korean-font;
+        font-size: 4.7rem;
     }
 
     .intro-2 {
@@ -129,18 +136,19 @@ const BlogHeroWrapper = styled.div`
         top: 23.8rem;
         left: 60vw;
         width: 38vw;
-        font-family: Leaugue-Spartan;
-        font-size: 3.7rem;
+        font-family: korean-font;
+        font-size: 4.7rem;
     }
     
     .intro-3 {
         position: relative;
-        top: 25rem;
+        top: 23.5rem;
         left: 60vw;
         width: 38vw;
-        font-family: Leaugue-Spartan;
-        font-size: 3.7rem;
+        font-family: korean-font;
+        font-size: 4.7rem;
         line-height: 4.2rem;
+        text-wrap: pretty;
         color: ${PALETTE.PRIMARY.DEFAULT};
     }
 

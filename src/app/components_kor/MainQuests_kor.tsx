@@ -22,7 +22,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
   return (
     <MainQuestsWrapper ref={mainQuests}>
         <Box>
-            <p className='header'>메인 작업</p>
+            <p className='header'>메인 프로젝트</p>
         </Box>
         <p>이것은 주로 저의 전문적이고 학문적인 업무와 관련이 있으며 지금까지 쌓아온 경력에 대한 중요한 인사이트를 제공하는 주요 프로젝트입니다.</p>
         <Carousel>
@@ -66,7 +66,7 @@ const MainQuestsWrapper = styled.div`
         width: 100%;
         text-align: center;
         margin: 0;
-        font-family: Leaugue-Spartan;
+        font-family: korean-font;
     }
     
     border: 1px solid ${PALETTE.BLACK};

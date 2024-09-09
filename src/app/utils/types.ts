@@ -15,4 +15,8 @@ export type ArticleType = {
   content: JSX.Element[]
 };
 
+export type Award = {
+  name: string;
+  image: string;
+}
 

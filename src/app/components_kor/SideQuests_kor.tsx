@@ -21,7 +21,7 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
   return (
     <SideQuestsWrapper ref={sideQuests}>
         <Box>
-            <p className='header'>사이드 작업</p>
+            <p className='header'>사이드 프로젝트</p>
         </Box>
         <p>이는 제 직업 경력과 직접적인 관련이 없을 수도 있지만, 이에 못지않게 중요하고 제가 어떤 사람인지를 결정한 다른 업적들입니다</p>
         <Carousel>
@@ -65,7 +65,7 @@ const SideQuestsWrapper = styled.div`
         width: 100%;
         text-align: center;
         margin: 0;
-        font-family: Leaugue-Spartan;
+        font-family: korean-font;
     }
 
     border: 1px solid ${PALETTE.BLACK};

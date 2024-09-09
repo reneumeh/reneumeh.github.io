@@ -65,7 +65,10 @@ const PaginationWrapper = styled.div`
     border: none;
     height: 1rem;
     width: 1rem;
+    min-width: 1rem; 
+    min-height: 1rem;
     border-radius: 50%;
+    box-sizing: border-box;
     color: ${PALETTE.WHITE};
     &:hover {
       cursor: pointer;
@@ -74,9 +77,12 @@ const PaginationWrapper = styled.div`
   }
 
   .page-button {
+    box-sizing: border-box;
     border: none;
     height: 0.7rem;
     width: 0.7rem;
+    min-width: 0.7rem; 
+    min-height: 0.7rem;
     border-radius: 50%;
     background-color: ${PALETTE.SECONDARY.LIGHT};
     transition: 0.7s ease all;

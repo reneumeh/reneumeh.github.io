@@ -189,7 +189,7 @@ const ArticleContainer = styled.article`
     }
 
     .title {
-        margin-top: 6rem;
+        margin-top: 7vw;
         width: 100%;
     }
 

@@ -204,6 +204,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             align-items: center;
             padding: 2rem 0;
             font-family: Leaugue-Spartan;
+            cursor: pointer;
         }
         .page-buttons:first-child {
             margin-top: 2.5rem;
@@ -225,11 +226,13 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             isScrolling === true ? '0.3rem' :'108vw' };
             visibility: ${({ isMenuOpen }) =>
             isMenuOpen === true ? "hidden" : "visible" };
+            cursor: pointer;
         }
         .close {
             position: absolute;
             top: 1.5rem;
             left: 2rem;
+            cursor: pointer;
         }
     }
     `;

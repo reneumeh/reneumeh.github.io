@@ -3,18 +3,18 @@ import { ArticleType } from "../../../utils/types"
 
 export const side002: ArticleType = {
     id: 9945002,
-    title: 'How To Create A Website Portfolio',
+    title: 'Creating A Website Portfolio',
     summary: "Don't do it.",
     primaryImage: '/static/screenshot.png',
 
     content: [
       <p key="1">
-        Whether it&apos;s to showcase your work, apply for jobs, or impress your friends with some slick web design, having an online portfolio is a must in today&apos;s digital world. However, there&apos;s a bit of a crossroads when it comes to how you approach it.
+        Whether it&apos;s to showcase your work, apply for jobs, or impress your friends with some slick web design, having an online portfolio is kind of a must in today&apos;s digital world. However, there&apos;s a bit of a crossroads when it comes to how you approach it.
       </p>,
       
       <h2 key="2">From Scratch vs. Using Templates</h2>,
       <p key="3">
-        Now, I&apos;ll be honest with you. I spent time learning how to build websites from scratch, and while it was a great learning experience, it&apos;s not exactly what I&apos;d recommend unless you&apos;re just in it for the knowledge. Why? Because in the not-so-distant future, AI models are likely going to replicate any web design skills you&apos;ve picked up. Yep, you read that right. AI is getting that good, and it can churn out professional-looking websites with ease.
+        Now, I&apos;ll be honest with you. I spent time learning how to build websites from scratch, every thing from the chatbot, down to the pagination I wrote every single line of code for it. Why did I do this, when there are packages and services that I could have used to make the process easier? I ask myself the same question every day. While it was a great learning experience, it&apos;s not exactly what I&apos;d recommend unless you&apos;re just in it for the knowledge. Why? Because in the not-so-distant future, AI models are likely going to replicate any web design skills you&apos;ve picked up. Yep, you read that right. AI is getting that good, and it can churn out professional-looking websites with ease.
       </p>,
       <p key="4">
         If your goal is to just get your portfolio up and running, save yourself some time. There are plenty of website templates out there that are beautiful, customizable, and easy to use—no coding required. Platforms like: Squarespace, Wix, or WordPress. These platforms have drag-and-drop features, customizable themes, and can get your site up in hours, not weeks.
@@ -52,11 +52,11 @@ export const side002: ArticleType = {
         <li>Create a React App</li>
         <p>
           Open your terminal and type:
-          <p>
+          <blockquote>
             npx create-react-app my-portfolio<br />
             cd my-portfolio<br />
             npm start
-          </p>
+          </blockquote>
         </p>
         <li>Replace Default Content</li>
         <p>

@@ -13,7 +13,7 @@ type TProps = {
   handleCloseModal: () => void;
 };
 
-const ModalWrapper = ({ children, modalEl, handleCloseModal }: TProps) => {
+export const ModalWrapper = ({ children, modalEl, handleCloseModal }: TProps) => {
   const handleCloseExternalClickModal = (event: MouseEvent<HTMLElement>) => {
     if (modalEl?.current && !modalEl.current.contains(event.target as Node)) {
       handleCloseModal();
@@ -39,6 +39,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 `;
 
 type PortfolioModalProps = {
@@ -99,7 +100,7 @@ const Card = styled.div`
   }   
 `;
 
-const ExitButton = styled.div`
+export const ExitButton = styled.div`
   display: flex;
   margin-top: 1rem;
   width: 2.5rem;

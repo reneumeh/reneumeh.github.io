@@ -33,7 +33,7 @@ function MainENG() {
           link: "",
       },
       {
-          name: "브로그",
+          name: "블로그",
           link:  "#/blog_kor",
           img: "/static/blog.png"
       },

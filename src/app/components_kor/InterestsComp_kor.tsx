@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
+import { Box } from "../components/InterestsComp";
 
 const InterestsComp = () => {
     const interest_stuff = [
@@ -15,7 +16,9 @@ const InterestsComp = () => {
 
   return (
     <InterestsWrapper>
-        <p>연구 관심사</p>
+        <Box>
+            <p>연구 관심사</p>
+        </Box>
         {interest_stuff.map((interest_stuff, index) => (
         <div className='interest' key={index}>
             <div className='topic'>{interest_stuff.topic}</div>
@@ -36,7 +39,6 @@ const InterestsWrapper = styled.div`
         font-size: 2rem;
         width: 100%;
         text-align: center;
-        text-decoration: underline 1px double;
         font-family: korean-font;
     }
 
