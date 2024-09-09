@@ -14,7 +14,7 @@ export const main005: ArticleType = {
       
       <h2 key="2">The Workshop Experience</h2>,
       <p key="3">
-        Working in a mechanic workshop was my first real hands-on experience with cars. It&apos;s one thing to read about engines and differentials in textbooks; it&apos;s another to physically swap out a spark plug or align a timing chain. However, I didn't fully understand the internal combustion engine, transmission systems, and how power is transferred through a driveshaft to the wheels. It wasn&apos;t until I joined the Hanyang RACE club that everything started to click.
+        Working in a mechanic workshop was my first real hands-on experience with cars. It&apos;s one thing to read about engines and differentials in textbooks; it&apos;s another to physically swap out a spark plug or align a timing chain. However, I didn&apos;t fully understand the internal combustion engine, transmission systems, and how power is transferred through a driveshaft to the wheels. It wasn&apos;t until I joined the Hanyang RACE club that everything started to click.
       </p>,
     
       <h2 key="4">The RACE Club: Building and Breaking Cars</h2>,
