@@ -316,7 +316,7 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
 `;
 
 const MessagesArea = styled.div<{ suggestedQuestions: boolean, isMobile: boolean }>`
-  height: ${(props) => (props.isMobile ? (props.suggestedQuestions ? '67vh' : '75vh') : props.suggestedQuestions ? '18rem' : '22rem')};
+  height: ${(props) => (props.isMobile ? (props.suggestedQuestions ? '62vh' : '70vh') : props.suggestedQuestions ? '18rem' : '22rem')};
   overflow-y: scroll;
   overflow-wrap: break-word;
   line-height: 1rem;
