@@ -130,6 +130,7 @@ const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOp
   bottom: ${({ isMobile }) => (isMobile ? '0px' : '1rem')};
   display : ${(props) => (props.isOpen ? 'initial' : 'none')};
   z-index: 999999;
+  backdrop-filter: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? 'blur(20px)' : 'none') : 'none') : 'none')};
   -webkit-backdrop-filter: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? 'blur(20px)' : 'none') : 'none') : 'none')};
 `;
 
