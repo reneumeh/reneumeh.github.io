@@ -4,6 +4,7 @@ import { PALETTE } from "../utils/theme";
 import Image from 'next/image';
 import { portfolio_stuff } from "../config/portfolio-stuff_kor";
 import { useState } from "react";
+import PortfolioModal from "./PortfolioModal_kor";
 
 const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraSection: React.MutableRefObject<null>, panddSection: React.MutableRefObject<null>, Portfolio: React.MutableRefObject<null>}) => {
     const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
@@ -17,6 +18,9 @@ const PortfolioComp = (props: {mechSection: React.MutableRefObject<null>, extraS
 
   return (
     <PortfolioWrapper ref={props.Portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
+        {
+            !!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />
+        }
         <div className='main-port'>     
             {portfolio_stuff.map((item, index) => (
                 <div key={index} style={{ position: "relative" }}>
