@@ -30,7 +30,7 @@ export const main001: ArticleType = {
       <h2 key="20">Study Resources</h2>,
       <p key="21">When I had the idea for this blog post, I was going to make this comprehensive list of free resources that cover most of all the courses that you would face during an Undergrad MechE degree. However, during my research, I found out that someone already did that so I&apos;ll just link the document <a href='/static/mechanical-engineering-online.pdf'>here</a>. However, I do want to give special shoutouts to a few YouTube channels that were incredibly helpful to me:</p>,
       <div className="flex margin-bottom" key="22">
-        <a href='www.youtube.com/@ProfessorLeonard'><img alt='Prof Leo' src="https://yt3.googleusercontent.com/ytc/AIdro_nyh5Rcni3aAuRdzgNu94gXscRTualKeWoj-j7g--M3Iw=s160-c-k-c0x00ffffff-no-rj" className="round"/><i>Professor Leonard</i></a>
+        <a href='https://www.youtube.com/@ProfessorLeonard'><img alt='Prof Leo' src="https://yt3.googleusercontent.com/ytc/AIdro_nyh5Rcni3aAuRdzgNu94gXscRTualKeWoj-j7g--M3Iw=s160-c-k-c0x00ffffff-no-rj" className="round"/><i>Professor Leonard</i></a>
         <p>His calculus tutorials are incredibly helpful. He breaks everything down into digestible parts, making even the toughest problems easier to tackle.</p>
       </div>,
       <div className="flex margin-bottom" key="23">
