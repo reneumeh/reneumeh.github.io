@@ -30,7 +30,7 @@ export const main001: ArticleType = {
       <h2 key="20">학습 자원</h2>,
       <p key="21">이 블로그 포스트의 아이디어를 떠올렸을 때, 학부 기계 공학 학위에서 마주할 대부분의 과정을 다루는 무료 자원 목록을 만들 예정이었습니다. 하지만 조사하는 동안 이미 누군가 그 작업을 해놓았다는 것을 발견했으므로, <a href='/static/mechanical-engineering-online.pdf'>여기</a>에 문서를 링크하겠습니다. 그러나 저를 도와준 몇 가지 유튜브 채널에 특별히 감사드리고 싶습니다:</p>,
       <div className="flex margin-bottom" key="22">
-        <a href='www.youtube.com/@ProfessorLeonard'><img alt='Prof Leo' src="https://yt3.googleusercontent.com/ytc/AIdro_nyh5Rcni3aAuRdzgNu94gXscRTualKeWoj-j7g--M3Iw=s160-c-k-c0x00ffffff-no-rj" className="round"/><i>Professor Leonard</i></a>
+        <a href='https://www.youtube.com/@ProfessorLeonard'><img alt='Prof Leo' src="https://yt3.googleusercontent.com/ytc/AIdro_nyh5Rcni3aAuRdzgNu94gXscRTualKeWoj-j7g--M3Iw=s160-c-k-c0x00ffffff-no-rj" className="round"/><i>Professor Leonard</i></a>
         <p>그의 미적분학 튜토리얼은 정말 유용합니다. 그는 모든 것을 소화하기 쉬운 부분으로 나누어 가장 어려운 문제도 쉽게 접근할 수 있게 해줍니다.</p>
       </div>,
       <div className="flex margin-bottom" key="23">
