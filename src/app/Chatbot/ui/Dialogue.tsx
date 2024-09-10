@@ -284,7 +284,7 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
   transition: ease all 0.7s;
   background-color: ${PALETTE.WHITE};
   color: black;
-  height: ${(props) => (props.isMobile ? (props.isExpanded ? '85vh' : '0rem') : props.isExpanded ? '25.5rem' : '0rem')};
+  height: ${(props) => (props.isMobile ? (props.isExpanded ? '80vh' : '0rem') : props.isExpanded ? '25.5rem' : '0rem')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -316,7 +316,7 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
 `;
 
 const MessagesArea = styled.div<{ suggestedQuestions: boolean, isMobile: boolean }>`
-  height: ${(props) => (props.isMobile ? (props.suggestedQuestions ? '72vh' : '80vh') : props.suggestedQuestions ? '18rem' : '22rem')};
+  height: ${(props) => (props.isMobile ? (props.suggestedQuestions ? '67vh' : '75vh') : props.suggestedQuestions ? '18rem' : '22rem')};
   overflow-y: scroll;
   overflow-wrap: break-word;
   line-height: 1rem;
