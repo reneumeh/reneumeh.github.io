@@ -14,7 +14,7 @@ const ContactComp = ({ contact, emailForm } : contactProps) => {
     const sendEmail =(e:any) => {
         e.preventDefault();
         if(emailForm.current) {
-            emailjs.sendForm('service_n4wn1nh', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
+            emailjs.sendForm('service_ry84lch', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
             .then((result) => {
                 e.target.reset();
                 alert("Message sent successfully");
