@@ -23,9 +23,22 @@ const Awards = () => {
 export default Awards
 
 const AwardsWrapper = styled.div`
-h1 {
-    text-align: center;
-}
+    @keyframes fadeInLeft {
+    from {
+        opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    opacity: 0;
+    animation-name: fadeInLeft;
+  h1 {
+      text-align: center;
+  }
 `;
 
 const Blank = styled.div`
