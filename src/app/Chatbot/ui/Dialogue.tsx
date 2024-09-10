@@ -284,7 +284,7 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
   transition: ease all 0.7s;
   background-color: ${PALETTE.WHITE};
   color: black;
-  height: ${(props) => (props.isMobile ? (props.isExpanded ? '90vh' : '0rem') : props.isExpanded ? '25.5rem' : '0rem')};
+  height: ${(props) => (props.isMobile ? (props.isExpanded ? '85vh' : '0rem') : props.isExpanded ? '25.5rem' : '0rem')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
