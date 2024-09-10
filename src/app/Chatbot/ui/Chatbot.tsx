@@ -127,7 +127,7 @@ const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOp
   overflow: hidden;
   position: fixed;
   right: ${({ isMobile }) => (isMobile ? '0rem' : '1rem')};
-  bottom: ${({ isMobile }) => (isMobile ? '0px' : '1rem')};
+  bottom: ${({ isMobile }) => (isMobile ? '1rem' : '1rem')};
   display : ${(props) => (props.isOpen ? 'initial' : 'none')};
   z-index: 999999;
 `;
