@@ -39,6 +39,7 @@ const InterestsWrapper = styled.div`
         font-size: 2rem;
         width: 100%;
         text-align: center;
+        margin: 0;
         font-family: korean-font;
     }
 
