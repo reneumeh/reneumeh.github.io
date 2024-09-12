@@ -64,20 +64,20 @@ export const awardsListHS : Award[] = [
         image: '/static/samsung-dream-grad.png'
     },
     {
-        name: 'Samsung Global Hope Scholarship',
+        name: '8x Hanyang Outstanding Student Award',
+        image: '/static/academic-record-1.png'
+    },
+    {
+        name: '4x Samsung Global Hope Scholarship',
         image: '/static/samsung-dream-eng.png'
     },
     {
-        name: 'Hanyang University Outstanding Foreign Student Scholarship 2020',
+        name: '4x Hanyang University Outstanding Foreign Student Scholarship',
         image: '/static/school-awards.png',
     },
     {
-        name: 'Hanyang University Outstanding Foreign Student Scholarship 2021',
-        image: '/static/school-awards.png',
-    },
-    {
-        name: 'Hanyang University Outstanding Foreign Student Scholarship 2022',
-        image: '/static/school-awards.png',
+        name: 'GKS Excellence Scholarship 2021',
+        image: '/static/academic-record-2.png'
     },
     {
         name: 'ABEEK Accreditation',

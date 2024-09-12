@@ -65,20 +65,20 @@ export const awardsListUni: Award[] = [
         image: '/static/samsung-dream-grad.png',
     },
     {
-        name: '삼성 글로벌 희망 장학금',
+        name: '8x 한양대학교 우수/우등 상',
+        image: '/static/academic-record-1.png',
+    },
+    {
+        name: '4x 삼성 글로벌 희망 장학금',
         image: '/static/samsung-dream-eng.png',
     },
     {
-        name: '2020년 한양대학교 외국인 우수 학생 장학금',
+        name: '4x 한양대학교 외국인 우수 학생 장학금',
         image: '/static/school-awards.png',
     },
     {
-        name: '2021년 한양대학교 외국인 우수 학생 장학금',
-        image: '/static/school-awards.png',
-    },
-    {
-        name: '2022년 한양대학교 외국인 우수 학생 장학금',
-        image: '/static/school-awards.png',
+        name: 'GKS 외국인 우수자비 장학금 2021',
+        image: '/static/academic-record-2.png',
     },
     {
         name: 'ABEEK 인증',
