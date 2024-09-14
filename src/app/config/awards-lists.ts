@@ -80,7 +80,7 @@ export const awardsListHS : Award[] = [
         image: '/static/academic-record-2.png'
     },
     {
-        name: 'ABEEK Accreditation',
+        name: 'Accreditation Board for Engineering Education of Korea Certificate',
         image: '/static/abeek.png'
     },
     {
