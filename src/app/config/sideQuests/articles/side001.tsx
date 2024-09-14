@@ -17,7 +17,7 @@ export const side001: ArticleType = {
         Let&apos;s be honest—Korea is amazing, but it&apos;s even better when you understand the language. While many universities offer courses in English, knowing Korean can significantly improve your experience, from ordering food to making friends and navigating daily life.
       </p>,
       <p key="4">
-        Learning the Korean alphabet, Hangul, is surprisingly easy and will give you a solid foundation. I learnt it during my holiday before traveling and it helped me get started when I get here. If you&apos;re serious about mastering the language, consider enrolling in a Korean language course, either online or in person at a university. Many Korean universities offer 18-month intensive programs that will fast-track your progress before you start your degree. 
+        Learning the Korean alphabet, Hangul, is surprisingly easy and will give you a solid foundation. I learnt it during my holiday before traveling and it helped me get started when I got here. If you&apos;re serious about mastering the language, consider enrolling in a Korean language course, either online or in person at a university. Many Korean universities offer 18-month intensive programs that will fast-track your progress before you start your degree. 
       </p>,
       
       <h2 key="5">Visas</h2>,
