@@ -67,7 +67,7 @@ const Hero = styled.div`
     
     img {
         position: absolute;
-        height: 28.5em;
+        height: calc(30.5rem + 5vw);
         width: 35vw;
         margin-left: 2rem;
         object-position: top;
