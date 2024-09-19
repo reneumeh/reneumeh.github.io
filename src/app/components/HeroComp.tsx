@@ -67,8 +67,14 @@ const Hero = styled.div`
     
     img {
         position: absolute;
-        height: 45.5em;
-        object-fit: contain;
+        height: 28.5em;
+        width: 35vw;
+        margin-left: 2rem;
+        object-position: top;
+        top: calc(18em - 12vw);
+        border: 1px solid ${PALETTE.BLACK};
+        box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
+        object-fit: cover;
         z-index: 999;
     }
 
@@ -150,15 +156,24 @@ const Hero = styled.div`
         .intro-1{
             visibility: hidden;
         }
+
+        img {
+            left: 15vw;
+        }
+        
     }
 
 @media screen and (max-width: 700px) {
     img {
         z-index: -1;
         width: 100vw;
-        height: fit-content;
+        height: 70%;
         postition: relative;
         bottom: 12rem;
+        margin-left: 0;
+        top: 11.5rem;
+        left: 0;
+        box-shadow: none;
     }
 
     .intro-2 {
@@ -174,6 +189,10 @@ const Hero = styled.div`
         top: 5.4rem;
         font-size: 4rem;
         z-index: -2;
+    }
+
+    .marquee {
+    color: ${PALETTE.BACKGROUND};
     }
 }
     `;
