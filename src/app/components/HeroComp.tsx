@@ -56,7 +56,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
 export default HeroComp
 
 const Hero = styled.div`
-    height: 45.5em;
+    height: 100vh;
     position: relative;
     .hero-div {
         display: flex;

@@ -189,7 +189,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         position: absolute;
         width: 100vw;
         height: 100vh;
-        background-color: ${PALETTE.BACKGROUND};
+        background-color: ${PALETTE.WHITE};
         left: ${({ isMenuOpen }) =>
         isMenuOpen === true ? '0vw' : '-100vw'};
         transition: 0.5s ease all;

@@ -70,7 +70,7 @@ useEffect(() => {
       index
       element={
         <Wrapper>
-          <HeaderComp useScrollEffect={true} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}} />
+          <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}} />
           <BlogHero />
           <MainQuests mainQuests={mainQuests}/>
           <SideQuests sideQuests={sideQuests}/>

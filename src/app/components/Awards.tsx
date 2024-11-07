@@ -13,7 +13,7 @@ const Awards = () => {
   return (
     <AwardsWrapper>
     <Blank />
-    <h1>Awards And Certifications</h1>
+    <h1 className='heading'>Awards And Certifications</h1>
     <AwardsList collectionName='Undergraduate Awards' awardsList= { awardsListUni } />
     <AwardsList collectionName='High School Awards' awardsList= { awardsListHS } />
     </AwardsWrapper>
@@ -36,11 +36,12 @@ const AwardsWrapper = styled.div`
     animation-fill-mode: both;
     opacity: 0;
     animation-name: fadeInLeft;
-  h1 {
+  .heading {
       text-align: center;
+      z-index: -1;
   }
 `;
 
 const Blank = styled.div`
-    margin-top: 8rem;
+    margin-top: clamp(70px, 15vw, 120px);
 `;

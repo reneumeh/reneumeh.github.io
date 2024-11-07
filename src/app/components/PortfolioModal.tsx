@@ -23,7 +23,9 @@ export const ModalWrapper = ({ children, modalEl, handleCloseModal }: TProps) =>
   return (
     <StyledWrapper onClick={handleCloseExternalClickModal}>
       {children || null}
+      <ExitButton onClick={handleCloseExternalClickModal}>x</ExitButton>
     </StyledWrapper>
+    
   );
 };
 
@@ -38,8 +40,8 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 `;
 
 type PortfolioModalProps = {
@@ -54,8 +56,7 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
 
   return (
     <ModalWrapper handleCloseModal={handleCloseModal} modalEl={modalEl}>
-      <>
-      <Card>
+      <Card ref={modalEl}>
         <img 
           src={`/static/portfolio_${camelize(item_name)}.png`} 
           alt={item_name} 
@@ -63,8 +64,6 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
           <h1>{item_name}</h1> 
           <p>{story}</p>
       </Card>
-      <ExitButton onClick={handleCloseModal}>x</ExitButton>
-      </>
     </ModalWrapper>
   );
 };

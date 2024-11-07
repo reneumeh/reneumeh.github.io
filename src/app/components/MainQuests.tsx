@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Box } from './InterestsComp'
 import Pagination from './Pagination'
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { mainQuestArticles } from '../config/mainQuests/mainQuests'
 import { PALETTE } from '../utils/theme'
 import Image from 'next/image';
+import { motion, useInView } from 'framer-motion'
 
 
 type mainQuestsProps = {
@@ -16,10 +17,20 @@ type mainQuestsProps = {
 
 const MainQuests = ({ mainQuests }: mainQuestsProps) => {
     const isMobile = useIsMobile();
-    const [ currentPage, setCurrentPage ] = useState(0)
-    const navigate = useNavigate()
-    
-  return (
+    const [currentPage, setCurrentPage] = useState(0);
+    const navigate = useNavigate();
+    const triggerRef = useRef(null);
+
+    const isInView = useInView(triggerRef, { once: true });
+
+    return (
+        <>
+            <div ref={triggerRef} style={{ height: '1px' }}></div>
+            <MotionWrapper
+                initial={{ x: '-20vw', opacity: 0 }}
+                animate={isInView ? { x: '0vw', opacity: 1 } : {}}
+                transition={{ type: 'spring', stiffness: 70, damping: 15, duration: 0.1 }}
+            >
     <MainQuestsWrapper ref={mainQuests}>
         <Box>
             <p className='header'>Main Quests</p>
@@ -48,11 +59,17 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
         </Carousel>
         <Pagination isMobile={isMobile} currentPage={currentPage} setCurrentPage={setCurrentPage} totalCount={mainQuestArticles.length} pageSize={1} />
     </MainQuestsWrapper>
-    
+    </MotionWrapper>
+    </>
   )
 }
 
 export default MainQuests 
+
+const MotionWrapper = motion(styled.div`
+    display: flex;
+    justify-content: center;
+`);
 
 const MainQuestsWrapper = styled.div`
     padding: 2rem 2rem 2rem 2rem;
@@ -102,11 +119,11 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
 
     &:hover {
-        transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem)`}) translateY(-5px); 
+        transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem - 5px)`}) translateY(-5px); 
+        box-shadow: 13px 13px ${PALETTE.PRIMARY.DARK};
 
         .box {
             transform: translateX(10px); 
-            transition: ease all 1s;
         }
     }
 
@@ -119,7 +136,8 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
     height: 1.5rem;
     width: 1.5rem;
     display: flex;
-    jsutify-content: center;
+    justify-content: center;
+    transition: transform ease 0.5s;
     }
 
     .article-space {
