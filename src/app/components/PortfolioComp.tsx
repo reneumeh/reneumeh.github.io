@@ -14,12 +14,12 @@ type portfolioProps = {
     portfolio: React.MutableRefObject<null>
 }
 
-const typingVariant = {
-    hidden: { opacity: 0 },
-    visible: (i: number) => ({
-        opacity: 1,
-        transition: { delay: i * 0.05 },
-    }),
+const svgTextVariant = {
+    hidden: { strokeDashoffset: 2000 },
+    visible: { 
+        strokeDashoffset: 0,
+        transition: { duration: 3, ease: "easeInOut" }
+    },
 };
 
 const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : portfolioProps) => {
@@ -39,18 +39,25 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
         setUseModal("");
     }
 
-    const renderTypingText = (text: string, isInView: boolean) => (
-        <motion.div
+    const renderSvgText = (pathData: string, isInView: boolean) => (
+        <motion.svg
+            width="100%"
+            height="100"
+            viewBox="0 0 1000 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            style={{ display: "flex", gap: "0.1rem" }}
         >
-            {text.split("").map((char, index) => (
-                <motion.span key={index} variants={typingVariant} custom={index}>
-                    {char}
-                </motion.span>
-            ))}
-        </motion.div>
+            <motion.path
+                d={pathData}
+                stroke={PALETTE.WHITE}
+                strokeWidth="2"
+                strokeDasharray="2000" // Total length of path, adjust if needed
+                strokeDashoffset="2000"
+                variants={svgTextVariant}
+            />
+        </motion.svg>
     );
 
     const expressPortfolio = (section: {image: string, name: string, explanation: string}[]) =>{
@@ -95,15 +102,15 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
                 {expressPortfolio(portfolio_stuff.programmingAndDesign)}
                 {expressPortfolio(portfolio_stuff.extracurricular)}
             </div>
-            <motion.div ref={mechSection} style={{ position: "absolute", top: "15.5vw", overflowX: "clip" }}>
-                {renderTypingText("MECHANICAL ENGINEERING", isMechInView)}
-            </motion.div>
-            <motion.div ref={panddSection} style={{ position: "absolute", top: "64.5vw", overflowX: "clip" }}>
-                {renderTypingText("PROGRAMMING AND DESIGN", isPanddInView)}
-            </motion.div>
-            <motion.div ref={extraSection} style={{ position: "absolute", top: "115vw", overflowX: "clip" }}>
-                {renderTypingText("EXTRACURRICULAR", isExtraInView)}
-            </motion.div>
+            <div ref={mechSection} style={{ position: "absolute", top: "15.5vw", overflowX: "clip" }}>
+                {renderSvgText("M150 100L850 100... rest of path", isMechInView)}
+            </div>
+            <div ref={panddSection} style={{ position: "absolute", top: "64.5vw", overflowX: "clip" }}>
+                {renderSvgText("M150 100L850 100... rest of path", isPanddInView)}
+            </div>
+            <div ref={extraSection} style={{ position: "absolute", top: "115vw", overflowX: "clip" }}>
+                {renderSvgText("M150 100L850 100... rest of path", isExtraInView)}
+            </div>
         </PortfolioWrapper>
     ) 
 }
