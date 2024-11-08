@@ -1,4 +1,4 @@
-import { PrimaryButton } from "@/app/components/DownloadCVComp";
+import { PrimaryButton } from "@/app/components/BoxButton";
 import styled from "styled-components";
 import { SuggestedQuestion } from "./Dialogue";
 import { MdSentimentDissatisfied } from "react-icons/md";

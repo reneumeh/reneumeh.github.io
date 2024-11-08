@@ -149,6 +149,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     font-weight: bold;
                     font-family: Leaugue-Spartan;
                     font-stretch: expanded;
+                    color: ${PALETTE.WHITE};
                     font-size: 2rem;
                     .page-buttons {
                         margin: 0.5em auto;
@@ -156,7 +157,6 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     }
                     .page-buttons:nth-child(-n + 2) {
                         border-bottom: 1px solid ${PALETTE.BLACK};
-                        color: ${PALETTE.PRIMARY.DEFAULT};
                         margin: 2em auto 0em auto;
                     }
                     .page-buttons:hover, page-buttons:active{

@@ -88,6 +88,7 @@ const AwardsList = ({ awardsList, collectionName } : AwardsListProps) => {
               initial={{ opacity: 0, backgroundColor: `${PALETTE.SECONDARY.LIGHT}`, y: hasAnimated ? 0 : -20 }}
               animate={{ opacity: 1, backgroundColor: `${PALETTE.BACKGROUND}`, y: 0 }}
               transition={{ duration: 0.15, delay: hasAnimated ? 0 : index * 0.07 }}
+              whileHover={{ backgroundColor: `${PALETTE.SECONDARY.LIGHT}`, cursor: 'pointer' }}
             >
               {award.name}
             </motion.li>
@@ -174,10 +175,6 @@ const AwardsListWrapper = styled.div`
 
   li {
     padding: 1rem;
-    &:hover {
-      background-color: ${PALETTE.SECONDARY.LIGHT};
-      cursor: pointer;
-    }
   }
 
   .awards-gallery {
@@ -245,26 +242,6 @@ const AwardsListWrapper = styled.div`
     color: white;
     border: none;
     cursor: pointer;
-  }
-`;
-
-export const ExitButton = styled.div`
-  display: flex;
-  margin-top: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background-color: ${PALETTE.SECONDARY.LIGHT};
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 2rem;
-  font-family: Leaugue-Spartan-light;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${PALETTE.WHITE};
-    color: ${PALETTE.BLACK};
   }
 `;
 

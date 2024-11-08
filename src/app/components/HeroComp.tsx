@@ -57,6 +57,7 @@ export default HeroComp
 
 const Hero = styled.div`
     height: 100vh;
+    background-color: black;
     position: relative;
     .hero-div {
         display: flex;
@@ -67,42 +68,39 @@ const Hero = styled.div`
     
     img {
         position: absolute;
-        height: calc(30.5rem + 5vw);
-        width: 35vw;
-        margin-left: 2rem;
-        object-position: top;
-        top: calc(18em - 12vw);
-        border: 1px solid ${PALETTE.BLACK};
-        box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
-        object-fit: cover;
-        z-index: 999;
+        height: 100vh;
+        object-fit: contain;
+        z-index: 0;
+        opacity: 0.6;
     }
 
     .intro-1 {
         position: relative;
-        top: 20.5rem;
+        top: 30.5rem;
         left: 15vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
         font-size: 2.7vw;
+        color: ${PALETTE.WHITE};
     }
 
     .intro-2 {
         position: absolute;
-        top: 19rem;
+        top: 29rem;
         left: 70.4vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
+        color: ${PALETTE.WHITE};
     }
     .intro-3 {
         position: relative;
-        top: 20.5rem;
+        top: 30.5rem;
         left: 70vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
-        color: ${PALETTE.PRIMARY.DEFAULT};
+        color: ${PALETTE.WHITE};
     }
 
     .marquee {
@@ -111,11 +109,11 @@ const Hero = styled.div`
         }
     font-family: Leaugue-Spartan;
     font-size: 2.5rem;
-    color: ${PALETTE.SECONDARY.DARK}; 
+    color: ${PALETTE.WHITE}; 
     height: fit-content;
     --gap: 1vw;
     position: relative;
-    top: 30rem;
+    top: 40rem;
     display: flex;
     overflow: hidden;
     user-select: none;

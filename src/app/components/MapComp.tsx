@@ -11,7 +11,7 @@ const MapComp = () => {
   const lagosPin = useRef(null);
   const seoulPin = useRef(null);
   const mapRef = useRef(null); // Ref to detect when the map is in view
-  const isInView = useInView(mapRef, { once: true }); 
+  const isInView = useInView(mapRef, { once: true, amount: 'some'}); 
 
     const MapElements = [
       {
@@ -94,8 +94,7 @@ export default MapComp;
 
 const Map = styled.div<{ hoveredElement: string }>`
 position: relative;
-display: flex;
-height: 55vw;
+height: 44vw;
 
 .pins > img:hover, img:active {
     transform: translateY(-5px);

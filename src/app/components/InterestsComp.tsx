@@ -1,6 +1,7 @@
-
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const InterestsComp = () => {
     const interest_stuff = [
@@ -14,26 +15,45 @@ const InterestsComp = () => {
         },
     ]
 
-  return (
-    <InterestsWrapper>
-        <Box>
-        <p>Research Interests</p>
-        </Box>
-        {interest_stuff.map((interest_stuff, index) => (
-            <div className='interest' key={index}>
-                <div className='topic'>
-                    {interest_stuff.topic}
-                </div>
-                <div className='expo'>
-                    {interest_stuff.expo}
-                </div>
-            </div>
-        ))}
-    </InterestsWrapper>
-  )
+    return (
+        <InterestsWrapper>
+            <Box>
+                <p>Research Interests</p>
+            </Box>
+            {interest_stuff.map((interest, index) => {
+                const topicRef = useRef(null);
+                const expoRef = useRef(null);
+                const isTopicInView = useInView(topicRef, { once: true });
+                const isExpoInView = useInView(expoRef, { once: true });
+
+                return (
+                    <div className='interest' key={index}>
+                        <motion.div
+                            className='topic'
+                            ref={topicRef}
+                            initial={{ x: -100, opacity: 0 }}
+                            animate={isTopicInView ? { x: 0, opacity: 1 } : {}}
+                            transition={{ duration: 0.5, delay: index * 0.2 }}
+                        >
+                            {interest.topic}
+                        </motion.div>
+                        <motion.div
+                            className='expo'
+                            ref={expoRef}
+                            initial={{ x: 100, opacity: 0 }}
+                            animate={isExpoInView ? { x: 0, opacity: 1 } : {}}
+                            transition={{ duration: 0.5, delay: index * 0.2 }}
+                        >
+                            {interest.expo}
+                        </motion.div>
+                    </div>
+                );
+            })}
+        </InterestsWrapper>
+    );
 }
 
-export default InterestsComp
+export default InterestsComp;
 
 const InterestsWrapper = styled.div`
     height: fit-content;
@@ -57,13 +77,11 @@ const InterestsWrapper = styled.div`
         color: ${PALETTE.PRIMARY.DARK};
         font-size: 3.5rem;
         font-weight: 700;
-        
     }
     .expo {
         flex-basis: 30%;
         text-align: justify;
         font-size: 1rem;
-
     }
     @media screen and (max-width: 700px) { 
         .topic {
@@ -83,4 +101,4 @@ export const Box = styled.div`
     margin: auto;
     padding: 0.5rem 0;
     margin-bottom: 32px;
-`
+`;

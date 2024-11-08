@@ -71,8 +71,8 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
 export default PortfolioModal;
 
 const Card = styled.div`
-  width: calc(50% + 10rem);
-  height: calc(95% - 21vw);
+  width: clamp(10px, 90vw, 900px);
+  min-height: fit-content;
   background-color: ${PALETTE.WHITE};
   padding: 1rem;
   box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};

@@ -5,6 +5,7 @@ import PortfolioModal from "./PortfolioModal";
 import { PALETTE } from "../utils/theme";
 import { portfolio_stuff } from "../config/portfolio-stuff";
 import { motion, useInView } from "framer-motion";
+import { renderText } from "./extra-d";
 import Image from 'next/image';
 
 type portfolioProps = {
@@ -14,23 +15,14 @@ type portfolioProps = {
     portfolio: React.MutableRefObject<null>
 }
 
-const svgTextVariant = {
-    hidden: { strokeDashoffset: 2000 },
-    visible: { 
-        strokeDashoffset: 0,
-        transition: { duration: 3, ease: "easeInOut" }
-    },
-};
-
 const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : portfolioProps) => {
     const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
     const [useModal, setUseModal] = useState("");
-    const portfolioRef = useRef(null);
-    const isInView = useInView(portfolioRef, { once: true });
+    const isInView = useInView(portfolio, { once: true });
 
-    const isMechInView = useInView(mechSection, { once: true });
-    const isPanddInView = useInView(panddSection, { once: true });
-    const isExtraInView = useInView(extraSection, { once: true });
+    const isMechInView = useInView(mechSection, { once: true, amount: 0.5 });
+    const isPanddInView = useInView(panddSection, { once: true, amount: 0.5 });
+    const isExtraInView = useInView(extraSection, { once: true, amount: 0.5 });
 
     const handleClick = (item_name: string) => {
         setUseModal(item_name);
@@ -38,27 +30,6 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
     const handleCloseModal = () => {
         setUseModal("");
     }
-
-    const renderSvgText = (pathData: string, isInView: boolean) => (
-        <motion.svg
-            width="100%"
-            height="100"
-            viewBox="0 0 1000 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-        >
-            <motion.path
-                d={pathData}
-                stroke={PALETTE.WHITE}
-                strokeWidth="2"
-                strokeDasharray="2000" // Total length of path, adjust if needed
-                strokeDashoffset="2000"
-                variants={svgTextVariant}
-            />
-        </motion.svg>
-    );
 
     const expressPortfolio = (section: {image: string, name: string, explanation: string}[]) =>{
         return section.map((item, index) => {
@@ -68,6 +39,7 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
             return (
                 <motion.div
                     key={index}
+                    className="inside"
                     ref={itemRef} // Use individual ref for each item
                     style={{ position: "relative" }}
                     initial={{ y: 50, opacity: 0 }}
@@ -83,10 +55,10 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
                         onMouseLeave={handleLeave}
                         onClick={() => handleClick(item.name)}
                     />
-                    <div className='tester'></div> 
+                    <div className='inside tester' ></div> 
                     <p className='portfolio-name'>{item.name}</p>
                     {hoveredElement === item.name && (
-                        <div className='portfolio-expo'>
+                        <div className='inside portfolio-expo'>
                             {item.explanation}
                         </div>
                     )}
@@ -95,21 +67,27 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
     }
 
     return (
-        <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }}>
+        <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }} >
             {!!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />}
-            <div className='main-port' ref={portfolioRef}>     
-                {expressPortfolio(portfolio_stuff.mechanicalEngineering)}
+            <motion.div className='main-port mech' ref={mechSection}>  
+                    {expressPortfolio(portfolio_stuff.mechanicalEngineering)}
+                    <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center'}} >
+                    {renderText({text: 'MECHANICAL ENGINEERING', isInView: isMechInView, color:  '#fff'})}
+                    </span>
+            </motion.div>
+            <div className='main-port pandd' ref={panddSection}>  
                 {expressPortfolio(portfolio_stuff.programmingAndDesign)}
+                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center'}} >
+                    {renderText({text: 'PROGRAMMING AND DESIGN', isInView: isPanddInView, color:  '#fff'})}
+                </span>
+                
+            </div>
+            <div className='main-port extra' ref={extraSection}>  
                 {expressPortfolio(portfolio_stuff.extracurricular)}
-            </div>
-            <div ref={mechSection} style={{ position: "absolute", top: "15.5vw", overflowX: "clip" }}>
-                {renderSvgText("M150 100L850 100... rest of path", isMechInView)}
-            </div>
-            <div ref={panddSection} style={{ position: "absolute", top: "64.5vw", overflowX: "clip" }}>
-                {renderSvgText("M150 100L850 100... rest of path", isPanddInView)}
-            </div>
-            <div ref={extraSection} style={{ position: "absolute", top: "115vw", overflowX: "clip" }}>
-                {renderSvgText("M150 100L850 100... rest of path", isExtraInView)}
+                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center'}} >
+                    {renderText({text: 'EXTRACURRICULAR ACTIVITIES', isInView: isExtraInView, color:  '#fff'})}
+                </span>
+                
             </div>
         </PortfolioWrapper>
     ) 
@@ -122,7 +100,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
 
     .main-port {
         position: relative;
-        top: -5vw;
+        top: 4vw;
         display: grid;
         grid-template-columns: repeat(2, 1.2fr);
 
@@ -141,7 +119,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             position: absolute;
             top: 1rem;
             left: 0.8rem;
-            border: 1px solid ${PALETTE.BLACK};
+            border: 1px solid ${PALETTE.BLACK}
         }
 
         .portfolio-name {
@@ -171,26 +149,19 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             backdrop-filter: blur(1.5rem);
             pointer-events: none;
         }
+
+        text {
+        height : 120px;
+        font: bold 60px Century Gothic, Arial;
+        text-align: center;
+        }
     }
 
-    .main-port > div {
+    .main-port > .inside {
         margin-left: 15vw;
     }
 
-    text {
-        -webkit-text-fill-color: ${PALETTE.BACKGROUND};
-        -webkit-text-stroke: 1px ${PALETTE.WHITE};
-        height : 120px;
-        font: bold 60px Century Gothic, Arial;
-        width: 100%;
-        text-align: center;
-        z-index: -2;
-    }
-
     @media screen and (max-width: 700px) { 
-        text {
-            visibility: hidden;
-        }
 
         .main-port {
             grid-template-columns: repeat(1, 1.2fr);

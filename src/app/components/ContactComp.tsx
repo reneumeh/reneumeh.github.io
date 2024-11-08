@@ -52,6 +52,7 @@ export default ContactComp
 const ContactWrapper = styled.div`
     height: fit-content;
     margin-bottom: 50px;
+    margin-top: 120px;
     display: flex;
     font-size: 2.5rem;
     font-weight: 600;
