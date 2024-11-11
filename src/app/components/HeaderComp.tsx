@@ -156,7 +156,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                         
                     }
                     .page-buttons:nth-child(-n + 2) {
-                        border-bottom: 1px solid ${PALETTE.BLACK};
+                        border-bottom: 1px solid ${PALETTE.WHITE};
                         margin: 2em auto 0em auto;
                     }
                     .page-buttons:hover, page-buttons:active{

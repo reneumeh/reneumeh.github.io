@@ -39,15 +39,15 @@ const BoxButtonVWrapper = styled.div`
         justify-content: center;
     }
     .portfolio-button-inside, .portfolio-button-inside:visited, .portfolio-button-inside:active {
-        padding: 1.2rem 2.4rem;
-        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        font-size: 1rem;
         border: 1px solid ${PALETTE.WHITE};
         text-decoration: none;
         background-color: ${PALETTE.PRIMARY.DEFAULT}; 
         color: ${PALETTE.WHITE};
     }
     .portfolio-button-inside:hover, portfolio-button-inside:active {
-        transform: scale(0.9);
+        transform: scale(1.1);
         transition: ease all 0.2s;
     }
 `;

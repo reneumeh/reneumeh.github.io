@@ -23,7 +23,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
         <div className='intro-1'>Hi, my name is</div> 
         <div className='intro-2'>RENE </div> 
         <div className='intro-3'>UMEH</div> 
-        <div id='marquees'>
+        <div className='marquees'>
             <div className="marquee marquee--reverse marquee--hover-pause">
                 <ul className="marquee__content">
                     <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>   
@@ -57,26 +57,28 @@ export default HeroComp
 
 const Hero = styled.div`
     height: 100vh;
+    width: 100vw;
     background-color: black;
     position: relative;
+    overflow: hidden;
+
     .hero-div {
         display: flex;
-        width: 100%;
         z-index: -100;
         justify-content: center;
     }
     
     img {
         position: absolute;
-        height: 100vh;
-        object-fit: contain;
+        max-height: 100vh;
+        object-fit: cover;
         z-index: 0;
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
     .intro-1 {
         position: relative;
-        top: 30.5rem;
+        top: 50.5vh;
         left: 15vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
@@ -86,7 +88,7 @@ const Hero = styled.div`
 
     .intro-2 {
         position: absolute;
-        top: 29rem;
+        top: 44vh;
         left: 70.4vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
@@ -95,7 +97,7 @@ const Hero = styled.div`
     }
     .intro-3 {
         position: relative;
-        top: 30.5rem;
+        top: 47.5vh;
         left: 70vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
@@ -103,6 +105,11 @@ const Hero = styled.div`
         color: ${PALETTE.WHITE};
     }
 
+    .marquees {
+    position: absolute;
+    bottom: 0vh;
+    }
+    
     .marquee {
         ul {
             margin: 5px auto;
@@ -112,8 +119,6 @@ const Hero = styled.div`
     color: ${PALETTE.WHITE}; 
     height: fit-content;
     --gap: 1vw;
-    position: relative;
-    top: 40rem;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -153,29 +158,12 @@ const Hero = styled.div`
     @media screen and (max-width: 900px) {
         .intro-1{
             visibility: hidden;
-        }
-
-        img {
-            left: 15vw;
-        }
-        
+        }      
     }
 
 @media screen and (max-width: 700px) {
-    img {
-        z-index: -1;
-        width: 100vw;
-        height: 70%;
-        postition: relative;
-        bottom: 12rem;
-        margin-left: 0;
-        top: 11.5rem;
-        left: 0;
-        box-shadow: none;
-    }
-
     .intro-2 {
-        top: 2.5rem;
+        top: 2.5vh;
         left: 0;
         width: 100%;
         text-align: center;
@@ -184,13 +172,8 @@ const Hero = styled.div`
         left: 0;
         width: 100%;
         text-align: center;
-        top: 5.4rem;
+        top: 8vh;
         font-size: 4rem;
-        z-index: -2;
-    }
-
-    .marquee {
-    color: ${PALETTE.BACKGROUND};
     }
 }
     `;

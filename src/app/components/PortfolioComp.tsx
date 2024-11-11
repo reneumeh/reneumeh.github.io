@@ -96,11 +96,9 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
 export default PortfolioComp;
 
 const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
-    height: fit-content;
+    margin-top: 8vh;
 
     .main-port {
-        position: relative;
-        top: 4vw;
         display: grid;
         grid-template-columns: repeat(2, 1.2fr);
 
@@ -152,7 +150,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
 
         text {
         height : 120px;
-        font: bold 60px Century Gothic, Arial;
+        font: bold 3rem Century Gothic, Arial;
         text-align: center;
         }
     }

@@ -74,6 +74,7 @@ position: absolute;
 z-index: -10;
 background-color: ${PALETTE.BACKGROUND};
 font-family: Leaugue-Spartan-minor;
+overflow: hidden;
 hr {
   width: 70%;
   color: rgba(0,0,0, 0,5);

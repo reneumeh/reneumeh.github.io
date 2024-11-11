@@ -52,7 +52,7 @@ const MapComp = () => {
                 id='big-map'
                 alt='map'
                 src='/static/map.png'
-                style={{ position: 'absolute', margin: '2vh  0vw 2vh 5em', width: '80vw' }}
+                style={{ position: 'absolute', margin: '2vh  0vw 2vh 5em', width: '80vw', color: 'white' }}
             />
             {MapElements.map((pin, index) => (
                 <motion.div

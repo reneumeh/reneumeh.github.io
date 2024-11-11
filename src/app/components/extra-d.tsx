@@ -21,7 +21,7 @@ export const renderText = ({ text, isInView , color = '#000000' } : renderTextPr
             fill="none"
         >
             <motion.text
-                x="10"
+                x="60"
                 y="55"
                 fontFamily="Arial"
                 fill="none"
