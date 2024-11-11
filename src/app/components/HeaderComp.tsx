@@ -64,7 +64,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     isScrolling === true ?  `${PALETTE.BACKGROUND}` : ""};
     justify-content: ${({ isScrolling }) =>
     isScrolling === true ? 'space-between' : ""};
-    width: calc(100vw - 17px);
+    width: 100% ;
     z-index: ${({ isScrolling }) =>
     isScrolling === true ? "999999" : "9999"};
     font-size: 1.1rem;

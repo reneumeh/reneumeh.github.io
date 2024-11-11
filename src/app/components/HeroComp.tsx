@@ -130,7 +130,7 @@ const Hero = styled.div`
     display: flex;
     justify-content: space-around;
     gap: var(--gap);
-    min-width: 100%;
+    min-width: 100vw;
     animation: scroll 20s linear infinite;
     list-style-type: none;
     }

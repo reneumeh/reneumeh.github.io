@@ -75,6 +75,7 @@ const MainQuestsWrapper = styled.div`
     padding: 2rem 2rem 2rem 2rem;
     margin: auto;
     margin-bottom: 5rem; 
+    margin-top: 5rem;
     width: 75vw;
     font-size: 1.1rem;
     overflow: hidden;

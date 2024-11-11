@@ -130,7 +130,7 @@ const ContactWrapper = styled.div<{ isInView: boolean }>`
  @media screen and (max-width: 700px) { 
         .contact-left::before {
             left: 5vw;
-            width: 90vw;
+            min-width: 90vw;
         }
         .contact-left {
             max-width: 40%;
