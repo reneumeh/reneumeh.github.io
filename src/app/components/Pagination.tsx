@@ -57,17 +57,16 @@ const PaginationWrapper = styled.div`
   position: relative;
   gap: 10px;
   margin-top: 15px;
+
   .side-button {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: ${PALETTE.SECONDARY.DEFAULT};
     border: none;
-    height: 1rem;
-    width: 1rem;
-    min-width: 1rem; 
-    min-height: 1rem;
-    border-radius: 50%;
+    width: 16px; /* Fixed size for consistent circle */
+    height: 16px;
+    border-radius: 50%; /* Ensures circle shape */
     box-sizing: border-box;
     color: ${PALETTE.WHITE};
     &:hover {
@@ -79,21 +78,19 @@ const PaginationWrapper = styled.div`
   .page-button {
     box-sizing: border-box;
     border: none;
-    height: 0.7rem;
-    width: 0.7rem;
-    min-width: 0.7rem; 
-    min-height: 0.7rem;
+    width: 12px; /* Adjusted fixed size */
+    height: 12px;
     border-radius: 50%;
     background-color: ${PALETTE.SECONDARY.LIGHT};
-    transition: 0.7s ease all;
+    transition: 0.3s ease all;
     &:hover {
       cursor: pointer;
     }
   }
 
-    .active {
+  .active {
     background-color: ${PALETTE.WHITE};
-    }
+  }
 
   .page-text {
     color: ${PALETTE.WHITE};
@@ -102,6 +99,7 @@ const PaginationWrapper = styled.div`
       color: red;
     }
   }
+
   .page-size-select {
     position: absolute;
     font-size: 0.7rem;
@@ -122,4 +120,3 @@ const PaginationWrapper = styled.div`
     }
   }
 `;
-

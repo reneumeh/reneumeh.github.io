@@ -1,71 +1,144 @@
-
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import PortfolioModal from "./PortfolioModal";
 import { PALETTE } from "../utils/theme";
 import { portfolio_stuff } from "../config/portfolio-stuff";
-import Image from 'next/image';
+import { motion, useInView } from "framer-motion";
+import { renderText } from "./renderText";
 
 type portfolioProps = {
     mechSection: React.MutableRefObject<null>, 
     extraSection: React.MutableRefObject<null>, 
     panddSection: React.MutableRefObject<null>, 
     portfolio: React.MutableRefObject<null>
-}
+};
+
+type PortfolioItemProps = {
+    item: { image: string; name: string; explanation: string };
+    index: number;
+    handleHover: (name: string) => void;
+    handleLeave: () => void;
+    handleClick: (name: string, path: string) => void;
+    hoveredElement: string;
+};
 
 const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : portfolioProps) => {
-    const {handleHover, handleLeave, hoveredElement} = useHoveredElement();
-    const [useModal, setUseModal] = useState("")
-    const handleClick = (item_name: string) => {
-        setUseModal(item_name)
-    }
+    const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
+    const [useModal, setUseModal] = useState("");
+    const [ modalPath, setModalPath ] = useState("")
+    const isInView = useInView(portfolio, { once: true });
+
+    const isMechInView = useInView(mechSection, { once: true, amount: 0.5 });
+    const isPanddInView = useInView(panddSection, { once: true, amount: 0.5 });
+    const isExtraInView = useInView(extraSection, { once: true, amount: 0.5 });
+
+    const handleClick = (item_name: string, item_path: string) => {
+        setUseModal(item_name);
+        setModalPath(item_path)
+    };
     const handleCloseModal = () => {
-        setUseModal("")
-    }
+        setUseModal("");
+        setModalPath("")
+    };
 
-  return (
-    <PortfolioWrapper ref={portfolio} hoveredElement= {hoveredElement} style= {{position: "relative"}}>
-        {
-            !!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />
-        }
-        <div className='main-port'>     
-            {portfolio_stuff.map((item, index) => (
-                <div key={index} style={{ position: "relative" }}>
-                    <img className='portfolio-image' src={item.image} 
-                        id={item.name}
-                        alt={item.name}
-                        onMouseEnter={() => handleHover(item.name)}
-                        onMouseLeave={handleLeave}
-                        onClick={() => handleClick(item.name)}/>
-                    <div className='tester'></div> 
-                    <p className='portfolio-name'>
-                        {item.name}
-                    </p>
-                    {hoveredElement === item.name &&
-                        <div className='portfolio-expo'>
-                            {item.explanation}
-                        </div>}
+    return (
+        <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }}>
+            {!!useModal && <PortfolioModal item_name={useModal} item_path={modalPath} handleCloseModal={handleCloseModal} />}
+            <motion.div className='main-port mech' ref={mechSection}>
+                {portfolio_stuff.mechanicalEngineering.map((item, index) => (
+                    <PortfolioItem
+                        key={index}
+                        item={item}
+                        index={index}
+                        handleHover={handleHover}
+                        handleLeave={handleLeave}
+                        handleClick={handleClick}
+                        hoveredElement={hoveredElement}
+                    />
+                ))}
+                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
+                    {renderText({text: 'MECHANICAL ENGINEERING', isInView: isMechInView, color:  '#fff'})}
+                </span>
+            </motion.div>
+            <div className='main-port pandd' ref={panddSection}>
+                {portfolio_stuff.programmingAndDesign.map((item, index) => (
+                    <PortfolioItem
+                        key={index}
+                        item={item}
+                        index={index}
+                        handleHover={handleHover}
+                        handleLeave={handleLeave}
+                        handleClick={handleClick}
+                        hoveredElement={hoveredElement}
+                    />
+                ))}
+                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
+                    {renderText({text: 'PROGRAMMING AND DESIGN', isInView: isPanddInView, color:  '#fff'})}
+                </span>
+            </div>
+            <div className='main-port extra' ref={extraSection}>
+                {portfolio_stuff.extracurricular.map((item, index) => (
+                    <PortfolioItem
+                        key={index}
+                        item={item}
+                        index={index}
+                        handleHover={handleHover}
+                        handleLeave={handleLeave}
+                        handleClick={handleClick}
+                        hoveredElement={hoveredElement}
+                    />
+                ))}
+                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
+                    {renderText({text: 'EXTRACURRICULAR ACTIVITIES', isInView: isExtraInView, color:  '#fff'})}
+                </span>
+            </div>
+        </PortfolioWrapper>
+    );
+};
+
+const PortfolioItem = ({ item, index, handleHover, handleLeave, handleClick, hoveredElement }: PortfolioItemProps) => {
+    const itemRef = useRef(null);
+    const isItemInView = useInView(itemRef, { once: true });
+
+    return (
+        <motion.div
+            className="inside"
+            ref={itemRef}
+            style={{ position: "relative" }}
+            initial={{ y: 50, opacity: 0 }}
+            animate={isItemInView ? { y: 0, opacity: 1 } : {}}
+            transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
+        >
+            <img
+                className='portfolio-image'
+                src={item.image} 
+                id={item.name}
+                alt={item.name}
+                onMouseEnter={() => handleHover(item.name)}
+                onMouseLeave={handleLeave}
+                onClick={() => handleClick(item.name, item.image)}
+            />
+            <div className='inside tester'></div>
+            <p className='portfolio-name'>{item.name}</p>
+            {hoveredElement === item.name && (
+                <div className='inside portfolio-expo'>
+                    {item.explanation}
                 </div>
-            ))}
-        </div>
-        <text ref= {mechSection} style= {{position: "absolute", top: "15.5vw", overflowX: "clip"}}>MECHANICAL ENGINEERING</text>
-        <text ref= {panddSection} style= {{position: "absolute", top: "64.5vw", overflowX: "clip"}}>PROGRAMMING AND DESIGN</text>
-        <text ref= {extraSection} style= {{position: "absolute", top: "115vw", overflowX: "clip"}}>EXTRACURRICULAR</text>
-    </PortfolioWrapper>
-) 
-}
+            )}
+        </motion.div>
+    );
+};
 
-export default PortfolioComp
+export default PortfolioComp;
 
 const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
-    height: fit-content;
-    
-    .main-port{
-        position: relative;
-        top: -5vw;
+    margin-top: 8vh;
+
+    .main-port {
         display: grid;
         grid-template-columns: repeat(2, 1.2fr);
+
         .portfolio-image {
             width: 20vw;
             height: 20vw;
@@ -73,6 +146,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             background-color: ${PALETTE.WHITE};
             cursor: pointer;
         }
+
         .tester {
             z-index: -1;
             width: 20vw;
@@ -82,6 +156,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             left: 0.8rem;
             border: 1px solid ${PALETTE.BLACK};
         }
+
         .portfolio-name {
             position: relative;
             left: 21.5vw;
@@ -92,6 +167,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             font-family: Leaugue-Spartan;
             font-size: 1.5vw;
         }
+
         .portfolio-expo {
             width: 20vw;
             height: 20vw;
@@ -108,32 +184,32 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             backdrop-filter: blur(1.5rem);
             pointer-events: none;
         }
+
+        text {
+        height : 120px;
+        font: bold 3rem Century Gothic, Arial;
+        text-align: center;
+        }
     }
-    .main-port > div {
+
+    .main-port > .inside {
         margin-left: 15vw;
     }
 
-    text {
-        -webkit-text-fill-color: ${PALETTE.BACKGROUND};
-        -webkit-text-stroke: 1px ${PALETTE.WHITE};
-        height : 120px;
-        font: bold 60px Century Gothic, Arial;
-        width: 100%;
-        text-align: center;
-        z-index: -2;
-    }
     @media screen and (max-width: 700px) { 
-        text {
-            visibility: hidden;
-        }
-        .main-port{
+        .main-port {
             grid-template-columns: repeat(1, 1.2fr);
             .portfolio-image, .tester, .portfolio-expo {
                 width: 60vw;
                 height: 60vw;
                 margin: auto;
-                font-size: 17px;
+                font-size: 20px;
             }
+
+            text {
+            display: none;
+            }
+
             .portfolio-name {
                 font-size: 22px;
                 width: 160px;
@@ -141,6 +217,5 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
                 left: 42vw;
             }
         }
-
-
-    `;
+    }
+`;

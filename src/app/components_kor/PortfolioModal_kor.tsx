@@ -5,65 +5,30 @@ import { camelize } from '../utils/utils';
 import { PALETTE } from '../utils/theme';
 import { modalStories } from '../config/modal-stories_kor';
 import Image from 'next/image';
+import { ModalWrapper } from '../components/PortfolioModal';
 
-type TProps = {
-  children?: JSX.Element;
-  visible?: boolean;
-  modalEl?: React.MutableRefObject<HTMLDivElement> | React.MutableRefObject<null>;
-  handleCloseModal: () => void;
-};
-
-const ModalWrapper = ({ children, modalEl, handleCloseModal }: TProps) => {
-  const handleCloseExternalClickModal = (event: MouseEvent<HTMLElement>) => {
-    if (modalEl?.current && !modalEl.current.contains(event.target as Node)) {
-      handleCloseModal();
-    }
-  };
-
-  return (
-    <StyledWrapper onClick={handleCloseExternalClickModal}>
-      {children || null}
-    </StyledWrapper>
-  );
-};
-
-const StyledWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(20px);
-`;
 
 type PortfolioModalProps = {
   item_name: string;
+  item_path: string;
   handleCloseModal: () => void;
 };
 
-const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) => {
+const PortfolioModal = ({ item_name, item_path, handleCloseModal }: PortfolioModalProps) => {
   const modalEl = useRef(null)
 
-  const story = modalStories[item_name] || 'Story not available';
+  const story = modalStories[item_name] || '내용 없음';
 
   return (
     <ModalWrapper handleCloseModal={handleCloseModal} modalEl={modalEl}>
-      <>
-      <Card>
+      <Card ref={modalEl}>
         <img 
-          src={`/static/portfolio_${camelize(item_name)}.png`} 
+          src={item_path} 
           alt={item_name} 
         />
           <h1>{item_name}</h1> 
           <p>{story}</p>
       </Card>
-      <ExitButton onClick={handleCloseModal}>x</ExitButton>
-      </>
     </ModalWrapper>
   );
 };
@@ -71,8 +36,8 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
 export default PortfolioModal;
 
 const Card = styled.div`
-  width: calc(50% + 10rem);
-  height: calc(95% - 21vw);
+  width: clamp(10px, 90vw, 900px);
+  min-height: fit-content;
   background-color: ${PALETTE.WHITE};
   padding: 1rem;
   box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
@@ -87,7 +52,7 @@ const Card = styled.div`
 
   p {
   font-size: calc(0.7rem + 0.7vw);
-  line-height: calc(0.9rem + 1vw);
+  line-height: calc(0.6rem + 0.7vw);
   }
 
   h1 {
@@ -99,7 +64,7 @@ const Card = styled.div`
   }   
 `;
 
-const ExitButton = styled.div`
+export const ExitButton = styled.div`
   display: flex;
   margin-top: 1rem;
   width: 2.5rem;

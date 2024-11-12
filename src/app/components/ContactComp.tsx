@@ -1,57 +1,77 @@
-
 import React from 'react';
 import emailjs from '@emailjs/browser';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
     emailForm: React.MutableRefObject<null>,
-    }
+}
 
-const ContactComp = ({ contact, emailForm } : contactProps) => {
-    const sendEmail =(e:any) => {
+const ContactComp = ({ contact, emailForm }: contactProps) => {
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(emailForm.current) {
+        if (emailForm.current) {
             emailjs.sendForm('service_ry84lch', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
-            .then((result) => {
-                e.target.reset();
+            .then(() => {
+                e.currentTarget.reset();
                 alert("Message sent successfully");
             }, (error) => {
                 alert(error.text);
             });
-        };
-        };
-  return (
-    <ContactWrapper ref={contact}>
-        <div className='contact-left'>Contact Me
-            <p>Location: Seoul, South Korea</p>
-            <p>
-                <img
-                src='/static/send.png'
-                alt='send_icon'
-                width= {20}/> 
-                dubemrene@gmail.com
-            </p>
-        </div>
-        <div className='contact-right'> 
-            <form ref={emailForm} onSubmit={sendEmail}>
-                <input type="text" name="from_name" placeholder='Name' required />
-                <input type="email" name="from_email" placeholder='Email' required />
-                <textarea name="message" rows={6} placeholder='Message'></textarea>
-                <button className="button" type="submit">SEND</button>
-            </form>
-        </div>
-</ContactWrapper>
-  )
+        }
+    };
+
+    const isInView = useInView(contact, { once: true, margin: '0px 0px -100px 0px' });
+
+    return (
+        <ContactWrapper ref={contact} isInView={isInView}>
+            <div className='contact-left'>Contact Me
+                <p>Location: Seoul, South Korea</p>
+                <p>
+                    <img
+                        src='/static/send.png'
+                        alt='send_icon'
+                        width={20}
+                        height={20}
+                    /> 
+                    dubemrene@gmail.com
+                </p>
+            </div>
+            <div className='contact-right'> 
+                <form ref={emailForm} onSubmit={sendEmail}>
+                    <input type="text" name="from_name" placeholder='Name' required />
+                    <input type="email" name="from_email" placeholder='Email' required />
+                    <textarea name="message" rows={6} placeholder='Message' />
+                    <button className="button" type="submit">SEND</button>
+                </form>
+            </div>
+        </ContactWrapper>
+    )
 }
 
-export default ContactComp
+export default ContactComp;
 
-const ContactWrapper = styled.div`
+const borderDraw = keyframes`
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 80vw;
+        height: 0;
+    }
+    100% {
+        width: 80vw;
+        height: 22rem;
+    }
+`;
+
+const ContactWrapper = styled.div<{ isInView: boolean }>`
     height: fit-content;
     margin-bottom: 50px;
+    margin-top: 120px;
     display: flex;
     font-size: 2.5rem;
     font-weight: 600;
@@ -91,20 +111,24 @@ const ContactWrapper = styled.div`
         transition: ease all 0.2s;
         cursor: pointer;
     }
+
     .contact-left::before {
         content: "";
-        border: 1px solid ${PALETTE.BLACK};
+        border: ${({ isInView }) => isInView ? `1px solid ${PALETTE.BLACK}` : ``};
         position: absolute;
         bottom: 25px;
         left: 10vw;
         width: 80vw;
         height: 22rem;
         z-index: -1;
+        transition: width 1s ease, height 1s ease;
+        animation: ${({ isInView }) => isInView && borderDraw} 1s forwards;
     }
-    @media screen and (max-width: 700px) { 
+
+ @media screen and (max-width: 700px) { 
         .contact-left::before {
             left: 5vw;
-            width: 90vw;
+            min-width: 90vw;
         }
         .contact-left {
             max-width: 40%;
@@ -115,4 +139,6 @@ const ContactWrapper = styled.div`
         .contact-right {
             flex-basis: 60%;
         }
+}
     `; 
+

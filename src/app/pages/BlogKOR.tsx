@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom"
 import Article from "../components_kor/Article_kor"
 import useIsScrolling from "../hooks/useIsScrolling"
 import Awards from "../components_kor/Awards_kor"
+import Chatbot from "../Chatbot/ui/Chatbot"
 
 export const BlogKOR = () => {
   const { resetScroll } = useIsScrolling();
@@ -70,8 +71,9 @@ useEffect(() => {
       index
       element={
         <Wrapper>
-          <HeaderComp useScrollEffect={true} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}}/>
+          <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}}/>
           <BlogHero />
+          <Chatbot />
           <MainQuests mainQuests={mainQuests}/>
           <SideQuests sideQuests={sideQuests}/>
         </Wrapper>

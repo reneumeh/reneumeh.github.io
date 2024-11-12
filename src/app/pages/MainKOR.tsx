@@ -7,7 +7,7 @@ import MapComp from '../components_kor/MapComp_kor';
 import PortfolioComp from '../components_kor/PortfolioComp_kor';
 import InterestsComp from '../components_kor/InterestsComp_kor';
 import ContactComp from '../components_kor/ContactComp_kor';
-import DownloadCVComp from '../components_kor/DownloadCVComp_kor';
+import BoxButton from '../components/BoxButton';
 import { PALETTE } from '../utils/theme';
 import Chatbot from '../Chatbot/ui/Chatbot';
 
@@ -49,11 +49,12 @@ function MainENG() {
         <HeaderComp useLanguage={{ ENG: '#/', KOR: '#/kor'}} pages={pages} useScrollEffect={true}/>
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
-        <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} Portfolio={portfolio}/>
-        <DownloadCVComp />
+        <hr />
+        <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
+        <BoxButton text='이력서 다운로드' link= '/static/이력서_레네이.pdf' />
         <InterestsComp />
         <Chatbot />
-        <ContactComp Contact={contact} emailForm={emailForm}/>
+        <ContactComp contact={contact} emailForm={emailForm}/>
     </Wrapper>
   )
 }
@@ -66,5 +67,22 @@ position: absolute;
 z-index: -10;
 background-color: ${PALETTE.BACKGROUND};
 font-family: Leaugue-Spartan;
+hr {
+  width: 70%;
+  color: rgba(0,0,0, 0,5);
+}
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    opacity: 0;
+    animation-name: fadeInLeft;
     `;
 

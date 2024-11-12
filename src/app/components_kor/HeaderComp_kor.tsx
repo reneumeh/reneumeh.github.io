@@ -46,7 +46,10 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
             <img className='phone-icons hamburger' alt='함버거' width= {20} src= '/static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
             <img className='phone-icons close'  alt= '닫침' width= {20} src= '/static/close.png' onClick={() => {setMenuOpen(false)}}/>
         </NavBar>
+        {
+            !!useLanguage &&
         <div className='language'><a className='top' href='#/'>영</a><a className='bottom'href="#/kor">한</a></div>
+        }
     </Header>
   )
 }
@@ -63,7 +66,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     isScrolling === true ?  `${PALETTE.BACKGROUND}` : ""};
     justify-content: ${({ isScrolling }) =>
     isScrolling === true ? 'space-between' : ""};
-    width: calc(100vw - 17px);
+    width: 100% ;
     z-index: ${({ isScrolling }) =>
     isScrolling === true ? "999999" : "9999"};
     font-size: 1.1rem;
@@ -97,7 +100,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
         border-radius: 20px;
         background-color: ${PALETTE.SECONDARY.LIGHT};
         font-size: 0.9rem;
-        :hover {
+        :hover, :active {
             background-color: ${PALETTE.WHITE};
             color: ${PALETTE.WHITE};
         }
@@ -130,7 +133,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     }  
     `;
 
-const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
+export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
     @media screen and (min-width: 700px) {
     .phone-icons {
         visibility: hidden;
@@ -148,17 +151,17 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     font-weight: bold;
                     font-family: Leaugue-Spartan;
                     font-stretch: expanded;
+                    color: ${PALETTE.WHITE};
                     font-size: 2rem;
                     .page-buttons {
                         margin: 0.5em auto;
                         
                     }
                     .page-buttons:nth-child(-n + 2) {
-                        border-bottom: 1px solid ${PALETTE.BLACK};
-                        color: ${PALETTE.PRIMARY.DEFAULT};
+                        border-bottom: 1px solid ${PALETTE.WHITE};
                         margin: 2em auto 0em auto;
                     }
-                    .page-buttons:hover{
+                    .page-buttons:hover, page-buttons:active{
                         font-size: 1.9rem;
                         cursor: pointer;
                         transition: ease all 0.5s;
@@ -174,7 +177,7 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                 .page-buttons{
                     padding: 2rem;
                 }
-                :hover {
+                :hover, :active {
                     color: ${PALETTE.WHITE};
                     background-color: ${PALETTE.PRIMARY.DEFAULT};
                     cursor: pointer;
@@ -188,7 +191,7 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         position: absolute;
         width: 100vw;
         height: 100vh;
-        background-color: ${PALETTE.BACKGROUND};
+        background-color: ${PALETTE.WHITE};
         left: ${({ isMenuOpen }) =>
         isMenuOpen === true ? '0vw' : '-100vw'};
         transition: 0.5s ease all;
@@ -203,9 +206,10 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             align-items: center;
             padding: 2rem 0;
             font-family: Leaugue-Spartan;
+            cursor: pointer;
         }
         .page-buttons:first-child {
-            margin-top: 2.5rem;
+            margin-top: 3.5rem;
         }
         .page-buttons img {
             margin: 0 10px 0 2rem;
@@ -217,16 +221,24 @@ const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         .hamburger {
             position: ${({ isScrolling }) =>
             isScrolling === true ? 'fixed' : 'absolute'};
+            filter: ${({ isScrolling }) =>
+            isScrolling === true ? '' : 'invert(1)'};
+            -webkit-filter: ${({ isScrolling }) =>
+            isScrolling === true ? '' : 'invert(1)'};
             z-index: -1;
             top: ${({ isScrolling }) =>
             isScrolling === true ? '0.5rem' :'5rem' };
             left: ${({ isScrolling }) =>
             isScrolling === true ? '0.3rem' :'108vw' };
+            visibility: ${({ isMenuOpen }) =>
+            isMenuOpen === true ? "hidden" : "visible" };
+            cursor: pointer;
         }
         .close {
             position: absolute;
             top: 1.5rem;
             left: 2rem;
+            cursor: pointer;
         }
     }
     `;

@@ -34,7 +34,11 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
                 key={page.name}
                 className="page-buttons"
                 onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(`${page.link}`))}>
-                    <img className='phone-icons' alt={page.name} width= {20} src= {page.img} />
+                    <img 
+                    className='phone-icons' 
+                    alt={page.name} 
+                    width= {20} 
+                    src= {page.img} />
                     {page.name}
                 </div>
             ))}
@@ -64,7 +68,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     isScrolling === true ?  `${PALETTE.BACKGROUND}` : ""};
     justify-content: ${({ isScrolling }) =>
     isScrolling === true ? 'space-between' : ""};
-    width: calc(100vw - 17px);
+    width: 100% ;
     z-index: ${({ isScrolling }) =>
     isScrolling === true ? "999999" : "9999"};
     font-size: 1.1rem;
@@ -149,14 +153,14 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     font-weight: bold;
                     font-family: Leaugue-Spartan;
                     font-stretch: expanded;
+                    color: ${PALETTE.WHITE};
                     font-size: 2rem;
                     .page-buttons {
                         margin: 0.5em auto;
                         
                     }
                     .page-buttons:nth-child(-n + 2) {
-                        border-bottom: 1px solid ${PALETTE.BLACK};
-                        color: ${PALETTE.PRIMARY.DEFAULT};
+                        border-bottom: 1px solid ${PALETTE.WHITE};
                         margin: 2em auto 0em auto;
                     }
                     .page-buttons:hover, page-buttons:active{
@@ -189,7 +193,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         position: absolute;
         width: 100vw;
         height: 100vh;
-        background-color: ${PALETTE.BACKGROUND};
+        background-color: ${PALETTE.WHITE};
         left: ${({ isMenuOpen }) =>
         isMenuOpen === true ? '0vw' : '-100vw'};
         transition: 0.5s ease all;
@@ -207,7 +211,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             cursor: pointer;
         }
         .page-buttons:first-child {
-            margin-top: 2.5rem;
+            margin-top: 3.5rem;
         }
         .page-buttons img {
             margin: 0 10px 0 2rem;
@@ -219,6 +223,10 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         .hamburger {
             position: ${({ isScrolling }) =>
             isScrolling === true ? 'fixed' : 'absolute'};
+            filter: ${({ isScrolling }) =>
+            isScrolling === true ? '' : 'invert(1)'};
+            -webkit-filter: ${({ isScrolling }) =>
+            isScrolling === true ? '' : 'invert(1)'};
             z-index: -1;
             top: ${({ isScrolling }) =>
             isScrolling === true ? '0.5rem' :'5rem' };

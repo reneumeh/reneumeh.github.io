@@ -12,20 +12,12 @@ import Image from 'next/image';
 
 const Chatbot = () => {
   const isMobile = useIsMobile();
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const { isExpanded, setIsExpanded } = useIsExpanded();
   const { isOpen, setIsOpen } = useIsOpen();
-  const [ sessionId, setSessionId ] = useState(0);
-  const [loading, setLoading] = useState(false);
-
-  const [ viewAll, setViewAll ] = useState(false);
-  const [ areYouSure, setAreYouSure ] = useState(false);
 
   const onClose = () => {
     setIsOpen(false);
     setIsExpanded(false);
-    setPosition({ x: 0, y: 0 });
-    setSessionId(0);
     };
 
   const onShrink = () => {

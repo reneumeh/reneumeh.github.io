@@ -1,27 +1,33 @@
 
 import React from 'react';
 import emailjs from '@emailjs/browser'
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
+import { useInView } from 'framer-motion';
 
-const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: React.MutableRefObject<null>}) => {
-    const sendEmail =(e:any) => {
+type contactProps = {
+    contact: React.MutableRefObject<null>, 
+    emailForm: React.MutableRefObject<null>,
+}
+
+const ContactComp = ({ contact, emailForm }: contactProps) => {
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if(props.emailForm.current) {
-            emailjs.sendForm('service_n4wn1nh', 'template_r981zdv', props.emailForm.current, 'SlV3483aRFBrHHQYI')
-            .then((result) => {
-                e.target.reset();
+        if (emailForm.current) {
+            emailjs.sendForm('service_ry84lch', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
+            .then(() => {
+                e.currentTarget.reset();
                 alert("메시지가 발송되었습니다");
             }, (error) => {
                 alert(error.text);
             });
-        };
+        }
+    };
 
-        };
+    const isInView = useInView(contact, { once: true, margin: '0px 0px -100px 0px' });
+    
   return (
-    <ContactWrapper ref={props.Contact}>
+    <ContactWrapper ref={contact} isInView={isInView}>
         <div className='contact-left'>연락처
             <p>위치: 서울, 대한민국</p>
             <p>
@@ -32,7 +38,7 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
             </p>
         </div>
         <div className='contact-right'> 
-            <form ref={props.emailForm} onSubmit={sendEmail}>
+            <form ref={emailForm} onSubmit={sendEmail}>
                 <input type="text" name="from_name" placeholder='성함' required />
                 <input type="email" name="from_email" placeholder='이메일' required />
                 <textarea name="message" rows={6} placeholder='메시지'></textarea>
@@ -45,9 +51,25 @@ const ContactComp = (props: {Contact: React.MutableRefObject<null>, emailForm: R
 
 export default ContactComp
 
-const ContactWrapper = styled.div`
+const borderDraw = keyframes`
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 80vw;
+        height: 0;
+    }
+    100% {
+        width: 80vw;
+        height: 22rem;
+    }
+`;
+
+const ContactWrapper = styled.div<{ isInView: boolean }>`
     height: fit-content;
     margin-bottom: 50px;
+    margin-top: 120px;
     display: flex;
     font-size: 2.5rem;
     font-weight: 600;
@@ -87,24 +109,24 @@ const ContactWrapper = styled.div`
         transition: ease all 0.2s;
         cursor: pointer;
     }
+
     .contact-left::before {
         content: "";
-        border: 1px solid ${PALETTE.BLACK};
+        border: ${({ isInView }) => isInView ? `1px solid ${PALETTE.BLACK}` : ``};
         position: absolute;
         bottom: 25px;
         left: 10vw;
         width: 80vw;
         height: 22rem;
         z-index: -1;
+        transition: width 1s ease, height 1s ease;
+        animation: ${({ isInView }) => isInView && borderDraw} 1s forwards;
     }
-    @media screen and (max-width: 700px) { 
+
+ @media screen and (max-width: 700px) { 
         .contact-left::before {
             left: 5vw;
-            width: 90vw;
-            bottom: 35px;
-        }
-        p {
-            font-size: 1rem;
+            min-width: 90vw;
         }
         .contact-left {
             max-width: 40%;
@@ -115,4 +137,6 @@ const ContactWrapper = styled.div`
         .contact-right {
             flex-basis: 60%;
         }
-    `;
+}
+    `; 
+

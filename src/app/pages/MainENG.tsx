@@ -7,7 +7,7 @@ import MapComp from '../components/MapComp';
 import PortfolioComp from '../components/PortfolioComp';
 import InterestsComp from '../components/InterestsComp';
 import ContactComp from '../components/ContactComp';
-import DownloadCVComp from '../components/DownloadCVComp';
+import BoxButton from '../components/BoxButton';
 import { Page } from '../utils/types';
 import { PALETTE } from '../utils/theme';
 import Chatbot from '../Chatbot/ui/Chatbot';
@@ -56,8 +56,9 @@ function MainENG() {
         <HeaderComp pages={pages} useScrollEffect={true} useLanguage={{ ENG: '#/', KOR: '#/kor'}} />
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
+        <hr />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
-        <DownloadCVComp />
+        <BoxButton text='DOWNLOAD RESUME' link= '/static/rene-umeh-portfolio.pdf' />
         <Chatbot />
         <InterestsComp />
         <ContactComp contact={contact} emailForm={emailForm}/>
@@ -73,6 +74,11 @@ position: absolute;
 z-index: -10;
 background-color: ${PALETTE.BACKGROUND};
 font-family: Leaugue-Spartan-minor;
+overflow: hidden;
+hr {
+  width: 70%;
+  color: rgba(0,0,0, 0,5);
+}
 @keyframes fadeInLeft {
     from {
         opacity: 0;

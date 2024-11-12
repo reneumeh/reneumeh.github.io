@@ -23,7 +23,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
         <div className='intro-1'>Hi, my name is</div> 
         <div className='intro-2'>RENE </div> 
         <div className='intro-3'>UMEH</div> 
-        <div id='marquees'>
+        <div className='marquees'>
             <div className="marquee marquee--reverse marquee--hover-pause">
                 <ul className="marquee__content">
                     <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>   
@@ -56,66 +56,69 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
 export default HeroComp
 
 const Hero = styled.div`
-    height: 45.5em;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
     position: relative;
+    overflow: hidden;
+
     .hero-div {
         display: flex;
-        width: 100%;
         z-index: -100;
         justify-content: center;
     }
     
     img {
         position: absolute;
-        height: calc(30.5rem + 5vw);
-        width: 35vw;
-        margin-left: 2rem;
-        object-position: top;
-        top: calc(18em - 12vw);
-        border: 1px solid ${PALETTE.BLACK};
-        box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
+        max-height: 100vh;
         object-fit: cover;
-        z-index: 999;
+        z-index: 0;
+        opacity: 0.7;
     }
 
     .intro-1 {
         position: relative;
-        top: 20.5rem;
+        top: 50.5vh;
         left: 15vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
         font-size: 2.7vw;
+        color: ${PALETTE.WHITE};
     }
 
     .intro-2 {
         position: absolute;
-        top: 19rem;
+        top: 44vh;
         left: 70.4vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
+        color: ${PALETTE.WHITE};
     }
     .intro-3 {
         position: relative;
-        top: 20.5rem;
+        top: 47.5vh;
         left: 70vw;
         width: fit-content;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
-        color: ${PALETTE.PRIMARY.DEFAULT};
+        color: ${PALETTE.WHITE};
     }
 
+    .marquees {
+    position: absolute;
+    bottom: 0vh;
+    }
+    
     .marquee {
         ul {
             margin: 5px auto;
         }
     font-family: Leaugue-Spartan;
     font-size: 2.5rem;
-    color: ${PALETTE.SECONDARY.DARK}; 
+    color: ${PALETTE.WHITE}; 
     height: fit-content;
     --gap: 1vw;
-    position: relative;
-    top: 30rem;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -127,7 +130,7 @@ const Hero = styled.div`
     display: flex;
     justify-content: space-around;
     gap: var(--gap);
-    min-width: 100%;
+    min-width: 100vw;
     animation: scroll 20s linear infinite;
     list-style-type: none;
     }
@@ -152,32 +155,15 @@ const Hero = styled.div`
     cursor: pointer;
     }
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1010px) {
         .intro-1{
             visibility: hidden;
-        }
-
-        img {
-            left: 15vw;
-        }
-        
+        }      
     }
 
 @media screen and (max-width: 700px) {
-    img {
-        z-index: -1;
-        width: 100vw;
-        height: 70%;
-        postition: relative;
-        bottom: 12rem;
-        margin-left: 0;
-        top: 11.5rem;
-        left: 0;
-        box-shadow: none;
-    }
-
     .intro-2 {
-        top: 2.5rem;
+        top: 2.5vh;
         left: 0;
         width: 100%;
         text-align: center;
@@ -186,13 +172,8 @@ const Hero = styled.div`
         left: 0;
         width: 100%;
         text-align: center;
-        top: 5.4rem;
+        top: 8vh;
         font-size: 4rem;
-        z-index: -2;
-    }
-
-    .marquee {
-    color: ${PALETTE.BACKGROUND};
     }
 }
     `;
