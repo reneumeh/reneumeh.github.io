@@ -10,6 +10,7 @@ import ContactComp from '../components_kor/ContactComp_kor';
 import BoxButton from '../components/BoxButton';
 import { PALETTE } from '../utils/theme';
 import Chatbot from '../Chatbot/ui/Chatbot';
+import { Wrapper } from './MainENG';
 
 
 function MainENG() {
@@ -60,29 +61,4 @@ function MainENG() {
 }
 
 export default MainENG
-
-const Wrapper = styled.div`
-width: 100%;
-position: absolute;
-z-index: -10;
-background-color: ${PALETTE.BACKGROUND};
-font-family: Leaugue-Spartan;
-hr {
-  width: 70%;
-  color: rgba(0,0,0, 0,5);
-}
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    opacity: 0;
-    animation-name: fadeInLeft;
-    `;
 
