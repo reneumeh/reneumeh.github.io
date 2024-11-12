@@ -41,7 +41,7 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
                                 key={index}
                                 currentPage={currentPage}
                                 pageIndex={index}
-                                onClick={() => { navigate(`article?id=${article.id}`) }}
+                                onClick={() => { navigate(`article_kor?id=${article.id}`) }}
                             >
                                 <div className='article-space'>
                                     <div>
