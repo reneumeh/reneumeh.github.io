@@ -46,10 +46,11 @@ const StyledWrapper = styled.div`
 
 type PortfolioModalProps = {
   item_name: string;
+  item_path: string;
   handleCloseModal: () => void;
 };
 
-const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) => {
+const PortfolioModal = ({ item_name, item_path, handleCloseModal }: PortfolioModalProps) => {
   const modalEl = useRef(null)
 
   const story = modalStories[item_name] || 'Story not available';
@@ -58,7 +59,7 @@ const PortfolioModal = ({ item_name, handleCloseModal }: PortfolioModalProps) =>
     <ModalWrapper handleCloseModal={handleCloseModal} modalEl={modalEl}>
       <Card ref={modalEl}>
         <img 
-          src={`/static/portfolio_${camelize(item_name)}.png`} 
+          src={item_path} 
           alt={item_name} 
         />
           <h1>{item_name}</h1> 

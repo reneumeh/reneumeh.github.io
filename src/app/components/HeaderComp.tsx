@@ -34,7 +34,11 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
                 key={page.name}
                 className="page-buttons"
                 onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(`${page.link}`))}>
-                    <img className='phone-icons' alt={page.name} width= {20} src= {page.img} />
+                    <img 
+                    className='phone-icons' 
+                    alt={page.name} 
+                    width= {20} 
+                    src= {page.img} />
                     {page.name}
                 </div>
             ))}

@@ -155,7 +155,7 @@ const Hero = styled.div`
     cursor: pointer;
     }
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1010px) {
         .intro-1{
             visibility: hidden;
         }      

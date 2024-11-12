@@ -10,7 +10,7 @@ const MapComp = () => {
   const texasPin = useRef(null);
   const lagosPin = useRef(null);
   const seoulPin = useRef(null);
-  const mapRef = useRef(null); // Ref to detect when the map is in view
+  const mapRef = useRef(null); 
   const isInView = useInView(mapRef, { once: true, amount: 'some'}); 
 
     const MapElements = [
@@ -39,7 +39,7 @@ const MapComp = () => {
 
   return (
     <Map
-        ref={mapRef} // Attach ref for view detection
+        ref={mapRef}
         as={motion.div}
         initial={{ y: 100, opacity: 0 }}
         animate={isInView ? { y: 0, opacity: 1 } : {}}
@@ -164,7 +164,7 @@ height: 44vw;
     font-family: Leaugue-Spartan;
 }
 
-@media screen and (max-width: 700px) { 
+@media screen and (max-width: 1010px) { 
     display: none;
 }
 `;

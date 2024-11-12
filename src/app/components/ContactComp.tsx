@@ -2,7 +2,6 @@ import React from 'react';
 import emailjs from '@emailjs/browser';
 import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 
 type contactProps = {
@@ -54,7 +53,6 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
 
 export default ContactComp;
 
-// Define the border-draw animation
 const borderDraw = keyframes`
     0% {
         width: 0;

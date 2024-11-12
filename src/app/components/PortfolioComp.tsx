@@ -19,29 +19,32 @@ type PortfolioItemProps = {
     index: number;
     handleHover: (name: string) => void;
     handleLeave: () => void;
-    handleClick: (name: string) => void;
+    handleClick: (name: string, path: string) => void;
     hoveredElement: string;
 };
 
 const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : portfolioProps) => {
     const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
     const [useModal, setUseModal] = useState("");
+    const [ modalPath, setModalPath ] = useState("")
     const isInView = useInView(portfolio, { once: true });
 
     const isMechInView = useInView(mechSection, { once: true, amount: 0.5 });
     const isPanddInView = useInView(panddSection, { once: true, amount: 0.5 });
     const isExtraInView = useInView(extraSection, { once: true, amount: 0.5 });
 
-    const handleClick = (item_name: string) => {
+    const handleClick = (item_name: string, item_path: string) => {
         setUseModal(item_name);
+        setModalPath(item_path)
     };
     const handleCloseModal = () => {
         setUseModal("");
+        setModalPath("")
     };
 
     return (
         <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }}>
-            {!!useModal && <PortfolioModal item_name={useModal} handleCloseModal={handleCloseModal} />}
+            {!!useModal && <PortfolioModal item_name={useModal} item_path={modalPath} handleCloseModal={handleCloseModal} />}
             <motion.div className='main-port mech' ref={mechSection}>
                 {portfolio_stuff.mechanicalEngineering.map((item, index) => (
                     <PortfolioItem
@@ -114,7 +117,7 @@ const PortfolioItem = ({ item, index, handleHover, handleLeave, handleClick, hov
                 alt={item.name}
                 onMouseEnter={() => handleHover(item.name)}
                 onMouseLeave={handleLeave}
-                onClick={() => handleClick(item.name)}
+                onClick={() => handleClick(item.name, item.image)}
             />
             <div className='inside tester'></div>
             <p className='portfolio-name'>{item.name}</p>
@@ -151,7 +154,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             position: absolute;
             top: 1rem;
             left: 0.8rem;
-            border: 1px solid ${PALETTE.BLACK}
+            border: 1px solid ${PALETTE.BLACK};
         }
 
         .portfolio-name {
@@ -200,7 +203,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
                 width: 60vw;
                 height: 60vw;
                 margin: auto;
-                font-size: 17px;
+                font-size: 20px;
             }
 
             text {

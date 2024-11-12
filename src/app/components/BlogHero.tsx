@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
 import useIsScrolling from '../hooks/useIsScrolling';
 import useIsMobile from '../hooks/useIsMobile';
 

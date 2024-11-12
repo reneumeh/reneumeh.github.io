@@ -7,7 +7,6 @@ import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { mainQuestArticles } from '../config/mainQuests/mainQuests'
 import { PALETTE } from '../utils/theme'
-import Image from 'next/image';
 import { motion, useInView } from 'framer-motion'
 
 
@@ -21,7 +20,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
     const navigate = useNavigate();
     const triggerRef = useRef(null);
 
-    const isInView = useInView(triggerRef, { once: true, amount: 0.5 });
+    const isInView = useInView(triggerRef, { once: true, amount: 0.6 });
 
     return (
         <>
