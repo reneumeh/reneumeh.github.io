@@ -78,9 +78,9 @@ const PaginationWrapper = styled.div`
   .page-button {
     box-sizing: border-box;
     border: none;
-    width: 12px; /* Adjusted fixed size */
+    width: 12px; 
     height: 12px;
-    border-radius: 50%;
+    border-radius: 6px;
     background-color: ${PALETTE.SECONDARY.LIGHT};
     transition: 0.3s ease all;
     &:hover {

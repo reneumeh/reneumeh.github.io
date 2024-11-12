@@ -2,7 +2,7 @@ import { ArticleType } from "@/app/utils/types"
 import Image from 'next/image';
 
 export const main005: ArticleType = {
-    id: 3194005,
+    id: 3194105,
     title: '자동차와 나의 여정',
     summary: "자동차에 대한 호기심이 여름 방학의 정비소 경험에서 시작되어 대학의 RACE 클럽에서 자동차 엔지니어링에 대한 깊은 열정을 키우게 되었습니다.",
     primaryImage: '/static/car_cad.jpg',

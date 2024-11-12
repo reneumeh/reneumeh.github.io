@@ -24,13 +24,13 @@ const Article = () => {
             switch (articleId.slice(0, 4)) {
                 case '3194':
                     foundArticle = mainQuestArticles.find(article => String(article?.id) === articleId);
-                    setNextDisabled(Number(articleId.slice(4)) === mainQuestArticles.length);
-                    setPreviousDisabled(Number(articleId.slice(4)) === 1);
+                    setNextDisabled(Number(articleId.slice(4)) === mainQuestArticles.length + 100);
+                    setPreviousDisabled(Number(articleId.slice(4)) === 101);
                     break;
                 case '9945':
                     foundArticle = sideQuestArticles.find(article => String(article?.id) === articleId);
-                    setNextDisabled(Number(articleId.slice(4)) === sideQuestArticles.length);
-                    setPreviousDisabled(Number(articleId.slice(4)) === 1);
+                    setNextDisabled(Number(articleId.slice(4)) === sideQuestArticles.length + 100);
+                    setPreviousDisabled(Number(articleId.slice(4)) === 101);
                     break;
                 default:
                     throw new Error('Article not found');
@@ -56,7 +56,7 @@ const Article = () => {
         const newIndex = currentIndex + step;
 
         if (newIndex >= 0 && newIndex < articleArray.length) {
-            navigate(`/blog/article?id=${articleArray[newIndex].id}`);
+            navigate(`/blog_kor/article_kor?id=${articleArray[newIndex].id}`);
         }
     };
 

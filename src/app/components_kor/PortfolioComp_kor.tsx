@@ -167,6 +167,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             word-wrap: break-word;
             font-family: Leaugue-Spartan;
             font-size: 1.5vw;
+            font-weight: bold;
         }
 
         .portfolio-expo {

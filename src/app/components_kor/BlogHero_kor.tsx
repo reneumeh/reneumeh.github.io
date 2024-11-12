@@ -42,7 +42,7 @@ const BlogHero = () => {
             column: 1,
             src: "/static/race.mp4",
             description: '제작자동차 엔지니어링',
-            link: "#/blog/article?id=3194005",
+            link: "#/blog_kor/article_kor?id=3194105",
             type: "video",
             height: "43.9%",
             width: "43.9%"
@@ -52,7 +52,7 @@ const BlogHero = () => {
             column: 1,
             src: "/static/racecar.jpg",
             description: '제작자동차 엔지니어링',
-            link: "#/blog/article?id=3194005",
+            link: "#/blog_kor/article_kor?id=3194105",
             type: "img",
             height: "56.1%",
             width: "43.9%"
@@ -63,7 +63,7 @@ const BlogHero = () => {
             src: "/static/screw.mp4",
             description: "만두 스크류 재설계",
             type: "video",
-            link: "#/blog/article?id=3194003",
+            link: "#/blog_kor/article_kor?id=3194102",
             height: "27%",
             width: "24.583%"
         },
@@ -73,7 +73,7 @@ const BlogHero = () => {
             src: '/static/rccar.png',
             description: 'RC 자동차',
             type: "img",
-            link: "#/blog/article?id=3194005",
+            link: "#/blog_kor/article_kor?id=3194105",
             height: "48.9%",
             width: "24.583%"
         },
@@ -83,7 +83,7 @@ const BlogHero = () => {
             src: "/static/lego.png",
             description: "레고 컬러 소팅",
             type: "img",
-            link: "#/blog/article?id=3194004",
+            link: "#/blog_kor/article_kor?id=3194104",
             height: "24%",
             width: "24.583%"
         },
@@ -93,7 +93,7 @@ const BlogHero = () => {
             src: "/static/spacemap.png",
             description: "위성 충돌 예비 시스템",
             type: "img",
-            link: "#/blog/article?id=3194004",
+            link: "#/blog_kor/article_kor?id=3194104",
             height: "42.9%",
             width: "31.528%"
         },
@@ -103,7 +103,7 @@ const BlogHero = () => {
             src: '/static/kist.png',
             description: '2D ~ 3D AI 모델',
             type: "img",
-            link: "#/blog/article?id=3194004",
+            link: "#/blog_kor/article_kor?id=3194104",
             height: "57.1%",
             width: "31.528%"
         },
