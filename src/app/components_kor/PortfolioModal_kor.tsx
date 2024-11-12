@@ -52,7 +52,7 @@ const Card = styled.div`
 
   p {
   font-size: calc(0.7rem + 0.7vw);
-  line-height: calc(0.6rem + 0.7vw);
+  line-height: calc(0.9rem + 1vw);
   }
 
   h1 {
