@@ -39,7 +39,7 @@ const BlogHero = () => {
     
     const blogHeroItems = [
         {
-            id: "0",
+            id: "1",
             column: 1,
             src: "/static/race.mp4",
             description: 'Race Car Engineering',
@@ -49,7 +49,7 @@ const BlogHero = () => {
             width: "43.9%"
         },
         {
-            id: "1",
+            id: "2",
             column: 1,
             src: "/static/racecar.jpg",
             description: 'Race Car Engineering',
@@ -59,7 +59,7 @@ const BlogHero = () => {
             width: "43.9%"
         },
         {
-            id: "2",
+            id: "3",
             column: 2,
             src: "/static/screw.mp4",
             description: "Dumpling Screw Redesign",
@@ -69,7 +69,7 @@ const BlogHero = () => {
             width: "24.583%"
         },
         {
-            id: "3",
+            id: "4",
             column: 2,
             src: '/static/rccar.png',
             description: 'RC Car Engineering',
@@ -79,7 +79,7 @@ const BlogHero = () => {
             width: "24.583%"
         },
         {
-            id: "4",
+            id: "5",
             column: 2,
             src: "/static/lego.png",
             description: "Lego Brick Color Sorter",
@@ -89,7 +89,7 @@ const BlogHero = () => {
             width: "24.583%"
         },
         {
-            id: '5',
+            id: '6',
             column: 3,
             src: "/static/spacemap.png",
             description: "Satellite Collision Prevention System",
@@ -99,7 +99,7 @@ const BlogHero = () => {
             width: "31.528%"
         },
         {
-            id: '6',
+            id: '7',
             column: 3,
             src: '/static/kist.png',
             description: '2D to 3D Conversion AI Model',
@@ -110,41 +110,54 @@ const BlogHero = () => {
         },
     ];
 
-    const blogHeroImages = blogHeroItems.filter((item)=> item.type == 'img')
-    const [shownImageId, setShownImageId] = useState(blogHeroImages[0].id);
-
-    const columns = [
-        blogHeroItems.filter((item) => item.column == 1),
-        blogHeroItems.filter((item) => item.column == 2),
-        blogHeroItems.filter((item) => item.column == 3)]
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setShownImageId(prevShownImageId => {
-                return prevShownImageId === blogHeroImages[blogHeroImages.length - 1].id 
-                    ? blogHeroImages[0].id 
-                    : String(Number(prevShownImageId) + 1);
-            });
-        }, 4000);
-
-        return () => clearInterval(interval); 
-    });
+    const blogHeroImages = blogHeroItems
+    .filter((item) => item.type === 'img')
+    .map((item, index) => ({ ...item, id: index }));
+    
+  const [shownImageId, setShownImageId] = useState(blogHeroImages[0].id);
+  
+  const columns = [
+    blogHeroItems.filter((item) => item.column === 1),
+    blogHeroItems.filter((item) => item.column === 2),
+    blogHeroItems.filter((item) => item.column === 3),
+  ];
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShownImageId((prevShownImageId) => {
+        return prevShownImageId === blogHeroImages[blogHeroImages.length - 1].id 
+          ? blogHeroImages[0].id 
+          : blogHeroImages[prevShownImageId + 1].id;
+      });
+    }, 4000);
+  
+    return () => clearInterval(interval);
+  }, [blogHeroImages]);
 
     return (
         <BlogHeroWrapper>
             {isMobile ?
+            <Slideshow>
+                {
                 blogHeroImages.map((image, index) => (
-                    <div key={index}>
+                    <div key={index} className='slideshow-container'>
                     <img 
                         key={image.id} 
                         src={image.src} 
                         alt={`Slide ${image.id}`}
                         className={image.id === shownImageId ? 'active slideshow' : 'slideshow'} 
                     />
+                    <p className={image.id === shownImageId ? 'active' : ''}>
+                        {image.description}
+                    </p>
                     </div>
-                ))
+                ))}
+                </Slideshow>
             :
                 <CollageGrid>
+                    <div className='intro-1'>This is where </div>
+                    <div className='intro-2'>I write about </div>
+                    <div className='intro-3'>stuff I&apos;ve worked on</div>
                 {columns.map((column, index) => (
                     <div key ={index} className='column'>
                         {column.map((item,index) => (
@@ -188,18 +201,31 @@ const BlogHeroWrapper = styled.div`
     max-height: 100vh;
     position: relative;
 
+    .slideshow-container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .slideshow {
         background-color: white;
         position: absolute;
-        max-height: 25vw;
-        max-width: 35vw;
-        object-fit: contain;
+        min-width: 100vw;
+        height: 50vh;
+        object-fit: cover;
+        object-position: 50% 50%;
         opacity: 0;
-        transition: opacity 2s ease-in-out;
-        top: calc(25rem - 10vw);
-        margin-right: 15vw;
-        right: 40vw;
+        transition: opacity 1s ease-in-out;
         box-shadow: 8px 8px ${PALETTE.PRIMARY.DARK};
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    p {
+        position: absolute;
+        top: 52vh;
+        opacity: 0;
+        place-self: center;
         &.active {
             opacity: 1;
         }
@@ -207,37 +233,45 @@ const BlogHeroWrapper = styled.div`
 
     .intro-1 {
         position: absolute;
-        top: 19rem;
-        left: 60vw;
+        top: 49vh;
+        left: 10vw;
         width: 38vw;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
+        color: ${PALETTE.WHITE};
+        z-index: 9;
     }
 
     .intro-2 {
         position: absolute;
-        top: 23.8rem;
-        left: 60vw;
+        top: 57.8vh;
+        left: 10vw;
         width: 38vw;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
+        color: ${PALETTE.WHITE};
+        z-index: 9;
     }
     
     .intro-3 {
         position: absolute;
-        top: 25rem;
-        left: 60vw;
+        top: 65vh;
+        left: 10vw;
         width: 38vw;
         font-family: Leaugue-Spartan;
         font-size: 3.7rem;
         line-height: 4.2rem;
-        color: ${PALETTE.PRIMARY.DEFAULT};
+        color: ${PALETTE.WHITE};
+        z-index: 9;
     }
 
-    @media screen and (max-width: 860px) {
+    @media screen and (max-width: 1010px) {
+    .intro-1, .intro-2 {
+    display: none;
+    }
 
     .intro-3 {
-    top: calc(5em + 50vw);
+    top: 45vw;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -245,32 +279,10 @@ const BlogHeroWrapper = styled.div`
     font-size: calc(3vw + 1em);
     text-transform: capitalize;
     }
-
-    .slideshow {
-    max-height: 45vw;
-    top: calc(4.5em + 15.5vw);
-    margin: auto;
-    max-width: 60vw;
-    left: 20vw;
-    }
-
-    .blob {
-    display: none;
-    }
-
-    p {
-        display: none;
-    }
 `;
 
-const HeroWrapper = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    background-color: #f4f4f4;
-    text-align: center;
+const Slideshow = styled.div`
+    height: 50vh;
 `;
 
 const CollageGrid = styled.div`
@@ -292,22 +304,11 @@ const CollageGrid = styled.div`
     max-height: calc(100vh - 5.5rem);
     }
 
-    img {
+    img, video {
     object-fit: cover;
     min-height: 100%;
     max-width: 100%;
-    opacity: 0.5;
-    transition: all ease 1s;
-
-    &:hover {
-        opacity: 1;
-        }
-    }
-
-    video {
-    object-fit: cover;
-    min-height: 100%;
-    max-width: 100%;
+    min-width: 100%;
     opacity: 0.5;
     transition: all ease 1s;
 

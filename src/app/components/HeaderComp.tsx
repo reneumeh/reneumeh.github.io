@@ -207,7 +207,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             cursor: pointer;
         }
         .page-buttons:first-child {
-            margin-top: 2.5rem;
+            margin-top: 3.5rem;
         }
         .page-buttons img {
             margin: 0 10px 0 2rem;
@@ -219,6 +219,10 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         .hamburger {
             position: ${({ isScrolling }) =>
             isScrolling === true ? 'fixed' : 'absolute'};
+            filter: ${({ isScrolling }) =>
+            isScrolling === true ? '' : 'invert(1)'};
+            -webkit-filter: ${({ isScrolling }) =>
+            isScrolling === true ? '' : 'invert(1)'};
             z-index: -1;
             top: ${({ isScrolling }) =>
             isScrolling === true ? '0.5rem' :'5rem' };

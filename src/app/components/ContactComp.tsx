@@ -71,7 +71,7 @@ const borderDraw = keyframes`
 `;
 
 const ContactWrapper = styled.div<{ isInView: boolean }>`
-        height: fit-content;
+    height: fit-content;
     margin-bottom: 50px;
     margin-top: 120px;
     display: flex;

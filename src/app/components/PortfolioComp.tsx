@@ -5,7 +5,7 @@ import PortfolioModal from "./PortfolioModal";
 import { PALETTE } from "../utils/theme";
 import { portfolio_stuff } from "../config/portfolio-stuff";
 import { motion, useInView } from "framer-motion";
-import { renderText } from "./extra-d";
+import { renderText } from "./renderText";
 
 type portfolioProps = {
     mechSection: React.MutableRefObject<null>, 
@@ -202,6 +202,11 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
                 margin: auto;
                 font-size: 17px;
             }
+
+            text {
+            display: none;
+            }
+
             .portfolio-name {
                 font-size: 22px;
                 width: 160px;

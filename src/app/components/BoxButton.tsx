@@ -2,13 +2,13 @@
 import styled from 'styled-components';
 import { PALETTE } from '../utils/theme';
 
-type BoxButtonParams = {
+type BoxButtonProps = {
     text: string,
     link?: string,
     onClick?: () => void,
 }
 
-const BoxButton = ({ text, link, onClick= () => {} } : BoxButtonParams) => {
+const BoxButton = ({ text, link, onClick= () => {} } : BoxButtonProps) => {
   return (
     <BoxButtonVWrapper>
         <div className='portfolio-button'
