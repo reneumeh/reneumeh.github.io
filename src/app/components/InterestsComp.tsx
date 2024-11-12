@@ -3,6 +3,11 @@ import { PALETTE } from "../utils/theme";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+type Interest = {
+    topic: string,
+    expo: string,
+}
+
 const InterestsComp = () => {
     const interest_stuff = [
         {
@@ -13,45 +18,54 @@ const InterestsComp = () => {
             topic: "Multiple Robot Simultaneous Localization and Mapping Using Deep Learning and Voronoi Diagrams",
             expo: "In the dynamic convergence of Simultaneous Localization and Mapping (SLAM), Deep Learning, and Voronoi diagrams, this research seeks to propel the field forward by introducing an innovative algorithmic framework. Extensive literature reviews (e.g., Smith et al., 2020; Wang et al., 2019) have underscored persistent challenges in SLAM, such as localization accuracy, adaptability to dynamic environments, and semantic understanding. My interest lies in its multifaceted approach to address limitations identified in previous works while incorporating Voronoi diagrams for spatial contextualization. Drawing from recent studies on deep learning applications in robotics (Brown et al., 2021; Gupta et al., 2022), the proposed algorithm aims to enhance SLAM's accuracy by leveraging deep neural networks for advanced feature extraction and matching. The Voronoi diagrams play a pivotal role in spatial decomposition, providing geometric insights that aid in constructing a more accurate and adaptive map of the environment. Strategic integration of Voronoi diagrams also facilitates a dynamic understanding of the spatial distribution of features, enhancing the adaptability of the SLAM system to varying environmental conditions. The Voronoi-based spatial decomposition complements deep learning's capabilities, allowing the system to make informed decisions based on both geometric and topological information. The research also recognizes the need for semantic understanding in SLAM systems (Cadena et al., 2016). By incorporating techniques from computer vision and semantic segmentation (Long et al., 2015), alongside Voronoi-enhanced spatial awareness, the proposed algorithm aims to endow the SLAM system with a higher-level understanding of the environment."
         },
-    ]
+    ];
 
     return (
         <InterestsWrapper>
             <Box>
                 <p>Research Interests</p>
             </Box>
-            {interest_stuff.map((interest, index) => {
-                const topicRef = useRef(null);
-                const expoRef = useRef(null);
-                const isTopicInView = useInView(topicRef, { once: true });
-                const isExpoInView = useInView(expoRef, { once: true });
-
-                return (
-                    <div className='interest' key={index}>
-                        <motion.div
-                            className='topic'
-                            ref={topicRef}
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={isTopicInView ? { x: 0, opacity: 1 } : {}}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                        >
-                            {interest.topic}
-                        </motion.div>
-                        <motion.div
-                            className='expo'
-                            ref={expoRef}
-                            initial={{ x: 100, opacity: 0 }}
-                            animate={isExpoInView ? { x: 0, opacity: 1 } : {}}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                        >
-                            {interest.expo}
-                        </motion.div>
-                    </div>
-                );
-            })}
+            {interest_stuff.map((interest, index) => (
+                <InterestItem key={index} interest={interest} index={index} />
+            ))}
         </InterestsWrapper>
     );
+};
+
+type InterestItemProps = {
+    interest: Interest,
+    index: number,
 }
+
+const InterestItem = ({ interest, index } : InterestItemProps) => {
+    const topicRef = useRef(null);
+    const expoRef = useRef(null);
+    const isTopicInView = useInView(topicRef, { once: true });
+    const isExpoInView = useInView(expoRef, { once: true });
+
+    return (
+        <div className='interest'>
+            <motion.div
+                className='topic'
+                ref={topicRef}
+                initial={{ x: -100, opacity: 0 }}
+                animate={isTopicInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+                {interest.topic}
+            </motion.div>
+            <motion.div
+                className='expo'
+                ref={expoRef}
+                initial={{ x: 100, opacity: 0 }}
+                animate={isExpoInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+                {interest.expo}
+            </motion.div>
+        </div>
+    );
+};
 
 export default InterestsComp;
 

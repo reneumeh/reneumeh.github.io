@@ -21,7 +21,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
     const navigate = useNavigate();
     const triggerRef = useRef(null);
 
-    const isInView = useInView(triggerRef, { once: true });
+    const isInView = useInView(triggerRef, { once: true, amount: 0.5 });
 
     return (
         <>

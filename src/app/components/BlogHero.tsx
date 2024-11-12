@@ -18,8 +18,8 @@ const BlogHero = () => {
     const handleMouseEnter = (description: string) => (e: React.MouseEvent) => {
         setTooltip({
             visible: true,
-            x: e.clientX,
-            y: e.clientY,
+            x: e.clientX + 10,
+            y: e.clientY - 65,
             text: description,
         });
     };
@@ -146,9 +146,10 @@ const BlogHero = () => {
             :
                 <CollageGrid>
                 {columns.map((column, index) => (
-                    <div className='column'>
+                    <div key ={index} className='column'>
                         {column.map((item,index) => (
                             <a 
+                            key ={index}
                             href={item.link} 
                             style= {{ height: item.height }} 
                             onMouseEnter={handleMouseEnter(item.description)}

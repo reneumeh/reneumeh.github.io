@@ -5,7 +5,7 @@ import { ModalWrapper } from "./PortfolioModal";
 import { PALETTE } from "../utils/theme";
 import { IconButton } from "@chakra-ui/react";
 import { MdFormatListBulleted, MdViewModule } from "react-icons/md";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface AwardsListProps {
   awardsList: Award[];
