@@ -103,7 +103,7 @@ const AwardsList = ({ awardsList, collectionName } : AwardsListProps) => {
         >
           {awardsList.map((award, index) => (
             <div key={index} onClick={() => openImageViewer(index)} style={{ cursor: "pointer" }}>
-              <img width={1600} height={2300} src={award.image} alt={award.name} />
+              <img width={150} height={200} src={award.image} alt={award.name} />
               <p>{award.name}</p>
             </div>
           ))}
@@ -128,8 +128,8 @@ const AwardsList = ({ awardsList, collectionName } : AwardsListProps) => {
             </button>
             <motion.img 
               key={currentIndex}
-              width={1600}
-              height={2300}
+              width={350}
+              height={450}
               src={awardsList[currentIndex].image} 
               alt={awardsList[currentIndex].name} 
               style={{ width: "80%", marginTop: '5rem' }}
