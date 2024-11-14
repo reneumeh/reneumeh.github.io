@@ -158,7 +158,7 @@ const AwardsListWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
   background-color: ${PALETTE.BACKGROUND};
-  font-family: Leaugue-Spartan-minor;
+  font-family: League-Spartan-minor;
   border-top: 1px solid rgba(0,0,0,0.3);
 
   h1 {

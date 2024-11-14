@@ -226,7 +226,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
             ref={inputRef}
             placeholder="Type in message"
             disabled={loading}
-            fontFamily={ 'Leaugue-Spartan-minor'}
+            fontFamily={ 'League-Spartan-minor'}
             fontSize={'1rem'}
             value={inputText}
             onChange={(e) => {

@@ -18,7 +18,9 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
         <div className='hero-div'>
             <img 
             src='/static/hero1.png' 
-            alt='my_image'/>
+            alt='my_image'
+            fetchPriority='high'
+            loading='eager'/>
         </div>
         <div className='intro-1'>Hi, my name is</div> 
         <div className='intro-2'>RENE </div> 
@@ -81,7 +83,7 @@ const Hero = styled.div`
         top: 50.5vh;
         left: 15vw;
         width: fit-content;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-size: 2.7vw;
         color: ${PALETTE.WHITE};
     }
@@ -91,7 +93,7 @@ const Hero = styled.div`
         top: 44vh;
         left: 70.4vw;
         width: fit-content;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-size: 3.7rem;
         color: ${PALETTE.WHITE};
     }
@@ -100,7 +102,7 @@ const Hero = styled.div`
         top: 47.5vh;
         left: 70vw;
         width: fit-content;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-size: 3.7rem;
         color: ${PALETTE.WHITE};
     }
@@ -114,7 +116,7 @@ const Hero = styled.div`
         ul {
             margin: 5px auto;
         }
-    font-family: Leaugue-Spartan;
+    font-family: League-Spartan;
     font-size: 2.5rem;
     color: ${PALETTE.WHITE}; 
     height: fit-content;

@@ -14,17 +14,17 @@ code {
 }
 
 @font-face {
-  font-family: "Leaugue-Spartan";
+  font-family: "League-Spartan";
   src:
     url("../../public/LeagueSpartan-SemiBold.ttf");}
 
 @font-face {
-  font-family: "Leaugue-Spartan-minor";
+  font-family: "League-Spartan-minor";
   src:
     url("../../public/LeagueSpartan-Regular.ttf");}
 
 @font-face {
-  font-family: "Leaugue-Spartan-light";
+  font-family: "League-Spartan-light";
   src:
     url("../../public/LeagueSpartan-ExtraLight.ttf");}
 

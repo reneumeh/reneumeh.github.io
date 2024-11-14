@@ -109,7 +109,7 @@ export const ExitButton = styled.div`
   background-color: ${PALETTE.SECONDARY.LIGHT};
   color: rgba(0, 0, 0, 0.6);
   font-size: 2rem;
-  font-family: Leaugue-Spartan-light;
+  font-family: League-Spartan-light;
   align-items: center;
   justify-content: center;
   cursor: pointer;

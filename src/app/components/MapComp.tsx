@@ -123,7 +123,7 @@ height: 44vw;
 
 .explanations-placeholder {
     position: absolute;
-    font-family: Leaugue-Spartan;
+    font-family: League-Spartan;
     color: ${PALETTE.SECONDARY.DARK};
     height: 100vh;
     top: 22vw;
@@ -155,13 +155,13 @@ height: 44vw;
     color: ${PALETTE.SECONDARY.DARK};
     font-size: 1.5rem;
     margin: 2px;
-    font-family: Leaugue-Spartan;
+    font-family: League-Spartan;
 }
 .country {
     color: ${PALETTE.PRIMARY.DEFAULT};
     font-size: 1.5rem;
     margin: 0;
-    font-family: Leaugue-Spartan;
+    font-family: League-Spartan;
 }
 
 @media screen and (max-width: 1010px) { 

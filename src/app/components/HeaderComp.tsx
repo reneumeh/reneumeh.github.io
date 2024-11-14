@@ -82,7 +82,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
         text-decoration: none;
         margin: 0px 0vw 0px 1vw;
         font-weight: bold;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-stretch: expanded;
         font-size: 2rem;
         white-space: nowrap;
@@ -151,7 +151,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     justify-content: center;
                     width: 98vw;
                     font-weight: bold;
-                    font-family: Leaugue-Spartan;
+                    font-family: League-Spartan;
                     font-stretch: expanded;
                     color: ${PALETTE.WHITE};
                     font-size: 2rem;
@@ -173,7 +173,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                 return css`
                 display: flex;
                 font-weight: bold;
-                font-family: Leaugue-Spartan;
+                font-family: League-Spartan;
                 font-stretch: expanded;
                 font-size: 1.5rem;
                 .page-buttons{
@@ -207,7 +207,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             display: flex;
             align-items: center;
             padding: 2rem 0;
-            font-family: Leaugue-Spartan;
+            font-family: League-Spartan;
             cursor: pointer;
         }
         .page-buttons:first-child {

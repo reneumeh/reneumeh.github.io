@@ -144,6 +144,8 @@ const BlogHero = () => {
                         key={image.id} 
                         src={image.src} 
                         alt={`Slide ${image.id}`}
+                        fetchPriority='high'
+                        loading='eager'
                         className={image.id === shownImageId ? 'active slideshow' : 'slideshow'} 
                     />
                     <p className={image.id === shownImageId ? 'active' : ''}>
@@ -172,13 +174,18 @@ const BlogHero = () => {
                                 key={item.id} 
                                 src={item.src} 
                                 alt={`Slide ${item.id}`}
+                                fetchPriority='high'
+                                loading='eager'
                             /> :
                                 <video                             
                                 key={item.id} 
                                 src={item.src}
+                                loop
+                                preload='auto'
                                 muted
                                 onMouseOver={(event) => (event.target as HTMLVideoElement).play()}
-                                onMouseOut={(event) => (event.target as HTMLVideoElement).pause()}/>}
+                                onMouseOut={(event) => (event.target as HTMLVideoElement).pause()}
+                                />}
                             </a>
                         ))}
                     </div>
@@ -235,7 +242,7 @@ const BlogHeroWrapper = styled.div`
         top: 49vh;
         left: 10vw;
         width: 38vw;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-size: 3.7rem;
         color: ${PALETTE.WHITE};
         z-index: 9;
@@ -246,7 +253,7 @@ const BlogHeroWrapper = styled.div`
         top: 57.8vh;
         left: 10vw;
         width: 38vw;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-size: 3.7rem;
         color: ${PALETTE.WHITE};
         z-index: 9;
@@ -257,7 +264,7 @@ const BlogHeroWrapper = styled.div`
         top: 65vh;
         left: 10vw;
         width: 38vw;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
         font-size: 3.7rem;
         line-height: 4.2rem;
         color: ${PALETTE.WHITE};

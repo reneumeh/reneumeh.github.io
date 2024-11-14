@@ -38,10 +38,10 @@ const PNFWrapper = styled.div`
   position: absolute;
   z-index: -10;
   background-color: ${PALETTE.BACKGROUND};
-  font-family: Leaugue-Spartan-minor;
+  font-family: League-Spartan-minor;
 
   h1 {
-    font-family: Leaugue-Spartan;
+    font-family: League-Spartan;
     font-size: 18em;
     width: 100%;
     text-align: center;

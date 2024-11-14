@@ -83,7 +83,7 @@ const MainQuestsWrapper = styled.div`
         width: 100%;
         text-align: center;
         margin: 0;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
     }
     
     border: 1px solid ${PALETTE.BLACK};

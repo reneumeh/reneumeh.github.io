@@ -73,7 +73,7 @@ width: 100%;
 position: absolute;
 z-index: -10;
 background-color: ${PALETTE.BACKGROUND};
-font-family: Leaugue-Spartan-minor;
+font-family: League-Spartan-minor;
 overflow: hidden;
 hr {
   width: 70%;

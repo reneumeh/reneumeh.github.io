@@ -165,7 +165,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             width: 11vw;
             white-space: normal;
             word-wrap: break-word;
-            font-family: Leaugue-Spartan;
+            font-family: League-Spartan;
             font-size: 1.5vw;
             font-weight: bold;
         }
@@ -181,7 +181,7 @@ const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
             text-align: center;
             font-size: 1.5vw;
             font-weight: lighter;
-            font-family: Leaugue-Spartan-light;
+            font-family: League-Spartan-light;
             -webkit-backdrop-filter: blur(1.5rem);
             backdrop-filter: blur(1.5rem);
             pointer-events: none;

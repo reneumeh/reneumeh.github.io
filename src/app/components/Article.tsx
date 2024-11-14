@@ -96,7 +96,7 @@ const ArticleContainer = styled.article`
     margin: 0 auto;
     padding: 20px;
     background-color: ${PALETTE.BACKGROUND};
-    font-family: Leaugue-Spartan-minor;
+    font-family: League-Spartan-minor;
     @keyframes fadeInLeft {
     from {
         opacity: 0;

@@ -149,7 +149,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                     justify-content: center;
                     width: 98vw;
                     font-weight: bold;
-                    font-family: Leaugue-Spartan;
+                    font-family: League-Spartan;
                     font-stretch: expanded;
                     color: ${PALETTE.WHITE};
                     font-size: 2rem;
@@ -171,7 +171,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
                 return css`
                 display: flex;
                 font-weight: bold;
-                font-family: Leaugue-Spartan;
+                font-family: League-Spartan;
                 font-stretch: expanded;
                 font-size: 1.5rem;
                 .page-buttons{
@@ -205,7 +205,7 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             display: flex;
             align-items: center;
             padding: 2rem 0;
-            font-family: Leaugue-Spartan;
+            font-family: League-Spartan;
             cursor: pointer;
         }
         .page-buttons:first-child {

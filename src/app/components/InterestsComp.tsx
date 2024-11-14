@@ -78,7 +78,7 @@ const InterestsWrapper = styled.div`
         width: 100%;
         text-align: center;
         margin: 0;
-        font-family: Leaugue-Spartan;
+        font-family: League-Spartan;
     }
 
     .interest {
