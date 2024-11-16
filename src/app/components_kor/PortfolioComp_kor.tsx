@@ -6,7 +6,7 @@ import { portfolio_stuff } from "../config/portfolio-stuff_kor";
 import { useRef, useState } from "react";
 import PortfolioModal from "./PortfolioModal_kor";
 import { renderText } from "../components/renderText";
-import { useInView, motion } from "framer-motion";
+import { useInView, motion } from "motion/react";
 
 type portfolioProps = {
     mechSection: React.MutableRefObject<null>, 

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
 import Image from 'next/image';
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 
 const MapComp = () => {
   const { handleHover, handleLeave, hoveredElement } = useHoveredElement();

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { Box } from "../components/InterestsComp";
 

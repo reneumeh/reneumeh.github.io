@@ -2,7 +2,7 @@ import useHoveredElement from "../hooks/useHoveredElement";
 import { useRef } from "react";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import Image from 'next/image';
 
 const MapComp = () => {
@@ -18,21 +18,21 @@ const MapComp = () => {
           country: "USA",
           city: "Texas",
           loc: {top: "16.5vw", left: "calc(5em + 16.5vw)"},
-          explanation: "In 2021, I travelled to Texas for an exchange semester at the University of Texas at Austin. It was the first time I was travelling and living completely independently. I earned an internship at Rice University following the end of the semester.",
+          explanation: <p>In 2021, I travelled to Texas for an exchange semester at the <a href='https://www.utexas.edu/' target="_blank">University of Texas at Austin</a>. It was the first time I was travelling and living completely independently. I earned an internship at <a href="https://www.rice.edu/" target="_blank">Rice University</a> following the end of the semester.</p>,
           ref: texasPin
       },
       {
           country: "Nigeria",
           city: "Lagos",
           loc: {top: "22vw", left: "calc(5em + 37vw)"},
-          explanation: "I was born and raised as the second of five children in Lagos, Nigeria. The appetite to stand out comes naturally when you are from a big family. I studied and graduated as the valedictorian from St. Gregory's College.",
+          explanation: <p>I was born and raised as the second of five children in Lagos, Nigeria. The appetite to stand out comes naturally when you are from a big family. I studied and graduated as the valedictorian from <a href='https://stgregoryscollege.ng/' target='_blank'>St. Gregory&apos;s College.</a></p>,
           ref: lagosPin
       },
       {
         country: "South Korea",
         city: "Seoul",
         loc: {top: "15vw", left: "calc(5em + 62.5vw)"},
-        explanation: "I traveled to Seoul for my undergraduate degree. I learnt Korean at the Hanyang International Language Institute. Following that, I graduated summa cum laude and received a degree in Mechanical Engineering with the help of the Samsung Global Dream Scholarship", 
+        explanation: <p>I traveled to Seoul for my undergraduate degree. I learnt Korean at the Hanyang International Language Institute. Following that, I graduated summa cum laude from <a href='https://www.hanyang.ac.kr/web/eng' target="_blank">Hanyang</a>&apos;s Mechanical Engineering Program with the help of the <a href='https://www.sdream.or.kr/' target='_blank'>Samsung Dream Scholarship Foundation</a></p>, 
         ref: seoulPin
     },
   ]
@@ -77,7 +77,7 @@ const MapComp = () => {
                         <div id={pin.city}>
                             <p className='city'>{pin.city}</p>
                             <p className='country'>{pin.country}</p>
-                            <p>{pin.explanation}</p>
+                            {pin.explanation}
                         </div>
                     </div>
                 </motion.div>
@@ -96,11 +96,14 @@ const Map = styled.div<{ hoveredElement: string }>`
 position: relative;
 height: 44vw;
 
-.pins > img:hover, img:active {
-    transform: translateY(-5px);
-    transition: 0.5s ease all;
-    cursor: pointer;
+.pins {
+    img:hover, img:active {
+        transform: translateY(-5px);
+        transition: 0.5s ease all;
+        cursor: pointer;
+    }
 }
+
 .explanations {
     visibility: hidden;
     transition: 0.7s ease transform;

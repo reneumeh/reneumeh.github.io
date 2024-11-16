@@ -7,7 +7,7 @@ import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { mainQuestArticles } from '../config/mainQuests_kor/mainQuests'
 import { PALETTE } from '../utils/theme'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView } from 'motion/react'
 
 
 type mainQuestsProps = {

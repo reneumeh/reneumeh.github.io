@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import PortfolioModal from "./PortfolioModal";
 import { PALETTE } from "../utils/theme";
 import { portfolio_stuff } from "../config/portfolio-stuff";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { renderText } from "./renderText";
 
 type portfolioProps = {

@@ -2,7 +2,7 @@ import React from 'react';
 import emailjs from '@emailjs/browser';
 import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
@@ -36,7 +36,16 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
                         width={20}
                         height={20}
                     /> 
-                    dubemrene@gmail.com
+                    <a href="mailto:dubemrene@gmail.com"> dubemrene@gmail.com</a>
+                </p>
+                <p>
+                    <img
+                        src='/static/linkedin.png'
+                        alt='linkedin'
+                        width={20}
+                        height={20}
+                    /> 
+                    <a href="https://www.linkedin.com/in/reneumeh" target='_blank'> Rene Umeh</a>
                 </p>
             </div>
             <div className='contact-right'> 

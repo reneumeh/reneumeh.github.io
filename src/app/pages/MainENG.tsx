@@ -92,4 +92,12 @@ hr {
     animation-fill-mode: both;
     opacity: 0;
     animation-name: fadeInLeft;
+
+    a {
+        color: ${PALETTE.PRIMARY.DARK};
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
     `;

@@ -3,7 +3,7 @@ import React from 'react';
 import emailjs from '@emailjs/browser'
 import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
-import { useInView } from 'framer-motion';
+import { useInView } from 'motion/react';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
