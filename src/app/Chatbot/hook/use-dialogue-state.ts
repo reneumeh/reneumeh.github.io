@@ -131,7 +131,6 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText, isOp
 
   useEffect(() => {
       removeThread();
-      console.log('clodes')
   }, [isOpen]);
 
   useEffect(() => {
