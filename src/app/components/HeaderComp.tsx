@@ -73,7 +73,7 @@ const Header = styled.div<{ isScrolling: boolean }>`
     isScrolling === true ? "999999" : "9999"};
     font-size: 1.1rem;
 
-    .logo, logo:visited, logo:active{
+    .logo, logo:hover, logo:visited, logo:active{
         display: ${({ isScrolling }) =>
         isScrolling === true ? 'flex' : 'none'};
         width: max-content;
