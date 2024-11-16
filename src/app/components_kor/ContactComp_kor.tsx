@@ -73,6 +73,11 @@ const ContactWrapper = styled.div<{ isInView: boolean }>`
     display: flex;
     font-size: 2.5rem;
     font-weight: 600;
+
+    a {
+    text-decoration: none;
+    }
+
     p{
         font-size: 1.2rem;
         font-weight: 400;
