@@ -45,10 +45,12 @@ const BoxButtonVWrapper = styled.div`
         text-decoration: none;
         background-color: ${PALETTE.PRIMARY.DEFAULT}; 
         color: ${PALETTE.WHITE};
+        text-decoration: none;
     }
     .portfolio-button-inside:hover, portfolio-button-inside:active {
         transform: scale(1.1);
         transition: ease all 0.2s;
+        text-decoration: none;
     }
 `;
 
