@@ -76,7 +76,7 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/Hans-Sans-Korean-ExtraLight.oft"
+          href="/Hans-Sans-Korean-ExtraLight.otf"
           as="font"
         />
         <link
