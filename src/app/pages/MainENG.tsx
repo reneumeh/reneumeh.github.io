@@ -96,8 +96,5 @@ hr {
     a {
         color: ${PALETTE.PRIMARY.DARK};
         text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
     }
     `;
