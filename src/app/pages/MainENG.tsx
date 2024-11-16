@@ -79,7 +79,7 @@ hr {
   width: 70%;
   color: rgba(0,0,0, 0,5);
 }
-@keyframes fadeInLeft {
+@keyframes fadeIn {
     from {
         opacity: 0;
     }
@@ -91,7 +91,7 @@ hr {
     animation-duration: 1s;
     animation-fill-mode: both;
     opacity: 0;
-    animation-name: fadeInLeft;
+    animation-name: fadeIn;
 
     a {
         color: ${PALETTE.PRIMARY.DARK};

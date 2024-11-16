@@ -106,7 +106,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
   return (
     <DialogueWrapper isExpanded={isExpanded} isMobile={isMobile}>
       {isFeedbackScreenOpen && (
-        <FeedbackScreenWrapper className="animated animatedFadeInUp fadeInLeft">
+        <FeedbackScreenWrapper isMobile={isMobile} className="animated animatedFadeInUp fadeInLeft">
           <FeedbackScreen 
           feedbackInput= {feedbackInput} 
           setFeedbackInput= {setFeedbackInput} 
@@ -442,10 +442,10 @@ const Rating = styled.div<{ goodClicked: boolean; badClicked: boolean }>`
   }
 `;
 
-const FeedbackScreenWrapper = styled.div`
+const FeedbackScreenWrapper = styled.div<{ isMobile: boolean }>`
   background-color: ${PALETTE.WHITE};
   position: absolute;
-  height: 25.5rem;
+  height: ${(props) => (props.isMobile ? '80vh' : '25.5rem')};
   border-radius: 0px 0px 20px 20px;
   overflow: hidden;
   z-index: 999;

@@ -97,7 +97,7 @@ const ArticleContainer = styled.article`
     padding: 20px;
     background-color: ${PALETTE.BACKGROUND};
     font-family: League-Spartan-minor;
-    @keyframes fadeInLeft {
+    @keyframes fadeIn {
     from {
         opacity: 0;
     }
@@ -109,7 +109,7 @@ const ArticleContainer = styled.article`
     animation-duration: 1s;
     animation-fill-mode: both;
     opacity: 0;
-    animation-name: fadeInLeft;
+    animation-name: fadeIn;
 
     div {
         width: 100%;

@@ -23,7 +23,7 @@ const Awards = () => {
 export default Awards
 
 const AwardsWrapper = styled.div`
-    @keyframes fadeInLeft {
+    @keyframes fadeIn {
     from {
         opacity: 0;
     }
@@ -35,7 +35,7 @@ const AwardsWrapper = styled.div`
     animation-duration: 1s;
     animation-fill-mode: both;
     opacity: 0;
-    animation-name: fadeInLeft;
+    animation-name: fadeIn;
   .heading {
       text-align: center;
       z-index: -1;
