@@ -72,7 +72,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
     setLastMessageId,
     resetScroll,
     messageRef,
-  } = useDialogueState({ isMounted, setMounted, inputText, setInputText });
+  } = useDialogueState({ isMounted, setMounted, inputText, setInputText, isOpen });
 
   const handleGoodResponse = (item: MessageType) => {
     item.good_clicked = true;

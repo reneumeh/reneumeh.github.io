@@ -12,10 +12,10 @@ type dialogueStateProps = {
   setMounted: (isMounted: boolean) => void,
   inputText: string,
   setInputText: (inputText: string) => void,
+  isOpen: boolean,
 }
 
-const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : dialogueStateProps) => {
-  const { isOpen } = useIsOpen();
+const useDialogueState = ({ isMounted, setMounted, inputText, setInputText, isOpen } : dialogueStateProps) => {
   const { setSuggestedQuestions } = useSuggestions()
   const messageRef = useRef<HTMLDivElement>(null);
 
@@ -130,9 +130,8 @@ const useDialogueState = ({ isMounted, setMounted, inputText, setInputText } : d
   }, []);
 
   useEffect(() => {
-    if (isOpen && isMounted) {
       removeThread();
-    }
+      console.log('clodes')
   }, [isOpen]);
 
   useEffect(() => {
