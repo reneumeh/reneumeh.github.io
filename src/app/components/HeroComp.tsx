@@ -17,7 +17,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
     const { scrollYProgress } = useScroll();
 
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0.7, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.5]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 2]);
 
   return (
     <Hero>
