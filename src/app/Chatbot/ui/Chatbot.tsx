@@ -38,8 +38,8 @@ const Chatbot = () => {
 
   return (
     <Box pointerEvents={'auto'} zIndex={100}>
-          <ChatbotWrapper isMobile={isMobile} isExpanded={isExpanded} isOpen={isOpen}>
-            <Header isExpanded={isExpanded} isOpen={isOpen} isMobile={isMobile} className="handle grabbable">
+          <ChatbotWrapper $isMobile={isMobile} $isExpanded={isExpanded} $isOpen={isOpen}>
+            <Header $isExpanded={isExpanded} $isOpen={isOpen} $isMobile={isMobile} className="handle grabbable">
               <p>
                 GPT ME{' '}
               </p>
@@ -89,8 +89,8 @@ const Chatbot = () => {
             isMobile={ isMobile } />
           </ChatbotWrapper>
         <ClosedMode
-          isMobile={isMobile}
-          isOpen={isOpen}
+          $isMobile={isMobile}
+          $isOpen={isOpen}
           onClick={() => {
             setIsOpen(true);
             setIsExpanded(true);
@@ -112,24 +112,24 @@ const Chatbot = () => {
 
 export default Chatbot;
 
-const ChatbotWrapper = styled.div<{ isMobile: boolean, isExpanded: boolean, isOpen: boolean }>`
+const ChatbotWrapper = styled.div<{ $isMobile: boolean, $isExpanded: boolean, $isOpen: boolean }>`
   transition: ease all 0.7s;
-  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '12rem') : '0rem'))};
+  width: ${(props) => (props.$isMobile ? (props.$isOpen ? ( props.$isExpanded ? '100vw' : '15rem') : '0rem') : (props.$isOpen ? ( props.$isExpanded ? '20rem' : '12rem') : '0rem'))};
   border: 1px solid ${PALETTE.BLACK};
   overflow: hidden;
   position: fixed;
-  right: ${({ isMobile }) => (isMobile ? '0rem' : '1rem')};
-  bottom: ${({ isMobile }) => (isMobile ? '0px' : '1rem')};
-  display : ${(props) => (props.isOpen ? 'initial' : 'none')};
+  right: ${({ $isMobile }) => ($isMobile ? '0rem' : '1rem')};
+  bottom: ${({ $isMobile }) => ($isMobile ? '0px' : '1rem')};
+  display : ${(props) => (props.$isOpen ? 'initial' : 'none')};
   z-index: 999999;
-  backdrop-filter: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? 'blur(20px)' : 'none') : 'none') : 'none')};
-  -webkit-backdrop-filter: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? 'blur(20px)' : 'none') : 'none') : 'none')};
+  backdrop-filter: ${(props) => (props.$isMobile ? (props.$isOpen ? ( props.$isExpanded ? 'blur(20px)' : 'none') : 'none') : 'none')};
+  -webkit-backdrop-filter: ${(props) => (props.$isMobile ? (props.$isOpen ? ( props.$isExpanded ? 'blur(20px)' : 'none') : 'none') : 'none')};
 `;
 
-const Header = styled.div<{ isExpanded: boolean, isOpen: boolean, isMobile: boolean }>`
+const Header = styled.div<{ $isExpanded: boolean, $isOpen: boolean, $isMobile: boolean }>`
   display: flex;
   justify-content: space-between;
-  width: ${(props) => (props.isMobile ? (props.isOpen ? ( props.isExpanded ? '100vw' : '15rem') : '0rem') : (props.isOpen ? ( props.isExpanded ? '20rem' : '12rem') : '0rem'))};
+  width: ${(props) => (props.$isMobile ? (props.$isOpen ? ( props.$isExpanded ? '100vw' : '15rem') : '0rem') : (props.$isOpen ? ( props.$isExpanded ? '20rem' : '12rem') : '0rem'))};
   position: relative;
   background-color: ${PALETTE.PRIMARY.DEFAULT};
   color: white;
@@ -148,15 +148,15 @@ const Header = styled.div<{ isExpanded: boolean, isOpen: boolean, isMobile: bool
   }
 `;
 
-const ClosedMode = styled.div<{ isMobile: boolean, isOpen: boolean }>`
+const ClosedMode = styled.div<{ $isMobile: boolean, $isOpen: boolean }>`
   position: fixed;
-  right: ${({ isMobile }) => (isMobile ? '1rem' : '3rem')};
-  bottom: ${({ isMobile }) => (isMobile ? '1rem' : '3rem')};
+  right: ${({ $isMobile }) => ($isMobile ? '1rem' : '3rem')};
+  bottom: ${({ $isMobile }) => ($isMobile ? '1rem' : '3rem')};
   cursor: pointer;
   padding: 10px;
   background-color: ${PALETTE.PRIMARY.DEFAULT};
   box-shadow: 5px 5px ${PALETTE.BLACK};
-  display: ${({ isOpen }) => (isOpen ? 'none' : 'initial')};
+  display: ${({ $isOpen }) => ($isOpen ? 'none' : 'initial')};
   animation: float 2s ease-in-out infinite;
   @keyframes float {
     0% {

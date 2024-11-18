@@ -39,7 +39,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
             {
                 mainQuestArticles.map((article, index) => {
                     return (
-                        <Card key={index} currentPage={currentPage} pageIndex={index} onClick={() => {navigate(`article?id=${article.id}`)}}>
+                        <Card key={index} $currentPage={currentPage} onClick={() => {navigate(`article?id=${article.id}`)}}>
                             <div className='article-space'>
                                 <div>
                                 <p className='title'>{article.title}</p>
@@ -107,9 +107,9 @@ const Carousel = styled.div`
     overflowX: hidden;
     `;
 
-const Card = styled.div<{ currentPage: number; pageIndex: number}>`
+const Card = styled.div<{ $currentPage: number }>`
     width: 60vw;
-    transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem)`});
+    transform: translateX(${({ $currentPage }) => `calc(${$currentPage * -60}vw - ${$currentPage * 4}rem)`});
     transition: all ease 0.5s;
     background-color: ${PALETTE.WHITE};
     padding: 1rem;
@@ -119,7 +119,7 @@ const Card = styled.div<{ currentPage: number; pageIndex: number}>`
 
 
     &:hover {
-        transform: translateX(${({ currentPage }) => `calc(${currentPage * -60}vw - ${currentPage * 4}rem - 5px)`}) translateY(-5px); 
+        transform: translateX(${({ $currentPage }) => `calc(${$currentPage * -60}vw - ${$currentPage * 4}rem - 5px)`}) translateY(-5px); 
         box-shadow: 13px 13px ${PALETTE.PRIMARY.DARK};
 
         .box {

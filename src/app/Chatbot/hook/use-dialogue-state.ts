@@ -10,13 +10,11 @@ import { useSuggestions } from './use-suggestions';
 type dialogueStateProps = {
   isMounted: boolean,
   setMounted: (isMounted: boolean) => void,
-  inputText: string,
   setInputText: (inputText: string) => void,
   isOpen: boolean,
 }
 
-const useDialogueState = ({ isMounted, setMounted, inputText, setInputText, isOpen } : dialogueStateProps) => {
-  const { setSuggestedQuestions } = useSuggestions()
+const useDialogueState = ({ isMounted, setMounted, setInputText, isOpen } : dialogueStateProps) => {
   const messageRef = useRef<HTMLDivElement>(null);
 
   const [loading, setLoading] = useState(false);

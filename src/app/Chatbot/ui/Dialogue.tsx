@@ -72,7 +72,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
     setLastMessageId,
     resetScroll,
     messageRef,
-  } = useDialogueState({ isMounted, setMounted, inputText, setInputText, isOpen });
+  } = useDialogueState({ isMounted, setMounted, setInputText, isOpen });
 
   const handleGoodResponse = (item: MessageType) => {
     item.good_clicked = true;
@@ -104,9 +104,9 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
   }, [isOpen, isExpanded, setIsFeedbackScreenOpen])
 
   return (
-    <DialogueWrapper isExpanded={isExpanded} isMobile={isMobile}>
+    <DialogueWrapper $isExpanded={isExpanded} $isMobile={isMobile}>
       {isFeedbackScreenOpen && (
-        <FeedbackScreenWrapper isMobile={isMobile} className="animated animatedFadeInUp fadeInLeft">
+        <FeedbackScreenWrapper $isMobile={isMobile} className="animated animatedFadeInUp fadeInLeft">
           <FeedbackScreen 
           feedbackInput= {feedbackInput} 
           setFeedbackInput= {setFeedbackInput} 
@@ -115,7 +115,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
            />
           </FeedbackScreenWrapper>
       )}
-      <MessagesArea ref={messageRef} suggestedQuestions={suggestedQuestions} isMobile={isMobile}>
+      <MessagesArea ref={messageRef} $suggestedQuestions={suggestedQuestions} $isMobile={isMobile}>
         {messageItems?.map((item) => (
           <div key={item.id} className="logo-message">
             {item.role === 'assistant' && (
@@ -166,7 +166,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
               )}
               {item.role === 'assistant' &&
                 (item.good_clicked || item.bad_clicked || item.id === lastMessageId) && (
-                  <Rating goodClicked={item.good_clicked || false} badClicked={item.bad_clicked || false}>
+                  <Rating $goodClicked={item.good_clicked || false} $badClicked={item.bad_clicked || false}>
                     <IconButton
                       className="rating good-response"
                       aria-label="Good Response"
@@ -280,11 +280,11 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
 
 export default Dialogue;
 
-const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
+const DialogueWrapper = styled.div<{ $isExpanded: boolean, $isMobile: boolean }>`
   transition: ease all 0.7s;
   background-color: ${PALETTE.WHITE};
   color: black;
-  height: ${(props) => (props.isMobile ? (props.isExpanded ? '80vh' : '0rem') : props.isExpanded ? '25.5rem' : '0rem')};
+  height: ${(props) => (props.$isMobile ? (props.$isExpanded ? '80vh' : '0rem') : props.$isExpanded ? '25.5rem' : '0rem')};
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -315,8 +315,8 @@ const DialogueWrapper = styled.div<{ isExpanded: boolean, isMobile: boolean }>`
   }
 `;
 
-const MessagesArea = styled.div<{ suggestedQuestions: boolean, isMobile: boolean }>`
-  height: ${(props) => (props.isMobile ? (props.suggestedQuestions ? '62vh' : '70vh') : props.suggestedQuestions ? '18rem' : '22rem')};
+const MessagesArea = styled.div<{ $suggestedQuestions: boolean, $isMobile: boolean }>`
+  height: ${(props) => (props.$isMobile ? (props.$suggestedQuestions ? '62vh' : '70vh') : props.$suggestedQuestions ? '18rem' : '22rem')};
   overflow-y: scroll;
   overflow-wrap: break-word;
   line-height: 1rem;
@@ -355,21 +355,6 @@ const Message = styled.div`
 
   p {
     margin: auto;
-  }
-`;
-
-const StyledInput = styled.div`
-  & .chakra-input {
-    scrollbar-width: none;
-  }
-
-  .chakra-input__inner {
-    border-radius: 35px;
-    scrollbar-width: none;
-  }
-
-  & .chakra-input__group:focus-within {
-    border-color: ${PALETTE.PRIMARY.DEFAULT};
   }
 `;
 
@@ -413,39 +398,39 @@ const SuggestedQuestionsArea = styled.div`
   justify-content: start;
 `;
 
-const Rating = styled.div<{ goodClicked: boolean; badClicked: boolean }>`
+const Rating = styled.div<{ $goodClicked: boolean; $badClicked: boolean }>`
   transition: all 2s smooth;
   .good-response {
-    display: ${(props) => (!props.badClicked ? 'intial' : 'none')};
-    color: ${(props) => (props.goodClicked ? '#00ff00' : '')};
-    padding-right: ${(props) => (!props.goodClicked ? '0.3rem' : 'initial')};
+    display: ${(props) => (!props.$badClicked ? 'intial' : 'none')};
+    color: ${(props) => (props.$goodClicked ? '#00ff00' : '')};
+    padding-right: ${(props) => (!props.$goodClicked ? '0.3rem' : 'initial')};
     border: none;
     margin-top: 0.3rem;
 
     &:hover {
       color: #00ff00;
-      cursor: ${(props) => (!props.goodClicked ? 'pointer' : 'initial')};
+      cursor: ${(props) => (!props.$goodClicked ? 'pointer' : 'initial')};
     }
   }
 
   .bad-response {
-    display: ${(props) => (!props.goodClicked ? 'initial' : 'none')};
-    color: ${(props) => (props.badClicked ? '#ff0000' : '')};
-    padding-left: ${(props) => (!props.badClicked ? '0.3rem' : 'initial')};
+    display: ${(props) => (!props.$goodClicked ? 'initial' : 'none')};
+    color: ${(props) => (props.$badClicked ? '#ff0000' : '')};
+    padding-left: ${(props) => (!props.$badClicked ? '0.3rem' : 'initial')};
     margin-top: 0.3rem;
     border: none;
 
     &:hover {
       color: #ff0000;
-      cursor: ${(props) => (!props.badClicked ? 'pointer' : 'initial')};
+      cursor: ${(props) => (!props.$badClicked ? 'pointer' : 'initial')};
     }
   }
 `;
 
-const FeedbackScreenWrapper = styled.div<{ isMobile: boolean }>`
+const FeedbackScreenWrapper = styled.div<{ $isMobile: boolean }>`
   background-color: ${PALETTE.WHITE};
   position: absolute;
-  height: ${(props) => (props.isMobile ? '80vh' : '25.5rem')};
+  height: ${(props) => (props.$isMobile ? '80vh' : '25.5rem')};
   border-radius: 0px 0px 20px 20px;
   overflow: hidden;
   z-index: 999;

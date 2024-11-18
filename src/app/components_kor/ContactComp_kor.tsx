@@ -27,7 +27,7 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
     const isInView = useInView(contact, { once: true, margin: '0px 0px -100px 0px' });
     
   return (
-    <ContactWrapper ref={contact} isInView={isInView}>
+    <ContactWrapper ref={contact} $isInView={isInView}>
         <div className='contact-left'>연락처
             <p>위치: 서울, 대한민국</p>
             <p>
@@ -75,7 +75,7 @@ const borderDraw = keyframes`
     }
 `;
 
-const ContactWrapper = styled.div<{ isInView: boolean }>`
+const ContactWrapper = styled.div<{ $isInView: boolean }>`
     height: fit-content;
     margin-bottom: 50px;
     margin-top: 120px;
@@ -126,7 +126,7 @@ const ContactWrapper = styled.div<{ isInView: boolean }>`
 
     .contact-left::before {
         content: "";
-        border: ${({ isInView }) => isInView ? `1px solid ${PALETTE.BLACK}` : ``};
+        border: ${({ $isInView }) => $isInView ? `1px solid ${PALETTE.BLACK}` : ``};
         position: absolute;
         bottom: 25px;
         left: 10vw;
@@ -134,7 +134,7 @@ const ContactWrapper = styled.div<{ isInView: boolean }>`
         height: 22rem;
         z-index: -1;
         transition: width 1s ease, height 1s ease;
-        animation: ${({ isInView }) => isInView && borderDraw} 1s forwards;
+        animation: ${({ $isInView }) => $isInView && borderDraw} 1s forwards;
     }
 
  @media screen and (max-width: 700px) { 

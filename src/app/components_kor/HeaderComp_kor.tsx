@@ -21,7 +21,7 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
     const {isMenuOpen, setMenuOpen} = useIsMenuOpen();
 
   return (
-    <Header isScrolling= {useScrollEffect ? isScrolling : true}>
+    <Header $isScrolling= {useScrollEffect ? isScrolling : true}>
         <a className="logo"
         href= "#/kor"
         target="_self"
@@ -29,7 +29,7 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
         > 
             <span>레네이 </span>우메이
         </a>
-        <NavBar isScrolling= {useScrollEffect ? isScrolling : true} isMenuOpen= {isMenuOpen}>
+        <NavBar $isScrolling= {useScrollEffect ? isScrolling : true} $isMenuOpen= {isMenuOpen}>
             {pages?.map((page) => (
                 <div
                 key={page.name}
@@ -56,24 +56,24 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
 
 export default HeaderComp
 
-const Header = styled.div<{ isScrolling: boolean }>` 
-    position: ${({ isScrolling }) =>
-    isScrolling === true ? 'fixed' : "absolute"};
-    border-bottom: ${({ isScrolling }) =>
-    isScrolling === true ? 'solid rgba(0, 0, 0, 0.2) 1px' : ""};
+const Header = styled.div<{ $isScrolling: boolean }>` 
+    position: ${({ $isScrolling }) =>
+    $isScrolling === true ? 'fixed' : "absolute"};
+    border-bottom: ${({ $isScrolling }) =>
+    $isScrolling === true ? 'solid rgba(0, 0, 0, 0.2) 1px' : ""};
     display: flex;
-    background-color: ${({ isScrolling }) =>
-    isScrolling === true ?  `${PALETTE.BACKGROUND}` : ""};
-    justify-content: ${({ isScrolling }) =>
-    isScrolling === true ? 'space-between' : ""};
+    background-color: ${({ $isScrolling }) =>
+    $isScrolling === true ?  `${PALETTE.BACKGROUND}` : ""};
+    justify-content: ${({ $isScrolling }) =>
+    $isScrolling === true ? 'space-between' : ""};
     width: 100% ;
-    z-index: ${({ isScrolling }) =>
-    isScrolling === true ? "999999" : "9999"};
+    z-index: ${({ $isScrolling }) =>
+    $isScrolling === true ? "999999" : "9999"};
     font-size: 1.1rem;
 
     .logo, logo:visited, logo:active{
-        display: ${({ isScrolling }) =>
-        isScrolling === true ? 'flex' : 'none'};
+        display: ${({ $isScrolling }) =>
+        $isScrolling === true ? 'flex' : 'none'};
         width: max-content;
         align-items: center;
         color: ${PALETTE.PRIMARY.DEFAULT};
@@ -93,8 +93,8 @@ const Header = styled.div<{ isScrolling: boolean }>`
         position: absolute;
         right: calc(100vw - 97.2vw);
         top: 4.5em;
-        display: ${({ isScrolling }) =>
-        isScrolling === true ? 'none' : 'flex'};
+        display: ${({ $isScrolling }) =>
+        $isScrolling === true ? 'none' : 'flex'};
         flex-direction: column;
         border: 1px solid ${PALETTE.BLACK};
         border-radius: 20px;
@@ -133,14 +133,14 @@ const Header = styled.div<{ isScrolling: boolean }>`
     }  
     `;
 
-export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
+export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }>`
     @media screen and (min-width: 700px) {
     .phone-icons {
         visibility: hidden;
         display: none;
     }
-    ${({ isScrolling }) => {
-        switch (isScrolling) {
+    ${({ $isScrolling }) => {
+        switch ($isScrolling) {
             case false:
                 return css`
                     height: 5.9em;
@@ -192,8 +192,8 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
         width: 100vw;
         height: 100vh;
         background-color: ${PALETTE.WHITE};
-        left: ${({ isMenuOpen }) =>
-        isMenuOpen === true ? '0vw' : '-100vw'};
+        left: ${({ $isMenuOpen }) =>
+        $isMenuOpen === true ? '0vw' : '-100vw'};
         transition: 0.5s ease all;
         .page-buttons {
             z-index: 99999;
@@ -219,19 +219,19 @@ export const NavBar = styled.div<{ isScrolling: boolean, isMenuOpen: boolean }>`
             visibility: visible;
         }
         .hamburger {
-            position: ${({ isScrolling }) =>
-            isScrolling === true ? 'fixed' : 'absolute'};
-            filter: ${({ isScrolling }) =>
-            isScrolling === true ? '' : 'invert(1)'};
-            -webkit-filter: ${({ isScrolling }) =>
-            isScrolling === true ? '' : 'invert(1)'};
+            position: ${({ $isScrolling }) =>
+            $isScrolling === true ? 'fixed' : 'absolute'};
+            filter: ${({ $isScrolling }) =>
+            $isScrolling === true ? '' : 'invert(1)'};
+            -webkit-filter: ${({ $isScrolling }) =>
+            $isScrolling === true ? '' : 'invert(1)'};
             z-index: -1;
-            top: ${({ isScrolling }) =>
-            isScrolling === true ? '0.5rem' :'5rem' };
-            left: ${({ isScrolling }) =>
-            isScrolling === true ? '0.3rem' :'108vw' };
-            visibility: ${({ isMenuOpen }) =>
-            isMenuOpen === true ? "hidden" : "visible" };
+            top: ${({ $isScrolling }) =>
+            $isScrolling === true ? '0.5rem' :'5rem' };
+            left: ${({ $isScrolling }) =>
+            $isScrolling === true ? '0.3rem' :'108vw' };
+            visibility: ${({ $isMenuOpen }) =>
+            $isMenuOpen === true ? "hidden" : "visible" };
             cursor: pointer;
         }
         .close {

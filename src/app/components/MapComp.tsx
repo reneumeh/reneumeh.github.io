@@ -18,7 +18,7 @@ const MapComp = () => {
         initial={{ y: 100, opacity: 0 }}
         animate={isInView ? { y: 0, opacity: 1 } : {}}
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
-        hoveredElement={hoveredElement}
+        $hoveredElement={hoveredElement}
         style={{ overflow: "clip", position: "relative" }}
     >
         <div className="WorldMap">
@@ -66,7 +66,7 @@ const MapComp = () => {
 
 export default MapComp;
 
-const Map = styled.div<{ hoveredElement: string }>`
+const Map = styled.div<{ $hoveredElement: string }>`
 position: relative;
 height: 44vw;
 
@@ -121,7 +121,7 @@ height: 44vw;
     100% { transform: translatey(0px); }
 }
 
-[id*=${({ hoveredElement }) => hoveredElement}] {
+[id*=${({ $hoveredElement }) => $hoveredElement}] {
     visibility: visible;
     text-align: start;
     transform: translateX(-21vw);

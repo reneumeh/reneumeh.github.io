@@ -58,7 +58,6 @@ const PortfolioComp = ({
     return (
         <PortfolioWrapper
             ref={portfolio}
-            hoveredElement={hoveredElement}
             style={{ position: "relative" }}
         >
             {!!useModal && (
@@ -139,7 +138,7 @@ const PortfolioItem = ({ item, index, handleHover, handleLeave, handleClick, hov
 
 export default PortfolioComp;
 
-const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
+const PortfolioWrapper = styled.div`
     margin-top: 8vh;
 
     .main-port {

@@ -44,7 +44,7 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
     };
 
   return (
-    <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }}>
+    <PortfolioWrapper ref={portfolio} style={{ position: "relative" }}>
             {!!useModal && <PortfolioModal item_name={useModal} item_path={modalPath} handleCloseModal={handleCloseModal} />}
             <motion.div className='main-port mech' ref={mechSection}>
                 {portfolio_stuff["기계 공학"].map((item, index) => (
@@ -133,7 +133,7 @@ const PortfolioItem = ({ item, index, handleHover, handleLeave, handleClick, hov
 
 export default PortfolioComp;
 
-const PortfolioWrapper = styled.div<{ hoveredElement: string }>`
+const PortfolioWrapper = styled.div`
     margin-top: 8vh;
 
     .main-port {
