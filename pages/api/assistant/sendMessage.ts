@@ -6,12 +6,10 @@ import {
   getMessages,
   startRun,
   getRun,
-  submitOutputs,
-  getRunStep,
-  cancelRun,
 } from './openai';
 import { wait } from '@/app/Chatbot/util/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
+import corsMiddleware, { runMiddleware } from './cors';
 
 interface InquiryBody {
   inquiry: string;
@@ -20,18 +18,10 @@ interface InquiryBody {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  const allowedOrigins = ['https://reneumeh.github.io', 'https://reneumeh.vercel.app']; // Add all allowed origins here
-  const origin = req.headers.origin;
+  // Run CORS middleware
+  await runMiddleware(req, res, corsMiddleware);
 
-  // Check if the origin is in the allowed origins list
-  if (origin && allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-  // Handle preflight OPTIONS request
+  // Handle preflight OPTIONS requests
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
@@ -45,19 +35,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     let thread_id = threadId || '';
-    let assistant_instructions = '';
-    let messages_items = [];
-    let output_items = [];
-
     const assistant = await getAssistant();
-    assistant_instructions = assistant.instructions;
+    const assistant_instructions = assistant.instructions;
 
     if (thread_id) {
-      const exist_thread = await getThread({ threadId: thread_id });
-
-      if (exist_thread.error) {
-        thread_id = '';
-      }
+      const existing_thread = await getThread({ threadId: thread_id });
+      if (existing_thread.error) thread_id = '';
     }
 
     if (!thread_id) {
@@ -65,91 +48,50 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       thread_id = new_thread.id;
     }
 
-    await addMessage({ threadId: thread_id, message: inquiry, messageId: messageId });
+    await addMessage({ threadId: thread_id, message: inquiry, messageId });
 
     const last_message_time = new Date().getTime() / 1000;
-
     const run = await startRun({
       threadId: thread_id,
       instructions: `${assistant_instructions}\nToday is ${new Date()}.`,
     });
 
     const run_id = run.id;
-    let flagFinish = false;
-    let last_called_function = '';
-    const MAX_COUNT = 2 * 600; // 120s
-    const TIME_DELAY = 5; // 100ms
-    let count = 0;
+    const messages_items = await fetchRunData(thread_id, run_id, last_message_time);
 
-    do {
-      const run_data = await getRun({ threadId: thread_id, runId: run_id });
-      const run_step = await getRunStep({ threadId: thread_id, runId: run_id });
-      const step = run_step.data[0];
-      const status = run_data.status;
-
-      if (status === 'completed') {
-        const messages = await getMessages({ threadId: thread_id });
-        console.log(messages)
-        messages_items = messages.filter((message: any) => message.created_at > last_message_time);
-        flagFinish = true;
-      } else if (status === 'requires_action') {
-        const required_action = run_data.required_action;
-        const required_tools = required_action.submit_tool_outputs.tool_calls;
-
-        console.log(required_action, required_tools);
-
-        // let tool_output_items = [];
-
-        // for (let rtool of required_tools) {
-        //   const function_name = rtool.function.name;
-        //   const function_args = JSON.parse(rtool.function.arguments);
-
-        //   let tool_output = await callMockAPI({ function_name, function_args });
-
-        //   console.log(tool_output);
-
-        //   tool_output_items.push({
-        //     tool_call_id: rtool.id,
-        //     output: JSON.stringify(tool_output),
-        //   });
-
-        //   output_items.push({
-        //     tool_call_id: rtool.id,
-        //     tool_name: function_name,
-        //     tool_args: function_args,
-        //     output: tool_output[Object.keys(tool_output)[0]],
-        //   });
-
-        //   last_called_function = function_name;
-        // }
-
-        // await submitOutputs({
-        //   threadId: thread_id,
-        //   runId: run_id,
-        //   tool_outputs: tool_output_items,
-        // });
-      } else if (['expired', 'cancelled', 'failed'].includes(status)) {
-        flagFinish = true;
-      }
-
-      if (!flagFinish) {
-        count++;
-
-        if (count >= MAX_COUNT) {
-          flagFinish = true;
-        } else {
-          await wait(TIME_DELAY);
-        }
-      }
-    } while (!flagFinish);
-
-    return res.status(200).send({
-      threadId: thread_id,
-      messages: messages_items,
-    });
+    res.status(200).send({ threadId: thread_id, messages: messages_items });
   } catch (error: any) {
     console.error('Server Error:', error);
-    res.status(500).json({ message: 'Error processing response', error: error.message });
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
   }
 }
 
+// Helper function to poll run data (extracted for modularity)
+async function fetchRunData(thread_id: string, run_id: string, last_message_time: number) {
+  let messages_items = [];
+  let isFinished = false;
+  const MAX_COUNT = 1200; // 120s
+  const TIME_DELAY = 100; // 100ms
+  let count = 0;
+
+  do {
+    const run_data = await getRun({ threadId: thread_id, runId: run_id });
+    const status = run_data.status;
+
+    if (status === 'completed') {
+      const messages = await getMessages({ threadId: thread_id });
+      messages_items = messages.filter(
+        (message: any) => message.created_at > last_message_time
+      );
+      isFinished = true;
+    } else if (['expired', 'cancelled', 'failed'].includes(status)) {
+      isFinished = true;
+    } else {
+      count++;
+      if (count >= MAX_COUNT) isFinished = true;
+      else await wait(TIME_DELAY);
+    }
+  } while (!isFinished);
+
+  return messages_items;
+}

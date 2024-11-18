@@ -1,46 +1,29 @@
-import { getMessages } from './openai';
+import { deleteThread } from './openai';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-interface Message {
-  // Define the structure of a message based on your actual data
-}
+import corsMiddleware, { runMiddleware } from './cors'; 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  const { threadId, messageId, feedback } = req.body;
+  await runMiddleware(req, res, corsMiddleware);
 
-  if (typeof threadId === 'undefined' || messageId === "") {
-    return res.status(400).json({ message: "Bad request" });
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
   }
 
-  let result: any = null;
+  const { threadId } = req.body;
 
-//   try {
-//     const messages: Message[] = await getMessages({ threadId });
-    
-//     const response = await fetch(
-//       "http://platformapi-sandbox.spacemap42.com" + API_GPT_LOG, {
-//       method: 'POST',
-//       headers: {
-//         Accept: 'application/json',
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         messages: messages,
-//         messageId: messageId,
-//         feedback: feedback,
-//       }),
-//     });
+  if (typeof threadId === 'undefined') {
+    return res.status(200).json({ message: "Thread already deleted" });
+  }
 
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
+  console.log("delete thread", threadId, new Date().toLocaleTimeString());
 
-//     result = await response.json();
-
-//   } catch (error: any) {
-//     console.log("assistant-error", error.name, error.message);
-//     return res.status(500).json({ message: 'Error processing response' });
-//   }
-
-  return res.status(200).json({ result });
+  try {
+    const result = await deleteThread({ threadId });
+    return res.status(200).send({ result });
+  } catch (error: any) {
+    console.error("assistant-error", error.name, error.message);
+    res.status(500).send({ message: 'Error processing response', error: error.message });
+    return;
+  }
 }
