@@ -3,7 +3,7 @@ import useIsScrolling from "../hooks/useIsScrolling";
 import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
 import { PALETTE } from "../utils/theme";
-import Image from 'next/image';
+
 import { Page } from "../utils/types";
 
 type headerProps = { 

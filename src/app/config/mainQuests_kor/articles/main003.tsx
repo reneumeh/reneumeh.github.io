@@ -1,5 +1,5 @@
 import { ArticleType } from "@/app/utils/types"
-import Image from 'next/image';
+
 
 export const main003: ArticleType = {
     id: 3194103,

@@ -14,7 +14,7 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (emailForm.current) {
-            emailjs.sendForm('service_ry84lch', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
+            emailjs.sendForm( process.env.EMAIL_SERVICE_ID as string, process.env.EMAIL_TEMPLATE_ID as string, emailForm.current, process.env.EMAIL_OPTIONS as string)
             .then(() => {
                 e.currentTarget.reset();
                 alert("메시지가 발송되었습니다");
@@ -36,6 +36,15 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
                 alt= '보내기'
                 width= {20}/> dubemrene@gmail.com
             </p>
+            <p>
+                    <img
+                        src='/static/linkedin.png'
+                        alt='linkedin'
+                        width={20}
+                        height={20}
+                    /> 
+                    <a href="https://www.linkedin.com/in/reneumeh" target='_blank'> Rene Umeh</a>
+                </p>
         </div>
         <div className='contact-right'> 
             <form ref={emailForm} onSubmit={sendEmail}>

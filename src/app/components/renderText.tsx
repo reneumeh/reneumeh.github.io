@@ -5,8 +5,10 @@ type renderTextProps = {
    text: string,
    isInView: boolean,
    color?: string,
+   x?: string;
+   y?: string;
 }
-export const renderText = ({ text, isInView , color = '#000000' } : renderTextProps) => {
+export const renderText = ({ text, isInView , color = '#fff', x = '60', y = '55' } : renderTextProps) => {
     const textVariant = {
         hidden: { strokeDashoffset: 2000 },
         visible: { strokeDashoffset: 0, transition: { duration: 5, ease: 'easeInOut' } }
@@ -21,8 +23,8 @@ export const renderText = ({ text, isInView , color = '#000000' } : renderTextPr
             fill="none"
         >
             <motion.text
-                x="60"
-                y="55"
+                x={x}
+                y={y}
                 fontFamily="Arial"
                 fill="none"
                 stroke={color}

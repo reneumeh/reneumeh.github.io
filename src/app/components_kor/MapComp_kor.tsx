@@ -3,40 +3,14 @@ import useHoveredElement from "../hooks/useHoveredElement";
 import { useRef } from "react";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
-import Image from 'next/image';
 import { motion, useInView } from "motion/react";
+import MapElements from "../config/map-elements_kor";
+import { longLatToCartesian } from "../utils/utils";
 
 const MapComp = () => {
   const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
-  const texasPin = useRef(null);
-  const lagosPin = useRef(null);
-  const seoulPin = useRef(null);
   const mapRef = useRef(null); 
   const isInView = useInView(mapRef, { once: true, amount: 'some'}); 
-
-    const MapElements = [
-        {
-            country: "미국",
-            city: "오스틴",
-            loc: {top: "16.5vw", left: "calc(5em + 16.5vw)"},
-            explanation: "2021년 텍사스 대학교 오스틴 캠퍼스에서 교환 학기를 보내기 위해 텍사스로 여행을 갔다. 여행을 하면서 완전히 독립해서 사는 것은 처음이었다. 학기가 끝나고 라브너 교육에서 인턴십을 했습니다.",
-            ref: texasPin
-        },
-        {
-            country: "나이지리아",
-            city: "라고스",
-            loc: {top: "22vw", left: "calc(5em + 37vw)"},
-            explanation: "저는 나이지리아 라고스에서 다섯 자녀 중 둘째로 태어나고 자랐습니다. 돋보이려는 욕구는 대가족일 때 자연스럽게 나타납니다. 저는 세인트 그레고리 졸업장으로 공부하고 졸업했습니다.",
-            ref: lagosPin
-        },
-        {
-          country: "대한민국",
-          city: "서울",
-          loc: {top: "15vw", left: "calc(5em + 62.5vw)"},
-          explanation: "저는 학사학위를 위해 서울로 여행을 갔습니다. 저는 한양 국제어학원에서 한국어를 배웠습니다. 그 후, 저는 삼성 글로벌 드림 장학금의 도움으로 기계 공학 학사를 마쳤습니다", 
-          ref: seoulPin
-      },
-    ]
 
   return (
     <Map
@@ -55,7 +29,7 @@ const MapComp = () => {
             src='/static/map.png'
             style={{ position: 'absolute', margin: '2vh  0vw 2vh 5em', width: '80vw', color: 'white' }}
         />
-        {MapElements.map((pin, index) => (
+        {MapElements().map((pin, index) => (
             <motion.div
                 className="pins"
                 key={index}
@@ -72,7 +46,7 @@ const MapComp = () => {
                     height={30}
                     onMouseEnter={() => handleHover(pin.city)}
                     onMouseLeave={handleLeave}
-                    style={{ position: "absolute", top: pin.loc.top, left: pin.loc.left }}
+                    style={{ position: "absolute", top: `${longLatToCartesian(pin.loc.long, pin.loc.lat).top}vw` , left: `calc(5em - 10px + ${longLatToCartesian(pin.loc.long, pin.loc.lat).left}vw` }}
                 />
                 <div className="explanations">
                     <div id={pin.city}>

@@ -6,7 +6,7 @@ import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { sideQuestArticles } from '../config/sideQuests_kor/sideQuests'
 import { PALETTE } from '../utils/theme'
-import Image from 'next/image';
+
 import { useInView, motion } from 'motion/react'
 
 type sideQuestsProps = {

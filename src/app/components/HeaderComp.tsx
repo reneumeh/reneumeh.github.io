@@ -4,7 +4,7 @@ import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
 import { Page } from "../utils/types";
 import { PALETTE } from "../utils/theme";
-import Image from 'next/image';
+
 
 type headerProps = { 
     pages?: Page[],

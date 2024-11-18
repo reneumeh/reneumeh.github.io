@@ -7,14 +7,14 @@ import { portfolio_stuff } from "../config/portfolio-stuff";
 import { motion, useInView } from "motion/react";
 import { renderText } from "./renderText";
 
-type portfolioProps = {
+interface portfolioProps  {
     mechSection: React.MutableRefObject<null>, 
     extraSection: React.MutableRefObject<null>, 
     panddSection: React.MutableRefObject<null>, 
     portfolio: React.MutableRefObject<null>
 };
 
-type PortfolioItemProps = {
+interface PortfolioItemProps {
     item: { image: string; name: string; explanation: string };
     index: number;
     handleHover: (name: string) => void;
@@ -23,76 +23,83 @@ type PortfolioItemProps = {
     hoveredElement: string;
 };
 
-const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : portfolioProps) => {
+const PortfolioComp = ({
+    mechSection,
+    extraSection,
+    panddSection,
+    portfolio,
+}: portfolioProps) => {
     const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
     const [useModal, setUseModal] = useState("");
-    const [ modalPath, setModalPath ] = useState("")
+    const [modalPath, setModalPath] = useState("");
     const isInView = useInView(portfolio, { once: true });
 
-    const isMechInView = useInView(mechSection, { once: true, amount: 0.5 });
-    const isPanddInView = useInView(panddSection, { once: true, amount: 0.5 });
-    const isExtraInView = useInView(extraSection, { once: true, amount: 0.5 });
+    const sectionRefs = {
+        "MECHANICAL ENGINEERING": mechSection,
+        "PROGRAMMING AND DESIGN": panddSection,
+        "EXTRACURRICULAR ACTIVITIES": extraSection,
+    };
+
+    const inViewStates = {
+        "MECHANICAL ENGINEERING": useInView(mechSection, { once: true, amount: 0.5 }),
+        "PROGRAMMING AND DESIGN": useInView(panddSection, { once: true, amount: 0.5 }),
+        "EXTRACURRICULAR ACTIVITIES": useInView(extraSection, { once: true, amount: 0.5 }),
+    };
 
     const handleClick = (item_name: string, item_path: string) => {
         setUseModal(item_name);
-        setModalPath(item_path)
+        setModalPath(item_path);
     };
     const handleCloseModal = () => {
         setUseModal("");
-        setModalPath("")
+        setModalPath("");
     };
 
     return (
-        <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }}>
-            {!!useModal && <PortfolioModal item_name={useModal} item_path={modalPath} handleCloseModal={handleCloseModal} />}
-            <motion.div className='main-port mech' ref={mechSection}>
-                {portfolio_stuff.mechanicalEngineering.map((item, index) => (
-                    <PortfolioItem
-                        key={index}
-                        item={item}
-                        index={index}
-                        handleHover={handleHover}
-                        handleLeave={handleLeave}
-                        handleClick={handleClick}
-                        hoveredElement={hoveredElement}
-                    />
-                ))}
-                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
-                    {renderText({text: 'MECHANICAL ENGINEERING', isInView: isMechInView, color:  '#fff'})}
-                </span>
-            </motion.div>
-            <div className='main-port pandd' ref={panddSection}>
-                {portfolio_stuff.programmingAndDesign.map((item, index) => (
-                    <PortfolioItem
-                        key={index}
-                        item={item}
-                        index={index}
-                        handleHover={handleHover}
-                        handleLeave={handleLeave}
-                        handleClick={handleClick}
-                        hoveredElement={hoveredElement}
-                    />
-                ))}
-                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
-                    {renderText({text: 'PROGRAMMING AND DESIGN', isInView: isPanddInView, color:  '#fff'})}
-                </span>
-            </div>
-            <div className='main-port extra' ref={extraSection}>
-                {portfolio_stuff.extracurricular.map((item, index) => (
-                    <PortfolioItem
-                        key={index}
-                        item={item}
-                        index={index}
-                        handleHover={handleHover}
-                        handleLeave={handleLeave}
-                        handleClick={handleClick}
-                        hoveredElement={hoveredElement}
-                    />
-                ))}
-                <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
-                    {renderText({text: 'EXTRACURRICULAR ACTIVITIES', isInView: isExtraInView, color:  '#fff'})}
-                </span>
-            </div>
+        <PortfolioWrapper
+            ref={portfolio}
+            hoveredElement={hoveredElement}
+            style={{ position: "relative" }}
+        >
+            {!!useModal && (
+                <PortfolioModal
+                    item_name={useModal}
+                    item_path={modalPath}
+                    handleCloseModal={handleCloseModal}
+                />
+            )}
+
+            {Object.keys(portfolio_stuff).map((category) => (
+                <motion.div
+                    className={`main-port ${category.toLowerCase().replace(/ /g, "-")}`}
+                    ref={sectionRefs[category as keyof typeof sectionRefs]}
+                    key={category}
+                >
+                    {portfolio_stuff[category].map((item, index) => (
+                        <PortfolioItem
+                            key={index}
+                            item={item}
+                            index={index}
+                            handleHover={handleHover}
+                            handleLeave={handleLeave}
+                            handleClick={handleClick}
+                            hoveredElement={hoveredElement}
+                        />
+                    ))}
+                    <span
+                        style={{
+                            position: "absolute",
+                            zIndex: "-100",
+                            placeSelf: "center",
+                        }}
+                    >
+                        {renderText({
+                            text: category,
+                            isInView: inViewStates[category as keyof typeof inViewStates],
+                        })}
+                    </span>
+                </motion.div>
+            ))}
         </PortfolioWrapper>
     );
 };

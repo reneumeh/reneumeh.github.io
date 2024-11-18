@@ -7,7 +7,7 @@ import { sideQuestArticles } from '../config/sideQuests_kor/sideQuests';
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
+
 
 const Article = () => {
     const [article, setArticle] = useState<ArticleType>(mainQuestArticles[0]);

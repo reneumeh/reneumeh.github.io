@@ -8,7 +8,7 @@ import { Box, IconButton } from '@chakra-ui/react';
 import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull } from 'react-icons/md';
 import useIsMobile from '@/app/hooks/useIsMobile';
 import { PALETTE } from '@/app/utils/theme';
-import Image from 'next/image';
+
 
 const Chatbot = () => {
   const isMobile = useIsMobile();

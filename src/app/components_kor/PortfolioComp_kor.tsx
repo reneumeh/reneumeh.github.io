@@ -1,7 +1,7 @@
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
-import Image from 'next/image';
+
 import { portfolio_stuff } from "../config/portfolio-stuff_kor";
 import { useRef, useState } from "react";
 import PortfolioModal from "./PortfolioModal_kor";
@@ -47,7 +47,7 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
     <PortfolioWrapper ref={portfolio} hoveredElement={hoveredElement} style={{ position: "relative" }}>
             {!!useModal && <PortfolioModal item_name={useModal} item_path={modalPath} handleCloseModal={handleCloseModal} />}
             <motion.div className='main-port mech' ref={mechSection}>
-                {portfolio_stuff.mechanicalEngineering.map((item, index) => (
+                {portfolio_stuff["기계 공학"].map((item, index) => (
                     <PortfolioItem
                         key={index}
                         item={item}
@@ -59,11 +59,11 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
                     />
                 ))}
                 <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
-                    {renderText({text: '기계 공학', isInView: isMechInView, color:  '#fff'})}
+                    {renderText({text: '기계 공학', isInView: isMechInView, color:  '#fff', x: '300'})}
                 </span>
             </motion.div>
             <div className='main-port pandd' ref={panddSection}>
-                {portfolio_stuff.programmingAndDesign.map((item, index) => (
+                {portfolio_stuff["프로그래밍 및 디자인"].map((item, index) => (
                     <PortfolioItem
                         key={index}
                         item={item}
@@ -75,11 +75,11 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
                     />
                 ))}
                 <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
-                    {renderText({text: '프로그래밍 및 디자인', isInView: isPanddInView, color:  '#fff'})}
+                    {renderText({text: '프로그래밍 및 디자인', isInView: isPanddInView, color:  '#fff', x: '200'})}
                 </span>
             </div>
             <div className='main-port extra' ref={extraSection}>
-                {portfolio_stuff.extracurricular.map((item, index) => (
+                {portfolio_stuff["과외 활동"].map((item, index) => (
                     <PortfolioItem
                         key={index}
                         item={item}
@@ -91,7 +91,7 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
                     />
                 ))}
                 <span style={{ position: 'absolute', zIndex: '-100', alignSelf: 'center', justifySelf: 'center' }}>
-                    {renderText({text: '과외 활동', isInView: isExtraInView, color:  '#fff'})}
+                    {renderText({text: '과외 활동', isInView: isExtraInView, color:  '#fff', x: '300'})}
                 </span>
             </div>
         </PortfolioWrapper>

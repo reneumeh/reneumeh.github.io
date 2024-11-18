@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'motion/react';
 
 type heroProps = {

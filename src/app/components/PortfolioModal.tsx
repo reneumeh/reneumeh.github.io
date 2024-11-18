@@ -1,10 +1,9 @@
 
 import React, { MouseEvent, useRef } from 'react';
 import styled from 'styled-components';
-import { camelize } from '../utils/utils';
 import { PALETTE } from '../utils/theme';
 import { modalStories } from '../config/modal-stories';
-import Image from 'next/image';
+
 
 type TProps = {
   children?: JSX.Element;

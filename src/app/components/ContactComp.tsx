@@ -13,7 +13,7 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (emailForm.current) {
-            emailjs.sendForm('service_ry84lch', 'template_r981zdv', emailForm.current, 'SlV3483aRFBrHHQYI')
+            emailjs.sendForm( process.env.EMAIL_SERVICE_ID as string, process.env.EMAIL_TEMPLATE_ID as string, emailForm.current, process.env.EMAIL_OPTIONS as string)
             .then(() => {
                 e.currentTarget.reset();
                 alert("Message sent successfully");

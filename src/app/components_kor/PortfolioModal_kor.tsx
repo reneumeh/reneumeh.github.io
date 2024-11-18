@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { camelize } from '../utils/utils';
 import { PALETTE } from '../utils/theme';
 import { modalStories } from '../config/modal-stories_kor';
-import Image from 'next/image';
+
 import { ModalWrapper } from '../components/PortfolioModal';
 
 

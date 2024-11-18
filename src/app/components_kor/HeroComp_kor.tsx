@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
-import Image from 'next/image';
+
+import { motion, useScroll, useTransform } from 'motion/react';
 
 type heroProps = {
     mechSection: React.MutableRefObject<null>, 
@@ -12,12 +13,20 @@ type heroProps = {
 const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
     const {scrollToElement} = useIsScrolling();
 
+    const { scrollYProgress } = useScroll();
+
+    const opacity = useTransform(scrollYProgress, [0, 0.2], [0.7, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 2]);
+
   return (
     <Hero>
         <div className='hero-div'>
-            <img 
+        <motion.img 
             src='/static/hero1.png' 
-            alt='my_image'/>
+            style={{ opacity, scale }}
+            alt='my_image'
+            fetchPriority='high'
+            loading='eager'/>
         </div>
         <div className='intro-1'>제 이름은</div> 
         <div className='intro-2'>레네이 </div> 
