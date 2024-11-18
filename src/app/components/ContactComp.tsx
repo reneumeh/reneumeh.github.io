@@ -58,7 +58,7 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
                 </p>
             </div>
             <div className='contact-right'> 
-                <form ref={emailForm} onSubmit={sendEmail}>
+                <form ref={emailForm} name='contatForm' onSubmit={sendEmail} autoComplete='on'>
                     <input type="text" name="from_name" placeholder='Name' required />
                     <input type="email" name="from_email" placeholder='Email' required />
                     <textarea name="message" rows={6} placeholder='Message' />
