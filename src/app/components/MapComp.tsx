@@ -18,7 +18,7 @@ const MapComp = () => {
       {
           country: "USA",
           city: "Texas",
-          loc: {long: -99.9018, lat: 31.9686},
+          loc: {long: -97.7431, lat: 30.2672},
           explanation: <p>In 2021, I travelled to Texas for an exchange semester at the <a href='https://www.utexas.edu/' target="_blank">University of Texas at Austin</a>. It was the first time I was travelling and living completely independently. I earned an internship at <a href="https://www.rice.edu/" target="_blank">Rice University</a> following the end of the semester.</p>,
           ref: texasPin
       },
