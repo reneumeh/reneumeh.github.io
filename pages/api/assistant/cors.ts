@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 // Initialize the CORS middleware
 const corsMiddleware = cors({
   methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
-  origin: ['https://reneumeh.github.io', 'https://reneumeh.vercel.app'], // Allowed origins
+  origin: ['https://reneumeh.github.io', 'https://reneumeh.vercel.app', 'https://www.reneumeh.com'], // Allowed origins
 });
 
 // Helper function to run middleware
