@@ -222,7 +222,7 @@ const AwardsListWrapper = styled.div`
     position: relative;
     top: -25vh;
     padding: 0.25rem 0.5rem;
-    background-color: #fff;
+    background-color: ${PALETTE.WHITE};
     border: none;
     cursor: pointer;
   }

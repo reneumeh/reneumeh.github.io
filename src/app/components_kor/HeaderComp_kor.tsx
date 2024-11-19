@@ -23,7 +23,7 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
   return (
     <Header $isScrolling= {useScrollEffect ? isScrolling : true}>
         <a className="logo"
-        href= "#/kor"
+        href= "/kor"
         target="_self"
         rel="noopener noreferrer"
         > 
@@ -48,7 +48,7 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
         </NavBar>
         {
             !!useLanguage &&
-        <div className='language'><a className='top' href='#/'>영</a><a className='bottom'href="#/kor">한</a></div>
+        <div className='language'><a className='top' href='/'>영</a><a className='bottom'href="/kor">한</a></div>
         }
     </Header>
   )

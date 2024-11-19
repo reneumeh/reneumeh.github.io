@@ -25,7 +25,7 @@ function MainENG() {
     const pages : Page[] = [
       {
           name: "Home",
-          link: "#/",
+          link: "/",
           img: "/static/home.png"
       },
       {
@@ -36,7 +36,7 @@ function MainENG() {
       },
       {
           name: "Blog",
-          link:  "#/blog",
+          link:  "/blog",
           img: "/static/blog.png"
       },
       {
@@ -53,7 +53,7 @@ function MainENG() {
 
   return (
     <Wrapper>
-        <HeaderComp pages={pages} useScrollEffect={true} useLanguage={{ ENG: '#/', KOR: '#/kor'}} />
+        <HeaderComp pages={pages} useScrollEffect={true} useLanguage={{ ENG: '/', KOR: '/kor'}} />
         <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <hr />

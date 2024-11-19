@@ -19,7 +19,7 @@ export const BlogKOR = () => {
   const blogPages : Page[] = [
     {
         name: "홈",
-        link: "#/kor",
+        link: "/kor",
         img: "/static/home.png"
     },
     {
@@ -36,18 +36,18 @@ export const BlogKOR = () => {
     {
         name: "수상",
         img: "/static/side_icon.png",
-        link: "#/blog_kor/awards",
+        link: "/blog_kor/awards",
     },
 ] 
 const articlePages : Page[] = [
   {
     name: "홈",
-    link: "#/kor",
+    link: "/kor",
     img: "/static/home.png"
   },    
   {
     name: "블로그",
-    link:  "#/blog_kor",
+    link:  "/blog_kor",
     img: "/static/blog.png"
   },
   {
@@ -58,7 +58,7 @@ const articlePages : Page[] = [
   {
     name: "수상",
     img: "/static/side_icon.png",
-    link: "#/blog_kor/awards",
+    link: "/blog_kor/awards",
 },
 ]
 
@@ -71,7 +71,7 @@ useEffect(() => {
       index
       element={
         <Wrapper>
-          <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}}/>
+          <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '/blog', KOR: '/blog_kor'}}/>
           <BlogHero />
           <Chatbot />
           <MainQuests mainQuests={mainQuests}/>
