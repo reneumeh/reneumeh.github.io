@@ -22,7 +22,7 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
   return (
     <Header $isScrolling= {useScrollEffect ? isScrolling : true}>
         <a className="logo"
-        href= "/"
+        href= "#/"
         target="_self"
         rel="noopener noreferrer"
         > 

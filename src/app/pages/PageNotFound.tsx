@@ -19,7 +19,7 @@ function PageNotFound() {
     <h2>Page Not Found: {quote}</h2>
     <div className='home-button'>
       <a className='home-button-inside'
-      href="/"
+      href="#/"
       target='_self'
       >
           GO BACK TO HOME

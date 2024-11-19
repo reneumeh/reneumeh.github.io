@@ -19,7 +19,7 @@ export const BlogENG = () => {
   const blogPages : Page[] = [
     {
         name: "Home",
-        link: "/",
+        link: "#/",
         img: "/static/home.png"
     },
     {
@@ -36,18 +36,18 @@ export const BlogENG = () => {
     {
         name: "Awards",
         img: "/static/side_icon.png",
-        link: "/blog/awards",
+        link: "#/blog/awards",
     },
 ] 
 const articlePages : Page[] = [
   {
     name: "Home",
-    link: "/",
+    link: "#/",
     img: "/static/home.png"
   },    
   {
     name: "Blog",
-    link:  "/blog",
+    link:  "#/blog",
     img: "/static/blog.png"
   },
   {
@@ -58,7 +58,7 @@ const articlePages : Page[] = [
   {
     name: "Awards",
     img: "/static/side_icon.png",
-    link: "/blog/awards",
+    link: "#/blog/awards",
   },
 ]
 
@@ -71,7 +71,7 @@ useEffect(() => {
       index
       element={
         <Wrapper>
-          <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '/blog', KOR: '/blog_kor'}} />
+          <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}} />
           <BlogHero />
           <Chatbot />
           <MainQuests mainQuests={mainQuests}/>
