@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import AwardsList from './AwardsList_kor'
+import AwardsList from '../components/AwardsList'
 import { awardsListHS, awardsListUni } from '../config/awards-lists_kor'
 import useIsScrolling from '../hooks/useIsScrolling'
 

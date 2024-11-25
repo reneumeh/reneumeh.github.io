@@ -70,7 +70,7 @@ const Header = styled.div<{ $isScrolling: boolean }>`
     $isScrolling === true ? 'space-between' : ""};
     width: 100% ;
     z-index: ${({ $isScrolling }) =>
-    $isScrolling === true ? "999999" : "9999"};
+    $isScrolling === true ? "9999999" : "9999"};
     font-size: 1.1rem;
 
     .logo, logo:hover, logo:visited, logo:active{
@@ -198,7 +198,6 @@ export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }
         $isMenuOpen === true ? '0vw' : '-100vw'};
         transition: 0.5s ease all;
         .page-buttons {
-            z-index: 99999;
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             grid-auto-rows: 10rem;

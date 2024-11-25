@@ -7,19 +7,20 @@ import { motion, useScroll, useTransform } from 'motion/react';
 type heroProps = {
     mechSection: React.MutableRefObject<null>, 
     extraSection: React.MutableRefObject<null>, 
-    panddSection: React.MutableRefObject<null>
+    panddSection: React.MutableRefObject<null>,
+    hero: React.MutableRefObject<null>,
     }
 
-const HeroComp = ({ mechSection, extraSection, panddSection } : heroProps) => {
+const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps) => {
     const {scrollToElement} = useIsScrolling();
 
     const { scrollYProgress } = useScroll();
 
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0.7, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 2]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 3]);
 
   return (
-    <Hero>
+    <Hero ref={hero}>
         <div className='hero-div'>
         <motion.img 
             src='/static/hero1.png' 

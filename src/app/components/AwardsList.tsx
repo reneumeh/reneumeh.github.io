@@ -186,6 +186,7 @@ const AwardsListWrapper = styled.div`
 
     img {
       width: 10vw;
+      height: 15vw;
     }
   }
 

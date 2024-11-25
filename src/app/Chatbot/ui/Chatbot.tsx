@@ -150,6 +150,7 @@ const Header = styled.div<{ $isExpanded: boolean, $isOpen: boolean, $isMobile: b
 
 const ClosedMode = styled.div<{ $isMobile: boolean, $isOpen: boolean }>`
   position: fixed;
+  z-index: 999999;
   right: ${({ $isMobile }) => ($isMobile ? '1rem' : '3rem')};
   bottom: ${({ $isMobile }) => ($isMobile ? '1rem' : '3rem')};
   cursor: pointer;

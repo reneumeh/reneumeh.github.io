@@ -21,11 +21,12 @@ function MainENG() {
     const panddSection = useRef(null);
     const extraSection = useRef(null);
     const emailForm = useRef(null);
+    const hero = useRef(null);
 
     const pages : Page[] = [
       {
           name: "Home",
-          link: "#/",
+          ref: hero,
           img: "/static/home.png"
       },
       {
@@ -54,7 +55,7 @@ function MainENG() {
   return (
     <Wrapper>
         <HeaderComp pages={pages} useScrollEffect={true} useLanguage={{ ENG: '#/', KOR: '#/kor'}} />
-        <HeroComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
+        <HeroComp hero={hero} mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} />
         <MapComp />
         <hr />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
