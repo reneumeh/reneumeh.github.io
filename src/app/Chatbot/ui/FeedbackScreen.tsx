@@ -13,7 +13,7 @@ type FeedbackScreenProps = {
 }
 
 export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedbackSubmit, threadId }: FeedbackScreenProps) => {
-    const suggestedFeedback = ["Incorrect Information", "Empty Table", "No reponse given", "Other"]
+    const suggestedFeedback = ["Incorrect Information", "Took too long", "No reponse given", "Other"]
     return (
         <>
           <ChakraIcon
@@ -23,7 +23,7 @@ export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedback
             marginTop={'1.5rem'}
           />
           <p>
-            We are sorry that this response was unsatisfactory.
+            I am sorry that this response was unsatisfactory.
             <br />
             Please select/enter the problem with this response.
           </p>
