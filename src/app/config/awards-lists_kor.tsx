@@ -54,11 +54,11 @@ export const awardsListHS: Award[] = [
 export const awardsListUni: Award[] = [
     {
         name: '졸업 우수상',
-        image: '/static/grad-honors.png',
+        image: '/static/grad-honors-kor.png',
     },
     {
         name: '졸업 증명서',
-        image: '/static/grad-cert-eng.png',
+        image: '/static/grad-cert-kor.png',
     },
     {
         name: '삼성 글로벌 희망 재단 졸업 증명서',
