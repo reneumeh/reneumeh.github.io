@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useAppStore, { Message } from '../util/appstore';
+import useAppStore from '../util/appstore';
 
 export const useFeedback = () => {
   const [isFeedbackScreenOpen, setIsFeedbackScreenOpen] = useState(false);
@@ -32,12 +32,12 @@ export const useFeedback = () => {
       });
 
       if (response.ok) {
-        console.log('Feedback submitted successfully');
+        // console.log('Feedback submitted successfully');
       } else {
-        console.error('Error submitting feedback', await response.json());
+        // console.error('Error submitting feedback', await response.json());
       }
     } catch (error) {
-      console.error('Error submitting feedback', error);
+      // console.error('Error submitting feedback', error);
     }
 
     setFeedbackInput('');

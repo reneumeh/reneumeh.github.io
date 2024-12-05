@@ -5,7 +5,7 @@ export const side002: ArticleType = {
     id: 9945002,
     title: 'Creating A Website Portfolio',
     summary: "Don't do it.",
-    primaryImage: '/static/screenshot.png',
+    primaryImage: '/static/screenshot.webp',
 
     content: [
       <p key="1">

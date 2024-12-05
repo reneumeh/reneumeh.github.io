@@ -5,7 +5,7 @@ export const side002: ArticleType = {
     id: 9945102,
     title: '온라인 포트포리오 만드는 법',
     summary:  "온라인 포트폴리오를 만드는 것은 템플릿을 이용해 빠르게 할 수도 있고, 웹 개발에 대한 깊은 학습을 통해 더 복잡하게 할 수도 있습니다.",
-    primaryImage: '/static/screenshot.png',
+    primaryImage: '/static/screenshot.webp',
     content: [
       <p key="1">
         작업을 보여주거나, 직업에 지원하거나, 친구들에게 멋진 웹 디자인을 자랑하고 싶다면, 온라인 포트폴리오는 오늘날 디지털 세계에서 필수입니다. 그러나 접근 방식에 있어서 약간의 갈림길이 있습니다.

@@ -6,6 +6,8 @@ import { PALETTE } from "../utils/theme";
 import { IconButton } from "@chakra-ui/react";
 import { MdFormatListBulleted, MdViewModule } from "react-icons/md";
 import { motion } from "motion/react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Image from "next/image";
 
 interface AwardsListProps {
   awardsList: Award[];
@@ -103,7 +105,7 @@ const AwardsList = ({ awardsList, collectionName } : AwardsListProps) => {
         >
           {awardsList.map((award, index) => (
             <div key={index} onClick={() => openImageViewer(index)} style={{ cursor: "pointer" }}>
-              <img width={150} height={200} src={award.image} alt={award.name} />
+              <Image width={150} height={200} src={award.image} alt={award.name} />
               <p>{award.name}</p>
             </div>
           ))}
@@ -120,12 +122,16 @@ const AwardsList = ({ awardsList, collectionName } : AwardsListProps) => {
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.15 }}
           >
-            <button
-              className='previous'
-              onClick={goToPrev}
-            >
-              <img className="arrow" src="/static/arrow.png" alt="previous image" />
-            </button>
+            <IconButton
+            className='list'
+            aria-label='View list'
+            icon={<IoIosArrowBack size={20}/>}
+            onClick={goToPrev}
+            bg= {PALETTE.BACKGROUND}
+            marginRight={'0.3rem'}
+            _hover= {{ bg: `${PALETTE.SECONDARY.LIGHT}` }}
+            size={"6rem"}
+            />
             <motion.img 
               key={currentIndex}
               width={350}
@@ -138,12 +144,16 @@ const AwardsList = ({ awardsList, collectionName } : AwardsListProps) => {
               exit={{ opacity: 0, x: 100 }}
               transition={{ duration: 0.15 }}
             />
-            <button
-              className='next'
-              onClick={goToNext}
-            >
-              <img className="arrow" src="/static/arrow.png" alt="next image" />
-            </button>
+            <IconButton
+            className='list'
+            aria-label='View list'
+            icon={<IoIosArrowForward size={20}/>}
+            onClick={goToNext}
+            bg= {PALETTE.BACKGROUND}
+            marginRight={'0.3rem'}
+            _hover= {{ bg: `${PALETTE.SECONDARY.LIGHT}` }}
+            size={"6rem"}
+            />
             <p
             >{awardsList[currentIndex].name}</p>
           </motion.div>
@@ -190,7 +200,7 @@ const AwardsListWrapper = styled.div`
     }
   }
 
-  .awards-gallery div {
+  .awards-gallery > div {
     text-align: center;
   }
 
@@ -198,19 +208,6 @@ const AwardsListWrapper = styled.div`
     position: relative;
     z-index: 1001;
     text-align: center;
-  }
-
-  .arrow {
-    position: relative;
-    top: 3px;
-    width: 30px;
-    height: 1rem;
-    object-fit: cover;
-    cursor: pointer;
-  }
-
-  .previous {
-    transform: scaleX(-1);
   }
 
   .image-viewer-content img {
@@ -222,7 +219,7 @@ const AwardsListWrapper = styled.div`
     margin: 0.25rem;
     position: relative;
     top: -25vh;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     background-color: #fff;
     border: none;
     cursor: pointer;
@@ -234,17 +231,6 @@ const AwardsListWrapper = styled.div`
 
   .list {
     border: none;
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
   }
 `;
 

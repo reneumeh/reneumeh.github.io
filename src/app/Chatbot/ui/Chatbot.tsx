@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import Dialogue from './Dialogue';
 import useIsOpen from '../hook/use-is-open';
@@ -8,6 +8,7 @@ import { Box, IconButton } from '@chakra-ui/react';
 import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull } from 'react-icons/md';
 import useIsMobile from '@/app/hooks/useIsMobile';
 import { PALETTE } from '@/app/utils/theme';
+import { BsChatRightDots } from 'react-icons/bs';
 
 
 const Chatbot = () => {
@@ -96,15 +97,12 @@ const Chatbot = () => {
             setIsExpanded(true);
           }}
         >
-          <img
-            src="/static/chatbot.png"
-            style={{ width: isMobile ? '20px' : '30px' }}
-            onClick={() => {
+          <BsChatRightDots size={ isMobile ? '20px' : '30px'} 
+          color={PALETTE.WHITE}            
+          onClick={() => {
               setIsOpen(true);
               setIsExpanded(true);
-            }}
-            alt='chatbot'
-          />
+            }}/>
         </ClosedMode>
     </Box>
   );

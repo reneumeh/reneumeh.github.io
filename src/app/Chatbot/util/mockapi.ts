@@ -96,7 +96,7 @@
 
 //     return { satellite_norad_id, message: '' };
 //   } catch (error) {
-//     console.error('Error occurred while fetching satellite data:', error);
+//     // console.error('Error occurred while fetching satellite data:', error);
 //     return {
 //       error: 'Failed to fetch satellite data',
 //       message: 'An error occurred while fetching satellite data.',
@@ -127,7 +127,7 @@
 
 //     return { satellite_info, message: '' };
 //   } catch (error) {
-//     console.error(error);
+//     // console.error(error);
 //     return {
 //       error: 'Failed to fetch satellite data',
 //       message: 'An error occurred while fetching satellite data.',
@@ -162,7 +162,7 @@
 
 //     return { satellite_name, message: '' };
 //   } catch (error) {
-//     console.error('Error occurred while fetching satellite data:', error);
+//     // console.error('Error occurred while fetching satellite data:', error);
 //     return {
 //       error: 'Failed to fetch satellite data',
 //       message: 'An error occurred while fetching satellite data.',
@@ -211,7 +211,7 @@
 //       message: 'Unless the user asks for information on a specific satellite, only give information about the total count.',
 //     };
 //   } catch (error) {
-//     console.error('Error occurred while fetching satellite data:', error);
+//     // console.error('Error occurred while fetching satellite data:', error);
 //     return { error: 'Failed to fetch satellite data', message: 'There are no satellites fitting this description.' };
 //   }
 // }
@@ -287,7 +287,7 @@
 //       };
 //     }
 //   } catch (error) {
-//     console.error('Error occurred while fetching satellite collision data:', error);
+//     // console.error('Error occurred while fetching satellite collision data:', error);
 //     return {
 //       error: 'Failed to fetch satellite collision data',
 //       message: 'An error occurred while fetching satellite collision data.',
@@ -311,11 +311,11 @@
 //       country: '',
 //     };
 
-//     console.log(queryParams);
+//     // console.log(queryParams);
 
 //     const results = await requestApiGetConjunctions(queryParams);
 
-//     console.log(results);
+//     // console.log(results);
 //     const conjunctions: Conjunction[] = [];
 //     for (const conjunction in results.conjunctions) {
 //       conjunctions.push({
@@ -343,7 +343,7 @@
 //         'From the data in the results, provide the user with just the primary satellite and collision time unless asked otherwise',
 //     };
 //   } catch (error) {
-//     console.error('Error occurred while fetching satellite collision data:', error);
+//     // console.error('Error occurred while fetching satellite collision data:', error);
 //     return {
 //       error: 'Failed to fetch satellite collision data',
 //       message: 'An error occurred while fetching satellite collision data.',
@@ -416,7 +416,7 @@
 //         'From the data in the results, provide the user with just the primary satellite and collision time unless asked otherwise',
 //     };
 //   } catch (error) {
-//     console.error('Error occurred while fetching constellation collision data:', error);
+//     // console.error('Error occurred while fetching constellation collision data:', error);
 //     return {
 //       error: 'Failed to fetch constellation collision data',
 //       message: 'An error occurred while fetching constellation collision data.',

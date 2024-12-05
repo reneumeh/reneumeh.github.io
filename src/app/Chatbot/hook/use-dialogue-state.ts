@@ -1,11 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import useAppStore, { Message } from '../util/appstore';
 import { getUniqueId } from '../util/utils';
-
-import useIsOpen from './use-is-open';
 import { deleteThread } from '../api/delete-thread';
 import { sendMessage } from '../api/send-message';
-import { useSuggestions } from './use-suggestions';
 
 type dialogueStateProps = {
   isMounted: boolean,

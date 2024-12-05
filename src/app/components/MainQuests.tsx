@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import { mainQuestArticles } from '../config/mainQuests/mainQuests'
 import { PALETTE } from '../utils/theme'
 import { motion, useInView } from 'motion/react'
-
+import { MdArrowForward } from 'react-icons/md'
+import Image from 'next/image'
 
 type mainQuestsProps = {
     mainQuests: React.MutableRefObject<null>,
@@ -45,11 +46,11 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
                                 <p className='title'>{article.title}</p>
                                 {article.summary}
                                 </div>
-                            <img className='primary-image' src={article.primaryImage} 
+                            <Image width={1000} height={800} className='primary-image' src={article.primaryImage} 
                             alt='primary_image'/>
                             </div>
                             <div className='box'>
-                                <img src='/static/arrow.png' width={20} alt='arrow'/>
+                                <MdArrowForward size={20} transform='translate(1,1)'/>
                             </div>
                     </Card>
                     )

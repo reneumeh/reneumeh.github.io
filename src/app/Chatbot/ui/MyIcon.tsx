@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon as ChakraIcon, createIcon } from '@chakra-ui/react';
+import { Icon as ChakraIcon } from '@chakra-ui/react';
 
 
 const MyIcon = (props: any) => {

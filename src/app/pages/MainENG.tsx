@@ -11,6 +11,10 @@ import BoxButton from '../components/BoxButton';
 import { Page } from '../utils/types';
 import { PALETTE } from '../utils/theme';
 import useIsScrolling from '../hooks/useIsScrolling';
+import { FaHome } from 'react-icons/fa';
+import { TbAwardFilled } from 'react-icons/tb';
+import { BsChatSquareTextFill } from 'react-icons/bs';
+import { IoIosMail } from 'react-icons/io';
 
 function MainENG() {
     const { resetScroll } = useIsScrolling();
@@ -26,23 +30,22 @@ function MainENG() {
       {
           name: "Home",
           ref: hero,
-          img: "/static/home.png"
+          img: <FaHome className="phone-icon" />,
       },
       {
-          name: "Portfolio",
-          ref: portfolio,
-          img: "/static/portfolio.png",
-          link: ""
+          name: "Awards",
+          img: <TbAwardFilled />,
+          link: "#/blog/awards",
       },
       {
           name: "Blog",
           link:  "#/blog",
-          img: "/static/blog.png"
+          img: <BsChatSquareTextFill />,
       },
       {
           name: "Contact",
           ref: contact,
-          img: "/static/contact.png",
+          img: <IoIosMail />,
           link: ""
       }
   ] 
@@ -58,7 +61,9 @@ function MainENG() {
         <MapComp />
         <hr />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
-        <BoxButton text='DOWNLOAD RESUME' link= '/static/rene-umeh-portfolio.pdf' />
+        <BoxButton link= '/static/rene-umeh-portfolio.pdf'>
+          DOWNLOAD RESUME
+        </BoxButton> 
         <InterestsComp />
         <ContactComp contact={contact} emailForm={emailForm}/>
     </Wrapper>

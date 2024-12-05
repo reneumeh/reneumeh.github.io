@@ -10,6 +10,11 @@ import { Route, Routes } from "react-router-dom"
 import Article from "../components/Article"
 import useIsScrolling from "../hooks/useIsScrolling"
 import Awards from "../components/Awards"
+import { FaHome } from 'react-icons/fa'
+import { IoMdPerson } from "react-icons/io"
+import { PiMountainsFill } from 'react-icons/pi'
+import { TbAwardFilled } from 'react-icons/tb'
+import { BsChatSquareTextFill } from 'react-icons/bs' 
 
 export const BlogENG = () => {
   const { resetScroll } = useIsScrolling();
@@ -19,22 +24,22 @@ export const BlogENG = () => {
     {
         name: "Home",
         link: "#/",
-        img: "/static/home.png"
+        img: <FaHome className="phone-icon" />
     },
     {
       name: "Resume",
-      img: "/static/contact.png",
+      img: <IoMdPerson />,
       link: "/static/rene-umeh-portfolio.pdf"
     },
     {
         name: "Quests",
         ref: mainQuests,
-        img: "/static/main_icon.png",
+        img: <PiMountainsFill />,
         link: ""
     },
     {
         name: "Awards",
-        img: "/static/side_icon.png",
+        img: <TbAwardFilled />,
         link: "#/blog/awards",
     },
 ] 
@@ -42,21 +47,21 @@ const articlePages : Page[] = [
   {
     name: "Home",
     link: "#/",
-    img: "/static/home.png"
+    img: <FaHome />
   },    
   {
     name: "Blog",
     link:  "#/blog",
-    img: "/static/blog.png"
+    img: <BsChatSquareTextFill />,
   },
   {
     name: "Resume",
-    img: "/static/contact.png",
+    img: <IoMdPerson />,
     link: "/static/rene-umeh-portfolio.pdf"
   },  
   {
     name: "Awards",
-    img: "/static/side_icon.png",
+    img: <TbAwardFilled />,
     link: "#/blog/awards",
   },
 ]

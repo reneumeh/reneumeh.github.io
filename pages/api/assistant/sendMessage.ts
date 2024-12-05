@@ -61,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).send({ threadId: thread_id, messages: messages_items });
   } catch (error: any) {
-    console.error('Server Error:', error);
+    // console.error('Server Error:', error);
     res.status(500).json({ message: 'Internal Server Error', error: error.message });
   }
 }

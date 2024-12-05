@@ -11,13 +11,11 @@ import {
   MdOutlineThumbDown,
   MdThumbDown,
   MdThumbUp,
-  MdSentimentDissatisfied,
 } from 'react-icons/md';
-import Markdown from 'react-markdown';
 
 import SinusodialLoader from './SinusodialLoader';
 
-import { getUniqueId, truncate } from '../util/utils';
+import { getUniqueId } from '../util/utils';
 
 import { IconButton } from '@chakra-ui/react';
 import useDialogueState from '../hook/use-dialogue-state';
@@ -437,15 +435,11 @@ const FeedbackScreenWrapper = styled.div<{ $isMobile: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  div {
+  .question-area {
     margin-left: 0.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
     flex-flow: row wrap;
-  }
-  .feedback.button {
-    color: black;
-    margin-top: 1rem;
-    font-size: 0.9rem;
   }
   p {
     font-size: 0.9rem;

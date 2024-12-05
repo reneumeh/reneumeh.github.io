@@ -5,7 +5,7 @@ export const main002: ArticleType = {
     id: 3194002,
     title: 'Writing An Academic Paper (Undergrad)',
     summary: 'An outline on the process and possible hurdles of writing an academic paper',
-    primaryImage: '/static/paper.png',
+    primaryImage: '/static/paper.webp',
 
     content: [
     <blockquote key='0'>In this paper, considering the effects of the venturi effect on the temperature distribution in a reactor, a simulation of heat transfer in a hot wall multiple-wafer horizontal tube LPCVD reactor is developed. Investigations on the influence of the geometric characteristics of the reactor system on the temperature distribution within the wafers and in between wafers were explored. Calculations to determine the effect of the temperature distribution on the thickness of the oxide layer on the wafers were performed. In this way, information about the optimum radius for this geometry of the reactor is obtained. </blockquote>,
@@ -18,11 +18,11 @@ export const main002: ArticleType = {
       <p key="7">This step is where you&apos;ll dive into technical papers, textbooks, and simulations (if applicable). If you are facing a problem, someone else has probably already written a book or a paper on it. In our case, there were a few papers on the thermal distribution in a venturi tube and also about the effect of temperature on the growth rate of the oxide layer on a silicone wafer. (Russell Stocker. (2005), Bathiébo et al (2011)) We worked with this and made some simulations to test our changes.</p>,
       <div className="flex" key="8">
           <div className="up-and-down center" key="9">
-              <img alt='example' height={150} src='/static/wafer.png' /> 
+              <img alt='example' height={150} src='/static/wafer.webp' /> 
               <i>Our simulation results</i> 
           </div>,
           <div className="up-and-down center" key="10">
-              <img alt='example' height={150} src='/static/wafer_2.png' /> 
+              <img alt='example' height={150} src='/static/wafer_2.webp' /> 
               <i>Our simulation results</i> 
           </div>
       </div>,

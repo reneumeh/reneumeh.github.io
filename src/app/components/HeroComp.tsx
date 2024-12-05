@@ -17,13 +17,15 @@ const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps)
     const { scrollYProgress } = useScroll();
 
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0.7, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 3]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 2]);
 
   return (
     <Hero ref={hero}>
         <div className='hero-div'>
             <motion.img 
-            src='/static/hero1.png' 
+            src='/static/hero.png' 
+            width={'100%'}
+            height={'100%'}
             style={{ opacity, scale }}
             alt='my_image'
             fetchPriority='high'

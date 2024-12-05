@@ -5,7 +5,7 @@ export const main005: ArticleType = {
     id: 3194005,
     title: 'Becoming A Car Guy',
     summary: 'Every one know car go vroom vroom but how car go vroom vroom? ',
-    primaryImage: '/static/car_cad.jpg',
+    primaryImage: '/static/car_cad.webp',
 
     content: [
       <p key="1">

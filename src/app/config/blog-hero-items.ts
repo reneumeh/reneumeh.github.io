@@ -12,7 +12,7 @@ const blogHeroItems = [
     {
         id: "2",
         column: 1,
-        src: "/static/racecar.jpg",
+        src: "/static/racecar.webp",
         description: 'Race Car Engineering',
         link: "#/blog/article?id=3194005",
         type: "img",
@@ -32,7 +32,7 @@ const blogHeroItems = [
     {
         id: "4",
         column: 2,
-        src: '/static/rccar.png',
+        src: '/static/rccar.webp',
         description: 'RC Car Engineering',
         type: "img",
         link: "#/blog/article?id=3194005",
@@ -42,7 +42,7 @@ const blogHeroItems = [
     {
         id: "5",
         column: 2,
-        src: "/static/lego.png",
+        src: "/static/lego.webp",
         description: "Lego Brick Color Sorter",
         type: "img",
         link: "#/blog/article?id=3194004",
@@ -52,7 +52,7 @@ const blogHeroItems = [
     {
         id: '6',
         column: 3,
-        src: "/static/spacemap.png",
+        src: "/static/spacemap.webp",
         description: "Satellite Collision Prevention System",
         type: "img",
         link: "#/blog/article?id=3194004",
@@ -62,7 +62,7 @@ const blogHeroItems = [
     {
         id: '7',
         column: 3,
-        src: '/static/kist.png',
+        src: '/static/kist.webp',
         description: '2D to 3D Conversion AI Model',
         type: "img",
         link: "#/blog/article?id=3194004",

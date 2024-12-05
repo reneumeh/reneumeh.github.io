@@ -5,7 +5,7 @@ export const side001: ArticleType = {
     id: 9945001,
     title: 'Studying In Korea',
     summary: 'Just nother article in the sea of articles to tell you how to study in Korea.',
-    primaryImage: '/static/korea.png',
+    primaryImage: '/static/korea.webp',
 
     content: [
       <p key="1">

@@ -7,6 +7,8 @@ import { sideQuestArticles } from '../config/sideQuests/sideQuests';
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import BoxButton from './BoxButton';
 
 
 const Article = () => {
@@ -41,7 +43,7 @@ const Article = () => {
                 throw new Error('Article not found');
             }
         } catch (error) {
-            console.log(articleId)
+            // console.log(articleId)
             navigate('/404', { replace: true });
         }
     }, [articleId, navigate]);
@@ -63,7 +65,7 @@ const Article = () => {
     return (
         <ArticleContainer>
             <div className="center title">
-                <img src={article?.primaryImage} alt="primary_image" style={{ minWidth: 'min(100%, 800px)' }}/>
+                <img width={'800px'} height={'520px'} src={article?.primaryImage} alt="primary_image" style={{ minWidth: 'min(100%, 800px)' }}/>
             </div>
             <h1>{article?.title}</h1>
             {article?.content.map((item, index) => {
@@ -73,16 +75,16 @@ const Article = () => {
             })}
             <div className="footer">
                 {!previousDisabled && (
-                    <button onClick={() => navigateToArticle(-1)}>
-                        <img className="previous arrow" src="/static/arrow.png" alt="previous article" />
+                    <BoxButton onClick={() => navigateToArticle(-1)}>
+                        <IoIosArrowBack transform='translate(-10,3)'/>
                         Previous Article
-                    </button>
+                    </BoxButton>
                 )}
                 {!nextDisabled && (
-                    <button onClick={() => navigateToArticle(1)}>
+                    <BoxButton onClick={() => navigateToArticle(1)}>
                         Next Article
-                        <img className="next arrow" src="/static/arrow.png" alt="next article" />
-                    </button>
+                        <IoIosArrowForward transform='translate(10,3)'/>
+                    </BoxButton>
                 )}
             </div>
         </ArticleContainer>
@@ -111,7 +113,7 @@ const ArticleContainer = styled.article`
     opacity: 0;
     animation-name: fadeIn;
 
-    div {
+    > ydiv {
         width: 100%;
     }
 
@@ -159,6 +161,7 @@ const ArticleContainer = styled.article`
     img {
         width: fit-content;
         max-width: 100%;
+        object-fit: cover;
     }
 
     .top-left {
@@ -202,39 +205,5 @@ const ArticleContainer = styled.article`
         width: 100%;
         display: flex;
         justify-content: space-between;
-    }
-
-    .arrow {
-        position: relative;
-        top: 3px;
-        width: 30px;
-        height: 1rem;
-        transition: transform 1s ease;
-        object-fit: cover;
-    }
-
-    .previous {
-        transform: scaleX(-1);
-        transition: transform 1s ease;
-    }
-
-    .next {
-        transition: transform 1s ease;
-    }
-
-    button {
-        width: fit-content;
-        height: 2.5rem;
-        background-color: ${PALETTE.PRIMARY.DEFAULT};
-        border: none;
-        cursor: pointer;
-        &:hover {
-            .previous {
-                transform: scaleX(-1) translateX(5px);
-            }
-            .next {
-                transform: translateX(5px);
-            }
-        }
     }
 `;

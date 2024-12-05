@@ -1,10 +1,10 @@
-import { HTMLProps } from "react";
+import { HTMLProps, ReactElement } from "react";
 
 export type Page = {
     name: string;
     ref?: React.MutableRefObject<null>;
     link?: string;
-    img: string;
+    img: ReactElement;
   }
 
 export type ArticleType = {

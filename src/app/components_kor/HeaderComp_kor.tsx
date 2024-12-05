@@ -3,8 +3,9 @@ import useIsScrolling from "../hooks/useIsScrolling";
 import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
 import { PALETTE } from "../utils/theme";
-
 import { Page } from "../utils/types";
+import { LuMenu } from "react-icons/lu";
+import { IoCloseOutline } from "react-icons/io5";
 
 type headerProps = { 
     pages?: Page[],
@@ -35,16 +36,12 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
                 key={page.name}
                 className="page-buttons"
                 onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(`${page.link}`))}>
-                    <img 
-                    className='phone-icons' 
-                    width= {20} 
-                    alt={page.name}
-                    src= {page.img} />
-                        {page.name}
+                    {page.img}
+                    {page.name}
                 </div>
             ))}
-            <img className='phone-icons hamburger' alt='함버거' width= {20} src= '/static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
-            <img className='phone-icons close'  alt= '닫침' width= {20} src= '/static/close.png' onClick={() => {setMenuOpen(false)}}/>
+                <LuMenu className='hamburger' size= {30}  onClick={() => {setMenuOpen(true)}}/>
+                <IoCloseOutline className='close' size= {30} onClick={() => {setMenuOpen(false)}}/>
         </NavBar>
         {
             !!useLanguage &&
@@ -135,7 +132,7 @@ const Header = styled.div<{ $isScrolling: boolean }>`
 
 export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }>`
     @media screen and (min-width: 700px) {
-    .phone-icons {
+    svg {
         visibility: hidden;
         display: none;
     }
@@ -210,10 +207,10 @@ export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }
         .page-buttons:first-child {
             margin-top: 3.5rem;
         }
-        .page-buttons img {
+        .page-buttons svg {
             margin: 0 10px 0 2rem;
         }
-        .phone-icons {
+        svg {
             display: block;
             visibility: visible;
         }

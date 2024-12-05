@@ -5,7 +5,7 @@ export const main004: ArticleType = {
     id: 3194104,
     title: '인공지능 프로그래밍 배우는 법',
     summary: 'Just the basics in the every changing world of Artificial Intelligence.',
-    primaryImage: '/static/transformer.png',
+    primaryImage: '/static/transformer.webp',
     content: [
       <p key="1">
         기계 학습(ML)에 대한 저의 공식적인 소개는 2학년 AI 수업에서 김 더글라스 덕수 교수님과 함께 시작되었습니다. 이 과정에서는 AI의 역사, 신경망의 진화, 그리고 기계 학습이 오늘날의 강력한 기술이 되기까지의 과정을 배웠습니다. 수업이 끝날 무렵에는 이론을 넘어 직접 CNN을 처음부터 끝까지 만들어 보는 경험을 하게 되었습니다.

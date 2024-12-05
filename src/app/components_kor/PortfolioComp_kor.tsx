@@ -1,7 +1,7 @@
 import useHoveredElement from "../hooks/useHoveredElement";
 import styled from "styled-components";
 import { PALETTE } from "../utils/theme";
-
+import Image from "next/image";
 import { portfolio_stuff } from "../config/portfolio-stuff_kor";
 import { useRef, useState } from "react";
 import PortfolioModal from "./PortfolioModal_kor";
@@ -28,7 +28,6 @@ const PortfolioComp = ({ mechSection, extraSection, panddSection, portfolio } : 
     const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
     const [useModal, setUseModal] = useState("");
     const [ modalPath, setModalPath ] = useState("")
-    const isInView = useInView(portfolio, { once: true });
 
     const isMechInView = useInView(mechSection, { once: true, amount: 0.5 });
     const isPanddInView = useInView(panddSection, { once: true, amount: 0.5 });
@@ -111,7 +110,9 @@ const PortfolioItem = ({ item, index, handleHover, handleLeave, handleClick, hov
             animate={isItemInView ? { y: 0, opacity: 1 } : {}}
             transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
         >
-            <img
+            <Image
+                width={800}
+                height={800}
                 className='portfolio-image'
                 src={item.image} 
                 id={item.name}

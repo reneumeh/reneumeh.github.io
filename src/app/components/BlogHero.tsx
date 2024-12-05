@@ -101,6 +101,7 @@ const BlogHero = () => {
                                 <img 
                                 key={item.id} 
                                 src={item.src} 
+                                height={item.height}
                                 alt={`Slide ${item.id}`}
                                 fetchPriority='high'
                                 loading='eager'

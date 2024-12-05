@@ -6,6 +6,7 @@ import { PALETTE } from "../utils/theme";
 import { motion, useInView } from "motion/react";
 import MapElements from "../config/map-elements_kor";
 import { longLatToCartesian } from "../utils/utils";
+import Image from "next/image";
 
 const MapComp = () => {
   const { handleHover, handleLeave, hoveredElement } = useHoveredElement();
@@ -37,7 +38,7 @@ const MapComp = () => {
                 animate={isInView ? { y: 0, opacity: 1 } : {}}
                 transition={{ delay: 0.5 + index * 0.3, type: "spring", stiffness: 100 }}
             >
-                <img
+                <Image
                     className={pin.city}
                     alt={pin.city}
                     ref={pin.ref}

@@ -5,7 +5,7 @@ export const main004: ArticleType = {
     id: 3194004,
     title: 'Getting Into AI',
     summary: 'Just the basics in the every changing world of Artificial Intelligence.',
-    primaryImage: '/static/transformer.png',
+    primaryImage: '/static/transformer.webp',
     content: [
       <p key="1">
         The first time I did anything with AI was in my first year, when I built a lego brick sorter. We used Google&apos;s Teachable Machine for the sorting, but I was more using it as a tool to complete a task. My formal introduction to machine learning algoritms came during my 2nd-year AI class with Professor Kim Douglas Deok Su. The course took us through the basics—starting with the history of AI, the evolution of neural networks, and how machine learning became the juggernaut that it is today. By the end of the class, we had moved from theory to application, building our own CNNs from scratch.

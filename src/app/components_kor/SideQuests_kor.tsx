@@ -6,8 +6,9 @@ import useIsMobile from '../hooks/useIsMobile'
 import { useNavigate } from 'react-router-dom'
 import { sideQuestArticles } from '../config/sideQuests_kor/sideQuests'
 import { PALETTE } from '../utils/theme'
-
 import { useInView, motion } from 'motion/react'
+import { MdArrowForward } from 'react-icons/md'
+import Image from 'next/image'
 
 type sideQuestsProps = {
     sideQuests: React.MutableRefObject<null>,
@@ -47,14 +48,16 @@ const SideQuests = ({ sideQuests }: sideQuestsProps) => {
                                         <p className='title'>{article.title}</p>
                                         {article.summary}
                                     </div>
-                                    <img
+                                    <Image
+                                        width={1000}
+                                        height={800}
                                         className='primary-image'
                                         src={article.primaryImage}
                                         alt='primary_image'
                                     />
                                 </div>
                                 <div className='box'>
-                                    <img src='/static/arrow.png' width={20} alt='arrow' />
+                                    <MdArrowForward size={20} transform='translate(1,1)'/>
                                 </div>
                             </Card>
                         ))}

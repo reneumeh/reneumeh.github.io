@@ -5,7 +5,7 @@ export const main003: ArticleType = {
     id: 3194003,
     title: 'Writing A Patent (Undergrad)',
     summary: 'In this article, I will try to breakdown the receipe for a making a decent patent.',
-    primaryImage: '/static/screw.png',
+    primaryImage: '/static/screw.webp',
     content: [
       <p key="1">Writing a patent is kind of like baking the perfect sourdough loaf. It&apos;s long, unique, and requires a lot of iterations to get just right. Now, I have never baked a sourdough loaf before, nor have I created an actual official patent, so take my advice with a pinch of salt (I am so good at connecting these metaphors). However, I did work on a project that ended in a mock patent, and this is a &quot;what I learned along the way&quot; article. My experience came from redesigning a dumpling screw at CJ Foods, which involved a lot of dough, some engineering, and a lot of revisions. But more on that later. Let&apos;s start with the basics and figure out how to craft your own “perfect sourdough” of a patent.</p>, 
       <h2 key="2">Start with a Clear Problem</h2>,
@@ -23,7 +23,7 @@ export const main003: ArticleType = {
       </div>,
       <p key="13">When we determined which modifications produced the best results for kneading the dough and transporting the dough with fewer dead zones in the chamber (food remnants), we proceeded to 3D print miniature prototypes for testing. You want to record this entire process and your results at each step in your design book or somewhere else digitally. I am not going to post long videos of dough just moving through a tube on here, but I have them. If you can, test your design through simulations or prototypes. This will help you refine your idea before putting it into words for the patent. It also gives you hard data to back up your claims, which is essential for a solid patent.</p>,
       <div className="up-and-down center" key="14">
-        <img alt='example' src='/static/screw.png' /> 
+        <img alt='example' src='/static/screw.webp' /> 
         <i>Our miniature setup</i>
       </div>,
       <h2 key="15">Drafting the Patent</h2>,

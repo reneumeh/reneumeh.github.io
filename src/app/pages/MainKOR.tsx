@@ -1,6 +1,5 @@
 
 import { useRef } from 'react';
-import styled from 'styled-components';
 import HeaderComp from '../components_kor/HeaderComp_kor';
 import HeroComp from '../components_kor/HeroComp_kor';
 import MapComp from '../components_kor/MapComp_kor';
@@ -8,9 +7,11 @@ import PortfolioComp from '../components_kor/PortfolioComp_kor';
 import InterestsComp from '../components_kor/InterestsComp_kor';
 import ContactComp from '../components_kor/ContactComp_kor';
 import BoxButton from '../components/BoxButton';
-import { PALETTE } from '../utils/theme';
-import Chatbot from '../Chatbot/ui/Chatbot';
 import { Wrapper } from './MainENG';
+import { FaHome } from 'react-icons/fa';
+import { TbAwardFilled } from 'react-icons/tb';
+import { BsChatSquareTextFill } from 'react-icons/bs';
+import { IoIosMail } from 'react-icons/io';
 
 
 function MainENG() {
@@ -26,23 +27,23 @@ function MainENG() {
       {
           name: "홈",
           ref: hero,
-          img: "/static/home.png"
+          img: <FaHome className="phone-icon" />,
       },
       {
-          name: "포트포리오",
+          name: "수상",
           ref: portfolio,
-          img: "/static/portfolio.png",
-          link: "",
+          img: <TbAwardFilled />,
+          link: "#/blog_kor/awards",
       },
       {
           name: "블로그",
           link:  "#/blog_kor",
-          img: "/static/blog.png"
+          img: <BsChatSquareTextFill />,
       },
       {
           name: "연락처",
           ref: contact,
-          img: "/static/contact.png",
+          img: <IoIosMail />,
           link: "",
       }
   ] 
@@ -53,9 +54,10 @@ function MainENG() {
         <MapComp />
         <hr />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
-        <BoxButton text='이력서 다운로드' link= '/static/이력서_레네이.pdf' />
+        <BoxButton link= '/static/이력서_레네이.pdf'>
+            이력서 다운로드
+        </BoxButton>
         <InterestsComp />
-        <Chatbot />
         <ContactComp contact={contact} emailForm={emailForm}/>
     </Wrapper>
   )

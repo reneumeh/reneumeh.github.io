@@ -7,6 +7,8 @@ import { sideQuestArticles } from '../config/sideQuests_kor/sideQuests';
 import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import BoxButton from '../components/BoxButton';
 
 
 const Article = () => {
@@ -41,7 +43,7 @@ const Article = () => {
                 throw new Error('Article not found');
             }
         } catch (error) {
-            console.log(articleId)
+            // console.log(articleId)
             navigate('/404', { replace: true });
         }
     }, [articleId, navigate]);
@@ -73,16 +75,16 @@ const Article = () => {
             })}
             <div className="footer">
                 {!previousDisabled && (
-                    <button onClick={() => navigateToArticle(-1)}>
-                        <img className="previous arrow" src="/static/arrow.png" alt="previous article" />
+                    <BoxButton onClick={() => navigateToArticle(-1)}>
+                        <IoIosArrowBack transform='translate(-10,3)'/>
                         이전 아티글
-                    </button>
+                    </BoxButton>
                 )}
                 {!nextDisabled && (
-                    <button onClick={() => navigateToArticle(1)}>
+                    <BoxButton onClick={() => navigateToArticle(1)}>
                         다음 아티글
-                        <img className="next arrow" src="/static/arrow.png" alt="next article" />
-                    </button>
+                        <IoIosArrowForward transform='translate(10,3)'/>
+                    </BoxButton>
                 )}
             </div>
         </ArticleContainer>

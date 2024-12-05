@@ -1,12 +1,10 @@
 
-import React, { MouseEvent, useRef } from 'react';
+import React, {  useRef } from 'react';
 import styled from 'styled-components';
-import { camelize } from '../utils/utils';
 import { PALETTE } from '../utils/theme';
 import { modalStories } from '../config/modal-stories_kor';
-
 import { ModalWrapper } from '../components/PortfolioModal';
-
+import Image from 'next/image';
 
 type PortfolioModalProps = {
   item_name: string;
@@ -22,7 +20,9 @@ const PortfolioModal = ({ item_name, item_path, handleCloseModal }: PortfolioMod
   return (
     <ModalWrapper handleCloseModal={handleCloseModal} modalEl={modalEl}>
       <Card ref={modalEl}>
-        <img 
+        <Image
+          width={800}
+          height={800}
           src={item_path} 
           alt={item_name} 
         />

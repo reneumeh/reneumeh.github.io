@@ -2,7 +2,9 @@ import React from 'react';
 import emailjs from '@emailjs/browser';
 import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
-import { motion, useInView } from 'motion/react';
+import { useInView } from 'motion/react';
+import { RiSendPlaneFill } from 'react-icons/ri'
+import { FaLinkedin } from 'react-icons/fa';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
@@ -26,7 +28,7 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
                 })
                 .catch((error) => {
                     alert("Failed to send the message.");
-                    console.error(error.text);
+                    // console.error(error.text);
                 });
         }
     };
@@ -39,21 +41,11 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
             <div className='contact-left'>Contact Me
                 <p>Location: Seoul, South Korea</p>
                 <p>
-                    <img
-                        src='/static/send.png'
-                        alt='send_icon'
-                        width={20}
-                        height={20}
-                    /> 
+                    <RiSendPlaneFill transform='translate(0,2)' />
                     <a href="mailto:dubemrene@gmail.com"> dubemrene@gmail.com</a>
                 </p>
                 <p>
-                    <img
-                        src='/static/linkedin.png'
-                        alt='linkedin'
-                        width={20}
-                        height={20}
-                    /> 
+                    <FaLinkedin transform='translate(0,2)'/>
                     <a href="https://www.linkedin.com/in/reneumeh" target='_blank'> Rene Umeh</a>
                 </p>
             </div>

@@ -4,7 +4,8 @@ import useIsMenuOpen from "../hooks/useIsMenuOpen";
 import styled, { css } from 'styled-components';
 import { Page } from "../utils/types";
 import { PALETTE } from "../utils/theme";
-
+import { LuMenu } from 'react-icons/lu'
+import { IoCloseOutline } from 'react-icons/io5'
 
 type headerProps = { 
     pages?: Page[],
@@ -34,16 +35,12 @@ const HeaderComp = ({ pages, useScrollEffect, useLanguage } : headerProps) => {
                 key={page.name}
                 className="page-buttons"
                 onClick={() => (page.ref ? scrollToElement(page.ref) : window.location.assign(`${page.link}`))}>
-                    <img 
-                    className='phone-icons' 
-                    alt={page.name} 
-                    width= {20} 
-                    src= {page.img} />
+                    {page.img} 
                     {page.name}
                 </div>
             ))}
-            <img className='phone-icons hamburger' alt= 'hamburger_icon' width= {20} src= '/static/hamburger.png' onClick={() => {setMenuOpen(true)}}/>
-            <img className='phone-icons close' alt='close_icon' width= {20} src= '/static/close.png' onClick={() => {setMenuOpen(false)}}/>
+            <LuMenu className='hamburger' size= {30}  onClick={() => {setMenuOpen(true)}}/>
+            <IoCloseOutline className='close' size= {30} onClick={() => {setMenuOpen(false)}}/>
         </NavBar>
         {
             !!useLanguage &&
@@ -137,7 +134,7 @@ const Header = styled.div<{ $isScrolling: boolean }>`
 
 export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }>`
     @media screen and (min-width: 700px) {
-    .phone-icons {
+    svg {
         visibility: hidden;
         display: none;
     }
@@ -212,10 +209,10 @@ export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }
         .page-buttons:first-child {
             margin-top: 3.5rem;
         }
-        .page-buttons img {
+        .page-buttons svg {
             margin: 0 10px 0 2rem;
         }
-        .phone-icons {
+        svg {
             display: block;
             visibility: visible;
         }
@@ -228,7 +225,7 @@ export const NavBar = styled.div<{ $isScrolling: boolean, $isMenuOpen: boolean }
             $isScrolling === true ? '' : 'invert(1)'};
             z-index: -1;
             top: ${({ $isScrolling }) =>
-            $isScrolling === true ? '0.5rem' :'5rem' };
+            $isScrolling === true ? '0.3rem' :'4rem' };
             left: ${({ $isScrolling }) =>
             $isScrolling === true ? '0.3rem' :'108vw' };
             visibility: ${({ $isMenuOpen }) =>

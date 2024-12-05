@@ -3,7 +3,7 @@ import React, { MouseEvent, useRef } from 'react';
 import styled from 'styled-components';
 import { PALETTE } from '../utils/theme';
 import { modalStories } from '../config/modal-stories';
-
+import Image from 'next/image';
 
 type TProps = {
   children?: JSX.Element;
@@ -57,7 +57,9 @@ const PortfolioModal = ({ item_name, item_path, handleCloseModal }: PortfolioMod
   return (
     <ModalWrapper handleCloseModal={handleCloseModal} modalEl={modalEl}>
       <Card ref={modalEl}>
-        <img 
+        <Image
+          height={800}
+          width={800} 
           src={item_path} 
           alt={item_name} 
         />

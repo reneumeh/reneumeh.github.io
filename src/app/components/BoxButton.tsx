@@ -2,27 +2,26 @@
 import styled from 'styled-components';
 import { PALETTE } from '../utils/theme';
 
-type BoxButtonProps = {
-    text: string,
+interface BoxButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: any,
     link?: string,
-    onClick?: () => void,
 }
 
-const BoxButton = ({ text, link, onClick= () => {} } : BoxButtonProps) => {
+const BoxButton = ({ children, link, ...rest } : BoxButtonProps) => {
   return (
     <BoxButtonVWrapper>
-        <div className='portfolio-button'
-            onClick={onClick}>
+        <div className='button'
+            {...rest}>
                 {
                     link ?
-                    <a className='portfolio-button-inside'
+                    <a className='button-inside'
                     href={link}
                     target='_blank'
                     >
-                        {text}
+                        {children}
                     </a> :
-                    <div className='portfolio-button-inside'>
-                        {text}
+                    <div className='button-inside'>
+                        {children}
                     </div>
                 }
         </div>
@@ -33,38 +32,24 @@ const BoxButton = ({ text, link, onClick= () => {} } : BoxButtonProps) => {
 export default BoxButton
 
 const BoxButtonVWrapper = styled.div`
-    .portfolio-button {
+    cursor: pointer;
+    .button {
         text-decoration: none;
         display: flex;
         justify-content: center;
     }
-    .portfolio-button-inside, .portfolio-button-inside:visited, .portfolio-button-inside:active {
-        padding: 1rem 2rem;
+    .button-inside, .button-inside:visited, .button-inside:active {
+        padding: 1rem 1.5rem;
         font-size: 1rem;
-        border: 1px solid ${PALETTE.WHITE};
         text-decoration: none;
         background-color: ${PALETTE.PRIMARY.DEFAULT}; 
         color: ${PALETTE.WHITE};
         text-decoration: none;
     }
-    .portfolio-button-inside:hover, portfolio-button-inside:active {
+    .button-inside:hover, .button-inside:active {
         transform: scale(1.1);
-        transition: ease all 0.2s;
+        transition: ease all 0.5s;
         text-decoration: none;
+        background-color: ${PALETTE.PRIMARY.DARK}; 
     }
-`;
-
-export const PrimaryButton = styled.div`
-    padding: 1rem 2rem;
-    border: 1px solid ${PALETTE.WHITE};
-    text-decoration: none;
-    background-color: ${PALETTE.PRIMARY.DEFAULT}; 
-    color: ${PALETTE.WHITE};
-    cursor: pointer;
-
-    &:hover {
-        transform: scale(0.9);
-        transition: ease all 0.2s;
-    }
-
 `;

@@ -4,6 +4,8 @@ import emailjs from '@emailjs/browser'
 import styled, { keyframes } from 'styled-components';
 import { PALETTE } from '../utils/theme';
 import { useInView } from 'motion/react';
+import { RiSendPlaneFill } from 'react-icons/ri';
+import { FaLinkedin } from 'react-icons/fa';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
@@ -31,20 +33,13 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
         <div className='contact-left'>연락처
             <p>위치: 서울, 대한민국</p>
             <p>
-                <img
-                src='/static/send.png'
-                alt= '보내기'
-                width= {20}/> dubemrene@gmail.com
+                <RiSendPlaneFill transform='translate(0,2)'/>
+                dubemrene@gmail.com
             </p>
             <p>
-                    <img
-                        src='/static/linkedin.png'
-                        alt='linkedin'
-                        width={20}
-                        height={20}
-                    /> 
-                    <a href="https://www.linkedin.com/in/reneumeh" target='_blank'> Rene Umeh</a>
-                </p>
+                <FaLinkedin transform='translate(0,2)' />
+                <a href="https://www.linkedin.com/in/reneumeh" target='_blank'> Rene Umeh</a>
+            </p>
         </div>
         <div className='contact-right'> 
             <form ref={emailForm} onSubmit={sendEmail}>

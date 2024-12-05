@@ -5,7 +5,7 @@ export const main002: ArticleType = {
     id: 3194102,
     title: '논문 쓰는 법 (학사)',
     summary: "이 글에서는 학술 논문 작성의 전반적인 과정과 고려해야 할 어려움들을 정리합니다.",
-    primaryImage: '/static/paper.png',
+    primaryImage: '/static/paper.webp',
 
     content: [
         <p key="1">학부생으로서 학술 논문을 작성하는 것은 마치 수영장 깊은 곳에 뛰어드는 느낌일 수 있습니다—무섭고, 자신보다 더 많은 것을 아는 전문가들로 둘러싸여 있다는 것을 금방 깨닫게 됩니다. 그러나 걱정하지 마세요! 이 과정은 단계별로 접근하면 충분히 관리 가능합니다. 제가 LPCVD 반응기 최적화를 목표로 한 모의 학술 논문 작업을 통해 논문 작성의 기본을 안내해드리겠습니다. LPCVD 반응기에 대해 들어본 적이 없다면 걱정하지 마세요. 논문 작성의 원칙은 분야에 관계없이 비슷합니다.</p>,
@@ -17,11 +17,11 @@ export const main002: ArticleType = {
         <p key="7">이 단계에서는 기술 논문, 교과서, 시뮬레이션(해당되는 경우)에 몰두하게 됩니다. 문제에 직면해 있다면, 다른 사람이 이미 책이나 논문을 썼을 가능성이 높습니다. 우리 경우에는 벤츄리 튜브에서의 열 분포와 실리콘 웨이퍼의 산화층 성장률에 대한 온도의 영향을 다룬 논문이 있었습니다. 우리는 이를 바탕으로 몇 가지 시뮬레이션을 진행하여 우리의 변화를 테스트했습니다.</p>,
         <div className="flex" key="8">
             <div className="up-and-down center" key="9">
-                <img alt='example' height={150} src='/static/wafer.png' /> 
+                <img alt='example' height={150} src='/static/wafer.webp' /> 
                 <i>우리의 시뮬레이션 결과</i> 
             </div>,
             <div className="up-and-down center" key="10">
-                <img alt='example' height={150} src='/static/wafer_2.png' /> 
+                <img alt='example' height={150} src='/static/wafer_2.webp' /> 
                 <i>우리의 시뮬레이션 결과</i> 
             </div>
         </div>,

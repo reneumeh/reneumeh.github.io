@@ -5,7 +5,7 @@ export const main001: ArticleType = {
     id: 3194001,
     title: 'Becoming A Mechanical Engineer',
     summary: 'This is my take on how getting a Mechanical Engineering degree looks like. ',
-    primaryImage: '/static/mechanical_components.png',
+    primaryImage: '/static/mechanical_components.webp',
 
     content: [
       <p key="1">Becoming a mechanical engineer is not a straightforward, step-by-step process—it&apos;s more of a journey, and mine started at Hanyang University. I graduated from Hanyang University, with a focus on automobiles, control engineering, and artificial intelligence, and my journey was full of challenges and discoveries. This blog isn&apos;t meant to be a step-by-step guide on how to do what I did, but rather to give you some of the tools, tips, and resources that I used during my undergrad years to help you navigate your own path.</p>,

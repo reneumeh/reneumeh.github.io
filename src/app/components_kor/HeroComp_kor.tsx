@@ -23,7 +23,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps)
     <Hero ref={hero}>
         <div className='hero-div'>
         <motion.img 
-            src='/static/hero1.png' 
+            src='/static/hero.png' 
             style={{ opacity, scale }}
             alt='my_image'
             fetchPriority='high'

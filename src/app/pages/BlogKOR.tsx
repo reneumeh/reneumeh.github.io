@@ -10,7 +10,11 @@ import { Route, Routes } from "react-router-dom"
 import Article from "../components_kor/Article_kor"
 import useIsScrolling from "../hooks/useIsScrolling"
 import Awards from "../components_kor/Awards_kor"
-import Chatbot from "../Chatbot/ui/Chatbot"
+import { TbAwardFilled } from "react-icons/tb"
+import { IoMdPerson } from "react-icons/io"
+import { BsChatSquareTextFill } from "react-icons/bs"
+import { FaHome } from "react-icons/fa"
+import { PiMountainsFill } from "react-icons/pi"
 
 export const BlogKOR = () => {
   const { resetScroll } = useIsScrolling();
@@ -20,22 +24,22 @@ export const BlogKOR = () => {
     {
         name: "홈",
         link: "#/kor",
-        img: "/static/home.png"
+        img: <FaHome />
     },
     {
       name: "이력서",
-      img: "/static/contact.png",
+      img: <IoMdPerson />,
       link: "/static/이력서_레네이.pdf"
     },
     {
         name: "프로젝트",
         ref: mainQuests,
-        img: "/static/main_icon.png",
+        img: <PiMountainsFill />,
         link: ""
     },
     {
         name: "수상",
-        img: "/static/side_icon.png",
+        img: <TbAwardFilled />,
         link: "#/blog_kor/awards",
     },
 ] 
@@ -43,21 +47,21 @@ const articlePages : Page[] = [
   {
     name: "홈",
     link: "#/kor",
-    img: "/static/home.png"
+    img: <FaHome />
   },    
   {
     name: "블로그",
     link:  "#/blog_kor",
-    img: "/static/blog.png"
+    img: <BsChatSquareTextFill />,
   },
   {
     name: "이력서",
-    img: "/static/contact.png",
+    img: <IoMdPerson />,
     link: "/static/이력서_레네이.pdf"
   },  
   {
     name: "수상",
-    img: "/static/side_icon.png",
+    img: <TbAwardFilled />,
     link: "#/blog_kor/awards",
 },
 ]
@@ -73,7 +77,6 @@ useEffect(() => {
         <Wrapper>
           <HeaderComp useScrollEffect={false} pages= {blogPages} useLanguage={{ ENG: '#/blog', KOR: '#/blog_kor'}}/>
           <BlogHero />
-          <Chatbot />
           <MainQuests mainQuests={mainQuests}/>
           <SideQuests sideQuests={sideQuests}/>
         </Wrapper>

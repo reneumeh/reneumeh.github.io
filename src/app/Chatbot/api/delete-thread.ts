@@ -11,9 +11,9 @@ export const deleteThread = async (threadId: string) => {
         });
   
         if (!response.ok) {
-          console.log('Error occured while deleting thread', response.status);
+          // console.log('Error occured while deleting thread', response.status);
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       } 
 };

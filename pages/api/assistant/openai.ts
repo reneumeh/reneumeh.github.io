@@ -10,7 +10,7 @@ export async function getAssistant(): Promise<any> {
     try {
         return await openai.beta.assistants.retrieve(process.env.OPENAI_ASSISTANT_ID as string);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -19,7 +19,7 @@ export async function createThread(): Promise<any> {
     try {
         return await openai.beta.threads.create();
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -32,7 +32,7 @@ export async function getThread({ threadId }: GetThreadParams): Promise<any> {
     try {
         return await openai.beta.threads.retrieve(threadId);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         return {
             error: true,
             message: error.message,
@@ -44,7 +44,7 @@ export async function deleteThread({ threadId }: GetThreadParams): Promise<any> 
     try {
         return await openai.beta.threads.del(threadId);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         return {
             error: true,
             message: error.message,
@@ -67,7 +67,7 @@ export async function addMessage({ threadId, message, messageId }: AddMessagePar
             metadata,
         });
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -81,7 +81,7 @@ export async function getMessages({ threadId }: GetMessagesParams): Promise<any>
         const messages = await openai.beta.threads.messages.list(threadId);
         return messages.data;
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -103,7 +103,7 @@ export async function startRun({ threadId, instructions }: StartRunParams): Prom
 
         return await openai.beta.threads.runs.create(threadId, options);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -117,7 +117,7 @@ export async function getRun({ threadId, runId }: GetRunParams): Promise<any> {
     try {
         return await openai.beta.threads.runs.retrieve(threadId, runId);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -126,7 +126,7 @@ export async function cancelRun({ threadId, runId }: GetRunParams): Promise<any>
     try {
         return await openai.beta.threads.runs.cancel(threadId, runId);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -136,7 +136,7 @@ export async function getRunStep({ threadId, runId }: GetRunParams): Promise<any
     try {
         return await openai.beta.threads.runs.steps.list(threadId, runId, query);
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }
@@ -153,7 +153,7 @@ export async function submitOutputs({ threadId, runId, tool_outputs }: SubmitOut
             tool_outputs: tool_outputs,
         });
     } catch (error: any) {
-        console.log(error.name, error.message);
+        // console.log(error.name, error.message);
         throw error;
     }
 }

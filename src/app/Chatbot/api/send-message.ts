@@ -18,7 +18,7 @@ export const sendMessage = async (text: string, threadId: string | undefined, me
   
         if (!response.ok) {
           const errorText = await response.text();
-          console.error('Error occurred. Invalid Response:', response.status, errorText);
+          // console.error('Error occurred. Invalid Response:', response.status, errorText);
           return;
         }
   
@@ -26,6 +26,6 @@ export const sendMessage = async (text: string, threadId: string | undefined, me
 
         return result
     } catch (error) {
-    console.log(error);
+    // console.log(error);
   } 
 };

@@ -12,7 +12,7 @@ const blogHeroItems = [
     {
         id: "2",
         column: 1,
-        src: "/static/racecar.jpg",
+        src: "/static/racecar.webp",
         description: '제작자동차 엔지니어링',
         link: "#/blog_kor/article_kor?id=3194105",
         type: "img",
@@ -32,7 +32,7 @@ const blogHeroItems = [
     {
         id: "4",
         column: 2,
-        src: '/static/rccar.png',
+        src: '/static/rccar.webp',
         description: 'RC 자동차',
         type: "img",
         link: "#/blog_kor/article_kor?id=3194105",
@@ -42,7 +42,7 @@ const blogHeroItems = [
     {
         id: "5",
         column: 2,
-        src: "/static/lego.png",
+        src: "/static/lego.webp",
         description: "레고 컬러 소팅",
         type: "img",
         link: "#/blog_kor/article_kor?id=3194104",
@@ -52,7 +52,7 @@ const blogHeroItems = [
     {
         id: '6',
         column: 3,
-        src: "/static/spacemap.png",
+        src: "/static/spacemap.webp",
         description: "위성 충돌 예비 시스템",
         type: "img",
         link: "#/blog_kor/article_kor?id=3194104",
@@ -62,7 +62,7 @@ const blogHeroItems = [
     {
         id: '7',
         column: 3,
-        src: '/static/kist.png',
+        src: '/static/kist.webp',
         description: '2D ~ 3D AI 모델',
         type: "img",
         link: "#/blog_kor/article_kor?id=3194104",

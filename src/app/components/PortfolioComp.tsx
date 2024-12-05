@@ -6,6 +6,7 @@ import { PALETTE } from "../utils/theme";
 import { portfolio_stuff } from "../config/portfolio-stuff";
 import { motion, useInView } from "motion/react";
 import { renderText } from "./renderText";
+import Image from "next/image";
 
 interface portfolioProps  {
     mechSection: React.MutableRefObject<null>, 
@@ -116,7 +117,9 @@ const PortfolioItem = ({ item, index, handleHover, handleLeave, handleClick, hov
             animate={isItemInView ? { y: 0, opacity: 1 } : {}}
             transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
         >
-            <img
+            <Image
+                width={800}
+                height={800}
                 className='portfolio-image'
                 src={item.image} 
                 id={item.name}

@@ -5,7 +5,7 @@ export const side001: ArticleType = {
     id: 9945101,
     title: '한국 유학 생활',
     summary: "한국에서 공부하는 것은 생동감 있는 문화 체험과 고급 교육을 제공하지만, 언어, 비자, 장학금 및 지역 사회와의 연결을 위한 준비가 필요합니다.",
-    primaryImage: '/static/korea.png',
+    primaryImage: '/static/korea.webp',
     content: [
       <p key="1">
         한국에서 공부할 생각이신가요? 활기찬 문화, 선진 교육 시스템, 또는 생동감 넘치는 K-pop 씬(이거에 대해 부끄러워하지 마세요!)에 끌린다면, 한국에서의 유학은 놀라운 경험이 될 수 있습니다. 하지만 비행기표를 예약하기 전에 학문적 모험을 최대한 활용하기 위해 알아야 할 몇 가지가 있습니다.

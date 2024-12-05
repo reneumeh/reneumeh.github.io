@@ -1,5 +1,4 @@
-import { PrimaryButton } from "@/app/components/BoxButton";
-import styled from "styled-components";
+import BoxButton from "@/app/components/BoxButton";
 import { SuggestedQuestion } from "./Dialogue";
 import { MdSentimentDissatisfied } from "react-icons/md";
 import { Icon as ChakraIcon, Input } from '@chakra-ui/react';
@@ -45,7 +44,7 @@ export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedback
             _active={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
             _focus={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
           ></Input>
-          <div>
+          <div className="question-area">
             {suggestedFeedback.map((suggestion, index) => 
             <SuggestedQuestion
               key={index}
@@ -57,9 +56,9 @@ export const FeedbackScreen = ({ feedbackInput, setFeedbackInput, handleFeedback
               {suggestion}
             </SuggestedQuestion>)}
           </div>
-          <PrimaryButton className="feedback button" onClick={() => {handleFeedbackSubmit(threadId)}}>
+          <BoxButton onClick={() => {handleFeedbackSubmit(threadId)}}>
             Submit Feedback
-          </PrimaryButton>
+          </BoxButton>
           </>
     )
 }
