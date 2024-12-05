@@ -65,7 +65,7 @@ const Article = () => {
     return (
         <ArticleContainer>
             <div className="center title">
-                <img width={'800px'} height={'520px'} src={article?.primaryImage} alt="primary_image" style={{ minWidth: 'min(100%, 800px)' }}/>
+                <img width={'800px'} src={article?.primaryImage} alt="primary_image" style={{ minWidth: 'min(100%, 800px)', maxHeight: '520px' }}/>
             </div>
             <h1>{article?.title}</h1>
             {article?.content.map((item, index) => {
