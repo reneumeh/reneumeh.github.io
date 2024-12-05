@@ -22,6 +22,9 @@ const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps)
   return (
     <Hero ref={hero}>
         <div className='hero-div'>
+        <picture>
+            <source srcSet="/static/hero-800.png" media="(max-width: 450px)" />
+            <source srcSet="/static/hero-1600.png" media="(max-width: 800px)" />
             <motion.img 
             src='/static/hero.png' 
             width={'100%'}
@@ -30,6 +33,7 @@ const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps)
             alt='my_image'
             fetchPriority='high'
             loading='eager'/>
+        </picture>
         </div>
         <div className='intro-1'>Hi, my name is</div> 
         <div className='intro-2'>RENE </div> 
@@ -74,7 +78,7 @@ const Hero = styled.div`
     overflow: hidden;
 
     .hero-div {
-        display: flex;
+
         z-index: -100;
         justify-content: center;
     }
