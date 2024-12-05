@@ -1,15 +1,23 @@
-"use client"
+"use client";
 import { Route, Routes } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import MainENG from "./pages/MainENG";
 import { BlogENG } from "./pages/BlogENG";
 import { BlogKOR } from "./pages/BlogKOR";
 import MainKOR from "./pages/MainKOR";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 
-const ClientSideHashRouter = dynamic(() => import('react-router-dom').then(mod => mod.HashRouter), { ssr: false });
+const ClientSideHashRouter = dynamic(() => import("react-router-dom").then((mod) => mod.HashRouter), { ssr: false });
+const Chatbot = dynamic(() => import("./Chatbot/ui/Chatbot"), { ssr: false });
 
 function Home() {
+  const [isPageRendered, setIsPageRendered] = useState(false);
+
+  useEffect(() => {
+    setIsPageRendered(true);
+  }, []);
+
   return (
     <>
       <ClientSideHashRouter>
@@ -21,6 +29,7 @@ function Home() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </ClientSideHashRouter>
+      {isPageRendered && <Chatbot />}
     </>
   );
 }

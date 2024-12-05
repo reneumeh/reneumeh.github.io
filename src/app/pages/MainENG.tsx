@@ -10,7 +10,6 @@ import ContactComp from '../components/ContactComp';
 import BoxButton from '../components/BoxButton';
 import { Page } from '../utils/types';
 import { PALETTE } from '../utils/theme';
-import Chatbot from '../Chatbot/ui/Chatbot';
 import useIsScrolling from '../hooks/useIsScrolling';
 
 function MainENG() {
@@ -60,7 +59,6 @@ function MainENG() {
         <hr />
         <PortfolioComp mechSection= {mechSection} extraSection={extraSection} panddSection={panddSection} portfolio={portfolio}/>
         <BoxButton text='DOWNLOAD RESUME' link= '/static/rene-umeh-portfolio.pdf' />
-        <Chatbot />
         <InterestsComp />
         <ContactComp contact={contact} emailForm={emailForm}/>
     </Wrapper>

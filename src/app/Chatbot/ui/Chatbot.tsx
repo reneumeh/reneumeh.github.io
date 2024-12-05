@@ -118,6 +118,7 @@ const ChatbotWrapper = styled.div<{ $isMobile: boolean, $isExpanded: boolean, $i
   border: 1px solid ${PALETTE.BLACK};
   overflow: hidden;
   position: fixed;
+  font-family: League-Spartan-minor;
   right: ${({ $isMobile }) => ($isMobile ? '0rem' : '1rem')};
   bottom: ${({ $isMobile }) => ($isMobile ? '0px' : '1rem')};
   display : ${(props) => (props.$isOpen ? 'initial' : 'none')};
