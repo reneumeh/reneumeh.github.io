@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="en">
         <link
           rel="preload"
-          href="/static/hero1.png"
+          href="/static/hero.png"
           as="image"
         />
       <body className={inter.className}>
