@@ -98,11 +98,7 @@ const Chatbot = () => {
           }}
         >
           <BsChatRightDots size={ isMobile ? '20px' : '30px'} 
-          color={PALETTE.WHITE}            
-          onClick={() => {
-              setIsOpen(true);
-              setIsExpanded(true);
-            }}/>
+          color={PALETTE.WHITE}/>
         </ClosedMode>
     </Box>
   );

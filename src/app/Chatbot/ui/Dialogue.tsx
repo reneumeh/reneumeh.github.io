@@ -22,7 +22,7 @@ import useDialogueState from '../hook/use-dialogue-state';
 import { useSuggestions } from '../hook/use-suggestions';
 import { suggestedQuestionsList1, suggestedQuestionsList2 } from '../config/suggestion-questions';
 import { useFeedback } from '../hook/use-feedback';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useAppStore from '../util/appstore';
 import { FeedbackScreen } from './FeedbackScreen';
 
