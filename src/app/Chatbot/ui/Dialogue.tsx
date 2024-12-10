@@ -16,7 +16,7 @@ import {
 import SinusodialLoader from './SinusodialLoader';
 
 import { getUniqueId } from '../util/utils';
-
+import Markdown from 'react-markdown'
 import { IconButton } from '@chakra-ui/react';
 import useDialogueState from '../hook/use-dialogue-state';
 import { useSuggestions } from '../hook/use-suggestions';
@@ -25,7 +25,6 @@ import { useFeedback } from '../hook/use-feedback';
 import { useState, useEffect } from 'react';
 import useAppStore from '../util/appstore';
 import { FeedbackScreen } from './FeedbackScreen';
-
 import { Message as MessageType } from '../util/appstore';
 import MyIcon from './MyIcon';
 import { PALETTE } from '@/app/utils/theme';
@@ -152,7 +151,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
                   {('0' + new Date(item.created_at * 1000).getMinutes()).slice(-2)}
                 </span>
               </Role>
-              {item.content && <p className= 'content'>{item.content}</p>}
+              {item.content && <Markdown>{item.content}</Markdown>}
               {item.followup_question && item.id === lastMessageId && (
                 <SuggestedQuestion
                   key={getUniqueId()}
