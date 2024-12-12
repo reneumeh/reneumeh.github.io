@@ -15,6 +15,7 @@ import { FaHome } from 'react-icons/fa';
 import { TbAwardFilled } from 'react-icons/tb';
 import { BsChatSquareTextFill } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
+import { Slide, ToastContainer } from 'react-toastify';
 
 function MainENG() {
     const { resetScroll } = useIsScrolling();

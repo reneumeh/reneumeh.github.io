@@ -8,7 +8,6 @@ export type Message = {
     role: string;
     good_clicked?: boolean;
     bad_clicked?: boolean;
-    followup_question?: string;
 }
 
 interface AppState {
@@ -17,6 +16,7 @@ interface AppState {
     runId: string;
     mode: number;
     addMessage: (newMessage: Message) => void;
+    setMessages: (messages: Message[]) => void;
     clearMessages: () => void;
     setThreadId: (id: string) => void;
     setRunId: (id: string) => void;
@@ -34,15 +34,15 @@ const useAppStore = create<AppState>()(
             runId: '',
             mode: 0,
             
-            addMessage: (newmessage) => {
-                
-                let messages = get().messages.slice(0)
-                messages.push(newmessage)
-                
-                set({
-                    messages: messages
-                })
-            },
+            addMessage: (newMessage) => {
+                set((state) => ({
+                  messages: [...state.messages, newMessage],
+                }));
+              },
+
+              setMessages: (messages) => {
+                set({ messages });
+              },
             clearMessages: () => set({ messages: [] }),
             setThreadId: (id) => set({ threadId: id }),
             setRunId: (id) => set({ runId: id }),

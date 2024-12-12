@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import useAppStore from '../util/appstore';
 
 export const useFeedback = () => {
@@ -9,36 +10,27 @@ export const useFeedback = () => {
     feedbackThread: "",
     feedbackMessage: "",
   });
-
-  const setThreadId = useAppStore((state) => state.setThreadId);
+  const messages = useAppStore.getState().messages
 
   const handleFeedbackSubmit = async () => {
     const updatedFeedback = { ...feedback, feedbackMessage: feedbackInput };
     setFeedback(updatedFeedback);
     setIsFeedbackScreenOpen(false);
 
-    try {
-      const response = await fetch('/api/service/assistant/negativeFeedback', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          threadId: updatedFeedback.feedbackThread,
-          messageId: updatedFeedback.feedbackId,
-          feedback: updatedFeedback.feedbackMessage,
-        }),
-      });
-
-      if (response.ok) {
-        // console.log('Feedback submitted successfully');
-      } else {
-        // console.error('Error submitting feedback', await response.json());
-      }
-    } catch (error) {
-      // console.error('Error submitting feedback', error);
+    const templateParams = {
+        messages: JSON.stringify(messages),
+        messageId: updatedFeedback.feedbackId,
+        feedback: updatedFeedback.feedbackMessage, 
     }
+    emailjs.init(process.env.NEXT_PUBLIC_EMAIL_OPTIONS as string)
+    await emailjs
+    .send(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_FEEDBACK_TEMPLATE_ID as string,
+        templateParams,
+    ).then(() =>
+      {alert('Done!')}
+    )
 
     setFeedbackInput('');
     setFeedback({ feedbackId: '', feedbackMessage: '', feedbackThread: '' });

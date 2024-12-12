@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import Dialogue from './Dialogue';
-import useIsOpen from '../hook/use-is-open';
-import useIsExpanded from '../hook/use-is-expanded';
 import { Box, IconButton } from '@chakra-ui/react';
-import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull } from 'react-icons/md';
+import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull, MdRefresh } from 'react-icons/md';
 import useIsMobile from '@/app/hooks/useIsMobile';
 import { PALETTE } from '@/app/utils/theme';
 import { BsChatRightDots } from 'react-icons/bs';
+import useDialogueState from '../hook/use-dialogue-state';
 
 
 const Chatbot = () => {
   const isMobile = useIsMobile();
-  const { isExpanded, setIsExpanded } = useIsExpanded();
-  const { isOpen, setIsOpen } = useIsOpen();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const { removeThread } = useDialogueState({ isMounted, setIsMounted })
 
   const onClose = () => {
     setIsOpen(false);
@@ -28,8 +30,6 @@ const Chatbot = () => {
   const onExpand = () => {
     setIsExpanded(true)
 };
-
-
 
   useEffect(() => {
     if(isMobile) {
@@ -55,7 +55,6 @@ const Chatbot = () => {
                     padding={'1px'}
                     _hover= {{ bg: PALETTE.SECONDARY.DEFAULT }}
                     bg="transparent"
-
                   />
                 ) : (
                   <IconButton
@@ -87,7 +86,9 @@ const Chatbot = () => {
             <Dialogue 
             isOpen={ isOpen } 
             isExpanded={ isExpanded }
-            isMobile={ isMobile } />
+            isMobile={ isMobile }
+            isMounted={ isMounted }
+            setIsMounted={ setIsMounted } />
           </ChatbotWrapper>
         <ClosedMode
           $isMobile={isMobile}

@@ -1,148 +1,208 @@
 import { useState, useEffect, useRef } from 'react';
 import useAppStore, { Message } from '../util/appstore';
 import { getUniqueId } from '../util/utils';
-import { deleteThread } from '../api/delete-thread';
-import { sendMessage } from '../api/send-message';
+import { AssistantStream } from 'openai/lib/AssistantStream.mjs';
+import { TextDelta } from 'openai/resources/beta/threads/messages.mjs';
 
-type dialogueStateProps = {
+interface dialogueProps {
   isMounted: boolean,
-  setMounted: (isMounted: boolean) => void,
-  setInputText: (inputText: string) => void,
-  isOpen: boolean,
+  setIsMounted: (isMounted: boolean) => void,
 }
-
-const useDialogueState = ({ isMounted, setMounted, setInputText, isOpen } : dialogueStateProps) => {
+const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
   const messageRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
+  const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
   const [messageItems, setMessageItems] = useState<Message[]>([]);
   const [lastMessageId, setLastMessageId] = useState('');
+  const [followUpQuestion, setFollowUpQuestion] = useState('')
+  const isFollowUpRef = useRef(false);
 
+  /*
+    =====================================
+    === STORE VARIABLES AND FUNCTIONS ===
+    =====================================
+  */
   const threadId = useAppStore((state) => state.threadId);
   const setThreadId = useAppStore((state) => state.setThreadId);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
+  const setMessages = useAppStore((state) => state.setMessages);
   const storedMessages = useAppStore((state) => state.messages);
-  const addMessage = useAppStore((state) => state.addMessage);
   const clearMessages = useAppStore((state) => state.clearMessages);
 
-  
+  /*
+    =======================
+    == THREAD MANAGEMENT ==
+    =======================
+  */
+  const createThread = async () => {
+    setLoading(true)
+    const res = await fetch(`/api/threads`, {
+      method: "POST",
+    });
+    const data = await res.json();
+    setThreadId(data.threadId);
+    setLoading(false)
+  };
 
   const removeThread = async () => {
     setLoading(true);
-    await deleteThread(threadId)
-    setLoading(false);
-    setThreadId('');
+    await fetch(`/api/threads/${threadId}`, {
+      method: 'DELETE',
+    }).then(() => {
+      setThreadId('');
     setMessageItems([]);
-    clearMessages();
+    clearMessages(); 
+    setFollowUpQuestion('')
+    setLoading(false);
+    })  
+  };
 
-    const startingMessage = {
+  const refreshConversation = async () => {
+    await removeThread()
+    await createThread()
+    const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
+    appendMessage(startingMessage) 
+  } 
+  /*
+    =======================
+    = MESSAGE MANAGEMENT ==
+    =======================
+  */
+
+  const createMessage = (role: 'user' | 'assistant', content: string) : Message =>{
+    const message = {
       id: getUniqueId(),
       created_at: Math.floor(new Date().getTime() / 1000),
-      role: 'assistant',
-      content:
-        'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.',
+      role: role,
+      content: content,
+      good_clicked: false,
+      bad_clicked: false,
     };
-    setMessageItems((prev) => [...prev, startingMessage]);
-    addMessage(startingMessage);
-};
+    return message
+  }
 
-    const resetScroll = () => {
-      setTimeout(() => {
-        if (messageRef?.current) {
-          messageRef.current.scrollTop = messageRef.current.scrollHeight + 24;
-        }
-      }, 100);
-    };
+  const appendMessage = (message : Message) => {
+    setMessageItems((prev) => [...prev, message]);
+  };
+
+  const appendToLastMessage = (addition : string | undefined) => {
+    if (addition) {
+      setMessageItems((prevMessages) => {
+        const lastMessage = prevMessages[prevMessages.length - 1];
+        const updatedLastMessage = {
+          ...lastMessage,
+          content: lastMessage.content + addition,
+        };
+        return [...prevMessages.slice(0, -1), updatedLastMessage];
+      });
+    }
+  };
+
+  const appendToFollowUpQuestion = (addition: string | undefined) => {
+    if (addition) {
+      setFollowUpQuestion((prev) => prev + addition)
+    }
+  }
+
+  /*
+    =======================
+    = HANDLE MESSAGE SEND =
+    =======================
+  */
+
+  const resetScroll = () => {
+    setTimeout(() => {
+      if (messageRef?.current) {
+        messageRef.current.scrollTop = messageRef.current.scrollHeight + 24;
+      }
+    }, 100);
+  };
+
+  const handleReadableStream = (stream: AssistantStream) => {
+    stream.on("textCreated", handleTextCreated);
+    stream.on("textDelta", handleTextDelta);
+
+    // events without helpers yet (e.g. requires_action and run.done)
+    stream.on("event", (event) => {
+      if (event.event === "thread.run.completed") handleRunCompleted();
+    });
+  };
+
+  const handleTextCreated = () => {
+    const newAssistantMessage = createMessage('assistant', '')
+    appendMessage(newAssistantMessage);
+    setLastMessageId(newAssistantMessage.id);
+  };
+
+  const handleTextDelta = (delta : TextDelta) => {
+    resetScroll();
+    if (delta.value?.includes('¶')) {
+      isFollowUpRef.current = true; 
+      return;
+    }
+    if (delta.value?.includes('†source】')) {
+      return
+    } 
+    else {
+      if (delta.value && isFollowUpRef.current) {
+      appendToFollowUpQuestion(delta.value)
+      return
+    }
+    if (delta.value && !isFollowUpRef.current) {
+      appendToLastMessage(delta.value)
+      return
+    }} 
+  };
+
+  const handleRunCompleted = () => {
+    setLoading(false);
+    setMessageItems(prevMessages => {
+      setMessages(prevMessages);
+      return prevMessages;
+    });
+  };
+  
+
 
   const submitAssistant = async (inputText: string) => {
     if (inputText.trim() === '' || loading) return;
-
-    setLastMessageId('');
     setLoading(true);
-    const text = inputText;
-    setInputText('');
     inputRef.current?.blur();
+    setInputText('');
+    setLastMessageId('');
+    setFollowUpQuestion('')
+    isFollowUpRef.current = false
+    
+    const newUserMessage = createMessage('user', inputText)
+    appendMessage(newUserMessage)
+    resetScroll()
 
-    const messageId = getUniqueId();
-
-    const newUserMessage = {
-      id: messageId,
-      created_at: Math.floor(Date.now() / 1000),
-      role: 'user',
-      content: text,
-    };
-
-    setMessageItems((prev) => [...prev, newUserMessage]);
-    addMessage(newUserMessage);
-
-    resetScroll();
-
-    const result = await sendMessage(text, threadId, messageId)
-
-    setThreadId(result.threadId);
-
-      if (result.messages.length > 0) {
-        const newMessages = result.messages
-          .filter((msg: any) => !msg.metadata?.id || msg.metadata.id !== messageId)
-          .map((msg: any) => ({
-            id: msg.id,
-            created_at: msg.created_at,
-            role: msg.role,
-            content: msg.content[0].text.value.replace(/【\d+:\d+†source】/g, '').trim().split("¶")[0],
-            tool_output: result.outputs,
-            followup_question: msg.content[0].text.value.split("¶")[1],
-            good_clicked: false,
-            bad_clicked: false,
-          }));
-
-        setLastMessageId(result.messages[0].id);
-        setMessageItems((prev) => [...prev, ...newMessages]);
-        newMessages.forEach((newMsg: Message) => addMessage(newMsg));
-      } else {
-        const newMessage = {
-          id: getUniqueId(),
-          created_at: Math.floor(new Date().getTime() / 1000),
-          role: 'assistant',
-          content: '',
-          tool_output: result.outputs,
-          good_clicked: false,
-          bad_clicked: false,
-        };
-
-        setLastMessageId(newMessage.id);
-        setMessageItems((prev) => [...prev, newMessage]);
+    const response = await fetch(
+      `/api/threads/${threadId}/messages`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          content: inputText,
+        }),
       }
-      resetScroll();
-      setLoading(false)
-  }
+    );
+    const stream = AssistantStream.fromReadableStream(response.body as ReadableStream);
+    handleReadableStream(stream);}
 
+  /*
+    =======================
+    ======= ON START ======
+    =======================
+  */
   useEffect(() => {
-    setMounted(true);
-    clearMessages();
-    removeThread();
-  }, []);
-
-  useEffect(() => {
-      removeThread();
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (isMounted) {
-      setMessageItems(storedMessages);
-    }
-    if (storedMessages.length < 1) {
-      const startingMessage = {
-        id: getUniqueId(),
-        created_at: Math.floor(new Date().getTime() / 1000),
-        role: 'assistant',
-        content:
-          'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.',
-      };
-      setMessageItems((prev) => [...prev, startingMessage]);
-      addMessage(startingMessage);
-    }
+    setMessageItems(storedMessages);
+    if (storedMessages.length < 1 && !isMounted) {
+      createThread()
+      const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
+      appendMessage(startingMessage) 
+      setIsMounted(true)
+    } 
   }, [isMounted]);
 
   return {
@@ -156,6 +216,10 @@ const useDialogueState = ({ isMounted, setMounted, setInputText, isOpen } : dial
     inputRef,
     messageRef,
     resetScroll,
+    followUpQuestion,
+    setInputText,
+    inputText,
+    refreshConversation
   };
 };
 

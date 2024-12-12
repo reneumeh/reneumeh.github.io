@@ -8,6 +8,7 @@ import MainKOR from "./pages/MainKOR";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 
+
 const ClientSideHashRouter = dynamic(() => import("react-router-dom").then((mod) => mod.HashRouter), { ssr: false });
 const Chatbot = dynamic(() => import("./Chatbot/ui/Chatbot"), { ssr: false });
 
