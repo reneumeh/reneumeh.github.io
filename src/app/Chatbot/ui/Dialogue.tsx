@@ -258,7 +258,6 @@ const Dialogue = ({ isOpen, isExpanded, isMobile, isMounted, setIsMounted }: dia
             <IconButton
               aria-label="refresh conversation"
               icon={<MdRefresh size={'1.2rem'}/>}
-              isDisabled={loading}
               onClick={() => {refreshConversation()}}
               backgroundColor= {PALETTE.PRIMARY.LIGHT}
               _hover={{ bg: `${PALETTE.PRIMARY.DEFAULT}` }}
