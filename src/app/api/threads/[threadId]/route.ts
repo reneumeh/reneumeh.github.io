@@ -20,15 +20,12 @@ export async function DELETE(request: Request,{ params: { threadId } } : ParamsP
   }
     try {
         await openai.beta.threads.del(threadId);
+        return NextResponse.json(
+            {
+                status: 200,
+                message: 'Thread deleted'
+            })
     }catch (error) {
         // console.log(error)
     }
-  
-  
-  return NextResponse.json(
-    {
-        status: 200,
-        message: 'Thread deleted'
-    }
-  )
 }

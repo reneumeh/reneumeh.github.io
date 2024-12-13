@@ -133,10 +133,10 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
     const newAssistantMessage = createMessage('assistant', '')
     appendMessage(newAssistantMessage);
     setLastMessageId(newAssistantMessage.id);
+    resetScroll();
   };
 
   const handleTextDelta = (delta : TextDelta) => {
-    resetScroll();
     if (delta.value?.includes('¶')) {
       isFollowUpRef.current = true; 
       return;
@@ -197,13 +197,13 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
   */
   useEffect(() => {
     setMessageItems(storedMessages);
-    if (storedMessages.length < 1 && !isMounted) {
+    if (storedMessages.length < 1) {
       createThread()
       const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
       appendMessage(startingMessage) 
       setIsMounted(true)
     } 
-  }, [isMounted]);
+  }, [isMounted, setIsMounted, storedMessages]);
 
   return {
     setLoading,

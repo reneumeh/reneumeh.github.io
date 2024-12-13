@@ -11,7 +11,7 @@ type ParamsProps =  {
 // Send a new message to a thread
 export async function POST(request : Request, { params: { threadId } } : ParamsProps ) {
   const { content } = await request.json();
-
+try {
   await openai.beta.threads.messages.create(threadId, {
     role: "user",
     content: content,
@@ -22,4 +22,7 @@ export async function POST(request : Request, { params: { threadId } } : ParamsP
   });
 
   return new Response(stream.toReadableStream());
+} catch (error) {
+  // console.log(error) 
+  }
 }

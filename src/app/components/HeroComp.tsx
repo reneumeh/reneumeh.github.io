@@ -3,21 +3,13 @@ import styled from 'styled-components';
 import useIsScrolling from '../hooks/useIsScrolling';
 import { PALETTE } from '../utils/theme';
 import { motion, useScroll, useTransform } from 'motion/react';
-import React, { forwardRef } from 'react';
 
-interface heroProps {
+type heroProps = {
     mechSection: React.MutableRefObject<null>, 
     extraSection: React.MutableRefObject<null>, 
     panddSection: React.MutableRefObject<null>,
     hero: React.MutableRefObject<null>,
     }
-
-interface marqueeProps {
-    direction: 'forward' | 'reverse', 
-    item1: string, 
-    item2: string, 
-    ref: React.MutableRefObject<null>,
-}
 
 const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps) => {
     const {scrollToElement} = useIsScrolling();
@@ -26,19 +18,6 @@ const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps)
 
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0.7, 0]);
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 2]);
-
-    const Marquee = forwardRef<HTMLDivElement, marqueeProps>(({direction, item1, item2}, ref) => {
-        return (
-            <div className={`marquee marquee--${direction} marquee--hover-pause`}>
-                <ul className="marquee__content">
-                    <li onClick= {() => scrollToElement(ref, "center")}>{item1}</li><li onClick= {() => scrollToElement(ref, "center")}>{item2}</li>   
-                </ul>
-                <ul aria-hidden="true" className="marquee__content">
-                    <li onClick= {() => scrollToElement(ref, "center")}>{item1}</li><li onClick= {() => scrollToElement(ref, "center")}>{item2}</li>
-                </ul>
-            </div>
-        )
-    })
 
   return (
     <Hero ref={hero}>
@@ -60,9 +39,30 @@ const HeroComp = ({ mechSection, extraSection, panddSection, hero } : heroProps)
         <div className='intro-2'>RENE </div> 
         <div className='intro-3'>UMEH</div> 
         <div className='marquees'>
-            <Marquee direction='forward' item1='Mechanical Engineer' item2='Automobile Enthusiast' ref={mechSection}/>
-            <Marquee direction='reverse' item1='Artificial Intelligence Programmer' item2='Web Developer' ref={panddSection}/>
-            <Marquee direction='forward' item1='UI/UX Designer' item2='Social Media Manager' ref={extraSection}/>
+            <div className="marquee marquee--reverse marquee--hover-pause">
+                <ul className="marquee__content">
+                    <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>   
+                </ul>
+                <ul aria-hidden="true" className="marquee__content">
+                    <li onClick= {() => scrollToElement(mechSection, "center")}>Mechanical Engineer</li><li onClick= {() => scrollToElement(mechSection, "center")}>Automobile Enthusiast</li>
+                </ul>
+            </div>
+            <div className="marquee marquee--hover-pause">
+                <ul className="marquee__content">
+                    <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
+                </ul>
+                <ul aria-hidden="true" className="marquee__content">
+                    <li onClick= {() => scrollToElement(panddSection, "center")}>Artificial Intelligence Programmer</li><li onClick= {() => scrollToElement(panddSection, "center")}>Web Developer</li>
+                </ul>
+            </div>
+            <div className="marquee marquee--reverse marquee--hover-pause">
+                <ul className="marquee__content">
+                    <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
+                </ul>
+                <ul aria-hidden="true" className="marquee__content">
+                    <li onClick= {() => scrollToElement(extraSection, "center")}>UI/UX Designer</li><li onClick= {() => scrollToElement(extraSection, "center")}>Social Media Manager</li>
+                </ul>
+            </div>
         </div>
 </Hero>
   )
