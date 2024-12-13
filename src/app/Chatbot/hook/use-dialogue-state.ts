@@ -47,8 +47,9 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
 
   const removeThread = async () => {
     setLoading(true);
-    await fetch(`/api/threads/${threadId}`, {
+    await fetch(`/api/threads`, {
       method: 'DELETE',
+      body: JSON.stringify({ threadId: threadId })
     }).then(() => {
       setThreadId('');
     setMessageItems([]);
@@ -62,7 +63,8 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
     await removeThread()
     await createThread().then(() => {
       const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
-      appendMessage(startingMessage) 
+      setMessageItems([startingMessage]) 
+      setMessages([startingMessage])
     }
     )
   } 
@@ -181,11 +183,12 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
     resetScroll()
 
     const response = await fetch(
-      `/api/threads/${threadId}/messages`,
+      `/api/threads/messages`,
       {
         method: "POST",
         body: JSON.stringify({
           content: inputText,
+          threadId: threadId,
         }),
       }
     );
@@ -202,7 +205,8 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
     if (storedMessages.length < 1) {
       createThread()
       const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
-      appendMessage(startingMessage) 
+      setMessageItems([startingMessage]) 
+      setMessages([startingMessage])
       setIsMounted(true)
     } 
   }, [isMounted, setIsMounted, storedMessages]);
