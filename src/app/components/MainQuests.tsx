@@ -66,7 +66,7 @@ const MainQuests = ({ mainQuests }: mainQuestsProps) => {
 
 export default MainQuests 
 
-const MotionWrapper = motion(styled.div`
+const MotionWrapper = motion.create(styled.div`
     display: flex;
     justify-content: center;
 `);

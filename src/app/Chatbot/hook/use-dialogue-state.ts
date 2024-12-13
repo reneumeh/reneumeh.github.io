@@ -60,9 +60,11 @@ const useDialogueState = ({ isMounted, setIsMounted }: dialogueProps) => {
 
   const refreshConversation = async () => {
     await removeThread()
-    await createThread()
-    const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
-    appendMessage(startingMessage) 
+    await createThread().then(() => {
+      const startingMessage = createMessage('assistant', 'Hello, Rene cannot come to the phone right now, but he made me to answer anything you need to know about him.')
+      appendMessage(startingMessage) 
+    }
+    )
   } 
   /*
     =======================

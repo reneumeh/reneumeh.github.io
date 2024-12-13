@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import useAppStore from '../util/appstore';
+import { toast } from 'react-toastify';
 
 export const useFeedback = () => {
   const [isFeedbackScreenOpen, setIsFeedbackScreenOpen] = useState(false);
@@ -29,7 +30,7 @@ export const useFeedback = () => {
         process.env.NEXT_PUBLIC_FEEDBACK_TEMPLATE_ID as string,
         templateParams,
     ).then(() =>
-      {alert('Done!')}
+      {toast('Feedback sent successfully!')}
     )
 
     setFeedbackInput('');

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import Dialogue from './Dialogue';
 import { Box, IconButton } from '@chakra-ui/react';
-import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull, MdRefresh } from 'react-icons/md';
+import { MdCloseFullscreen, MdHorizontalRule, MdOpenInFull } from 'react-icons/md';
 import useIsMobile from '@/app/hooks/useIsMobile';
 import { PALETTE } from '@/app/utils/theme';
 import { BsChatRightDots } from 'react-icons/bs';
@@ -15,8 +15,6 @@ const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
-  const { removeThread } = useDialogueState({ isMounted, setIsMounted })
 
   const onClose = () => {
     setIsOpen(false);

@@ -55,7 +55,6 @@ const Dialogue = ({ isOpen, isExpanded, isMobile, isMounted, setIsMounted }: dia
     setIsFeedbackScreenOpen,
     feedbackInput,
     setFeedbackInput,
-    feedback,
     setFeedback,
     handleFeedbackSubmit,
   } = useFeedback();
