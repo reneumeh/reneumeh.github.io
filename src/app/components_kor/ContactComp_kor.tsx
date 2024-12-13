@@ -6,6 +6,7 @@ import { PALETTE } from '../utils/theme';
 import { useInView } from 'motion/react';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { FaLinkedin } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
@@ -19,9 +20,9 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
             emailjs.sendForm( process.env.EMAIL_SERVICE_ID as string, process.env.EMAIL_TEMPLATE_ID as string, emailForm.current, process.env.EMAIL_OPTIONS as string)
             .then(() => {
                 e.currentTarget.reset();
-                alert("메시지가 발송되었습니다");
+                toast("메시지가 발송되었습니다");
             }, (error) => {
-                alert(error.text);
+                toast(error.text);
             });
         }
     };

@@ -5,6 +5,7 @@ import { PALETTE } from '../utils/theme';
 import { useInView } from 'motion/react';
 import { RiSendPlaneFill } from 'react-icons/ri'
 import { FaLinkedin } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 type contactProps = {
     contact: React.MutableRefObject<null>, 
@@ -24,10 +25,10 @@ const ContactComp = ({ contact, emailForm }: contactProps) => {
                 )
                 .then(() => {
                     (e.target as HTMLFormElement).reset()
-                    alert("Message sent successfully");
+                    toast("Message sent successfully");
                 })
                 .catch((error) => {
-                    alert("Failed to send the message.");
+                    toast("Failed to send the message.");
                     // console.error(error.text);
                 });
         }

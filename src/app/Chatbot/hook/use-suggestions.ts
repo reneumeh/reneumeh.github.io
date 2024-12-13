@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { suggestedQuestionsList1, suggestedQuestionsList2 } from '../config/suggestion-questions';
 
 export const useSuggestions = () => {

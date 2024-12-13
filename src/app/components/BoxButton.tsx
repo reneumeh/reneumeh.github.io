@@ -9,7 +9,7 @@ interface BoxButtonProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const BoxButton = ({ children, link, ...rest } : BoxButtonProps) => {
   return (
-    <BoxButtonVWrapper>
+    <BoxButtonWrapper>
         <div className='button'
             {...rest}>
                 {
@@ -25,13 +25,13 @@ const BoxButton = ({ children, link, ...rest } : BoxButtonProps) => {
                     </div>
                 }
         </div>
-</BoxButtonVWrapper>
+</BoxButtonWrapper>
   )
 }
 
 export default BoxButton
 
-const BoxButtonVWrapper = styled.div`
+const BoxButtonWrapper = styled.div`
     cursor: pointer;
     .button {
         text-decoration: none;

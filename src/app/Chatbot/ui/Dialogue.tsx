@@ -11,6 +11,7 @@ import {
   MdOutlineThumbDown,
   MdThumbDown,
   MdThumbUp,
+  MdRefresh,
 } from 'react-icons/md';
 
 import SinusodialLoader from './SinusodialLoader';
@@ -33,12 +34,11 @@ type dialogueProps = {
   isOpen: boolean;
   isExpanded: boolean;
   isMobile: boolean;
+  isMounted:boolean;
+  setIsMounted: (isMounted: boolean) => void;
 }
 
-const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
-  const [inputText, setInputText] = useState('');
-  const [isMounted, setMounted] = useState(false);
-
+const Dialogue = ({ isOpen, isExpanded, isMobile, isMounted, setIsMounted }: dialogueProps) => {
   const threadId = useAppStore((state) => state.threadId);
 
   const {
@@ -55,7 +55,6 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
     setIsFeedbackScreenOpen,
     feedbackInput,
     setFeedbackInput,
-    feedback,
     setFeedback,
     handleFeedbackSubmit,
   } = useFeedback();
@@ -69,20 +68,24 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
     setLastMessageId,
     resetScroll,
     messageRef,
-  } = useDialogueState({ isMounted, setMounted, setInputText, isOpen });
+    followUpQuestion,
+    setInputText,
+    inputText,
+    refreshConversation
+  } = useDialogueState({ isMounted, setIsMounted });
 
-  const handleGoodResponse = (item: MessageType) => {
-    item.good_clicked = true;
-    resetScroll();
+  const handleGoodResponse = (message: MessageType) => {
+    message.good_clicked = true;
     setLastMessageId('');
+    resetScroll();
   };
 
-  const handleBadResponse = async (item: MessageType) => {
-    item.bad_clicked = true;
+  const handleBadResponse = async (message: MessageType) => {
+    message.bad_clicked = true;
     setIsFeedbackScreenOpen(true);
-    resetScroll();
-    setFeedback({ feedbackThread: threadId, feedbackId: item.id, feedbackMessage: '' });
+    setFeedback({ feedbackThread: threadId, feedbackId: message.id, feedbackMessage: '' });
     setLastMessageId('');
+    resetScroll();
   };
 
   const handleSuggestedQuestion = (question: string | undefined) => {
@@ -103,7 +106,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
   return (
     <DialogueWrapper $isExpanded={isExpanded} $isMobile={isMobile}>
       {isFeedbackScreenOpen && (
-        <FeedbackScreenWrapper $isMobile={isMobile} className="animated animatedFadeInUp fadeInLeft">
+        <FeedbackScreenWrapper $isMobile={isMobile} className="animated fadeInLeft">
           <FeedbackScreen 
           feedbackInput= {feedbackInput} 
           setFeedbackInput= {setFeedbackInput} 
@@ -113,9 +116,9 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
           </FeedbackScreenWrapper>
       )}
       <MessagesArea ref={messageRef} $suggestedQuestions={suggestedQuestions} $isMobile={isMobile}>
-        {messageItems?.map((item) => (
-          <div key={item.id} className="logo-message">
-            {item.role === 'assistant' && (
+        {messageItems?.map((message) => (
+          <div key={message.id} className="logo-message">
+            {message.role === 'assistant' && (
               <MyIcon
                 fontSize={'2rem'}
                 sx={{
@@ -123,7 +126,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
                 }}
               />
             )}
-            {item.role === 'function' && (
+            {message.role === 'function' && (
               <ChakraIcon
                 as={MdSettings}
                 fontSize={'2rem'}
@@ -132,7 +135,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
                 }}
               />
             )}
-            {item.role === 'user' && (
+            {message.role === 'user' && (
               <ChakraIcon
                 as={MdPerson}
                 fontSize={'2rem'}
@@ -144,32 +147,32 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
             <Message>
               <Role>
                 <span className="roles">
-                  {item.role === 'user' ? 'USER' : 'GPT ME'} •{' '}
+                  {message.role === 'user' ? 'USER' : 'GPT ME'} •{' '}
                 </span>
                 <span className="time">
-                  {('0' + new Date(item.created_at * 1000).getHours()).slice(-2)} :
-                  {('0' + new Date(item.created_at * 1000).getMinutes()).slice(-2)}
+                  {('0' + new Date(message.created_at * 1000).getHours()).slice(-2)} :
+                  {('0' + new Date(message.created_at * 1000).getMinutes()).slice(-2)}
                 </span>
               </Role>
-              {item.content && <Markdown>{item.content}</Markdown>}
-              {item.followup_question && item.id === lastMessageId && (
+              {message.content && <Markdown>{message.content}</Markdown>}
+              {!!followUpQuestion && message.id === lastMessageId && (
                 <SuggestedQuestion
                   key={getUniqueId()}
                   style={{ marginLeft: '0px' }}
-                  onClick={() => handleSuggestedQuestion(item.followup_question)}
+                  onClick={() => handleSuggestedQuestion(followUpQuestion)}
                 >
-                  {item.followup_question}
+                  {followUpQuestion}
                 </SuggestedQuestion>
               )}
-              {item.role === 'assistant' &&
-                (item.good_clicked || item.bad_clicked || item.id === lastMessageId) && (
-                  <Rating $goodClicked={item.good_clicked || false} $badClicked={item.bad_clicked || false}>
+              {message.role === 'assistant' &&
+                (message.good_clicked || message.bad_clicked || message.id === lastMessageId) && (
+                  <Rating $goodClicked={message.good_clicked || false} $badClicked={message.bad_clicked || false}>
                     <IconButton
                       className="rating good-response"
                       aria-label="Good Response"
-                      icon={item.good_clicked ? <MdThumbUp /> : <MdOutlineThumbUp />}
+                      icon={message.good_clicked ? <MdThumbUp /> : <MdOutlineThumbUp />}
                       onClick={() => {
-                        handleGoodResponse(item);
+                        handleGoodResponse(message);
                       }}
                       marginRight={'0.3rem'}
                       _hover= {{ bg: 'transparent' }}
@@ -178,9 +181,9 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
                     <IconButton
                       className="rating bad-response"
                       aria-label="Bad Response"
-                      icon={item.bad_clicked ? <MdThumbDown /> : <MdOutlineThumbDown />}
+                      icon={message.bad_clicked ? <MdThumbDown /> : <MdOutlineThumbDown />}
                       onClick={() => {
-                        handleBadResponse(item);
+                        handleBadResponse(message);
                       }}
                       marginRight={'0.3rem'}
                       _hover= {{ bg: 'transparent' }}
@@ -223,7 +226,7 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
             ref={inputRef}
             placeholder="Type in message"
             disabled={loading}
-            fontFamily={ 'League-Spartan-minor'}
+            fontFamily={'League-Spartan-minor'}
             fontSize={'1rem'}
             value={inputText}
             onChange={(e) => {
@@ -239,11 +242,10 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
             _active={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
             _focus={{ borderColor: `${PALETTE.PRIMARY.DEFAULT}`, boxShadow: 'none' }}
             bg={PALETTE.SECONDARY.LIGHT}
-            // isFullWidth
             width={'100%'}
             height={'1.5rem'}
             padding={'0.5rem'}
-            pr="2.5rem"
+            pr="5rem"
             overflow="hidden"
             sx={{
               '&::-webkit-scrollbar': {
@@ -253,6 +255,21 @@ const Dialogue = ({ isOpen, isExpanded, isMobile }: dialogueProps) => {
             }}
           />
           <InputRightElement>
+            <IconButton
+              aria-label="refresh conversation"
+              icon={<MdRefresh size={'1.2rem'}/>}
+              isDisabled={loading}
+              onClick={() => {refreshConversation()}}
+              backgroundColor= {PALETTE.PRIMARY.LIGHT}
+              _hover={{ bg: `${PALETTE.PRIMARY.DEFAULT}` }}
+              _active={{ bg: `${PALETTE.PRIMARY.DEFAULT}` }}
+              _focus={{ boxShadow: 'none' }}
+              color= {PALETTE.BLACK}
+              cursor={'pointer'}
+              padding={'0.3rem'}
+              size={'0.5rem'}
+              margin={'0.3rem 0.3rem 0 0'}
+            />
             <IconButton
               aria-label="send message"
               icon={<MdSend />}
@@ -302,10 +319,6 @@ const DialogueWrapper = styled.div<{ $isExpanded: boolean, $isMobile: boolean }>
     animation-fill-mode: both;
   }
 
-  .animatedFadeInUp {
-    opacity: 0;
-  }
-
   .fadeInLeft {
     opacity: 0;
     animation-name: fadeInLeft;
@@ -314,10 +327,10 @@ const DialogueWrapper = styled.div<{ $isExpanded: boolean, $isMobile: boolean }>
 
 const MessagesArea = styled.div<{ $suggestedQuestions: boolean, $isMobile: boolean }>`
   height: ${(props) => (props.$isMobile ? (props.$suggestedQuestions ? '62vh' : '70vh') : props.$suggestedQuestions ? '18rem' : '22rem')};
+  width: ${(props) => (props.$isMobile ?  '98vw' : '19.5rem' )};
   overflow-y: scroll;
   overflow-wrap: break-word;
   line-height: 1rem;
-  width: 97%;
   margin-left: 4px;
   &::-webkit-scrollbar {
     width: 5px;
