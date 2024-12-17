@@ -31,7 +31,6 @@ function MainENG() {
       },
       {
           name: "수상",
-          ref: portfolio,
           img: <TbAwardFilled />,
           link: "#/blog_kor/awards",
       },
