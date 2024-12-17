@@ -23,7 +23,7 @@ interface AppState {
     setMode: (n: number) => void;
 }
 
-export const APP_STORAGE_KEY = 'colabot-storage'
+export const APP_STORAGE_KEY = 'chatbot-storage'
 
 const useAppStore = create<AppState>()(
     persist(
